@@ -6,7 +6,7 @@ draft: false
 pattern_types: ["creational", "behavioral"]
 wikipedia: "https://en.wikipedia.org/wiki/Dependency_injection"
 diagramtype: "class"
-diagram: "[Client] -- "depends on" --> [AbstractModule]\n[AbstractModule] -- "creates" --> [ConcreteDependency]\n[ConcreteDependency] -- "used by" --> [Client]"
+diagram: "[Client] -- depends on --> [AbstractModule]\n[AbstractModule] -- creates --> [ConcreteDependency]\n[ConcreteDependency] -- used by --> [Client]"
 code: true
 ---
 
