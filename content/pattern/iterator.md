@@ -6,20 +6,7 @@ draft: false
 pattern_types: ["behavioral", "design patterns"]
 wikipedia: https://en.wikipedia.org/wiki/Iterator_pattern
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
-    participant Client
-    participant ConcreteIterator
-    participant ConcreteCollection
-
-    Client->>ConcreteIterator: requestNext()
-    activate ConcreteIterator
-    ConcreteIterator->>ConcreteCollection: getNext()
-    activate ConcreteCollection
-    ConcreteCollection-->>ConcreteIterator: item
-    deactivate ConcreteCollection
-    ConcreteIterator-->>Client: item
-    deactivate ConcreteIterator
+diagram: "sequenceDiagram\n    participant Client\n    participant ConcreteIterator\n    participant ConcreteCollection\n \n    Client->>ConcreteIterator: requestNext()\n    activate ConcreteIterator\n    ConcreteIterator->>ConcreteCollection: getNext()\n    activate ConcreteCollection\n    ConcreteCollection-->>ConcreteIterator: item\n    deactivate ConcreteCollection\n  ConcreteIterator-->>Client: item\n    deactivate ConcreteIterator"
 
 code: true
 ---
