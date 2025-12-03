@@ -2,7 +2,7 @@
 title: "Peer-to-Peer - Python"
 date: 2025-12-03T06:21:07.773-05:00
 draft: false
-pattern_usage:["Peer-to-Peer"]
+pattern_usage: ["Peer-to-Peer"]
 language: ["Python"]
 ---
 The Peer-to-Peer (P2P) pattern establishes direct communication and data exchange between individual nodes (peers) in a network, without relying on a centralized server. Each peer acts as both client and server. This example simulates a simple P2P chat application where peers can connect and send messages directly to each other.  The implementation uses Python’s sockets for network communication. Threads handle concurrent message sending and receiving for each peer. This approach aligns with Python’s concurrency capabilities and network programming libraries, providing a relatively clean and straightforward implementation suitable for prototyping a P2P system.

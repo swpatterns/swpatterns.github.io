@@ -2,7 +2,7 @@
 title: "Peer-to-Peer - JavaScript"
 date: 2025-12-03T06:21:30.281-05:00
 draft: false
-pattern_usage:["Peer-to-Peer"]
+pattern_usage: ["Peer-to-Peer"]
 language: ["JavaScript"]
 ---
 The Peer-to-Peer (P2P) pattern establishes direct connections between participants in a network, removing the need for a central server to mediate all communication after initial discovery. This improves scalability and resilience. This JavaScript example uses WebRTC Data Channels for P2P communication, facilitated by a simple signaling server (not included in this snippet - a small Node.js server would be typical).  Clients initiate connections as 'initiators' or 'receivers' and exchange messages directly once established. This approach leverages JavaScript's asynchronous nature via Promises for managing connection states and message handling, aligning with its event-driven paradigm.  It avoids complex server-side logic where possible, pushing communication to the clients.

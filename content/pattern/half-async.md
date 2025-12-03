@@ -1,4 +1,3 @@
-
 ---
 title: Half-Sync/Half-Async
 date: 2024-02-29T17:29:14-00:00

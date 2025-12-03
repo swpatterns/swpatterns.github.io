@@ -2,7 +2,7 @@
 title: "Peer-to-Peer - Java"
 date: 2025-12-03T06:20:43.128-05:00
 draft: false
-pattern_usage:["Peer-to-Peer"]
+pattern_usage: ["Peer-to-Peer"]
 language: ["Java"]
 ---
 The Peer-to-Peer (P2P) pattern distributes application logic and data among multiple independent nodes (peers), rather than relying on a central server. Each peer functions as both a client and a server, directly communicating with other peers. This example simulates a simple chat application where peers can send messages directly to each other.  It uses Java's networking capabilities (Sockets and Threads) to establish peer connections and handle message exchange.  The use of Threads allows multiple peers to be handled concurrently.  The class structure and straightforward approach fit Java’s typical network programming style.
