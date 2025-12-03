@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "resilience"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant PrimaryService
     participant SecondaryService
@@ -18,6 +17,7 @@ sequenceDiagram
     else PrimaryService Succeeds
         PrimaryService-->>Client: Service Response
     end
+    "
 
 code: true
 ---

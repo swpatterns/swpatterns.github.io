@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["scalability", "architecture", "database"]
 wikipedia: https://en.wikipedia.org/wiki/Database_sharding
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     Client->>Load Balancer: Request data
     Load Balancer->>Shard 1: Route request based on shard key
     Shard 1-->>Load Balancer: Return data
@@ -16,7 +15,7 @@ sequenceDiagram
     Load Balancer->>Shard 2: Route request based on shard key
     Shard 2-->>Load Balancer: Return data
     Load Balancer->>Client: Return data
-
+    "
 code: true
 ---
 

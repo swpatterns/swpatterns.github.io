@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["architectural", "integration", "microservices"]
 wikipedia: https://en.wikipedia.org/wiki/API_gateway
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     actor User
     participant API_Gateway
     participant Service_A
@@ -23,7 +22,7 @@ sequenceDiagram
         Service_B->>API_Gateway: Response
         API_Gateway->>User: Response
     end
-
+    "
 code: true
 ---
 

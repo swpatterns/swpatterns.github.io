@@ -1,4 +1,3 @@
-
 ---
 title: Store-and-Forward
 date: 2024-02-29T10:30:00Z
@@ -6,7 +5,7 @@ draft: false
 pattern_types: ["behavioral", "communication"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: sequenceDiagram
+diagram: "sequenceDiagram
     participant Sender
     participant Intermediary
     participant Receiver
@@ -15,6 +14,7 @@ diagram: sequenceDiagram
     Intermediary->>Receiver: Forward Message
     Receiver->>Intermediary: Acknowledge Receipt
     Intermediary->>Sender: Acknowledge Forwarding
+    "
 code: true
 ---
 

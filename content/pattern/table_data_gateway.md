@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["creational", "data access"]
 wikipedia: 
 diagramtype: "class"
-diagram:  mermaid
-classDiagram
+diagram: "classDiagram
     class TableDataGateway {
         + select(query: string): List<Record>
         + insert(data: Map<string, Object>): void
@@ -25,7 +24,7 @@ classDiagram
     TableDataGateway --> Record : creates
     DatabaseConnection -- ResultSet : returns
     [note: Represents interaction with a single table]
-
+    "
 code: true
 ---
 

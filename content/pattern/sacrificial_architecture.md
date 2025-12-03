@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["resilience", "scalability", "operations"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: """
-sequenceDiagram
+diagram: "sequenceDiagram
     participant User
     participant LoadBalancer
     participant CriticalService
@@ -25,7 +24,7 @@ sequenceDiagram
     end
     CriticalService->>LoadBalancer: Response
     LoadBalancer->>User: Response
-    """
+    "
 code: true
 ---
 

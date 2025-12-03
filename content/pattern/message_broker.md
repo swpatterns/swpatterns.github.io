@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "integration", "distributed systems"]
 wikipedia: https://en.wikipedia.org/wiki/Message_broker
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Producer
     participant Broker
     participant Consumer1
@@ -18,7 +17,7 @@ sequenceDiagram
     Broker->>Consumer1: Deliver Message
     Broker->>Consumer2: Deliver Message
     deactivate Broker
-
+    "
 code: true
 ---
 

@@ -1,4 +1,3 @@
-
 ---
 title: Strangler Fig
 date: 2024-02-29T10:30:00Z
@@ -6,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "refactoring", "legacy"]
 wikipedia: https://en.wikipedia.org/wiki/Strangler_fig_application
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant LegacyApplication
     participant NewApplication
     participant User
@@ -25,7 +23,7 @@ sequenceDiagram
     User->>NewApplication: Request
     NewApplication->>NewApplication: Handle Request
     NewApplication-->>User: Response
-
+    "
 code: true
 ---
 

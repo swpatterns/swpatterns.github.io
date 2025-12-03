@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["observability", "monitoring", "operational"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Application
     participant MetricsCollector
     participant AlertingSystem
@@ -20,7 +19,7 @@ sequenceDiagram
         AlertingSystem->>User: Send Alert (e.g., email, PagerDuty)
     end
     User->>Application: Investigate/Resolve Issue
-
+    "
 code: true
 ---
 

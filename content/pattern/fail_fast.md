@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "robustness"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant System
     participant Validator1
@@ -30,7 +29,7 @@ sequenceDiagram
             System-->>Client: Return result
         end
     end
-
+    "
 code: true
 ---
 

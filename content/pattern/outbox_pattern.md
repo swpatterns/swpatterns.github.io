@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "integration", "reliability"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant App as Application
     participant DB as Database
     participant MessageBroker as Message Broker
@@ -19,7 +18,7 @@ sequenceDiagram
         MessageBroker->>App: Publish each message
         MessageBroker-->>DB: Update message status in Outbox table (e.g., Sent)
     end
-
+    "
 code: true
 ---
 

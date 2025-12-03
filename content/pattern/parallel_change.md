@@ -6,9 +6,7 @@ draft: false
 pattern_types: ["behavioral", "concurrency"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: 
-mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant SystemA
     participant SystemB
@@ -34,7 +32,7 @@ sequenceDiagram
     
     SystemA --> Client: Change acknowledged
     SystemB --> Client: Change acknowledged
-
+    "
 code: true
 ---
 

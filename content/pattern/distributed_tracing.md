@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["observability", "behavioral", "microservices"]
 wikipedia: https://en.wikipedia.org/wiki/Distributed_tracing
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant User
     participant API Gateway
     participant Service A
@@ -37,7 +36,7 @@ sequenceDiagram
 
     note over User,API Gateway: Trace ID propagates with the request
     note over Service A,Service B: Span ID represents the operation within a service
-
+    "
 code: true
 ---
 

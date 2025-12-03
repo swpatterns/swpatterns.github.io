@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["architectural", "idiomatic"]
 wikipedia: https://en.wikipedia.org/wiki/Convention_over_Configuration
 diagramtype: "sequence"
-diagram: """
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Developer
     participant Framework
 
@@ -17,7 +16,7 @@ sequenceDiagram
     Developer->>Framework: Configures specific needs (optional)
     Framework-->>Developer: Applies configurations
     deactivate Framework
-"""
+    "
 code: true
 ---
 

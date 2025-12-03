@@ -1,4 +1,3 @@
-
 ---
 title: Strategy
 date: 2024-02-29T10:30:00Z
@@ -6,7 +5,7 @@ draft: false
 pattern_types: ["behavioral", "design patterns"]
 wikipedia: https://en.wikipedia.org/wiki/Strategy_pattern_(computer_programming)
 diagramtype: "class"
-diagram: "[Client] -- "uses" --> [Context]\n[Context] -- "holds a reference to" --> [Strategy]\n[Strategy] <|-- [ConcreteStrategyA]\n[Strategy] <|-- [ConcreteStrategyB]\n[ConcreteStrategyA] ..> \"Implements Algorithm A\"\n[ConcreteStrategyB] ..> \"Implements Algorithm B\""
+diagram: "[Client] -- 'uses' --> [Context]\n[Context] -- 'holds a reference to' --> [Strategy]\n[Strategy] <|-- [ConcreteStrategyA]\n[Strategy] <|-- [ConcreteStrategyB]\n[ConcreteStrategyA] ..> 'Implements Algorithm A'\n[ConcreteStrategyB] ..> 'Implements Algorithm B'"
 code: true
 ---
 

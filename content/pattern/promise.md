@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "asynchronous"]
 wikipedia: https://en.wikipedia.org/wiki/Promise_(computer_science)
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Promise
     participant Operation
@@ -28,7 +27,7 @@ sequenceDiagram
     end
     deactivate Operation
     deactivate Promise
-
+    "
 code: true
 ---
 

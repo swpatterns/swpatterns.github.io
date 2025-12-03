@@ -1,4 +1,3 @@
-
 ---
 title: Sidecar
 date: 2023-11-21T10:30:00-00:00
@@ -6,7 +5,7 @@ draft: false
 pattern_types: ["architectural", "system"]
 wikipedia: https://en.wikipedia.org/wiki/Sidecar_(software_architecture)
 diagramtype: "sequence"
-diagram: sequenceDiagram
+diagram: "sequenceDiagram
     participant App
     participant Sidecar
     participant ExternalService
@@ -16,6 +15,7 @@ diagram: sequenceDiagram
     ExternalService-->>Sidecar: Response
     Sidecar-->>App: Acknowledge
     note right of Sidecar:  Handles cross-cutting concerns without modifying app code
+    "
 ---
 
 The Sidecar pattern involves deploying a secondary process (the “sidecar”) alongside a primary application in a supporting role. This sidecar is typically in a separate container but shares the same lifecycle as the main application, and it enhances the main application with functionality like logging, monitoring, security, or service discovery.  Crucially, the sidecar's concerns are distinct from the core business logic of the application, enabling loose coupling and independent scaling.

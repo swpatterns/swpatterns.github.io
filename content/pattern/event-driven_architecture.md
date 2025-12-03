@@ -6,7 +6,7 @@ draft: false
 pattern_types: ["architectural", "behavioral", "integration"]
 wikipedia: https://en.wikipedia.org/wiki/Event-driven_architecture
 diagramtype: "sequence"
-diagram: sequenceDiagram
+diagram: "sequenceDiagram
     participant Producer
     participant EventBus
     participant Consumer1
@@ -16,6 +16,7 @@ diagram: sequenceDiagram
     EventBus->>Consumer2: Dispatch Event
     Consumer1->>Consumer1: Process Event
     Consumer2->>Consumer2: Process Event
+    "
 code: true
 ---
 

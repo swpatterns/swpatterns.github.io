@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["architectural", "behavioral", "reactive"]
 wikipedia: https://en.wikipedia.org/wiki/Flux_(software_architecture)
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant View
     participant Dispatcher
     participant Store1
@@ -34,7 +33,7 @@ sequenceDiagram
     Store1->>View: State Changed
     Store2->>View: State Changed
     View->>View: Render
-
+    "
 code: true
 ---
 

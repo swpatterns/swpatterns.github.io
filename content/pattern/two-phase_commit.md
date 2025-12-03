@@ -1,4 +1,3 @@
-
 ---
 title: Two-Phase Commit
 date: 2024-02-29T10:30:00Z
@@ -6,7 +5,7 @@ draft: false
 pattern_types: ["distributed system", "concurrency", "reliability"]
 wikipedia: https://en.wikipedia.org/wiki/Two-phase_commit
 diagramtype: "sequence"
-diagram: sequenceDiagram
+diagram: "sequenceDiagram
     participant Coordinator
     participant Resource Manager 1
     participant Resource Manager 2
@@ -28,6 +27,7 @@ diagram: sequenceDiagram
         Resource Manager 1->>Coordinator: Acknowledge
         Resource Manager 2->>Coordinator: Acknowledge
         Coordinator->>Client: Failure
+    "
 ---
 
 The Two-Phase Commit (2PC) protocol is a distributed algorithm used to ensure atomic commits across multiple transaction participants.  In essence, it guarantees that either *all* participants commit changes to the database or *none* do, maintaining data consistency in a distributed environment. This is crucially important when a single logical operation necessitates updates to multiple independent systems.

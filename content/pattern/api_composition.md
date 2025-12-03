@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["architectural", "integration"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Orchestrator
     participant API_A
@@ -25,7 +24,7 @@ sequenceDiagram
     Orchestrator->>Orchestrator: Combine A & B
     Orchestrator-->>Client: Return composed data
     deactivate Orchestrator
-
+    "
 code: true
 ---
 

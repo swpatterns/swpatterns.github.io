@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "concurrency"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Leader
     participant Follower
     Leader->>Follower: Request State
@@ -16,7 +15,7 @@ sequenceDiagram
         Follower->>Follower: Apply Command
         Follower-->>Leader: Acknowledgment
     end
-    
+    "
 code: true
 ---
 

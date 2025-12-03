@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "middleware"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant MessageFilter
     participant Handler1
@@ -30,7 +29,7 @@ sequenceDiagram
             DefaultHandler->>Client: process message
         end
     end
-
+    "
 code: true
 ---
 

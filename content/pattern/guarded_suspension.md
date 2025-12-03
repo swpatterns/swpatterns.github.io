@@ -6,7 +6,7 @@ draft: false
 pattern_types: ["behavioral", "concurrency"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Resource
     participant Guard
@@ -23,6 +23,7 @@ diagram: sequenceDiagram
     else Resource Unavailable
         Guard-->>Client: Resource Unavailable
     end
+    "
 code: true
 ---
 

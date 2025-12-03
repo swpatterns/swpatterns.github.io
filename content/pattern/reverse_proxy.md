@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["structural", "infrastructure"]
 wikipedia: https://en.wikipedia.org/wiki/Reverse_proxy
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant ReverseProxy
     participant BackendServer1
@@ -24,7 +23,7 @@ sequenceDiagram
         BackendServer2->>ReverseProxy: Response
         ReverseProxy->>Client: Return Response
     end
-
+    "
 code: true
 ---
 

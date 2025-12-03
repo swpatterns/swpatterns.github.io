@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "DDD", "persistence"]
 wikipedia: https://en.wikipedia.org/wiki/Event_sourcing
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Command Handler
     participant Event Store
@@ -27,7 +26,7 @@ sequenceDiagram
     Client->>Event Store: Request State
     Event Store->>Event Store: Replay Events
     Event Store-->>Client: Aggregate State
-
+    "
 code: true
 ---
 

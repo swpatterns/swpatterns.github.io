@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "deployment", "reliability"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant User
     participant LoadBalancer
     participant ProductionSystem
@@ -19,7 +18,7 @@ sequenceDiagram
     end
     ProductionSystem -->> LoadBalancer: Response
     LoadBalancer -->> User: Response
-    
+    "
 code: true
 ---
 

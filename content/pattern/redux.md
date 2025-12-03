@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["architectural", "state management", "functional"]
 wikipedia: https://en.wikipedia.org/wiki/Redux
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant View
     participant Action
     participant Redux
@@ -18,7 +17,7 @@ sequenceDiagram
     Redux->>Reducer: Current State & Action
     Reducer->>Redux: New State
     Redux->>View: State Updated
-
+    "
 code: true
 ---
 

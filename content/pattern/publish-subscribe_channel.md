@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "messaging", "event-driven"]
 wikipedia: https://en.wikipedia.org/wiki/Publish–subscribe_pattern
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Publisher
     participant Channel
     participant Subscriber1
@@ -19,7 +18,7 @@ sequenceDiagram
     Subscriber1->>Subscriber1: Process message
     Subscriber2->>Subscriber2: Process message
     [note: Multiple Subscribers can exist {bg:lightgreen}]
-
+    "
 code: true
 ---
 

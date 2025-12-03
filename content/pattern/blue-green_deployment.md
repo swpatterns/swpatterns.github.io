@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["deployment", "operational"]
 wikipedia: https://en.wikipedia.org/wiki/Blue%E2%80%93green_deployment
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant User
     participant LoadBalancer
     participant BlueEnvironment
@@ -39,7 +38,7 @@ sequenceDiagram
 
     DeploymentSystem->>BlueEnvironment: Keep as Fallback
     deactivate DeploymentSystem
-
+    "
 code: true
 ---
 

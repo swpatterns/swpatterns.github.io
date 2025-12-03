@@ -5,7 +5,7 @@ draft: false
 pattern_types: ["security", "architectural"]
 wikipedia: https://en.wikipedia.org/wiki/Defense_in_depth
 diagramtype: "sequence"
-diagram: sequenceDiagram
+diagram: "sequenceDiagram
     participant User
     participant Network
     participant System
@@ -33,6 +33,7 @@ diagram: sequenceDiagram
             end
         end
     end
+    "
 code: false
 ---
 

@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["concurrency", "behavioral", "DDD"]
 wikipedia: https://en.wikipedia.org/wiki/Actor_model
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant ActorA
     participant ActorB
     ActorA->>ActorB: Message
@@ -15,7 +14,7 @@ sequenceDiagram
     ActorB->>ActorB: Process Message\n(potentially create more actors)
     ActorB-->>ActorA: Reply/State Change
     deactivate ActorB
-
+    "
 code: true
 ---
 

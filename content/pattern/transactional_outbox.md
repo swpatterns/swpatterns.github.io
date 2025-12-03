@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "integration", "reliability"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Application
     participant Database
     participant MessageBroker
@@ -18,7 +17,7 @@ sequenceDiagram
         Database-->>Application: Transaction Rollback
         Application->>MessageBroker: No message published
     end
-
+    "
 code: true
 ---
 

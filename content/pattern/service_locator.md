@@ -5,12 +5,13 @@ draft: false
 pattern_types: ["behavioral", "loosely coupled"]
 wikipedia: https://en.wikipedia.org/wiki/Service_locator
 diagramtype: "class"
-diagram: "[Client] -- "requests service" --> [ServiceLocator]
-[ServiceLocator] -- "holds/provides" --> [Service1]
-[ServiceLocator] -- "holds/provides" --> [Service2]
-[Service] <|-- [Service1] : implements
-[Service] <|-- [Service2] : implements
-[note: The Client doesn't know about concrete services, only the Locator.] {bg:lightyellow}"
+diagram: "[Client] -- 'requests service' --> [ServiceLocator]
+    [ServiceLocator] -- 'holds/provides' --> [Service1]
+    [ServiceLocator] -- 'holds/provides' --> [Service2]
+    [Service] <|-- [Service1] : implements
+    [Service] <|-- [Service2] : implements
+    [note: The Client doesn't know about concrete services, only the Locator.] {bg:lightyellow}
+    "
 code: true
 ---
 

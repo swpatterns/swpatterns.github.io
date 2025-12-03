@@ -5,21 +5,20 @@ draft: false
 pattern_types: ["behavioral", "concurrency"]
 wikipedia: https://en.wikipedia.org/wiki/Reactor_pattern
 diagramtype: "class"
-diagram: mermaid
-classDef default fill:#f9f,stroke:#333,stroke-width:2px
-classDef async fill:#ccf,stroke:#333,stroke-width:2px
+diagram: "classDef default fill:#f9f,stroke:#333,stroke-width:2px
+    classDef async fill:#ccf,stroke:#333,stroke-width:2px
 
-[EventLoop] -- handles --> [Handler]
-[EventLoop] -- registers --> [EventSource]
-[EventLoop] -- demultiplexes --> [Handler]
-[EventSource] -- emits --> [Event]
-[Handler] -- processes --> [Event]
-[Event] -- contains --> [Data]
+    [EventLoop] -- handles --> [Handler]
+    [EventLoop] -- registers --> [EventSource]
+    [EventLoop] -- demultiplexes --> [Handler]
+    [EventSource] -- emits --> [Event]
+    [Handler] -- processes --> [Event]
+    [Event] -- contains --> [Data]
 
-[EventLoop] <[note: Single-threaded core {bg:lightgreen}]>
-[Handler] <[note: Receives events & performs actions {bg:lightyellow}]>
-[EventSource] <[note: External systems triggering events {bg:lightblue}]>
-
+    [EventLoop] <[note: Single-threaded core {bg:lightgreen}]>
+    [Handler] <[note: Receives events & performs actions {bg:lightyellow}]>
+    [EventSource] <[note: External systems triggering events {bg:lightblue}]>
+    "
 code: true
 ---
 

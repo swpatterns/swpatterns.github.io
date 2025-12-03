@@ -1,4 +1,3 @@
-
 ---
 title: Shared Database
 date: 2024-01-27T14:56:42-00:00
@@ -6,7 +5,12 @@ draft: false
 pattern_types: ["behavioral", "architectural"]
 wikipedia: ""
 diagramtype: "class"
-diagram: "[Client1] -- Database\n[Client2] -- Database\n[Client3] -- Database\n[Database] [note: Single Instance {bg:lightblue}]"
+diagram: "
+    [Client1] -- Database
+    [Client2] -- Database
+    [Client3] -- Database
+    [Database] [note: Single Instance {bg:lightblue}]
+    "
 code: true
 ---
 

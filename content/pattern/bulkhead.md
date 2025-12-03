@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["resilience", "behavioral"]
 wikipedia: https://en.wikipedia.org/wiki/Bulkhead_(naval_architecture)
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Bulkhead
     participant ServiceA
@@ -25,7 +24,7 @@ sequenceDiagram
     end
     Bulkhead-->>Client: Response
     deactivate Bulkhead
-
+    "
 code: true
 ---
 

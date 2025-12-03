@@ -5,12 +5,13 @@ draft: false
 pattern_types: ["behavioral", "DDD"]
 wikipedia: https://en.wikipedia.org/wiki/Policy_pattern
 diagramtype: "class"
-diagram: "[Client] -- "needs to execute" --> [Policy]
-[Policy] <|-- [ConcretePolicyA]
-[Policy] <|-- [ConcretePolicyB]
-[ConcretePolicyA] ..> [Resource] : applies to
-[ConcretePolicyB] ..> [Resource] : applies to
-[Resource] -- "uses" --> [Context]"
+diagram: "[Client] -- 'needs to execute' --> [Policy]
+    [Policy] <|-- [ConcretePolicyA]
+    [Policy] <|-- [ConcretePolicyB]
+    [ConcretePolicyA] ..> [Resource] : applies to
+    [ConcretePolicyB] ..> [Resource] : applies to
+    [Resource] -- 'uses' --> [Context]
+    "
 code: true
 ---
 

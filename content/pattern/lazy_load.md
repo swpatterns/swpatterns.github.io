@@ -5,8 +5,7 @@ draft: false
 pattern_types: [behavioral, performance]
 wikipedia: https://en.wikipedia.org/wiki/Lazy_evaluation
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Manager
     participant Resource
@@ -22,7 +21,7 @@ sequenceDiagram
     else Resource is Loaded
         Manager->>Client: Return Cached Resource
     end
-
+    "
 code: true
 ---
 

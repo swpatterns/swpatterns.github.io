@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["concurrency", "behavioral"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant MessageQueue
     participant Consumer1
     participant Consumer2
@@ -17,7 +16,7 @@ sequenceDiagram
         Consumer1->>Consumer1: Process Message
         Consumer2->>Consumer2: Process Message
     end
-
+    "
 code: true
 ---
 

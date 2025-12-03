@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "security"]
 wikipedia: "https://en.wikipedia.org/wiki/Access_token"
 diagramtype: "sequence"
-diagram: `sequenceDiagram
-    participant Client
+diagram: "    participant Client
     participant Authorization Server
     participant Resource Server
 
@@ -23,7 +22,7 @@ diagram: `sequenceDiagram
     end
     Client->>Authorization Server: Request New Access Token (using Refresh Token)
     Authorization Server-->>Client: New Access Token
-`
+    "
 code: true
 ---
 

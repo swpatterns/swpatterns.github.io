@@ -6,19 +6,18 @@ draft: false
 pattern_types: ["behavioral", "integration", "system"]
 wikipedia: https://en.wikipedia.org/wiki/Message_bus
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Publisher
     participant MessageBus
     participant SubscriberA
     participant SubscriberB
 
-    Publisher->>MessageBus: Publish Message ("Event Data")
+    Publisher->>MessageBus: Publish Message ('Event Data')
     MessageBus->>SubscriberA: Dispatch Message
     MessageBus->>SubscriberB: Dispatch Message
     SubscriberA->>SubscriberA: Process Message
     SubscriberB->>SubscriberB: Process Message
-
+    "
 code: true
 ---
 

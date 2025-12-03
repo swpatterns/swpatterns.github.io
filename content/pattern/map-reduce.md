@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "parallelism", "data processing"]
 wikipedia: https://en.wikipedia.org/wiki/MapReduce
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Coordinator
     participant Mapper
@@ -24,7 +23,7 @@ sequenceDiagram
         Reducer-->>Coordinator: Return final output
     end
     Coordinator->>Client: Job completed - return output
-
+    "
 code: true
 ---
 

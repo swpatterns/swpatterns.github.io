@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "distributed systems"]
 wikipedia: https://en.wikipedia.org/wiki/Service_discovery
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant ServiceRegistry
     participant ServiceInstance
@@ -31,7 +30,7 @@ sequenceDiagram
 
     ServiceInstance-->>Client: Service response
     deactivate ServiceInstance
-
+    "
 code: true
 ---
 

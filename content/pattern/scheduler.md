@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "concurrency"]
 wikipedia: https://en.wikipedia.org/wiki/Scheduler_(computing)
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Scheduler
     participant Task1
@@ -23,7 +22,7 @@ sequenceDiagram
             Scheduler->>Task2: Execute Task2
         end
     end
-
+    "
 code: true
 ---
 

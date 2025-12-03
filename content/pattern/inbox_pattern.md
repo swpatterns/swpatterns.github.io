@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "integration"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
   participant Client
   participant Application
   participant Inbox
@@ -20,7 +19,7 @@ sequenceDiagram
   Handler1 ->> Application: Processes Message
   Inbox ->> Handler2: Dispatches Message (Priority 2)
   Handler2 ->> Application: Processes Message
-  
+  "
 code: true
 ---
 

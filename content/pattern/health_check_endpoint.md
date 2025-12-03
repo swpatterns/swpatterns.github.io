@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["architectural", "observability"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant LoadBalancer
     participant ServiceA
@@ -33,7 +32,7 @@ sequenceDiagram
     end
     ServiceB->>LoadBalancer: Service B Healthy/Unhealthy
     LoadBalancer-->>Client: Overall Health Status
-
+    "
 code: true
 ---
 

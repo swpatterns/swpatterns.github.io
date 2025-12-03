@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["GOF", "behavioral"]
 wikipedia: https://en.wikipedia.org/wiki/Template_method
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant AbstractClass
     participant ConcreteClassA
     participant ConcreteClassB
@@ -21,7 +20,7 @@ sequenceDiagram
     ConcreteClassB -->> AbstractClass: Result B
     deactivate ConcreteClassB
     AbstractClass -->> AbstractClass: finalize()
-
+    "
 code: true
 ---
 

@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "deployment"]
 wikipedia: https://en.wikipedia.org/wiki/Rolling_update
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant OldVersion
     participant NewVersion
     participant LoadBalancer
@@ -24,7 +23,7 @@ sequenceDiagram
         NewVersion++
         OldVersion--
     end
-    
+    "
 code: true
 ---
 

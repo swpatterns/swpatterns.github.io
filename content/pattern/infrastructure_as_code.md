@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["DDD", "operational", "automation"]
 wikipedia: https://en.wikipedia.org/wiki/Infrastructure_as_Code
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Developer
     participant IAC_Tool
     participant Infrastructure
@@ -18,7 +17,7 @@ sequenceDiagram
     Infrastructure-->>IAC_Tool: Status/Confirmation
     deactivate IAC_Tool
     Developer-->>Infrastructure: Deploy Application
-    
+    "
 code: true
 ---
 

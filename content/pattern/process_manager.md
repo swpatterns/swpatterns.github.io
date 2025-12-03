@@ -5,8 +5,7 @@ draft: false
 pattern_types: ["behavioral", "concurrency"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant ProcessManager
     participant WorkerPool
@@ -25,7 +24,7 @@ sequenceDiagram
     deactivate Process
     ProcessManager->>Client: Process Completed
     deactivate ProcessManager
-
+    "
 code: true
 ---
 

@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["architecture", "scalability", "performance"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: """
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant Gateway
     participant Backend_Service_1
@@ -29,7 +28,7 @@ sequenceDiagram
       Gateway-->>Client: Response
     end
     [note: CDN handles static assets, reducing load on the gateway and backend.]
-"""
+    "
 code: true
 ---
 

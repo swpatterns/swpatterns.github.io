@@ -6,7 +6,7 @@ draft: false
 pattern_types: ["behavioral", "web"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: sequenceDiagram
+diagram: "sequenceDiagram
     participant Client
     participant PageController
     participant View
@@ -17,6 +17,7 @@ diagram: sequenceDiagram
     PageController->>View: Render Page with Data
     View-->>PageController: Rendered Page
     PageController-->>Client: Rendered Page
+    "
 code: true
 ---
 

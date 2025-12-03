@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["behavioral", "functional"]
 wikipedia: https://en.wikipedia.org/wiki/Pipeline_pattern
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant Input
     participant Stage1
     participant Stage2
@@ -18,7 +17,7 @@ sequenceDiagram
     Stage1 ->> Stage2: Processed Data
     Stage2 ->> Stage3: Further Processed Data
     Stage3 ->> Output: Final Result
-    
+    "
 code: true
 ---
 

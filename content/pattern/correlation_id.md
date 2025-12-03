@@ -6,8 +6,7 @@ draft: false
 pattern_types: ["transversal", "observability", "distributed systems"]
 wikipedia: ""
 diagramtype: "sequence"
-diagram: mermaid
-sequenceDiagram
+diagram: "sequenceDiagram
     participant User
     participant API Gateway
     participant Service A
@@ -18,7 +17,7 @@ sequenceDiagram
     Service B-->>Service A: Response
     Service A-->>API Gateway: Response
     API Gateway-->>User: Response
-    
+    "
 code: true
 ---
 
