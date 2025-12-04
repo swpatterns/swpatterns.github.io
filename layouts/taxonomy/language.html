@@ -4,7 +4,7 @@
 <header>
   <div class="row">
     <div class="column">
-    <img src="{{ .Params.icon }}" width="200">
+      <img src="{{ .Params.icon }}" width="200">
     </div>
     <div class="column">
       <h1 class="f1">
@@ -12,12 +12,21 @@
         </h1>
         <p>{{ .Params.description }}</p>
         <p><a href="{{ .Params.website }}" target="_blank">{{ .Params.name }} Website</a></p>
+        
+      <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
+        {{ .Content }}
+      </div>
     </div>
   </div>
+  
+  {{- with .Params.tools -}}
+    {{- range . }}
+      <a href='{{ .website }}' target="_blank" title="{{ .name }}" class="post_tag button button_translucent">
+        {{- .name }}
+      </a>
+    {{- end }}
+  {{- end }}
 </header>
-  <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
-    {{ .Content }}
-  </div>
   </div>
   {{- partial "archive" . }}
   
