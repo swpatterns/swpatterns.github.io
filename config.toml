@@ -1,4 +1,4 @@
-baseURL = "https://www.swpatterns.com/"
+baseURL = "https://swpatterns.com/"
 languageCode = "en-us"
 title = "SWPatterns.com"
 theme = "hugo-clarity-new"
