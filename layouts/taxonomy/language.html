@@ -1,0 +1,24 @@
+{{ define "main" }}
+<div class="content">
+
+<header>
+  <div class="row">
+    <div class="column">
+    <img src="{{ .Params.icon }}" width="200">
+    </div>
+    <div class="column">
+      <h1 class="f1">
+          {{ .Params.name }}
+        </h1>
+        <p>{{ .Params.description }}</p>
+        <p><a href="{{ .Params.website }}" target="_blank">{{ .Params.name }} Website</a></p>
+    </div>
+  </div>
+</header>
+  <div class="nested-copy-line-height lh-copy f4 nested-links nested-img mid-gray">
+    {{ .Content }}
+  </div>
+  </div>
+  {{- partial "archive" . }}
+  
+{{ end }}
