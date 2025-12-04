@@ -3,7 +3,7 @@ title: "Blackboard - C#"
 date: 2025-12-03T15:23:53.948-05:00
 draft: false
 pattern_usage: ["Blackboard"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Blackboard pattern is a computational architecture for solving problems that don't have a pre-defined solution sequence. It consists of several knowledge sources (KSs) that independently examine a shared data structure (the blackboard) and contribute to the solution when they have relevant information. A control component manages the KS execution order. This implementation uses a simple string blackboard and KSs that perform basic string manipulations. It's idiomatic C# due to its use of interfaces for KSs, allowing for loose coupling and extensibility, and delegates for the control component to manage KS execution.
 

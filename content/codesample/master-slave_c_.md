@@ -3,7 +3,7 @@ title: "Master-Slave - C#"
 date: 2025-12-03T15:32:03.303-05:00
 draft: false
 pattern_usage: ["Master-Slave"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Master-Slave pattern distributes work to worker nodes (Slaves) from a central coordinator (Master). The Master maintains the overall task and divides it into subtasks, assigning them to available Slaves. Slaves process their assigned tasks and return results to the Master, which aggregates them. This pattern enhances parallelism and scalability.
 

@@ -3,7 +3,7 @@ title: "Peer-to-Peer - C#"
 date: 2025-12-03T06:24:00.943-05:00
 draft: false
 pattern_usage: ["Peer-to-Peer"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Peer-to-Peer (P2P) pattern establishes direct communication and data exchange between independent components (peers) without relying on a central server. Each peer acts as both a client and a server, discovering and connecting to other peers. This example utilizes .NET's built-in TCP networking capabilities to simulate a simple P2P chat application. Each peer listens for incoming connections and can initiate connections to other peers.  Messages are sent directly between connected peers. This implementation is idiomatic C# due to its use of `async/await` for non-blocking network operations, `using` statements for resource management, and clear class structure representing peer functionality.
 

@@ -3,7 +3,7 @@ title: "Composite - C#"
 date: 2025-12-03T11:35:11.388-05:00
 draft: false
 pattern_usage: ["Composite"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Composite pattern allows you to treat individual objects and compositions of objects uniformly. It's used when you have a hierarchical structure of objects, and you want to perform operations on the entire structure without knowing whether you're dealing with a single object or a composite of many. In this C# example, we represent a file system structure where files and folders can be nested. The `FileSystemComponent` is the abstract base class, `File` is a leaf node representing a file, and `Folder` is a composite node containing other `FileSystemComponent`s.  The `Operation()` method demonstrates a common operation (printing name) done on the whole structure. This implementation leverages interfaces and abstract classes, common in C# for defining flexible and extensible behaviors.
 

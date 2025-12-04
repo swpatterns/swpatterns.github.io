@@ -3,7 +3,7 @@ title: "Mediator - C#"
 date: 2025-12-03T13:14:56.114-05:00
 draft: false
 pattern_usage: ["Mediator"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Mediator pattern defines an object that encapsulates how a set of objects interact. It promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary their interactions independently.  This example represents a simple chat room where users communicate through a `Chatroom` mediator instead of directly messaging each other.  C# lends itself well to the Mediator pattern via interfaces, allowing for flexible collaboration between components without tight dependencies. The code uses classes representing users and a central mediator to handle message passing, keeping user classes focused on their own concerns.
 

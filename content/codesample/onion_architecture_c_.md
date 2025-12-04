@@ -3,7 +3,7 @@ title: "Onion Architecture - C#"
 date: 2025-12-03T14:13:11.899-05:00
 draft: false
 pattern_usage: ["Onion Architecture"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Onion Architecture aims for loose coupling and high testability by organizing code into concentric layers. The core layer contains business rules and entities, completely independent of infrastructure concerns.  Outer layers represent interfaces, data access, and presentation. Dependencies point *inward* – infrastructure depends on application logic, but application logic knows nothing of infrastructure. This promotes adaptability; you can swap databases or UI frameworks without impacting core business rules. 
 

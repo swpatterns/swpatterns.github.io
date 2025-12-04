@@ -3,7 +3,7 @@ title: "Specification - C#"
 date: 2025-12-03T13:51:04.632-05:00
 draft: false
 pattern_usage: ["Specification"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Specification pattern is a behavioral design pattern that encapsulates a set of criteria (a "specification") as an object. This allows you to decouple complex filtering logic from the data it operates on, making code more maintainable and reusable.  The code defines an `ISpecification` interface with methods for `IsSatisfiedBy` (checking if an object meets the criteria) and `Combine` (composing specifications).  A concrete `AgeSpecification` implements this to check if a person's age is within a range. C#’s use of interfaces and LINQ makes this pattern a natural fit, promoting loose coupling and expressive querying.
 

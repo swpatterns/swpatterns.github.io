@@ -3,7 +3,7 @@ title: "Object Pool - C#"
 date: 2025-12-03T11:12:50.893-05:00
 draft: false
 pattern_usage: ["Object Pool"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Object Pool pattern manages a pool of reusable objects to reduce the performance overhead of frequent object creation and destruction. Instead of allocating new objects each time one is needed, the pool provides existing instances. When an object is no longer required, it's returned to the pool for later reuse. This is particularly beneficial for expensive-to-create objects.
 

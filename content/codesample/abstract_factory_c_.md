@@ -3,7 +3,7 @@ title: "Abstract Factory - C#"
 date: 2025-12-03T10:48:48.153-05:00
 draft: false
 pattern_usage: ["Abstract Factory"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Abstract Factory pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes. It promotes loose coupling and allows for easy switching between different "themes" or configurations of objects.
 

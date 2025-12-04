@@ -3,7 +3,7 @@ title: "Layered Architecture - C#"
 date: 2025-12-03T14:04:15.865-05:00
 draft: false
 pattern_usage: ["Layered Architecture"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Layered Architecture pattern organizes an application into distinct layers, each with a specific responsibility. This promotes separation of concerns, making the application more maintainable, testable, and adaptable to change. Common layers include Presentation, Business Logic, and Data Access.  Our C# example demonstrates a simplified version with these three layers. The `PresentationLayer` handles user interaction, the `BusinessLogicLayer` contains the core application rules, and the `DataAccessLayer` interacts with the data source (in this case, a simple in-memory list).  This implementation uses interfaces to decouple layers, a common C# practice for dependency injection and testability.
 

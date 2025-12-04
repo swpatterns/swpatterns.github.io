@@ -3,7 +3,7 @@ title: "Strategy - C#"
 date: 2025-12-03T13:33:11.719-05:00
 draft: false
 pattern_usage: ["Strategy"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. It allows an algorithm to vary independently from the clients that use it. In this C# example, we have a `Context` (OrderProcessor) that needs to apply a shipping cost calculation.  Instead of hardcoding the logic, it relies on a `ShippingCostStrategy` interface. Concrete strategies like `StandardShipping`, `ExpressShipping`, and `FreeShipping` implement specific calculation formulas. The `OrderProcessor`'s constructor accepts the desired shipping strategy, enabling runtime algorithm selection. This follows C#’s principle of programming to interfaces and leveraging dependency injection for flexibility.
 

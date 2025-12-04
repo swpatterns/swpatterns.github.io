@@ -3,7 +3,7 @@ title: "Cluster-based Architecture - C#"
 date: 2025-12-03T15:16:29.924-05:00
 draft: false
 pattern_usage: ["Cluster-based Architecture"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Cluster-based Architecture pattern divides a complex problem into smaller, independent clusters, each responsible for a specific sub-problem. These clusters communicate through well-defined, minimal interfaces. This enhances modularity, testability, and allows for independent scaling and modification of individual clusters.
 

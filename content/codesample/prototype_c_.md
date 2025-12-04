@@ -3,7 +3,7 @@ title: "Prototype - C#"
 date: 2025-12-03T11:01:43.965-05:00
 draft: false
 pattern_usage: ["Prototype"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Prototype pattern is a creational design pattern that specifies the kinds of objects to create through a prototypical instance, and creates new objects by copying these prototypes. This avoids the need for explicit constructors when object creation is costly or complex, offering flexibility and reducing coupling.
 

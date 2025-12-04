@@ -3,7 +3,7 @@ title: "Builder - C#"
 date: 2025-12-03T10:53:28.488-05:00
 draft: false
 pattern_usage: ["Builder"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Builder pattern is a creational design pattern that lets you construct complex objects step by step. It allows for the separation of construction logic from the object's representation, enabling different variations of the object to be created using the same construction process.
 

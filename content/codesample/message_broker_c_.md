@@ -3,7 +3,7 @@ title: "Message Broker - C#"
 date: 2025-12-03T15:07:30.460-05:00
 draft: false
 pattern_usage: ["Message Broker"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Message Broker pattern decouples application components by enabling them to communicate through intermediary message queues. Components don't need to know about each other; they simply send and receive messages. This promotes scalability, resilience, and flexibility.
 

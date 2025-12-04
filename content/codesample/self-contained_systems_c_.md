@@ -3,7 +3,7 @@ title: "Self-contained Systems - C#"
 date: 2025-12-03T14:29:10.868-05:00
 draft: false
 pattern_usage: ["Self-contained Systems"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Self-Contained System pattern aims to minimize dependencies by bundling everything a component needs—code, configurations, and even runtime components—within itself. This promotes portability, simplifies deployment, and avoids conflicts arising from shared dependencies. The C# example below demonstrates this by creating a simple console application with its own embedded resources for configuration, avoiding external config files or package references beyond the standard .NET runtime. This approach is common in scenarios like developing tools intended for use in restricted environments or where controlling the entire execution context is paramount. It leverages C#’s capability to embed resources directly into an executable.
 

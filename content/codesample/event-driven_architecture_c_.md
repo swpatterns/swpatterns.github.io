@@ -3,7 +3,7 @@ title: "Event-Driven Architecture - C#"
 date: 2025-12-03T14:52:18.283-05:00
 draft: false
 pattern_usage: ["Event-Driven Architecture"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Event-Driven Architecture (EDA) decouples system components by allowing them to communicate through events. Components (event producers) emit events when a state change occurs, and other components (event consumers) subscribe to these events and react accordingly, without needing direct knowledge of the producers. This promotes scalability, flexibility, and resilience.
 

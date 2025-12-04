@@ -3,7 +3,7 @@ title: "Observer - C#"
 date: 2025-12-03T13:24:37.122-05:00
 draft: false
 pattern_usage: ["Observer"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Observer pattern defines a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically.  Here, an `ISubject` interface declares the `Attach`, `Detach`, and `Notify` methods for managing observers. A concrete `Subject` publishes events containing data.  Multiple `Observer` classes `ConcreteObserverA` and `ConcreteObserverB` subscribe to these events and respond to changes in the subject’s state. This implementation uses C#'s events and delegates for a type-safe and concise way to manage the observer relationships, fitting the language’s event-driven programming style.
 

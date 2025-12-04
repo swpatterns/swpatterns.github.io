@@ -3,7 +3,7 @@ title: "Client-Server - C#"
 date: 2025-12-03T14:32:46.143-05:00
 draft: false
 pattern_usage: ["Client-Server"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Client-Server pattern decouples an application into two parts: a server that provides a resource or service, and a client that requests and consumes that resource. This improves modularity, scalability, and allows for different technologies to be used for each component. This C# example utilizes `TcpListener` for the server and `TcpClient` for the client to communicate over a network socket. The server listens for incoming connections, receives messages, processes them (in this simplified case, just echoing back), and sends a response.  The client connects to the server, sends a message, receives the response, and then disconnects. This approach is common in C# network programming due to its straightforward implementation and strong support for threading.
 

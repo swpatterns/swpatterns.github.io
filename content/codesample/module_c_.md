@@ -3,7 +3,7 @@ title: "Module - C#"
 date: 2025-12-03T12:49:46.272-05:00
 draft: false
 pattern_usage: ["Module"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Module pattern, also known as the Minit pattern, aims to encapsulate functionality within a single type, exposing a minimal public interface. It's particularly useful for grouping related functions and constants without creating a formal class with state. This promotes code organization and reduces namespace pollution.
 

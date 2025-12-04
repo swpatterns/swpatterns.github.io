@@ -3,7 +3,7 @@ title: "Clean Architecture - C#"
 date: 2025-12-03T14:17:30.380-05:00
 draft: false
 pattern_usage: ["Clean Architecture"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 Clean Architecture aims to create systems independent of frameworks, databases, UI, and any external agency. It achieves this by structuring code into concentric layers: Entities (core business rules), Use Cases (application-specific logic), Interface Adapters (presenters, controllers, gateways), and Frameworks & Drivers (UI, databases). Dependencies point *inward*; inner layers know nothing of outer layers. This makes the system testable, maintainable, and adaptable to change.
 

@@ -3,7 +3,7 @@ title: "Null Object - C#"
 date: 2025-12-03T13:46:44.045-05:00
 draft: false
 pattern_usage: ["Null Object"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Null Object pattern provides a substitute for a null reference or null value. It defines a class with default or "null" behavior, allowing you to avoid null checks throughout your code. This improves readability and reduces the risk of NullReferenceExceptions.
 

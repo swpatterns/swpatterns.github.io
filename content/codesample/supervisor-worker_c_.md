@@ -3,7 +3,7 @@ title: "Supervisor-Worker - C#"
 date: 2025-12-03T15:35:51.507-05:00
 draft: false
 pattern_usage: ["Supervisor-Worker"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Supervisor-Worker pattern delegates complex tasks to multiple worker threads managed by a supervisor thread. The supervisor distributes work, monitors worker status, and handles results or failures. This improves responsiveness and utilizes multi-core processors.
 

@@ -3,7 +3,7 @@ title: "Service Locator - C#"
 date: 2025-12-03T11:23:28.365-05:00
 draft: false
 pattern_usage: ["Service Locator"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Service Locator pattern manages dependencies by providing a central point of access to services. Instead of a class directly creating or finding its dependencies, it asks the locator for them. This promotes loose coupling and makes it easier to switch implementations. The C# example utilizes a static class `ServiceLocator` to hold service registrations in a `Dictionary`.  `Resolve<T>()` retrieves a service, creating a new instance if not already registered (using a default constructor).  While dependency injection is generally preferred in modern C#, Service Locator can be useful in legacy systems or scenarios where complete control over dependency resolution isn’t possible upfront.
 

@@ -3,7 +3,7 @@ title: "Snapshot - C#"
 date: 2025-12-03T14:00:17.880-05:00
 draft: false
 pattern_usage: ["Snapshot"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Snapshot pattern captures the internal state of an object and allows restoring it to that state later. This is useful for implementing undo/redo functionality, save/restore features, or creating checkpoints in a complex process.  The code defines a `Snapshot` class to hold the state and a `Document` class that can create and revert to snapshots.  It utilizes immutable data for the state to ensure consistency. This implementation is idiomatic C# due to its use of classes, properties, and the clear separation of concerns between the origin object and its snapshots. The use of a list to store snapshots is a common and efficient approach in C#.
 

@@ -3,7 +3,7 @@ title: "Space-Based Architecture - C#"
 date: 2025-12-03T14:57:27.061-05:00
 draft: false
 pattern_usage: ["Space-Based Architecture"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Space-Based Architecture pattern decouples application logic by using a central "space" (often a dictionary or similar data structure) to store application state and a set of independent "agents" that react to changes in that space. Agents subscribe to specific state changes and perform actions accordingly. This avoids direct dependencies between components, promoting flexibility and testability.
 

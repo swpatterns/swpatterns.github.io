@@ -3,7 +3,7 @@ title: "Interpreter - C#"
 date: 2025-12-03T13:06:14.800-05:00
 draft: false
 pattern_usage: ["Interpreter"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Interpreter pattern defines a way to represent a grammar for a language and uses an interpreter to process statements in that language. It's particularly useful when a language is simple, and changing the grammar is frequent.  This example implements a simple arithmetic expression interpreter for addition and subtraction of integers.  Each expression component (number, addition, subtraction) is represented by a separate class implementing a common `Expression` interface.  The `Interpreter` class takes a string expression and constructs an Abstract Syntax Tree (AST) from the individual expressions, then evaluates it.  This leverages C#'s strong typing and interface-based programming for a clear and extensible solution.
 

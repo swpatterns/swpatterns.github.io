@@ -3,7 +3,7 @@ title: "Bridge - C#"
 date: 2025-12-03T11:31:02.897-05:00
 draft: false
 pattern_usage: ["Bridge"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Bridge pattern is a structural design pattern that lets you split an abstraction from its implementation so that objects can have different abstractions and implementations and can change them independently. This is useful when there’s a possibility of needing to change an abstraction or an implementation without affecting the other.
 

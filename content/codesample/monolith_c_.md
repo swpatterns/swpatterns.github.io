@@ -3,7 +3,7 @@ title: "Monolith - C#"
 date: 2025-12-03T14:25:17.780-05:00
 draft: false
 pattern_usage: ["Monolith"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Monolith pattern, in its most basic form, represents a traditional software architecture where all components of an application are tightly coupled and deployed as a single unit. While often criticized for scalability challenges, it simplifies development and initial deployment.  This C# example presents a complete, albeit simplified, application handling basic product operations (add, list) within a single project.  It utilizes a single class `ProductManager` to encapsulate all functionalities, demonstrating the core concept of a monolith – everything resides in one place. While a real-world monolith would be much larger and more complex, this example reflects the architectural style by lacking distinct service boundaries. The use of simple console I/O and a list for storage is common in simple C# applications and reflects a pragmatic approach to demonstrating the pattern.
 

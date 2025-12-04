@@ -3,7 +3,7 @@ title: "Flyweight - C#"
 date: 2025-12-03T12:41:56.308-05:00
 draft: false
 pattern_usage: ["Flyweight"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Flyweight pattern aims to minimize memory usage by sharing as much data as possible between similar objects. It achieves this by separating an object's state into intrinsic (shared, immutable) and extrinsic (unique, passed as arguments) components.  The `Flyweight` interface defines the methods that accept extrinsic state. `ConcreteFlyweight` holds the intrinsic state. `FlyweightFactory` manages the creation and sharing of flyweight instances.
 

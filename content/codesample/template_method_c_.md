@@ -3,7 +3,7 @@ title: "Template Method - C#"
 date: 2025-12-03T13:37:40.800-05:00
 draft: false
 pattern_usage: ["Template Method"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Template Method pattern defines the skeleton of an algorithm in an abstract class, deferring some steps to concrete subclasses. It allows subclasses to redefine certain steps of an algorithm without changing the algorithm’s structure. This promotes code reuse and avoids duplication.
 

@@ -3,7 +3,7 @@ title: "Command - C#"
 date: 2025-12-03T13:01:32.666-05:00
 draft: false
 pattern_usage: ["Command"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Command pattern encapsulates a request as an object, allowing parameterization of clients with different requests, queuing or logging of requests, and support for undoable operations. This implementation defines a base `Command` class with an `Execute` method. Concrete commands like `FileSaveCommand` and `FileOpenCommand` implement this interface, holding the necessary data to perform the action. An `Invoker` class stores and executes commands.  This is idiomatic C# due to the use of interfaces for abstraction, delegates (implicitly used within the command’s execution) and clear separation of concerns, fitting well into the language’s object-oriented structure.
 

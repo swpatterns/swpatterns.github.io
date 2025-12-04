@@ -3,7 +3,7 @@ title: "Factory Method - C#"
 date: 2025-12-03T10:57:36.515-05:00
 draft: false
 pattern_usage: ["Factory Method"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Factory Method pattern is a creational pattern that lets a class defer instantiation to subclasses. It defines an interface for creating an object, but lets subclasses decide which class to instantiate. This promotes loose coupling between the creator and the concrete products, allowing for flexibility and extensibility.
 

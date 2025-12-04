@@ -3,7 +3,7 @@ title: "Decorator - C#"
 date: 2025-12-03T11:39:10.079-05:00
 draft: false
 pattern_usage: ["Decorator"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Decorator pattern dynamically adds responsibilities to an object. It provides a flexible alternative to subclassing for extending functionality.  Instead of inheriting from a base class to add behavior, you "wrap" the original object with decorator classes, each adding a specific responsibility. This implementation uses interfaces to define the core component and the decorator, allowing for multiple decorators to be stacked. C#’s composition-based approach makes the Decorator pattern a natural fit, avoiding the rigidity of inheritance and promoting loose coupling.
 

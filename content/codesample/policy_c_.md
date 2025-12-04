@@ -3,7 +3,7 @@ title: "Policy - C#"
 date: 2025-12-03T13:55:56.041-05:00
 draft: false
 pattern_usage: ["Policy"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Policy pattern allows you to encapsulate a changeable algorithm or set of rules into a separate object. This promotes flexibility as you can swap out different policies at runtime without modifying the core logic that *uses* the policy.  This example demonstrates a simple pricing policy. The `PricingService` class depends on an `IPricingPolicy` interface.  Different concrete policies (e.g., `StandardPricingPolicy`, `DiscountedPricingPolicy`) implement the pricing logic.  The client can inject the desired policy, enabling dynamic pricing strategies. This approach aligns with C#'s dependency injection principles and interface-based programming, making the code testable and maintainable.
 

@@ -3,7 +3,7 @@ title: "Microservices - C#"
 date: 2025-12-03T14:42:35.529-05:00
 draft: false
 pattern_usage: ["Microservices"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Microservices pattern structures an application as a collection of loosely coupled, independently deployable services, modeled around a business domain. Each service owns its data and communicates via lightweight mechanisms, often a RESTful API. This example demonstrates a simplified order and customer service interaction.  It uses ASP.NET Core Web APIs for each service, showcasing C#'s strong typing and asynchronous capabilities. Dependency Injection is used for loose coupling.  The services are intentionally minimal to focus on the pattern's core concept of independent deployment and communication.  Real-world implementations would involve more robust error handling, security, and service discovery.
 

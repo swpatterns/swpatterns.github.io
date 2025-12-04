@@ -3,7 +3,7 @@ title: "Multiton - C#"
 date: 2025-12-03T11:08:56.867-05:00
 draft: false
 pattern_usage: ["Multiton"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Multiton pattern ensures that only a fixed number of instances of a class exist. It's a variation of the Singleton pattern, but instead of one instance, it allows for a small, predefined set. This is useful for managing resources where a limited pool is appropriate — think database connections, printer spoolers, or a fixed configuration set. 
 

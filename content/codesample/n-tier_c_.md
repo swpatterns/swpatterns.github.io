@@ -3,7 +3,7 @@ title: "N-tier - C#"
 date: 2025-12-03T14:37:27.557-05:00
 draft: false
 pattern_usage: ["N-tier"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The N-tier pattern organizes an application into distinct layers, each with a specific responsibility. This promotes separation of concerns, making the application more maintainable, testable, and scalable. A typical N-tier architecture includes a Presentation Tier (UI), a Business Logic Tier (BLL), and a Data Access Tier (DAL). 
 

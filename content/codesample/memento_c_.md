@@ -3,7 +3,7 @@ title: "Memento - C#"
 date: 2025-12-03T13:19:42.881-05:00
 draft: false
 pattern_usage: ["Memento"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Memento pattern is a behavioral design pattern that allows you to capture and externalize the internal state of an object without violating encapsulation. This enables restoring the object to its previous state later. It involves three key players: the Originator (holding the state), the Memento (a snapshot of the state), and the Caretaker (responsible for storing and retrieving Mementos).
 

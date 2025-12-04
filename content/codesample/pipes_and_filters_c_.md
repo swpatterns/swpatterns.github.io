@@ -3,7 +3,7 @@ title: "Pipes and Filters - C#"
 date: 2025-12-03T15:20:14.898-05:00
 draft: false
 pattern_usage: ["Pipes and Filters"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Pipes and Filters pattern breaks down a larger processing task into a series of independent, reusable processing stages (filters) connected by channels (pipes). Each filter performs a specific transformation on the data it receives, passing the result to the next filter in the pipeline. This promotes modularity, separation of concerns, and allows for easy modification of the processing chain.
 

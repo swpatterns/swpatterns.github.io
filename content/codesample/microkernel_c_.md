@@ -3,7 +3,7 @@ title: "Microkernel - C#"
 date: 2025-12-03T14:21:25.757-05:00
 draft: false
 pattern_usage: ["Microkernel"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Microkernel pattern aims to create a minimal core system (“microkernel”) that provides basic functionality, with specialized operations implemented as plug-in modules. This promotes flexibility, extensibility, and isolation of concerns. Our C# example simulates this by defining a core `Kernel` class managing plugins (implemented as interfaces). Plugins register themselves with the kernel and can then be called.  This leverages C#'s interface and delegate features for loose coupling. The use of dependency injection is apparent in how the kernel manages plugin dependencies. The code is structured with a separate interface for plugins, enhancing separation of concerns and testability.
 

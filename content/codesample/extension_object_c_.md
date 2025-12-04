@@ -3,7 +3,7 @@ title: "Extension Object - C#"
 date: 2025-12-03T12:52:56.927-05:00
 draft: false
 pattern_usage: ["Extension Object"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Extension Object pattern allows adding functionality to existing classes without modifying their source code, using a separate "extension" class that holds the new methods. This is particularly useful when you can't or don't want to alter the original class, perhaps because it's from a third-party library or part of a core system.  In C#, this is naturally implemented using Extension Methods. The example extends the `string` class with a method to count the number of vowels. This fits C# style as extension methods are a first-class language feature, providing a clean and type-safe way to add functionality.
 

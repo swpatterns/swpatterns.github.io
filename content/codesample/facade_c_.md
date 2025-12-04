@@ -3,7 +3,7 @@ title: "Facade - C#"
 date: 2025-12-03T11:43:02.270-05:00
 draft: false
 pattern_usage: ["Facade"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Facade pattern provides a simplified interface to a complex subsystem. It encapsulates multiple interactions within the subsystem into a single, higher-level interface, hiding the complexity from the client. This example demonstrates a media player facade, simplifying operations like playing music, video, and managing the audio/video components. The code uses C#'s class-based OOP approach to define the facade and the subsystem components. It's idiomatic C# due to its clear class structure, property usage, and method naming conventions, promoting encapsulation and ease of use.
 

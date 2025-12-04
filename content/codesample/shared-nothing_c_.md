@@ -3,7 +3,7 @@ title: "Shared-Nothing - C#"
 date: 2025-12-03T15:12:06.998-05:00
 draft: false
 pattern_usage: ["Shared-Nothing"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Shared-Nothing architecture is a distributed computing model where each node in the system has its own private resources – CPU, memory, and disk – and communicates with other nodes solely through explicit network messages. This avoids contention and bottlenecks associated with shared resources. This C# example simulates a simplified shared-nothing system with worker nodes processing independent tasks. Each `WorkerNode` has its own `TaskQueue` and processes tasks without directly accessing the queues of other nodes. Communication happens via a central `TaskDistributor` which assigns tasks. This approach aligns with C#’s support for concurrency and asynchronous operations, leveraging `async/await` for non-blocking task distribution and processing.
 

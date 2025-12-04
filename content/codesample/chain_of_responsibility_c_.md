@@ -3,7 +3,7 @@ title: "Chain of Responsibility - C#"
 date: 2025-12-03T12:56:41.751-05:00
 draft: false
 pattern_usage: ["Chain of Responsibility"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Chain of Responsibility pattern allows a request to be passed along a chain of handlers. Each handler decides either to process the request or to pass it to the next handler in the chain. This decouples the sender of a request from its specific receivers, allowing multiple objects to potentially handle the request without the sender knowing which one.
 

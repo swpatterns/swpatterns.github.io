@@ -3,7 +3,7 @@ title: "SOA - C#"
 date: 2025-12-03T14:47:30.674-05:00
 draft: false
 pattern_usage: ["SOA"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Service-Oriented Architecture (SOA) pattern structures an application as a collection of loosely coupled, interoperable services. Each service encapsulates a specific business function and exposes it through a well-defined interface, typically a contract. This promotes reusability, maintainability, and scalability.
 

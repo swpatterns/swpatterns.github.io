@@ -3,7 +3,7 @@ title: "Publish-Subscribe - C#"
 date: 2025-12-03T15:28:09.256-05:00
 draft: false
 pattern_usage: ["Publish-Subscribe"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Publish-Subscribe (Pub/Sub) pattern decouples message publishers from subscribers. Publishers don't know who their subscribers are, and subscribers only know about the publishers through a central message broker (in this case, a simple event aggregator).  This promotes loose coupling and extensibility.
 

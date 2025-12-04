@@ -3,7 +3,7 @@ title: "State - C#"
 date: 2025-12-03T13:28:51.135-05:00
 draft: false
 pattern_usage: ["State"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The State pattern allows an object to alter its behavior when its internal state changes. It encapsulates each state as a separate class, avoiding large conditional statements and promoting the Open/Closed Principle. 
 

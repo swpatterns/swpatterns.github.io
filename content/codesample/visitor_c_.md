@@ -3,7 +3,7 @@ title: "Visitor - C#"
 date: 2025-12-03T13:42:10.935-05:00
 draft: false
 pattern_usage: ["Visitor"]
-language: ["C#"]
+language: ["C_sharp"]
 ---
 The Visitor pattern lets you define a new operation without changing the classes of the objects on which it operates. It's achieved by moving the operation to a separate "visitor" class that accepts different object types as input. This is useful when you have a complex object structure and want to add operations that depend on the object's type without cluttering the original classes with conditional logic.
 
