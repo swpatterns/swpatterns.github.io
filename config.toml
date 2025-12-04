@@ -10,8 +10,9 @@ showShare = true
 pattern_types = "pattern_types"
 language = "language"
 pattern_usage = "pattern_usage"
+
 [params]
-mainSections = ["pattern"]
+mainSections = ["pattern", "language"]
 
 [menu]
 
@@ -27,7 +28,12 @@ mainSections = ["pattern"]
     weight = -100
 
   [[menu.main]]
+    name = "Languages"
+    url = "/language/"
+    weight = -70
+
+  [[menu.main]]
     name = "Contribute"
     pre = "<i class='fa fa-gh'></i>"
     url = "https://github.com/swpatterns/swpatterns.com"
-    weight = -90
+    weight = -50
