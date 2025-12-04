@@ -1,7 +1,7 @@
 baseURL = "http://www.swpatterns.com/"
 languageCode = "en-us"
 title = "SWPatterns.com"
-theme = "hugo-clarity"
+theme = "hugo-clarity-new"
 
 showShare = true
 
