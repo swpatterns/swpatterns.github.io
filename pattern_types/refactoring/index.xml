@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Refactoring Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/refactoring/</link><description>Recent content in Refactoring Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/refactoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Strangler Fig</title><link>http://www.swpatterns.com/pattern/strangler_fig/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/strangler_fig/</guid><description>
+&lt;p&gt;The Strangler Fig pattern is a refactoring technique used to incrementally migrate a legacy system to a new architecture. Instead of a risky “big bang” rewrite, the pattern advocates for gradually replacing functionality by building a new system around the old one. As the new system gains more responsibility, the old system is “strangled” – its functionality replaced and eventually removed – much like a strangler fig plant grows around and eventually replaces a host tree.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when dealing with large, complex legacy applications where a complete rewrite is impractical or too dangerous. It allows teams to deliver value iteratively, reducing risk and providing opportunities to learn and adapt throughout the migration process. The strangler fig ensures continuous operation and minimizes disruption to users, resulting in reduced downtime and business impact.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Strangler Fig pattern is commonly employed in these scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Modernizing Monoliths:&lt;/strong&gt; Breaking down a large, monolithic application into microservices.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Technology Stack Upgrades:&lt;/strong&gt; Migrating from an outdated technology stack to a more modern one, piece by piece.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Replacing Legacy APIs:&lt;/strong&gt; Gradually replacing an old API with a new, improved one.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Introducing New Features without Disruption:&lt;/strong&gt; Rolling out new features alongside the existing system, then eventually replacing the older implementation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dealing with Code Ownership Issues&lt;/strong&gt;: When hesitant to change large parts of legacy code due to unknown effects or lack of clear ownership.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Netflix:&lt;/strong&gt; Netflix famously used the Strangler Fig pattern to migrate from a monolithic Ruby on Rails application to a microservices architecture built with Java and other technologies. They built new features as microservices, routing traffic through a proxy that gradually shifted requests from the monolith to the new services.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spotify:&lt;/strong&gt; Spotify adopted the Strangler Fig pattern for migrating its backend systems to a more scalable and resilient infrastructure. They identified core functionalities and progressively rebuilt them as independent services, eventually deprecating the corresponding code in the legacy system. They used a &amp;ldquo;feature flagging&amp;rdquo; approach to control the routing of requests to either the old or new implementations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

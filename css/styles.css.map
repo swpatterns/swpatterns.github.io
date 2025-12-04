@@ -3,16 +3,16 @@
 	"file": "styles.css",
 	"sourceRoot": "/home/runner/work/swpatterns.github.io/swpatterns.github.io",
 	"sources": [
-		"themes/hugo-clarity/assets/sass/main.sass",
-		"themes/hugo-clarity/assets/sass/_variables.sass",
-		"themes/hugo-clarity/assets/sass/_override.sass",
-		"themes/hugo-clarity/assets/sass/_fonts.sass",
-		"themes/hugo-clarity/assets/sass/_base.sass",
-		"themes/hugo-clarity/assets/sass/_components.sass",
-		"themes/hugo-clarity/assets/sass/_utils.sass",
-		"themes/hugo-clarity/assets/sass/_mobile.sass",
-		"themes/hugo-clarity/assets/sass/_syntax.sass",
-		"themes/hugo-clarity/assets/sass/_custom.sass"
+		"themes/hugo-clarity-new/assets/sass/main.sass",
+		"themes/hugo-clarity-new/assets/sass/_variables.sass",
+		"themes/hugo-clarity-new/assets/sass/_override.sass",
+		"themes/hugo-clarity-new/assets/sass/_fonts.sass",
+		"themes/hugo-clarity-new/assets/sass/_base.sass",
+		"themes/hugo-clarity-new/assets/sass/_components.sass",
+		"themes/hugo-clarity-new/assets/sass/_utils.sass",
+		"themes/hugo-clarity-new/assets/sass/_mobile.sass",
+		"themes/hugo-clarity-new/assets/sass/_syntax.sass",
+		"themes/hugo-clarity-new/assets/sass/_custom.sass"
 	],
 	"sourcesContent": [
 		"@import 'variables';\n@import 'override';\n@import 'fonts';\n@import 'base';\n@import 'components';\n@import 'utils';\n@import 'mobile';\n@import 'syntax';\n@import 'custom';\n",

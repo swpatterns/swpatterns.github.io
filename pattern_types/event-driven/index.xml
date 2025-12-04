@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Event-Driven Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/event-driven/</link><description>Recent content in Event-Driven Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/event-driven/index.xml" rel="self" type="application/rss+xml"/><item><title>Message Dispatcher</title><link>http://www.swpatterns.com/pattern/message_dispatcher/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/message_dispatcher/</guid><description>
+&lt;p&gt;The Message Dispatcher pattern decouples the sender of a message (or event) from its receiver(s). A central dispatcher component receives messages and routes them to the appropriate handler(s) based on message type or content. This promotes loose coupling, allowing new handlers to be added without modifying the existing dispatcher or clients.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful in event-driven architectures, GUI frameworks, and systems where different components need to react to specific occurrences without direct knowledge of each other. It centralizes event handling logic and simplifies the management of complex interactions.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Event Handling in GUI Frameworks:&lt;/strong&gt; Modern GUI frameworks like React, Angular, and Vue.js heavily rely on event dispatchers to handle user interactions (clicks, key presses, etc.). Components emit events, and the framework&amp;rsquo;s dispatcher routes them to the relevant event listeners.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Messaging Systems:&lt;/strong&gt; Message queues (like RabbitMQ, Kafka, or AWS SQS) function as message dispatchers, routing messages between producers and consumers based on exchange names and routing keys.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices Communication:&lt;/strong&gt; In a microservices architecture, a message dispatcher can act as a message broker, coordinating communication between services by routing events or commands.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decoupling Business Logic:&lt;/strong&gt; When you want to separate triggering an action from the execution of that action, a message dispatcher allows you to define &amp;lsquo;commands&amp;rsquo; (messages) that are then handled by specific components.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Node.js &lt;code&gt;EventEmitter&lt;/code&gt;:&lt;/strong&gt; Node.js&amp;rsquo;s built-in &lt;code&gt;EventEmitter&lt;/code&gt; class is a classic example of a message dispatcher. Components can &lt;code&gt;emit&lt;/code&gt; events, and other components can &lt;code&gt;on&lt;/code&gt; (subscribe to) specific event types. The &lt;code&gt;EventEmitter&lt;/code&gt; handles the routing and ensures event listeners are notified.&lt;/p&gt;
+&lt;p&gt;javascript
+const EventEmitter = require(&amp;rsquo;events&amp;rsquo;);&lt;/p&gt;
+&lt;p&gt;class MyEmitter extends EventEmitter {}&lt;/p&gt;
+&lt;p&gt;const myEmitter = new MyEmitter();&lt;/p&gt;
+&lt;p&gt;myEmitter.on(&amp;rsquo;eventA&amp;rsquo;, (arg1, arg2) =&amp;gt; {
+console.log(&amp;lsquo;Event A received with arguments:&amp;rsquo;, arg1, arg2);
+});&lt;/p&gt;
+&lt;p&gt;myEmitter.emit(&amp;rsquo;eventA&amp;rsquo;, &amp;lsquo;hello&amp;rsquo;, 123);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spring&amp;rsquo;s ApplicationEventPublisher:&lt;/strong&gt; In the Spring Framework (Java), the &lt;code&gt;ApplicationEventPublisher&lt;/code&gt; interface allows components to publish application events. These events are then dispatched to any registered &lt;code&gt;ApplicationEventListener&lt;/code&gt; beans that are interested in them.&lt;/p&gt;
+&lt;p&gt;java
+@Component
+public class MyEventPublisher {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@Autowired
+private ApplicationEventPublisher eventPublisher;
+public void publishEvent(String message) {
+eventPublisher.publishEvent(new MyEvent(message));
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;@Component
+public class MyEventListener implements ApplicationListener&lt;!-- raw HTML omitted --&gt; {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@Override
+public void onApplicationEvent(MyEvent event) {
+System.out.println(&amp;quot;Received event: &amp;quot; + event.getMessage());
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Publish-Subscribe Channel</title><link>http://www.swpatterns.com/pattern/publish-subscribe_channel/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/publish-subscribe_channel/</guid><description>
+&lt;p&gt;The Publish-Subscribe Channel pattern decouples message senders (Publishers) from message receivers (Subscribers) by introducing a message channel. Publishers don’t need to know which Subscribers are interested in the messages, and Subscribers don’t need to know who is publishing the messages. Instead, Publishers send messages to a channel, and Subscribers express interest in specific message types from that channel.&lt;/p&gt;
+&lt;p&gt;This pattern promotes loose coupling, scalability, and flexibility. Changes to Publishers don&amp;rsquo;t necessarily impact Subscribers, and vice versa. New Subscribers can be added without modifying Publishers, and new Publishers can add messages without affecting existing Subscribers. It is particularly useful in event-driven architectures where components need to react to events without direct dependencies.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Publish-Subscribe Channel pattern is widely used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Event Notification Systems:&lt;/strong&gt; Real-time updates for user interfaces, such as stock tickers or live sports scores.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Messaging Queues:&lt;/strong&gt; Decoupling microservices for asynchronous communication, improving resilience and scalability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Data Streaming:&lt;/strong&gt; Processing continuous streams of data from sensors, log files, or user activity.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chat Applications:&lt;/strong&gt; Distributing messages to multiple connected clients.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;News Feeds:&lt;/strong&gt; Broadcasting updates to interested users.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redis Pub/Sub:&lt;/strong&gt; Redis provides a built-in Publish/Subscribe messaging paradigm. Clients can subscribe to channels and receive messages published to those channels. It&amp;rsquo;s commonly used for real-time chat applications, gaming leaderboards, and distributing configuration updates. Redis acts as the Channel, and client applications function as both Publishers and Subscribers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RabbitMQ:&lt;/strong&gt; RabbitMQ implements a more advanced message queuing system that includes Publish/Subscribe capabilities via &lt;em&gt;Exchanges&lt;/em&gt; of type &lt;em&gt;Fanout&lt;/em&gt;. Publishers send messages to an Exchange, which then broadcasts the message to all queues bound to it. Consumers subscribe to these queues and receive the messages. This is often used in microservice architectures to ensure reliable asynchronous communication.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Node.js EventEmitter:&lt;/strong&gt; The &lt;code&gt;EventEmitter&lt;/code&gt; class in Node.js is a core module that provides a simple implementation of the Publish-Subscribe pattern. Objects that inherit from &lt;code&gt;EventEmitter&lt;/code&gt; can emit named events, and other objects can listen for these events and execute corresponding callback functions. This is fundamental to Node.js&amp;rsquo;s asynchronous, event-driven nature.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

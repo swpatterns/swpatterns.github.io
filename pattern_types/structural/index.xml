@@ -1,23 +1,247 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Structural Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/structural/</link><description>Recent content in Structural Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 24 Mar 2021 10:30:57 +0100</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/structural/index.xml" rel="self" type="application/rss+xml"/><item><title>Decorator</title><link>http://www.swpatterns.com/pattern/decorator/</link><pubDate>Wed, 24 Mar 2021 10:30:57 +0100</pubDate><guid>http://www.swpatterns.com/pattern/decorator/</guid><description>
-&lt;p>The Decorator pattern enables us to change the behavior of an object by hiding the contained functions and adding new functionalities around it. It is also a common way to avoid the limits of single inheritance by multiple interface implementations (composition over inheritance).&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>This pattern finds its typical use in framework development because it enables the layering of functionalities around a core service.&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;ul>
-&lt;li>Caching in HTTP services can be implemented as a decorator pattern by wrapping the http client within a client that analyzes the requested url and prepares a response&lt;/li>
-&lt;li>Logging and instrumenting methods can be implmented as a decorator that covers the interactions once for all the possible activities.&lt;/li>
-&lt;/ul></description></item><item><title>Composite</title><link>http://www.swpatterns.com/pattern/composite/</link><pubDate>Tue, 23 Mar 2021 11:29:42 +0100</pubDate><guid>http://www.swpatterns.com/pattern/composite/</guid><description>
-&lt;p>The Composite Pattern enables us to collect objects into trees that can be easily explored.
-The Parent represents the access point to the tree, where it in fact will be a Container, usually. The container will be able to contain other Container objects or Leaf objects.&lt;/p>
-&lt;p>Often the sublcasses or the leaves can be instantiated thorugh the various factory patterns.&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>Typical example is the file system. every folder and every single file are files. Folders contain also other files.&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;ul>
-&lt;li>File system&lt;/li>
-&lt;/ul></description></item><item><title>Adapter</title><link>http://www.swpatterns.com/pattern/adapter/</link><pubDate>Mon, 15 Mar 2021 13:24:44 +0100</pubDate><guid>http://www.swpatterns.com/pattern/adapter/</guid><description>
-&lt;p>The adapter aims to be a converter between two specific interfaces: one belonging to &amp;ldquo;our&amp;rdquo; side of the application, the other to the library or other tool we need to interact with. This is very important, because it enables us to delay decisions, as the choice of a spcific implementation of the adapter becomes less important due to the fact that we are at that point using the adapter itself as our communication contract.&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>Often used in combo with other patterns, such as [Inversion of Control] and several &lt;a href="http://www.swpatterns.com/pattern_types/factory/">Factories&lt;/a>&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;p>Typical example of this pattern in a &amp;ldquo;pure&amp;rdquo; form is the Driver. Whether it is for printing or for database access, the API exposed by the common development systems just require the connection to the adapter and, with some kind of &lt;a href="http://www.swpatterns.com/pattern_types/factory/">Factory&lt;/a> or repository we get the specific implementation of what we need at the moment, based on the configuration of the system we have.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Structural Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/structural/</link><description>Recent content in Structural Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:16:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/structural/index.xml" rel="self" type="application/rss+xml"/><item><title>Reverse Proxy</title><link>http://www.swpatterns.com/pattern/reverse_proxy/</link><pubDate>Thu, 29 Feb 2024 16:16:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/reverse_proxy/</guid><description>
+&lt;p&gt;The Reverse Proxy pattern involves a server that sits in front of one or more backend servers and intercepts client requests. Instead of clients connecting directly to backend servers, they connect to the reverse proxy, which then forwards the requests to the appropriate backend server. The reverse proxy then receives responses from the backend and returns them to the client as if it originated from the proxy itself.&lt;/p&gt;
+&lt;p&gt;This pattern offers numerous benefits, including improved security, load balancing, scalability, and simplified administration. By hiding the complexities and specific configurations of the backend servers, the reverse proxy presents a unified interface to the outside world, enhancing the overall system architecture and resilience.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Reverse proxies are widely used in modern web architectures for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Load Balancing:&lt;/strong&gt; Distributing client requests across multiple backend servers to prevent overload and improve responsiveness.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security:&lt;/strong&gt; Protecting backend servers from direct exposure to the internet, mitigating DDoS attacks, and providing SSL encryption.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caching:&lt;/strong&gt; Storing frequently accessed content closer to the client, reducing latency and server load.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSL Termination:&lt;/strong&gt; Offloading SSL encryption/decryption from backend servers, freeing up resources for application logic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;URL Rewriting:&lt;/strong&gt; Simplifying complex URLs or masking internal server structures.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A/B Testing:&lt;/strong&gt; Routing traffic to different versions of an application for testing purposes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;NGINX:&lt;/strong&gt; A popular open-source web server and reverse proxy, often used to handle static content, load balance traffic, and provide SSL termination for web applications. Many high-traffic websites rely on NGINX as a reverse proxy to ensure performance and availability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HAProxy:&lt;/strong&gt; Another widely used open-source load balancer and reverse proxy, known for its high performance and reliability. It&amp;rsquo;s commonly deployed in front of database servers, application servers, and other network services to distribute traffic and improve resilience.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Amazon CloudFront:&lt;/strong&gt; Amazon&amp;rsquo;s Content Delivery Network (CDN) service acts as a reverse proxy, caching content at edge locations around the world to deliver faster and more reliable experiences to users. It also provides security features like DDoS protection.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Varnish Cache:&lt;/strong&gt; A powerful HTTP accelerator (reverse proxy) designed for caching content. It&amp;rsquo;s frequently used in front of web servers like Apache or Nginx to dramatically improve response times and reduce server load.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Layered Architecture</title><link>http://www.swpatterns.com/pattern/layered_architecture/</link><pubDate>Thu, 29 Feb 2024 16:12:53 +0000</pubDate><guid>http://www.swpatterns.com/pattern/layered_architecture/</guid><description>
+&lt;p&gt;The Layered Architecture pattern organizes an application into distinct layers, each with a specific role and responsibility. Layers are arranged hierarchically, with each layer building upon the services provided by the layer below. This separation promotes modularity, maintainability, and testability by reducing dependencies and making it easier to modify or replace individual components without affecting the entire system. A strict layered architecture dictates that a layer can only depend on the layer immediately below it.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Layered Architecture is frequently used in enterprise applications and large-scale software projects. It’s common in web applications (presentation, business logic, data access), desktop applications, and client-server systems. It&amp;rsquo;s particularly helpful when dealing with complex systems that require clear separation of concerns, making development, debugging, and future enhancements significantly easier. New technologies can be adopted more readily in a specific layer without cascading changes.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Model-View-Controller (MVC) Frameworks (e.g., Ruby on Rails, Django, Spring MVC):&lt;/strong&gt; MVC is a specialization of layered architecture. The Model represents the data and business logic, the View handles the presentation layer, and the Controller manages user input and updates the model. These frameworks enforce a clear separation of concerns aligning with the principle of layering.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;.NET Framework:&lt;/strong&gt; The .NET Framework is architected in layers. The Presentation Layer (Windows Forms, WPF, ASP.NET), the Business Logic Layer (application services), the Data Access Layer (ADO.NET, Entity Framework), and the underlying Operating System/Hardware layers work in a hierarchical manner. Developers typically interact primarily with the top layers and can leverage the services of lower layers without needing detailed knowledge of their implementation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Proxy</title><link>http://www.swpatterns.com/pattern/proxy/</link><pubDate>Thu, 29 Feb 2024 16:10:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/proxy/</guid><description>
+&lt;p&gt;The Proxy pattern provides a surrogate or placeholder for another object to control access to it. This can be used to add functionality before or after the original object&amp;rsquo;s method is executed, or to simply delay the creation or access of the expensive object until it&amp;rsquo;s actually needed. It essentially manages access to an object, allowing for features like security checks, lazy loading, or remote access.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Proxy pattern is commonly used in scenarios such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Remote Proxies:&lt;/strong&gt; When accessing objects across a network, a proxy can handle the communication and complexities of the remote connection.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Virtual Proxies:&lt;/strong&gt; For objects that are expensive to create (e.g., large images or complex data structures), a proxy can load them on demand.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protection Proxies:&lt;/strong&gt; Controlling access to an object based on permissions or security constraints. A proxy can decide whether or not a client is allowed to use the original object.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smart References:&lt;/strong&gt; Adding logging, caching, or other side-effects to object access.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caching:&lt;/strong&gt; Acting as a cache for an expensive operation, returning cached results if available and only invoking the real object when necessary.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript Proxies (ES6):&lt;/strong&gt; JavaScript&amp;rsquo;s &lt;code&gt;Proxy&lt;/code&gt; object provides a meta-programming functionality that allows intercepting fundamental operations on objects, such as getting or setting properties. This is effectively a proxy pattern for controlling object access.&lt;/p&gt;
+&lt;p&gt;javascript
+const target = { message: &amp;ldquo;Hello&amp;rdquo; };
+const handler = {
+get: function(target, prop, receiver) {
+console.log(&lt;code&gt;Property ${prop} accessed&lt;/code&gt;);
+return Reflect.get(target, prop, receiver);
+},
+};&lt;/p&gt;
+&lt;p&gt;const proxy = new Proxy(target, handler);
+console.log(proxy.message); // Logs &amp;ldquo;Property message accessed&amp;rdquo; and then &amp;ldquo;Hello&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hibernate Lazy Loading (Java):&lt;/strong&gt; In the Hibernate Java ORM framework, relationships between entities are often loaded lazily using proxies. When a related entity is accessed for the first time, Hibernate intercepts the access through a proxy and loads the entity from the database only then. This improves performance by avoiding unnecessary data loading.&lt;/p&gt;
+&lt;p&gt;java
+// Assume &amp;lsquo;Customer&amp;rsquo; has a &amp;lsquo;address&amp;rsquo; field that is lazily loaded
+Customer customer = session.get(Customer.class, 1);
+String street = customer.getAddress().getStreet(); // Address is only loaded when accessed&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Bridge</title><link>http://www.swpatterns.com/pattern/bridge/</link><pubDate>Thu, 29 Feb 2024 14:56:12 +0000</pubDate><guid>http://www.swpatterns.com/pattern/bridge/</guid><description>
+&lt;p&gt;The Bridge pattern is a structural design pattern that lets you split an interface into separate interfaces. This pattern is useful when you want to avoid a tight coupling between an abstraction and its implementation, allowing you to vary them independently. It’s particularly effective when you anticipate that both the abstraction and implementation will change in different ways.&lt;/p&gt;
+&lt;p&gt;In essence, the Bridge introduces an &lt;code&gt;Implementor&lt;/code&gt; interface which provides the core functionality, and an &lt;code&gt;Abstractor&lt;/code&gt; interface which uses the &lt;code&gt;Implementor&lt;/code&gt; to deliver a higher-level abstraction. This decoupling allows for flexibility and extensibility. Different implementations can be swapped without affecting the abstraction, and vice versa.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Bridge pattern is commonly used in the following scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Database Abstraction:&lt;/strong&gt; When your application needs to work with different database systems (e.g., MySQL, PostgreSQL, Oracle), you can use the Bridge pattern to isolate the database-specific implementation details from the application&amp;rsquo;s core logic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Graphics Rendering:&lt;/strong&gt; When you have different rendering engines (e.g., OpenGL, DirectX, SVG), a Bridge pattern allows you to switch between them easily without altering the code that uses them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Platform Independence:&lt;/strong&gt; When application logic must be independent of the underlying operating system (Windows, macOS, Linux), the Bridge can separate platform-specific calls.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Message Queues:&lt;/strong&gt; Using different message queue systems (RabbitMQ, Kafka, Redis Pub/Sub) requires the abstraction of the messaging implementation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1. Java Virtual Machine (JVM)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The JVM internally uses a Bridge pattern. The Java language specification defines the &lt;code&gt;Abstractor&lt;/code&gt; – the bytecode instructions and the Java API. The actual &lt;code&gt;Implementor&lt;/code&gt; is the underlying native code execution environment, which differs for each operating system (Windows, macOS, Linux). The JVM bridges the gap between the platform-independent Java bytecode and the platform-dependent hardware instructions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Remote Control with Different Protocols&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Consider a remote control that can control different devices. The remote control&amp;rsquo;s button presses (&lt;code&gt;Abstractor&lt;/code&gt;) need to be translated into specific commands for the device. The communication protocol (&lt;code&gt;Implementor&lt;/code&gt;) – such as infrared, Bluetooth, or Wi-Fi – can be changed without needing to modify the remote control’s core logic. You could have a &lt;code&gt;RemoteControl&lt;/code&gt; class paired with interfaces like &lt;code&gt;InfraredCommandExecutor&lt;/code&gt;, &lt;code&gt;BluetoothCommandExecutor&lt;/code&gt;, and &lt;code&gt;WiFiCommandExecutor&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;java
+// Implementor
+interface CommandExecutor {
+void execute(String command);
+}&lt;/p&gt;
+&lt;p&gt;class InfraredCommandExecutor implements CommandExecutor {
+@Override
+public void execute(String command) {
+System.out.println(&amp;ldquo;Sending infrared command: &amp;quot; + command);
+}
+}&lt;/p&gt;
+&lt;p&gt;class BluetoothCommandExecutor implements CommandExecutor {
+@Override
+public void execute(String command) {
+System.out.println(&amp;ldquo;Sending bluetooth command: &amp;quot; + command);
+}
+}&lt;/p&gt;
+&lt;p&gt;// Abstractor
+class RemoteControl {
+private CommandExecutor executor;&lt;/p&gt;
+&lt;p&gt;public RemoteControl(CommandExecutor executor) {
+this.executor = executor;
+}&lt;/p&gt;
+&lt;p&gt;public void pressButton(String command) {
+executor.execute(command);
+}
+}&lt;/p&gt;
+&lt;p&gt;// Example Usage
+public class BridgeExample {
+public static void main(String[] args) {
+RemoteControl irRemote = new RemoteControl(new InfraredCommandExecutor());
+irRemote.pressButton(&amp;ldquo;channelUp&amp;rdquo;);&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RemoteControl btRemote = new RemoteControl(new BluetoothCommandExecutor());
+btRemote.pressButton(&amp;quot;volumeDown&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}
+}&lt;/p&gt;</description></item><item><title>Module</title><link>http://www.swpatterns.com/pattern/module/</link><pubDate>Thu, 29 Feb 2024 14:32:53 +0000</pubDate><guid>http://www.swpatterns.com/pattern/module/</guid><description>
+&lt;p&gt;The Module pattern is a structural design pattern that aims to reduce the complexity of a software system by dividing it into independent, interchangeable modules. Each module encapsulates a specific set of related functionalities, offering a well-defined interface to interact with other parts of the system. This promotes separation of concerns, making the system easier to understand, maintain, and test.&lt;/p&gt;
+&lt;p&gt;Essentially, a module acts as a building block. By composing a system out of modules, developers can minimize dependencies and coupling between different parts of the application. This allows for independent development, testing, and deployment of modules, and facilitates reuse across different projects. Modules can be dynamically loaded and unloaded, adding flexibility to the system.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Module pattern is widely used in modern software development for several reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Large Applications:&lt;/strong&gt; Breaking huge applications into smaller, manageable modules dramatically improves maintainability and understandability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plugin Systems:&lt;/strong&gt; It&amp;rsquo;s the cornerstone of plugin architectures, allowing external developers to extend functionality without modifying the core application.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices:&lt;/strong&gt; Each microservice can be considered a module, loosely coupled and independently deployable.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Code Organization:&lt;/strong&gt; Used for organizing code into logical groups for improved readability and modularity even in smaller projects.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dynamic Loading:&lt;/strong&gt; Systems that need to load and unload functionality based on runtime conditions benefit from this pattern.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Node.js Modules (CommonJS/ES Modules):&lt;/strong&gt; Node.js leverages modules extensively. Each file in a Node.js project is treated as a separate module, and the &lt;code&gt;require()&lt;/code&gt; (CommonJS) or &lt;code&gt;import&lt;/code&gt; (ES Modules) statements are used to access and use the functionalities of other modules. This allows for creating reusable packages that can be installed via npm (Node Package Manager). The module system enables a significant ecosystem of third-party integrations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java Modules (Java 9+):&lt;/strong&gt; Java 9 introduced the module system to address issues with long-term maintainability and security of large Java applications. Modules explicitly declare their dependencies and which parts of their internal code are exposed to other modules. This provides stronger encapsulation and allows the Java runtime to optimize application loading and execution. The &lt;code&gt;module-info.java&lt;/code&gt; file defines the module&amp;rsquo;s boundaries.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python Packages:&lt;/strong&gt; Python utilizes packages (directories containing &lt;code&gt;__init__.py&lt;/code&gt; files) as modules. You can import specific modules or subpackages within a package, providing a hierarchical way to organize code. This helps in creating structured and reusable Python libraries, like Django or Flask.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Facade</title><link>http://www.swpatterns.com/pattern/facade/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/facade/</guid><description>
+&lt;p&gt;The Facade pattern provides a simplified interface to a complex system of classes, objects, and subsystems. It abstracts away the intricacies of the underlying components, offering clients a higher-level, easier-to-use entry point. Essentially, it’s an &amp;ldquo;entry point&amp;rdquo; object that encapsulates the interaction with multiple system parts.&lt;/p&gt;
+&lt;p&gt;This pattern is useful when you want to reduce complexity for clients, promote loose coupling, and offer a more intuitive way to interact with a system. It&amp;rsquo;s commonly used in scenarios where a system has multiple dependencies or where the client only needs a limited set of features from a larger system. It’s also valuable when migrating to a new subsystem, as the facade can provide compatibility with legacy code while the internal workings change.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Facade pattern is commonly found in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Complex Libraries/Frameworks:&lt;/strong&gt; Providing a simple API to interact with a large and intricate codebase.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;System Integration:&lt;/strong&gt; Abstracting the interaction with different, potentially incompatible systems.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Layered Architectures:&lt;/strong&gt; Acting as a gateway to a lower layer from a higher layer, shielding the higher layer from implementation details.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Build Systems:&lt;/strong&gt; Managing complex compilation and linking processes with a simplified command.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apache Camel:&lt;/strong&gt; Camel uses facades extensively to provide simplified integration patterns for connecting different systems (e.g., databases, message queues, web services). Instead of directly interacting with the underlying transport mechanisms, you define routes using Camel’s DSL, and the facade handles the complexities of the underlying integrations. The &lt;code&gt;ProducerTemplate&lt;/code&gt; and &lt;code&gt;ConsumerTemplate&lt;/code&gt; classes provide facades for sending and receiving messages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java Database Connectivity (JDBC):&lt;/strong&gt; JDBC provides a facade over various database APIs. Developers interact with the database through the &lt;code&gt;Connection&lt;/code&gt;, &lt;code&gt;Statement&lt;/code&gt;, and &lt;code&gt;ResultSet&lt;/code&gt; interfaces, without needing to know the specific details of how each database vendor implements these functionalities internally. The &lt;code&gt;DriverManager&lt;/code&gt; class serves as a facade, simplifying the process of obtaining a database connection.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Docker SDKs:&lt;/strong&gt; Docker SDKs for languages like Python and Java offer a facade over the Docker Engine API. You don&amp;rsquo;t need to learn the intricacies of the Docker Engine&amp;rsquo;s CLI or REST API; instead, you use high-level functions provided by the SDK to manage containers, images, and networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Microkernel</title><link>http://www.swpatterns.com/pattern/microkernel/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/microkernel/</guid><description>
+&lt;p&gt;The Microkernel pattern is an architectural style that structures an application as a core system with minimal functionality, surrounded by plugins or extensions that provide additional features. The core handles essential operations and communication, while plugins implement specific functionalities. This separation promotes modularity, flexibility, and extensibility.&lt;/p&gt;
+&lt;p&gt;This pattern allows for easy addition or removal of features without modifying the core system. It also enables independent development and deployment of plugins, making the application more adaptable to changing requirements. The core remains stable, reducing the risk of introducing bugs with new features.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Microkernel pattern is commonly used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Operating Systems:&lt;/strong&gt; Many modern operating systems (like macOS, Windows NT) employ a microkernel architecture, separating core kernel functions from device drivers and user services.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Application Frameworks:&lt;/strong&gt; Frameworks like Eclipse and the OSGi runtime use microkernels to allow developers to add functionality through plugins.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Large-Scale Applications:&lt;/strong&gt; Complex applications benefit from the modularity and maintainability offered by a microkernel architecture.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event-Driven Systems:&lt;/strong&gt; The core can act as an event bus, and plugins can subscribe to and handle specific events.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plugin Systems:&lt;/strong&gt; Any application needing a flexible plugin system can leverage this pattern.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Eclipse IDE:&lt;/strong&gt; Eclipse is built around a microkernel. The core platform provides basic functionalities like the workspace, UI, and plugin management. Features like Java development, Git integration, and debugging are implemented as separate plugins that can be installed and uninstalled as needed. This allows users to customize the IDE to their specific needs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;macOS:&lt;/strong&gt; macOS utilizes a hybrid kernel based on the XNU kernel, which has microkernel characteristics. Core services like process management and memory management reside in the kernel, while most other functionalities, such as file systems and device drivers, are implemented as user-space processes that communicate with the kernel through well-defined interfaces. This design enhances stability and security.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WordPress:&lt;/strong&gt; WordPress is a popular content management system that uses a microkernel architecture. The core WordPress installation provides the basic framework for managing content, while themes and plugins extend its functionality to create different types of websites and add features like e-commerce, social media integration, and SEO tools.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>N-Tier</title><link>http://www.swpatterns.com/pattern/n-tier/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/n-tier/</guid><description>
+&lt;p&gt;The N-Tier pattern is an architectural pattern that organizes an application into distinct layers, each responsible for a specific aspect of the application. These tiers are logically and physically separated, promoting modularity, maintainability, and scalability. Common tiers include the Presentation Tier (UI), Application Tier (Business Logic), and Data Tier (Data Access), but more tiers can be added as needed.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The N-Tier pattern is widely used in enterprise application development, web applications, and distributed systems. It&amp;rsquo;s particularly beneficial when dealing with complex applications that require a clear separation of concerns. Common use cases include: building scalable web services, creating maintainable desktop applications, and developing data-centric applications where data access needs to be abstracted from the business logic. It allows for independent development and deployment of each tier, making updates and changes easier to manage.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Typical Web Application (e.g., E-commerce Site):&lt;/strong&gt; A standard e-commerce website often employs an N-Tier architecture. The &lt;em&gt;Presentation Tier&lt;/em&gt; is the web browser displaying the product catalog and user interface. The &lt;em&gt;Application Tier&lt;/em&gt; (often implemented with frameworks like Spring or Django) handles user authentication, shopping cart management, order processing, and other business rules. The &lt;em&gt;Data Tier&lt;/em&gt; manages the product database, user accounts, and order information using a database system like PostgreSQL or MySQL.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Microsoft .NET Applications:&lt;/strong&gt; The .NET framework encourages the use of N-Tier architectures. A .NET application might have a &lt;em&gt;Presentation Tier&lt;/em&gt; built with ASP.NET, an &lt;em&gt;Application Tier&lt;/em&gt; containing business logic implemented in C#, and a &lt;em&gt;Data Tier&lt;/em&gt; utilizing Entity Framework to interact with a SQL Server database. This separation allows developers to easily swap out the database or UI technology without impacting the core business logic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Peer-to-Peer</title><link>http://www.swpatterns.com/pattern/peer-to-peer/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/peer-to-peer/</guid><description>
+&lt;p&gt;The Peer-to-Peer (P2P) pattern is a distributed application architecture that eliminates the need for a central server. Instead, individual nodes (peers) in the network share resources directly with each other. Each peer acts as both a client and a server, contributing its own resources (storage, bandwidth, processing power) to the network and consuming resources from other peers. This decentralization offers benefits like increased resilience, scalability, and reduced costs.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful in scenarios where centralized control is undesirable or impractical, such as file sharing, content distribution, and collaborative systems. It&amp;rsquo;s also well-suited for applications that require high availability and can tolerate some level of inconsistency. P2P networks can be structured (with defined topologies) or unstructured (random connections), each offering different trade-offs in terms of efficiency and robustness.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;File Sharing:&lt;/strong&gt; Applications like BitTorrent rely heavily on P2P to distribute large files efficiently. Users download pieces of a file from multiple peers simultaneously, reducing the load on any single source.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cryptocurrencies:&lt;/strong&gt; Blockchain technologies, like those powering Bitcoin and Ethereum, are fundamentally P2P. Transactions are broadcast to the network and validated by multiple peers, ensuring security and transparency.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Decentralized Social Networks:&lt;/strong&gt; Platforms like Mastodon utilize P2P principles through federated servers (instances) that communicate with each other, allowing users to interact across different communities without a single point of control.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Collaborative Editing:&lt;/strong&gt; Some real-time collaborative editing tools use P2P to synchronize changes between users directly, reducing latency and improving responsiveness.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;BitTorrent:&lt;/strong&gt; A widely used protocol for P2P file sharing. Users download and upload file segments concurrently, creating a swarm of peers that collectively distribute the content. The tracker initially helps peers find each other, but the actual file transfer happens directly between peers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IPFS (InterPlanetary File System):&lt;/strong&gt; A P2P hypermedia protocol designed to make the web faster, safer, and more open. Content is addressed by its hash, and nodes store and serve content based on demand, creating a distributed content-addressable storage system.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;WebRTC:&lt;/strong&gt; A free and open-source project that provides real-time communication capabilities directly between browsers and mobile applications. It uses P2P connections for audio and video streaming, eliminating the need for a dedicated signaling server for media transfer (though signaling is still required for connection setup).&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Shared Kernel</title><link>http://www.swpatterns.com/pattern/shared_kernel/</link><pubDate>Fri, 27 Oct 2023 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/shared_kernel/</guid><description>
+&lt;p&gt;The Shared Kernel pattern addresses the challenge of integrating two or more distinct bounded contexts in Domain-Driven Design. It arises when a small, well-defined part of the domain model is inherently shared and crucial to the operation of multiple contexts. Instead of duplicating this logic (leading to inconsistencies) or attempting a full integration (which can create a monolithic system), the Shared Kernel encapsulates this shared domain model within a dedicated kernel, acting as a bridge between the contexts.&lt;/p&gt;
+&lt;p&gt;This kernel isn&amp;rsquo;t merely a shared database schema; it encompasses the essential domain objects, rules, and logic that &lt;em&gt;must&lt;/em&gt; be consistent across the participating systems. Other parts of each bounded context remain independent, allowing them to evolve separately. The success of this pattern hinges on keeping the kernel truly small and focusing intensely on the minimal set of concepts that genuinely benefit from shared understanding.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Shared Kernel pattern is commonly used in situations like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Microservices Evolution:&lt;/strong&gt; When starting with a monolithic application and breaking it down into microservices, a Shared Kernel can help manage initially overlapping domains.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Partner Integrations:&lt;/strong&gt; When integrating with external partners who have a shared understanding of certain domain concepts, a kernel can provide a common language and representation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Legacy System Integration:&lt;/strong&gt; Incorporating pieces of a legacy system’s domain logic into a newer system, while minimizing overall coupling.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Limited Domain Overlap:&lt;/strong&gt; Scenarios where two teams are working on adjacent, but interconnected, parts of a larger business domain with a small area of shared, critical logic.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;E-commerce and Inventory Management:&lt;/strong&gt; An online e-commerce platform and a separate inventory management system might share a core understanding of &lt;code&gt;Product&lt;/code&gt; (SKU, description, price, basic attributes). Instead of each system maintaining its own potentially divergent &lt;code&gt;Product&lt;/code&gt; model, they could use a Shared Kernel defining this core concept and its invariants. The e-commerce system can then enrich the &lt;code&gt;Product&lt;/code&gt; with marketing data; inventory management with stock levels, while both rely on the shared kernel for fundamental product information.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Banking – Accounts and Transactions:&lt;/strong&gt; A banking system may consist of a “Core Banking” system responsible for managing accounts and a “Payments” system handling transaction processing. They share a fundamental understanding of “Money” &amp;amp; “Currency”. A Shared Kernel could model these concepts, ensuring both systems operate on a consistent definition of monetary value, exchange rates, and allowed precision. The Core Banking system might extend &lt;code&gt;Account&lt;/code&gt; with regulatory information; the Payments system with transaction-specific details.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Decorator</title><link>http://www.swpatterns.com/pattern/decorator/</link><pubDate>Wed, 24 Mar 2021 10:30:57 +0100</pubDate><guid>http://www.swpatterns.com/pattern/decorator/</guid><description>
+&lt;p&gt;The Decorator pattern enables us to change the behavior of an object by hiding the contained functions and adding new functionalities around it. It is also a common way to avoid the limits of single inheritance by multiple interface implementations (composition over inheritance).&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;This pattern finds its typical use in framework development because it enables the layering of functionalities around a core service.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Caching in HTTP services can be implemented as a decorator pattern by wrapping the http client within a client that analyzes the requested url and prepares a response&lt;/li&gt;
+&lt;li&gt;Logging and instrumenting methods can be implmented as a decorator that covers the interactions once for all the possible activities.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Composite</title><link>http://www.swpatterns.com/pattern/composite/</link><pubDate>Tue, 23 Mar 2021 11:29:42 +0100</pubDate><guid>http://www.swpatterns.com/pattern/composite/</guid><description>
+&lt;p&gt;The Composite Pattern enables us to collect objects into trees that can be easily explored.
+The Parent represents the access point to the tree, where it in fact will be a Container, usually. The container will be able to contain other Container objects or Leaf objects.&lt;/p&gt;
+&lt;p&gt;Often the sublcasses or the leaves can be instantiated thorugh the various factory patterns.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Typical example is the file system. every folder and every single file are files. Folders contain also other files.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;File system&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Adapter</title><link>http://www.swpatterns.com/pattern/adapter/</link><pubDate>Mon, 15 Mar 2021 13:24:44 +0100</pubDate><guid>http://www.swpatterns.com/pattern/adapter/</guid><description>
+&lt;p&gt;The adapter aims to be a converter between two specific interfaces: one belonging to &amp;ldquo;our&amp;rdquo; side of the application, the other to the library or other tool we need to interact with. This is very important, because it enables us to delay decisions, as the choice of a spcific implementation of the adapter becomes less important due to the fact that we are at that point using the adapter itself as our communication contract.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Often used in combo with other patterns, such as [Inversion of Control] and several &lt;a href="http://www.swpatterns.com/pattern_types/factory/"&gt;Factories&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;p&gt;Typical example of this pattern in a &amp;ldquo;pure&amp;rdquo; form is the Driver. Whether it is for printing or for database access, the API exposed by the common development systems just require the connection to the adapter and, with some kind of &lt;a href="http://www.swpatterns.com/pattern_types/factory/"&gt;Factory&lt;/a&gt; or repository we get the specific implementation of what we need at the moment, based on the configuration of the system we have.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Object-Relational Mapping Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/orm/</link><description>Recent content in Object-Relational Mapping Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 14:52:56 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/orm/index.xml" rel="self" type="application/rss+xml"/><item><title>Data Mapper</title><link>http://www.swpatterns.com/pattern/data_mapper/</link><pubDate>Thu, 29 Feb 2024 14:52:56 +0000</pubDate><guid>http://www.swpatterns.com/pattern/data_mapper/</guid><description>
+&lt;p&gt;The Data Mapper pattern addresses the impedance mismatch between an object-oriented domain model and a relational database. It acts as a mediator, transferring data between these two representations without exposing the database structure to the domain layer. This separation allows the domain model to evolve independently of the data storage mechanism.&lt;/p&gt;
+&lt;p&gt;Essentially, the Data Mapper provides an interface for mapping domain objects to and from a data source (like a database table). It encapsulates the data access logic, shielding the domain model from database-specific details like SQL queries and data types. This promotes loose coupling, testability, and flexibility in the application&amp;rsquo;s architecture.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Data Mapper pattern is commonly used in applications where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Persistence is required:&lt;/strong&gt; Data needs to be stored and retrieved from a database or other persistent storage.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Domain model complexity is high:&lt;/strong&gt; A rich domain model with complex relationships exists, and directly mapping it to a relational database would be cumbersome.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database independence is desired:&lt;/strong&gt; The application needs to be able to switch between different database systems without significant code changes in the domain layer.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testability is crucial:&lt;/strong&gt; The ability to easily mock or stub the data access layer for unit testing is important.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ORM frameworks are not sufficient:&lt;/strong&gt; When the level of control needed over data access exceeds what a typical ORM provides.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ruby on Rails ActiveRecord:&lt;/strong&gt; While ActiveRecord is often considered an ORM, it fundamentally implements the Data Mapper pattern. Each model class (e.g., &lt;code&gt;User&lt;/code&gt;) is a domain object, and ActiveRecord provides methods to map these objects to and from database rows in the &lt;code&gt;users&lt;/code&gt; table. The &lt;code&gt;find()&lt;/code&gt;, &lt;code&gt;create()&lt;/code&gt;, &lt;code&gt;update()&lt;/code&gt;, and &lt;code&gt;destroy()&lt;/code&gt; methods are all part of the Data Mapper&amp;rsquo;s functionality.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Doctrine ORM (PHP):&lt;/strong&gt; Doctrine is a more explicit implementation of the Data Mapper pattern than ActiveRecord. It requires defining entity classes (domain objects) and mapping them to database tables using metadata (annotations, YAML, or XML). The Data Mapper logic is handled by the &lt;code&gt;EntityManager&lt;/code&gt;, which is responsible for persisting and retrieving entities. Doctrine allows for more fine-grained control over the mapping process and supports complex database schemas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dapper (C#):&lt;/strong&gt; Dapper is a micro-ORM that provides a simple way to map database query results to C# objects. It doesn&amp;rsquo;t have the full feature set of larger ORMs like Entity Framework, but it effectively acts as a Data Mapper by handling the translation between relational data and object graphs. Developers write the SQL queries, and Dapper handles the mapping.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Single Table Inheritance</title><link>http://www.swpatterns.com/pattern/single_table_inheritance/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/single_table_inheritance/</guid><description>
+&lt;p&gt;Single Table Inheritance is a strategy for representing a class hierarchy in a relational database using only one table for all classes in the hierarchy. A “type” column (or discriminator) is added to the table to indicate the specific class of each record. This approach simplifies querying and joins compared to other inheritance mapping strategies, but can lead to a table with many nullable columns if the subclasses have significantly different attributes.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;This pattern is commonly used when:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The class hierarchy is relatively small and doesn&amp;rsquo;t have deep nesting.&lt;/li&gt;
+&lt;li&gt;Performance is critical, and avoiding joins is a priority.&lt;/li&gt;
+&lt;li&gt;The subclasses don&amp;rsquo;t have a large number of unique attributes.&lt;/li&gt;
+&lt;li&gt;You want a simple database schema.&lt;/li&gt;
+&lt;li&gt;When using Object-Relational Mappers (ORMs) like SQLAlchemy or Django ORM, it&amp;rsquo;s a straightforward way to map inheritance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django ORM:&lt;/strong&gt; Django&amp;rsquo;s ORM supports Single Table Inheritance (STI) through its model inheritance feature. A base model defines common fields, and then child models inherit from it, adding their specific fields. Django automatically manages the type/discriminator column and maps records to the appropriate model class.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SQLAlchemy:&lt;/strong&gt; SQLAlchemy&amp;rsquo;s &lt;code&gt;single_table_inheritance&lt;/code&gt; option in the &lt;code&gt;__mapper_args__&lt;/code&gt; of a base class allows you to map a class hierarchy to a single table. Similar to Django, a discriminator column is used to identify the class of each row. This is often used when integrating with existing database schemas or when a simple mapping is desired.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Payment Systems:&lt;/strong&gt; Consider a system for processing payments. You might have a base &lt;code&gt;Payment&lt;/code&gt; class with attributes like &lt;code&gt;amount&lt;/code&gt; and &lt;code&gt;date&lt;/code&gt;. Subclasses could be &lt;code&gt;CreditCardPayment&lt;/code&gt; (with &lt;code&gt;card_number&lt;/code&gt;, &lt;code&gt;expiry_date&lt;/code&gt;) and &lt;code&gt;PayPalPayment&lt;/code&gt; (with &lt;code&gt;paypal_transaction_id&lt;/code&gt;). Using STI, all these attributes would reside in a single &lt;code&gt;payments&lt;/code&gt; table, with a &lt;code&gt;payment_type&lt;/code&gt; column indicating which type of payment each row represents.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

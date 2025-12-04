@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Distributed System Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/distributed-system/</link><description>Recent content in Distributed System Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/distributed-system/index.xml" rel="self" type="application/rss+xml"/><item><title>Two-Phase Commit</title><link>http://www.swpatterns.com/pattern/two-phase_commit/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/two-phase_commit/</guid><description>
+&lt;p&gt;The Two-Phase Commit (2PC) protocol is a distributed algorithm used to ensure atomic commits across multiple transaction participants. In essence, it guarantees that either &lt;em&gt;all&lt;/em&gt; participants commit changes to the database or &lt;em&gt;none&lt;/em&gt; do, maintaining data consistency in a distributed environment. This is crucially important when a single logical operation necessitates updates to multiple independent systems.&lt;/p&gt;
+&lt;p&gt;The process involves a coordinator and multiple resource managers. The coordinator initiates the commit attempt, and the resource managers execute the tentative changes. The first phase (prepare) checks if all participants &lt;em&gt;can&lt;/em&gt; commit. The second phase (commit or rollback) applies the changes if all voted to commit, or reverts them if any voted to abort. While reliable, 2PC can introduce blocking and performance issues, making it less suitable for high-throughput or loosely-coupled systems.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Two-Phase Commit is frequently employed in scenarios where transactional integrity is paramount across multiple data sources. Common use cases include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Distributed Databases:&lt;/strong&gt; Maintaining consistency when a transaction modifies data in several databases across a network.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices with Eventual Consistency Requirements:&lt;/strong&gt; Though often avoided in favor of Sagas due to its blocking nature, 2PC can be used where strict consistency is needed between two interacting microservices.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Message Queues and Transactions:&lt;/strong&gt; Ensuring that a message is both sent to a queue and a corresponding database update is completed atomically.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XA Transactions:&lt;/strong&gt; A standard for distributed transaction processing, relying heavily on 2PC.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;IBM CICS:&lt;/strong&gt; IBM’s Customer Information Control System (CICS) resource manager often utilizes 2PC to coordinate transactions that span multiple CICS regions and database systems. When a CICS transaction requires updates to both a local database and a remote CICS region’s database, 2PC ensures atomicity. CICS acts as both a coordinator and a participant.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JTA (Java Transaction API):&lt;/strong&gt; This Java API provides a standardized way to manage transactions across multiple resources, like databases and message queues. It frequently uses 2PC behind the scenes (through XA support) ensuring that all involved resources either commit or rollback the transaction together. Application servers like GlassFish or WildFly use JTA for transaction management using 2PC.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Database Sharding:&lt;/strong&gt; When data is sharded across multiple database instances, 2PC can be applied to ensure that updates related to a single logical entity become visible consistently across all shards. This is often implemented in custom sharding solutions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Saga (Orchestration)</title><link>http://www.swpatterns.com/pattern/saga_orchestration/</link><pubDate>Tue, 21 Nov 2023 11:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/saga_orchestration/</guid><description>
+&lt;p&gt;The Saga pattern manages a sequence of local transactions in a distributed system. It&amp;rsquo;s used to ensure data consistency across multiple services, especially when traditional ACID transactions aren&amp;rsquo;t feasible due to the nature of distributed environments. Instead of a single, atomic transaction, the Saga breaks down the overall process into smaller, independent steps, each updating data within a single service.&lt;/p&gt;
+&lt;p&gt;The orchestration-based Saga relies on a central orchestrator service to coordinate the participating transactions. This orchestrator explicitly tells each service what to do and when, handling both successful completion and potential failures. If a transaction fails, the orchestrator triggers compensating transactions to undo the changes made by previous transactions, ultimately rolling back the entire Saga.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Saga pattern is commonly used in microservices architectures for managing complex, business-level processes that span multiple services. Specific scenarios include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;E-commerce Order Management:&lt;/strong&gt; Handling order creation, payment processing, inventory updates, and shipping notifications.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Travel Booking:&lt;/strong&gt; Coordinating flight, hotel, and car rental reservations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Transactions:&lt;/strong&gt; Processing multi-step financial operations like loan applications or fund transfers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Distributed Data Modification:&lt;/strong&gt; Ensuring eventual consistency when updating data across a set of independently managed databases.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Netflix:&lt;/strong&gt; Netflix uses the Saga pattern extensively for their video streaming operations. When a user cancels a subscription, multiple actions need to occur—stopping billing, revoking access, and potentially handling refunds. These are orchestrated as a Saga to ensure consistency. A failure in one step (e.g., the billing system being down) triggers compensating actions to revert any changes already made.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apache Kafka Streams/Spring Cloud Stream (with state stores):&lt;/strong&gt; Kafka Streams and Spring Cloud Stream can be used to implement Saga orchestration. Each microservice consumes from a Kafka topic representing a Saga event (like &amp;ldquo;OrderCreated&amp;rdquo;, &amp;ldquo;PaymentFailed&amp;rdquo;). They react to events, perform their local transaction, and then emit another event indicating completion or failure. The Saga orchestrator (potentially another Kafka Streams application) monitors these events and drives the overall process, initiating compensation when needed. The state stores help track where each saga is in its execution.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

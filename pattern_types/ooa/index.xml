@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Object-Oriented Abstraction on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/ooa/</link><description>Recent content in Object-Oriented Abstraction on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/ooa/index.xml" rel="self" type="application/rss+xml"/><item><title>State</title><link>http://www.swpatterns.com/pattern/state/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/state/</guid><description>
+&lt;p&gt;The State pattern allows an object to alter its behavior when its internal state changes. This pattern avoids the use of large conditional statements (like &lt;code&gt;if/else&lt;/code&gt; or &lt;code&gt;switch&lt;/code&gt;) that often become unwieldy and difficult to maintain when dealing with complex state-dependent logic. Instead, each state is represented by a separate class, leading to a more organized and extensible design.&lt;/p&gt;
+&lt;p&gt;Essentially, the pattern encapsulates the different states of an object, along with the transitions between those states, into classes. The context object, which represents the object whose behavior changes, delegates the requests to the current state object. This enables the object to seamlessly switch between behaviors based on its state.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The State pattern is commonly used in scenarios where an object’s behavior is dictated by its state and needs to change dynamically. Some typical use cases include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;User Interface (UI):&lt;/strong&gt; Implementing different states for UI elements like buttons (enabled, disabled, hovered, pressed).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game Development:&lt;/strong&gt; Defining different states for game characters (idle, walking, running, jumping, attacking).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Management:&lt;/strong&gt; Modeling different stages in a process, such as order processing (pending, processing, shipped, delivered).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Communication Protocols:&lt;/strong&gt; Representing the different phases of a network connection (listening, connecting, connected, closing).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;State Machines:&lt;/strong&gt; More generally, implementing complex state machines where the object transitions between a well-defined set of states based on external events.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TCP Connection:&lt;/strong&gt; A TCP connection goes through various states (SYN_SENT, ESTABLISHED, FIN_WAIT_1, etc.). Each state handles incoming and outgoing data differently. The TCP protocol itself effectively uses a state machine implemented with concepts similar to the State pattern.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java’s &lt;code&gt;java.util.concurrent.locks.Lock&lt;/code&gt; interface &amp;amp; implementations:&lt;/strong&gt; Specifically, the state management behind acquiring and releasing a lock relies on a pattern similar to State. A lock might be in an ‘unlocked’ state, transition to a ‘locked’ state when acquired, and allow releases only when locked. The internal implementation will handle the state transitions and ensure thread safety.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Android Activity Lifecycle:&lt;/strong&gt; An Android Activity&amp;rsquo;s lifecycle consists of states like &lt;code&gt;CREATED&lt;/code&gt;, &lt;code&gt;STARTED&lt;/code&gt;, &lt;code&gt;RESUMED&lt;/code&gt;, &lt;code&gt;PAUSED&lt;/code&gt;, &lt;code&gt;STOPPED&lt;/code&gt;, and &lt;code&gt;DESTROYED&lt;/code&gt;. Each state dictates what the activity can and cannot do, and the Android framework internally manages these state transitions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

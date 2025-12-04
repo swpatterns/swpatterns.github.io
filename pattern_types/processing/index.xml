@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Processing Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/processing/</link><description>Recent content in Processing Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 14:35:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/processing/index.xml" rel="self" type="application/rss+xml"/><item><title>Splitter</title><link>http://www.swpatterns.com/pattern/splitter/</link><pubDate>Thu, 29 Feb 2024 14:35:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/splitter/</guid><description>
+&lt;p&gt;The Splitter pattern addresses the need to divide a larger data chunk (often a string) into smaller, manageable pieces based on a defined delimiter or strategy. It decouples the splitting logic from the code that consumes the split data, enabling flexibility and maintainability when splitting rules evolve or differ based on context.&lt;/p&gt;
+&lt;p&gt;This pattern is beneficial when dealing with data parsing, routing, or when a component needs to process data in discrete units. It promotes the Single Responsibility Principle by centralizing the splitting operation, and allows for various splitting strategies to be introduced without modifying client code.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Splitter pattern is widely used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data ingestion pipelines:&lt;/strong&gt; Splitting large files (e.g., CSV, log files) into individual records for processing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Command-line argument parsing:&lt;/strong&gt; Separating commands and their associated arguments.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Text processing:&lt;/strong&gt; Tokenizing text into words or phrases for natural language processing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Routing and dispatching:&lt;/strong&gt; Splitting a request string to determine the target service or handler.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration management:&lt;/strong&gt; Parsing configuration files that use delimiters (e.g., key-value pairs separated by equals signs).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java &lt;code&gt;String.split()&lt;/code&gt; method:&lt;/strong&gt; The built-in &lt;code&gt;String.split()&lt;/code&gt; method in Java directly implements the Splitter pattern. It allows you to define a regular expression as the delimiter and returns an array of strings representing the split pieces. The core functionality of splitting is encapsulated within the method, allowing other parts of the application to easily consume the results.&lt;/p&gt;
+&lt;p&gt;java
+String data = &amp;ldquo;apple,banana,orange&amp;rdquo;;
+String[] fruits = data.split(&amp;quot;,&amp;quot;);
+// fruits will be [&amp;ldquo;apple&amp;rdquo;, &amp;ldquo;banana&amp;rdquo;, &amp;ldquo;orange&amp;rdquo;]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python &lt;code&gt;str.split()&lt;/code&gt; method:&lt;/strong&gt; Similar to Java, Python’s &lt;code&gt;str.split()&lt;/code&gt; method provides a straightforward implementation of the Splitter pattern. You can specify a separator, and the method returns a list of substrings. Libraries like &lt;code&gt;pandas&lt;/code&gt; heavily utilize string splitting functions for data manipulation and analysis.&lt;/p&gt;
+&lt;p&gt;python
+data = &amp;ldquo;apple,banana,orange&amp;rdquo;
+fruits = data.split(&amp;quot;,&amp;quot;)&lt;/p&gt;
+&lt;h1 id="fruits-will-be-apple-banana-orange"&gt;fruits will be [&amp;lsquo;apple&amp;rsquo;, &amp;lsquo;banana&amp;rsquo;, &amp;lsquo;orange&amp;rsquo;]&lt;/h1&gt;
+&lt;p&gt;import pandas as pd
+df = pd.DataFrame({&amp;lsquo;data&amp;rsquo;: [“a,b,c”, “d,e,f”] })
+df[&amp;lsquo;split_data&amp;rsquo;] = df[&amp;lsquo;data&amp;rsquo;].str.split(&amp;rsquo;,&amp;rsquo;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

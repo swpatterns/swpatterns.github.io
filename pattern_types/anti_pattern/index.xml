@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Anti-Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/anti_pattern/</link><description>Recent content in Anti-Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 19 Mar 2021 11:01:47 +0100</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/anti_pattern/index.xml" rel="self" type="application/rss+xml"/><item><title>Cargo Cult Programming</title><link>http://www.swpatterns.com/pattern/cargo_cult/</link><pubDate>Fri, 19 Mar 2021 11:01:47 +0100</pubDate><guid>http://www.swpatterns.com/pattern/cargo_cult/</guid><description>
-&lt;p>Cargo Cult Programming gets its name from the Cargo Cults in Melanesia. The concept is simple: the hope that the same approach to a problem might solve an issue within our system without the understanding of both context and language or libraries.&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;ul>
-&lt;li>Copy and paste from StackOverflow without understanding of the code we copied and pasted&lt;/li>
-&lt;li>On a business side, hoping that the actions done by someone else without recontextualization can lead to the same results in our case&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;p&gt;Cargo Cult Programming gets its name from the Cargo Cults in Melanesia. The concept is simple: the hope that the same approach to a problem might solve an issue within our system without the understanding of both context and language or libraries.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Copy and paste from StackOverflow without understanding of the code we copied and pasted&lt;/li&gt;
+&lt;li&gt;On a business side, hoping that the actions done by someone else without recontextualization can lead to the same results in our case&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

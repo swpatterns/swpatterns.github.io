@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>State Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/state/</link><description>Recent content in State Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/state/index.xml" rel="self" type="application/rss+xml"/><item><title>Balking</title><link>http://www.swpatterns.com/pattern/balking/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/balking/</guid><description>
+&lt;p&gt;The Balking pattern is a behavioral pattern that allows an object to postpone the execution of a request until a specific condition is met. It essentially prevents an object from performing an action if it&amp;rsquo;s already in a particular state, often a &amp;ldquo;busy&amp;rdquo; or &amp;ldquo;occupied&amp;rdquo; state. This is achieved by delegating the responsibility of handling the request to a state object, which determines whether the request can be fulfilled immediately or needs to be deferred.&lt;/p&gt;
+&lt;p&gt;This pattern is useful when an operation is resource-intensive or requires exclusive access to a resource, and you want to avoid contention or errors that might occur if multiple requests are attempted concurrently. It provides a clean way to manage state and control access to critical sections of code, ensuring that operations are performed only when the object is ready.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Balking pattern is commonly used in scenarios like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Asynchronous Task Queues:&lt;/strong&gt; Preventing multiple submissions of the same task when the queue is already processing one.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Management:&lt;/strong&gt; Controlling access to a limited number of resources (e.g., database connections, file handles) by delaying requests until a resource becomes available.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event Handling:&lt;/strong&gt; Deferring the processing of events when the system is overloaded or in a critical state.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UI Interactions:&lt;/strong&gt; Disabling buttons or input fields while a long-running operation is in progress to prevent multiple triggers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java&amp;rsquo;s &lt;code&gt;java.util.concurrent.BlockingQueue&lt;/code&gt;:&lt;/strong&gt; Implementations like &lt;code&gt;LinkedBlockingQueue&lt;/code&gt; internally use a mechanism similar to Balking. When a producer attempts to add an element to a full queue (a &amp;ldquo;busy&amp;rdquo; state), the &lt;code&gt;put()&lt;/code&gt; method blocks until space becomes available, effectively &amp;ldquo;balking&amp;rdquo; the immediate addition.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Thread Pools:&lt;/strong&gt; Most thread pool implementations employ a Balking-like strategy. When all threads in the pool are occupied, incoming tasks are queued. The task submission &amp;ldquo;balks&amp;rdquo; – it doesn&amp;rsquo;t immediately start executing – until a thread becomes free to pick it up from the queue. Libraries like &lt;code&gt;java.util.concurrent&lt;/code&gt; provide &lt;code&gt;ExecutorService&lt;/code&gt; which manages this behavior.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Asynchronous JavaScript and Promises:&lt;/strong&gt; While not a direct implementation, the concept of awaiting a Promise before performing an action embodies the Balking pattern. If a resource is not yet available (the Promise is not yet resolved), the execution &amp;ldquo;balks&amp;rdquo; until the resource is ready.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

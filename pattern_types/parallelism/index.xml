@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Parallelism Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/parallelism/</link><description>Recent content in Parallelism Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 15:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/parallelism/index.xml" rel="self" type="application/rss+xml"/><item><title>Map-Reduce</title><link>http://www.swpatterns.com/pattern/map-reduce/</link><pubDate>Thu, 29 Feb 2024 15:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/map-reduce/</guid><description>
+&lt;p&gt;Map-Reduce is a programming model and an associated implementation for processing and generating large datasets. It works by splitting the dataset into independent chunks, which are then processed in parallel by &amp;ldquo;map&amp;rdquo; functions. These map functions output key-value pairs. Subsequently, &amp;ldquo;reduce&amp;rdquo; functions combine all values associated with the same key to produce the final result. This approach enables efficient, distributed computation on commodity hardware.&lt;/p&gt;
+&lt;p&gt;The core principle is to break down a complex problem into smaller, independent tasks that can be performed simultaneously. The framework handles the partitioning of the data, scheduling of tasks, and aggregation of results, allowing developers to focus on the specific business logic of the map and reduce functions. This is particularly useful when data is too large to fit on a single machine or when processing demands exceed the capacity of a single processor.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Map-Reduce is commonly used in a variety of data processing scenarios, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Log analysis:&lt;/strong&gt; Processing large volumes of server logs to identify trends, errors, or security threats.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web indexing:&lt;/strong&gt; Building search indexes by mapping web pages to keywords and reducing the keyword lists.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data mining:&lt;/strong&gt; Discovering patterns and relationships in massive datasets, such as customer purchase histories.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Machine Learning:&lt;/strong&gt; Performing distributed training of machine learning models.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ETL (Extract, Transform, Load):&lt;/strong&gt; As part of data pipelines to clean, transform, and aggregate data before loading it into a data warehouse.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apache Hadoop:&lt;/strong&gt; The most well-known open-source implementation of Map-Reduce. Hadoop provides a distributed file system (HDFS) and a Map-Reduce framework for processing large datasets across clusters of computers. It&amp;rsquo;s widely used in big data applications for tasks like data warehousing, log processing, and machine learning.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Google&amp;rsquo;s original MapReduce system:&lt;/strong&gt; The foundational system that inspired Apache Hadoop. Google uses MapReduce internally for a vast range of data processing tasks, including crawling and indexing the web (for Google Search), data analysis in Gmail, and many other large-scale applications. While the original implementation isn&amp;rsquo;t open-source, its principles are widely adopted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spark:&lt;/strong&gt; While not strictly MapReduce, Apache Spark provides a more general-purpose distributed processing engine that can implement MapReduce-like operations with significant performance improvements through in-memory caching and optimized execution plans. It often replaces traditional MapReduce for iterative algorithms and real-time processing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

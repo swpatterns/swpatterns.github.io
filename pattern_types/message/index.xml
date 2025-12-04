@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Message Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/message/</link><description>Recent content in Message Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/message/index.xml" rel="self" type="application/rss+xml"/><item><title>Routing Slip</title><link>http://www.swpatterns.com/pattern/routing_slip/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/routing_slip/</guid><description>
+&lt;p&gt;The Routing Slip pattern facilitates the sequential passing of a request through a chain of responsibility. Each handler in the chain examines the request and either processes it or forwards it to the next handler. Unlike the Chain of Responsibility pattern, the order in which handlers process the request is pre-defined and not based on type or conditions within the handlers themselves; it&amp;rsquo;s a rigid route. This pattern allows complex workflows to be managed without tightly coupling the request to specific handlers.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Routing Slip pattern is commonly used in scenarios requiring a strict sequential processing order. Some use cases include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Approval Workflows:&lt;/strong&gt; Loan applications, expense reports, or similar processes that need to be approved by multiple individuals in a specific order.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Document Processing Pipelines:&lt;/strong&gt; Steps like OCR, data extraction, validation, and archival can be orchestrated using a routing slip to ensure each step executes correctly and in the correct sequence.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Order Fulfillment:&lt;/strong&gt; Stages like inventory check, payment processing, shipping label generation, and package dispatch can be handled in a stipulated order.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-step Form Processing:&lt;/strong&gt; Each step in a complex form might need to be processed by a different module in a predefined fashion.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Camunda BPMN Engine:&lt;/strong&gt; Camunda uses a similar concept called &amp;ldquo;Sequence Flow&amp;rdquo; in BPMN (Business Process Model and Notation) diagrams. A process instance follows a defined sequence of tasks and events, effectively implementing a routing slip to orchestrate the business process. Each element in the process acts as a handler, processing the data and moving it to the next element in the defined flow.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AWS Step Functions:&lt;/strong&gt; AWS Step Functions allow developers to define state machines using JSON. Each state in the machine represents a handler, and the transitions between states define the routing slip. It allows for complex workflows to be visually defined and executed reliably, ensuring each step is carried out in order. Conditional branching can also be incorporated, but the fundamental structure maintains sequential processing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ruby on Rails Callbacks:&lt;/strong&gt; Callbacks in Rails can act as a rudimentary routing slip. For instance, before saving a model, you can define a series of callbacks that are executed in the order they&amp;rsquo;re defined: pre-validation checks, data transformation, auditing, and then finally the save operation. While limited in flexibility compared to a full-fledged implementation, it demonstrates the core principle of sequential execution.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

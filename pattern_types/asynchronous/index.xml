@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Asynchronous Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/asynchronous/</link><description>Recent content in Asynchronous Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/asynchronous/index.xml" rel="self" type="application/rss+xml"/><item><title>Future</title><link>http://www.swpatterns.com/pattern/future/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/future/</guid><description>
+&lt;p&gt;The Future pattern encapsulates the result of an asynchronous computation. Instead of blocking the calling thread while waiting for the result, a Future object provides a placeholder. The client can then query the Future for the availability of the result and retrieve it when it&amp;rsquo;s ready, potentially doing other work in the meantime. This promotes responsiveness and avoids unnecessary delays.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Future pattern is used in scenarios involving long-running operations such as network requests, database queries, or computationally intensive tasks. It&amp;rsquo;s crucial in building concurrent and responsive applications, enabling the execution of tasks without halting the main thread of execution. Common areas include UI development (keeping the interface responsive during background processing), parallel processing (managing the results of tasks executed on different threads/processors) and distributed systems.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java&amp;rsquo;s &lt;code&gt;CompletableFuture&lt;/code&gt;:&lt;/strong&gt; Java&amp;rsquo;s &lt;code&gt;CompletableFuture&lt;/code&gt; is a powerful implementation of the Future pattern. It allows for chaining operations to be performed on the result of the asynchronous computation once available, supporting methods for asynchronous composition and handling errors. It&amp;rsquo;s widely used in modern Java backend services for handling I/O and CPU-bound tasks concurrently.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python&amp;rsquo;s &lt;code&gt;asyncio.Future&lt;/code&gt;:&lt;/strong&gt; In Python&amp;rsquo;s &lt;code&gt;asyncio&lt;/code&gt; library, &lt;code&gt;Future&lt;/code&gt; objects represent the eventual result of an asynchronous operation. Coroutines can await on these Futures, yielding control back to the event loop until the result is computed. This is fundamental to Python&amp;rsquo;s asynchronous web frameworks like FastAPI and aiohttp, allowing them to handle a large number of concurrent connections efficiently.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript Promises:&lt;/strong&gt; While not technically called &amp;ldquo;Futures&amp;rdquo;, JavaScript Promises effectively implement the same concept. A Promise represents the eventual completion (or failure) of an asynchronous operation, and allows attaching &lt;code&gt;.then()&lt;/code&gt; callbacks to handle the result. Promises are native to Javascript and are used extensively in web development with frameworks like React, Angular, and Vue to manage asynchronous operations like fetching data from APIs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Promise</title><link>http://www.swpatterns.com/pattern/promise/</link><pubDate>Mon, 20 Nov 2023 17:34:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/promise/</guid><description>
+&lt;p&gt;The Promise pattern addresses the complexities of asynchronous operations in programming. It provides a placeholder for a value that will be available at some point in the future, without blocking the current execution thread. Instead of directly handling the result or error of an operation, a Promise offers a clean and structured way to attach callbacks that will be executed when the operation completes, whether successfully or not.&lt;/p&gt;
+&lt;p&gt;Promises improve code readability and maintainability by abstracting away the control flow associated with asynchronous tasks. They solve the &amp;ldquo;callback hell&amp;rdquo; problem that often arises with nested callbacks. By chaining &lt;code&gt;.then()&lt;/code&gt; and &lt;code&gt;.catch()&lt;/code&gt; methods, developers can define a sequence of operations that depend on the result of an asynchronous action, leading to more organized and easier-to-understand code.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Promise pattern is widely used in scenarios involving:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Network requests:&lt;/strong&gt; Fetching data from APIs or servers. The Promise handles the uncertainty of network latency and potential errors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File I/O:&lt;/strong&gt; Reading or writing files. These operations are inherently asynchronous because they depend on disk access.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timers:&lt;/strong&gt; Implementing &lt;code&gt;setTimeout&lt;/code&gt; and &lt;code&gt;setInterval&lt;/code&gt; functionality.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event handling:&lt;/strong&gt; Responding to user interactions or system events.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Any long-running or potentially blocking operation:&lt;/strong&gt; Keeping the main thread responsive while performing computationally intensive tasks.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript&amp;rsquo;s &lt;code&gt;Promise&lt;/code&gt; Object:&lt;/strong&gt; The core of asynchronous programming in modern JavaScript. Built-in functions like &lt;code&gt;fetch&lt;/code&gt; return Promises, allowing easy handling of HTTP requests using &lt;code&gt;.then()&lt;/code&gt; for success and &lt;code&gt;.catch()&lt;/code&gt; for failure. Libraries like Axios also heavily rely on Promises to provide a more feature-rich and developer-friendly API for making HTTP requests.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python&amp;rsquo;s &lt;code&gt;asyncio&lt;/code&gt; Library:&lt;/strong&gt; Python&amp;rsquo;s &lt;code&gt;asyncio&lt;/code&gt; library utilizes a similar concept to Promises, called &lt;code&gt;Futures&lt;/code&gt;. These represent the eventual result of an asynchronous operation. &lt;code&gt;async&lt;/code&gt; and &lt;code&gt;await&lt;/code&gt; keywords provide a clean syntax for working with Futures (the Python equivalent of Promises), enabling structured concurrency and simplified handling of asynchronous tasks. Frameworks like FastAPI and Sanic extensively use &lt;code&gt;asyncio&lt;/code&gt; and Futures for high-performance I/O bound operations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

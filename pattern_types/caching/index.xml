@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Caching Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/caching/</link><description>Recent content in Caching Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 14:35:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/caching/index.xml" rel="self" type="application/rss+xml"/><item><title>Read-Through Cache</title><link>http://www.swpatterns.com/pattern/read-through_cache/</link><pubDate>Thu, 29 Feb 2024 14:35:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/read-through_cache/</guid><description>
+&lt;p&gt;The Read-Through Cache pattern addresses the performance bottleneck of frequent data access from a slow data source (like a database or remote API). It introduces a cache layer that sits between the client and the data source. When a client requests data, the cache is consulted first. If the data is present (a cache hit), it&amp;rsquo;s returned directly. If the data is not present (a cache miss), the cache itself is responsible for retrieving the data from the data source and then returning it to the client, storing a copy for future use.&lt;/p&gt;
+&lt;p&gt;This pattern simplifies the client code, as it doesn&amp;rsquo;t need to be aware of the caching mechanism or the data source interaction. The cache acts as a transparent proxy, handling all data retrieval and storage. This improves performance by reducing the load on the data source and providing faster access to frequently used data. It also promotes data consistency, as the cache is the single point of interaction with the data source for write operations.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Read-Through Cache pattern is commonly used in scenarios where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data access is slow:&lt;/strong&gt; Databases, network requests, or complex computations are involved.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data is frequently read:&lt;/strong&gt; A significant portion of requests are for the same data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simplified client logic is desired:&lt;/strong&gt; Clients should not be burdened with cache management.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Write-through or write-back caching is not suitable:&lt;/strong&gt; When immediate consistency with the data source is crucial for reads.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices architectures:&lt;/strong&gt; Caching data accessed across multiple services.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Guava Cache (Java):&lt;/strong&gt; Google&amp;rsquo;s Guava library provides a &lt;code&gt;CacheLoader&lt;/code&gt; interface that embodies the Read-Through Cache pattern. You implement a &lt;code&gt;CacheLoader&lt;/code&gt; to define how the cache loads data from the data source when a cache miss occurs. The &lt;code&gt;get()&lt;/code&gt; method of the &lt;code&gt;Cache&lt;/code&gt; object automatically uses the &lt;code&gt;CacheLoader&lt;/code&gt; if the key is not found in the cache.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redis with a Client Library (Various Languages):&lt;/strong&gt; While Redis is often used as a general-purpose cache, many client libraries enable a Read-Through Cache implementation. For instance, you can configure a library to automatically fetch data from a database if a key isn&amp;rsquo;t present in the Redis cache, and then store the fetched data in Redis for subsequent requests. Libraries like &lt;code&gt;node-redis&lt;/code&gt; in Node.js or &lt;code&gt;redis-py&lt;/code&gt; in Python can be used this way.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;.NET MemoryCache with CacheEntryUpdateCallback:&lt;/strong&gt; .NET&amp;rsquo;s &lt;code&gt;MemoryCache&lt;/code&gt; allows registering a callback function that is invoked when a cache entry expires (a cache miss happens). The callback efficiently retrieves the data from the underlying data source and updates the cache with fresh data. Thus, it acts as a read-through mechanism.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

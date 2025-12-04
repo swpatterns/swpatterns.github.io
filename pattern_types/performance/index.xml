@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Performance Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/performance/</link><description>Recent content in Performance Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 17:32:55 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/performance/index.xml" rel="self" type="application/rss+xml"/><item><title>Lazy Initialization</title><link>http://www.swpatterns.com/pattern/lazy_initialization/</link><pubDate>Thu, 29 Feb 2024 17:32:55 +0000</pubDate><guid>http://www.swpatterns.com/pattern/lazy_initialization/</guid><description>
+&lt;p&gt;Lazy Initialization is a technique that delays the creation of an object or the execution of a process until it is actually needed. Instead of initializing the object during the class or module loading phase, initialization is postponed to the first time the object’s methods are invoked or its properties are accessed. This can significantly improve application startup time and reduce resource consumption, especially when dealing with resource-intensive operations.&lt;/p&gt;
+&lt;p&gt;The pattern is particularly useful when you have objects that require significant resources to create, but aren’t always used by the application. Avoid unnecessary initialization costs by waiting until the object is explicitly requested. It&amp;rsquo;s also helpful when initialization depends on runtime information that isn’t available at startup.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Improving Startup Time:&lt;/strong&gt; When an application has many dependencies, some of which are expensive to initialize, lazy initialization can drastically reduce the time it takes for the application to become responsive.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Management:&lt;/strong&gt; It&amp;rsquo;s beneficial when dealing with limited resources like database connections or file handles. Initializing them only when needed prevents resource exhaustion.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conditional Initialization:&lt;/strong&gt; If an object is only required under certain conditions, lazy initialization avoids initializing it if those conditions are never met.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Singleton Pattern Implementation:&lt;/strong&gt; Lazy initialization is often used to create singletons to ensure the instance is created only when first accessed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java’s &lt;code&gt;java.lang.ClassLoader&lt;/code&gt;:&lt;/strong&gt; The Java class loader doesn&amp;rsquo;t load and initialize classes immediately when the program starts. Instead, it loads classes &amp;ldquo;on demand&amp;rdquo;, only when they are first referenced during program execution. This is a form of lazy initialization that improves startup time, as only the required classes are loaded.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python’s &lt;code&gt;property&lt;/code&gt; decorator:&lt;/strong&gt; Python’s &lt;code&gt;@property&lt;/code&gt; decorator allows you to define methods that behave like attributes. These methods can use lazy initialization to compute a value only when it is first requested. For example, calculating a complex statistical value only when the property is accessed for the first time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;python
+class DataProcessor:
+def &lt;strong&gt;init&lt;/strong&gt;(self, data):
+self.data = data
+self._processed_data = None&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; @property
+def processed_data(self):
+if self._processed_data is None:
+print(&amp;quot;Processing data...&amp;quot;) #Simulating an expensive operation
+self._processed_data = self._process()
+return self._processed_data
+def _process(self):
+# Actual data processing logic
+return [x * 2 for x in self.data]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;processor = DataProcessor([1, 2, 3])&lt;/p&gt;
+&lt;h1 id="processed_data-is-not-calculated-yet"&gt;processed_data is not calculated yet&lt;/h1&gt;
+&lt;p&gt;print(&amp;ldquo;Main program continues&amp;hellip;&amp;rdquo;)&lt;/p&gt;
+&lt;h1 id="the-processing-happens-only-when-processed_data-is-accessed"&gt;The processing happens only when processed_data is accessed&lt;/h1&gt;
+&lt;p&gt;print(processor.processed_data)&lt;/p&gt;</description></item><item><title>Object Pool</title><link>http://www.swpatterns.com/pattern/object_pool/</link><pubDate>Thu, 29 Feb 2024 17:23:45 +0000</pubDate><guid>http://www.swpatterns.com/pattern/object_pool/</guid><description>
+&lt;p&gt;The Object Pool pattern is a creational design pattern that aims to improve performance by reusing objects that are expensive to create. Instead of creating a new object each time one is needed, the pool maintains a collection of pre-initialized objects. When an object is required, it&amp;rsquo;s borrowed from the pool; when it&amp;rsquo;s no longer needed, it&amp;rsquo;s returned to the pool for later use, rather than being destroyed. This reduces the overhead of frequent object creation and destruction, especially valuable when dealing with resource-intensive objects.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when object instantiation is slow or limited by external resources (e.g., database connections, network sockets, threads). It can significantly reduce latency and improve system throughput in scenarios involving high object churn, and helps manage resource constraints effectively. By limiting the overall number of objects created, it also contributes to better resource utilization and stability.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Object Pool pattern is widely used in systems requiring efficient management of costly resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Database Connection Pooling:&lt;/strong&gt; Most database libraries and application servers utilize object pools to manage database connections. Establishing a database connection is a slow operation, so pooling these connections significantly improves performance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Thread Pooling:&lt;/strong&gt; Similar to database connections, creating and destroying threads is expensive. Thread pools are essential components of concurrent programming, reusing threads to handle multiple tasks efficiently.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Graphics and Game Development:&lt;/strong&gt; Creating and disposing of graphical objects (textures, models, etc.) can be time-consuming. Object pools are used to reuse these objects, reducing lag and improving frame rates.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Network Socket Management:&lt;/strong&gt; Managing a large number of network sockets can be resource-intensive. Pooling sockets allows for efficient reuse and reduces the overhead of connection establishment and teardown.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apache Commons Pool (Java):&lt;/strong&gt; This library provides a generic object pooling framework for Java applications. It allows developers to easily create pools for various types of objects, including database connections, threads, and custom objects. Configuration options allow for controlling pool size, eviction policies, and validation logic. &lt;a href="https://commons.apache.org/proper/commons-pool/"&gt;https://commons.apache.org/proper/commons-pool/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;HikariCP (Java):&lt;/strong&gt; Specifically designed for database connection pooling, HikariCP is a high-performance JDBC connection pool. It emphasizes speed and minimizes overhead, making it a popular choice for modern Java applications. It offers advanced features like connection validation, timeout handling, and monitoring. &lt;a href="https://github.com/brettwooldridge/HikariCP"&gt;https://github.com/brettwooldridge/HikariCP&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Unity Engine (C#):&lt;/strong&gt; Unity uses object pooling extensively in game development for reusable game objects like bullets, enemies, and particle effects. The &lt;code&gt;Object.Instantiate()&lt;/code&gt; and &lt;code&gt;Object.Destroy()&lt;/code&gt; methods can be slow within a game loop; using a pool avoids this performance bottleneck. Unity provides built-in tools and community-created asset store packages to facilitate object pooling. &lt;a href="https://docs.unity3d.com/Manual/ObjectPooling.html"&gt;https://docs.unity3d.com/Manual/ObjectPooling.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Cache Aside</title><link>http://www.swpatterns.com/pattern/cache_aside/</link><pubDate>Thu, 29 Feb 2024 16:32:53 +0000</pubDate><guid>http://www.swpatterns.com/pattern/cache_aside/</guid><description>
+&lt;p&gt;The Cache Aside pattern is a caching technique where the application first checks if the requested data exists in the cache. If it does, the cache returns the data immediately. If the data is not in the cache (a &amp;ldquo;cache miss&amp;rdquo;), the application retrieves it from the database, stores a copy in the cache for future use, and then returns the data to the user. This pattern gives the application full control over when data is cached and evicted.&lt;/p&gt;
+&lt;p&gt;This approach is beneficial when data is read frequently but written to infrequently, as it minimizes database load. It&amp;rsquo;s also useful when the data source is slow or expensive to access. The application is responsible for maintaining cache consistency, typically through cache invalidation strategies when the underlying data changes.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Cache Aside pattern is widely used in scenarios where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Read-heavy applications:&lt;/strong&gt; Websites, APIs, and applications that primarily read data benefit from reduced database load.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slow data sources:&lt;/strong&gt; When fetching data from a database, external API, or other slow source, caching can significantly improve response times.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Distributed systems:&lt;/strong&gt; Caching can reduce network traffic and improve performance in distributed environments.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Session Management:&lt;/strong&gt; Storing user session data in a cache (like Redis) for fast access.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Redis:&lt;/strong&gt; Redis is a popular in-memory data store often used as a cache with the Cache Aside pattern. Applications explicitly check Redis for data and populate it if a miss occurs. Many web frameworks have built-in integration with Redis for easy implementation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Memcached:&lt;/strong&gt; Similar to Redis, Memcached is a distributed memory object caching system. Applications use client libraries to interact with Memcached, following the Cache Aside pattern to retrieve and store data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content Delivery Networks (CDNs):&lt;/strong&gt; CDNs cache static assets (images, CSS, JavaScript) closer to users. When a user requests an asset, the CDN checks its cache. If it&amp;rsquo;s a miss, the CDN fetches the asset from the origin server, caches it, and then delivers it to the user. This is a large-scale implementation of Cache Aside.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hibernate (Second Level Cache):&lt;/strong&gt; While Hibernate also supports other caching strategies, it can be used with Cache Aside through integration with external caching providers, allowing applications to manage data retrieval and caching.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Write-Through Cache</title><link>http://www.swpatterns.com/pattern/write-through_cache/</link><pubDate>Thu, 29 Feb 2024 16:23:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/write-through_cache/</guid><description>
+&lt;p&gt;The Write-Through Cache pattern involves updating both the cache and the underlying data store simultaneously when a write operation occurs. Every write to the cache immediately propagates to the data store, ensuring data consistency. While this approach reduces read latency (data is often present in the cache) it can increase write latency due to the necessity of waiting for the data store&amp;rsquo;s confirmation.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Write-Through caching is commonly used in scenarios where strong data consistency is paramount. Examples include financial applications where immediate updates are crucial, collaborative editing tools where all users must see the latest changes quickly, and systems involving frequent reads compared to writes, where the benefit of faster reads outweighs the impact of slower writes. It’s also effective in cases where the data store itself is relatively fast, minimizing the write latency penalty.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redis:&lt;/strong&gt; Redis, a popular in-memory data store, can be configured as a write-through cache. When a write operation is performed, the application updates both the Redis cache and the primary database. This maintains consistency and provides rapid read access through Redis.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ehcache (with Persistence):&lt;/strong&gt; Ehcache, a Java-based caching library, supports write-through caching with disk or database persistence. Each write to the cache is automatically written to the configured persistent store. This is useful for applications that need to ensure data is not lost even in the event of a cache eviction or server restart.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Double-Checked Locking</title><link>http://www.swpatterns.com/pattern/double-checked_locking/</link><pubDate>Thu, 29 Feb 2024 14:35:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/double-checked_locking/</guid><description>
+&lt;p&gt;Double-Checked Locking is a software design pattern used to reduce the overhead of synchronization, specifically when initializing a resource, such as a singleton instance, in a multithreaded environment. It aims to combine the benefits of lazy initialization (delaying resource creation until it&amp;rsquo;s actually needed) with the thread safety provided by synchronization. The pattern involves checking for the resource&amp;rsquo;s existence &lt;em&gt;before&lt;/em&gt; acquiring a lock, and then checking again &lt;em&gt;inside&lt;/em&gt; the lock to ensure that another thread hasn&amp;rsquo;t already created it.&lt;/p&gt;
+&lt;p&gt;This pattern attempts to optimize performance by minimizing the time spent in a synchronized block. However, it’s notoriously difficult to implement correctly due to potential issues with memory visibility and thread safety, particularly in older versions of Java. Modern languages &amp;amp; JVMs often have optimizations that can mitigate some of these risks, but careful consideration is still needed.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Double-Checked Locking is commonly considered for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Singleton initialization:&lt;/strong&gt; Creating a single instance of a class in a multithreaded environment, avoiding unnecessary synchronization overhead.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Expensive resource initialization:&lt;/strong&gt; Delaying the creation of costly resources (e.g., database connections, large objects) until they are first used, and protecting against multiple threads creating those resources simultaneously.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caching:&lt;/strong&gt; When a cache needs to be initialized only once and accessed by multiple threads.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Java Concurrency Utilities (Historically):&lt;/strong&gt; While not explicitly recommended now due to complexity, early implementations of caching and singleton patterns in Java often used Double-Checked Locking. The &lt;code&gt;java.util.concurrent&lt;/code&gt; package offers better alternatives like &lt;code&gt;Volatile&lt;/code&gt; with simple initialization or using an &lt;code&gt;enum&lt;/code&gt; for singletons, which provide inherent thread safety.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logging Frameworks:&lt;/strong&gt; Some logging frameworks might use double-checked locking to ensure that the logging system is initialized only once, even if multiple threads attempt to log messages concurrently before the system has finished initializing. For example, initializing a file handler or network socket for logging could benefit from this pattern (although modern frameworks generally employ more robust and simpler techniques).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HttpClient Connection Pool:&lt;/strong&gt; An HTTP client library might use double-checked locking to ensure that its connection pool is initialized only once by the first thread that attempts to make an HTTP request. This avoids multiple threads potentially creating identical connection pools, consuming unnecessary resources.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Lazy Load</title><link>http://www.swpatterns.com/pattern/lazy_load/</link><pubDate>Thu, 29 Feb 2024 10:34:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/lazy_load/</guid><description>
+&lt;p&gt;Lazy Load is a design pattern used in computer programming to delay the initialization of an object until the point at which it is first used. Instead of loading resources or creating objects upfront, the pattern postpones these operations to improve initial load times and conserve system resources. This is particularly effective when dealing with expensive operations or large objects that are not always needed.&lt;/p&gt;
+&lt;p&gt;The core idea behind Lazy Load is to avoid unnecessary work. By only initializing objects when they are actively required, the system minimizes resource consumption during startup and potentially throughout its lifecycle. This can result in faster application launch times, reduced memory usage, and improved responsiveness. The implementation typically involves checking if the object is initialized before each use, and if not, performing the initialization before proceeding.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Lazy Load is commonly used in a wide variety of scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Image Optimization:&lt;/strong&gt; Web pages often employ lazy loading for images, loading them only when they are visible in the viewport. This drastically reduces the initial page load time, especially for pages with many images.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Initialization:&lt;/strong&gt; Complex datasets or configurations can be lazily loaded when specific features or components need them, avoiding delays for users who don&amp;rsquo;t utilize those features.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Connections:&lt;/strong&gt; Establishing database connections can be resource intensive. Lazy Loading allows connections to be created only when database interaction is required.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Large Object Creation:&lt;/strong&gt; Creation of bulky objects, like complex reports, should be delayed until the user explicitly asks for them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plugin or Module Loading:&lt;/strong&gt; In applications with a plugin architecture, plugins can be lazily loaded upon user request, improving startup performance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;React.lazy() and Suspense:&lt;/strong&gt; React provides the &lt;code&gt;lazy()&lt;/code&gt; function and &lt;code&gt;Suspense&lt;/code&gt; component for lazy loading components. This allows you to split your application&amp;rsquo;s bundle into smaller chunks and load them on demand.
+javascript
+import React, { Suspense } from &amp;lsquo;react&amp;rsquo;;
+const OtherComponent = React.lazy(() =&amp;gt; import(&amp;rsquo;./OtherComponent&amp;rsquo;));&lt;/p&gt;
+&lt;p&gt;function MyComponent() {
+return (
+&amp;lt;Suspense fallback={&lt;!-- raw HTML omitted --&gt;Loading&amp;hellip;&lt;!-- raw HTML omitted --&gt;}&amp;gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+);
+}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django&amp;rsquo;s Class-Based View Mixins:&lt;/strong&gt; Django’s class based views allow developers to compose views from reusable mixins. Some mixins, like those handling user authentication or complex data access, can defer initialization until the first time they’re actually used within a view. This can prevent unnecessary operations if a view doesn&amp;rsquo;t actually require a particular mixin’s functionality.
+python
+from django.views.generic import TemplateView&lt;/p&gt;
+&lt;p&gt;class LazyMixin:
+def &lt;strong&gt;init&lt;/strong&gt;(self, *args, **kwargs):
+super().&lt;strong&gt;init&lt;/strong&gt;(*args, **kwargs)
+self.expensive_resource = None&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def get_expensive_resource(self):
+if self.expensive_resource is None:
+self.expensive_resource = self.load_resource() # Expensive operation
+return self.expensive_resource
+def load_resource(self):
+# Actual Resource loading logic
+return &amp;quot;Loaded Resource&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;class MyView(LazyMixin, TemplateView):
+template_name = &amp;ldquo;my_template.html&amp;rdquo;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def get_context_data(self, **kwargs):
+context = super().get_context_data(**kwargs)
+context['resource'] = self.get_expensive_resource()
+return context
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Materialized View</title><link>http://www.swpatterns.com/pattern/materialized_view/</link><pubDate>Fri, 27 Oct 2023 14:35:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/materialized_view/</guid><description>
+&lt;p&gt;The Materialized View pattern is a way to optimize read performance by precomputing and storing the results of complex or frequently used queries. Instead of re-executing these queries every time they are needed, the precomputed results are retrieved directly from the materialized view, dramatically reducing latency. The view must be periodically refreshed to stay consistent with the underlying data, introducing a trade-off between read performance and data staleness.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Materialized views are commonly used in scenarios where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Read-heavy applications:&lt;/strong&gt; Systems with a high volume of read requests and relatively infrequent writes benefit significantly.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Complex queries:&lt;/strong&gt; Queries involving joins, aggregations, or calculations are slow to execute repeatedly.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting and Analytics:&lt;/strong&gt; Generating reports or performing analytical queries on large datasets can be accelerated.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caching Aggregated Data:&lt;/strong&gt; Where fast access to aggregated representations of data is required, this pattern is effective.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Warehousing:&lt;/strong&gt; Used extensively in data warehousing for creating summary tables and optimizing query performance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Google BigQuery:&lt;/strong&gt; BigQuery utilizes materialized views to accelerate query performance. Users can define materialized views on top of their base tables, and BigQuery automatically manages the refresh process, optimizing for cost and freshness. Queries that can leverage a materialized view are automatically rewritten to use it, resulting in faster execution times.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Facebook&amp;rsquo;s Hive:&lt;/strong&gt; Facebook uses materialized views extensively in its Hive data warehouse. They precompute aggregations of user activity data (e.g., daily active users, impressions per user) and store them in materialized views. This allows for rapid generation of reports and dashboards without impacting the performance of the core data processing pipelines. They have developed systems to manage the consistency and refresh of these views at scale.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Supabase:&lt;/strong&gt; Supabase, a Firebase alternative, uses materialized views to provide real-time data updates and efficient querying. They allow developers to define views that automatically update when the underlying data changes, providing a near real-time experience for users.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Gateway Offloading</title><link>http://www.swpatterns.com/pattern/gateway_offloading/</link><pubDate>Fri, 27 Oct 2023 10:00:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/gateway_offloading/</guid><description>
+&lt;p&gt;The Gateway Offloading pattern addresses scalability and performance issues in systems with a central gateway component. It involves distributing the load from the gateway to other services or infrastructure components – such as Content Delivery Networks (CDNs), alternative backend services, or dedicated processing units – before it reaches the core backend systems. This is particularly useful when the gateway becomes a bottleneck due to high request rates, complex processing, or limited resources.&lt;/p&gt;
+&lt;p&gt;This pattern prevents gateway overload by intelligently routing or handling certain requests externally. This can involve caching static content at the edge, directing requests to specialized backend instances, or asynchronously processing non-critical tasks. Effectively implemented gateway offloading improves response times, increases system availability, and reduces infrastructure costs by optimizing resource utilization.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Handling Static Content:&lt;/strong&gt; Offloading static assets (images, CSS, JavaScript) to a CDN dramatically reduces the load on the gateway and backend servers, improving page load times for users globally.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Rate Limiting &amp;amp; Authentication:&lt;/strong&gt; Placing rate limiting and authentication logic in a separate service, and offloading those requests &lt;em&gt;before&lt;/em&gt; they hit the backend, protects core backend services from abuse.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices Architectures:&lt;/strong&gt; In a microservices environment, a gateway can offload traffic to different microservices based on request type or content, improving microservice independence and scalability. Also, can provision resources based on predicted or measured load.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Peak Traffic Management:&lt;/strong&gt; Duplicating backend functionality or utilizing read-replicas and switching traffic during peak loads, offloaded by the gateway, ensures high availability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Complex Data Transformations:&lt;/strong&gt; Offloading CPU-intensive data transformations, such as image resizing or video transcoding, to dedicated processing units prevents the gateway from becoming a bottleneck.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cloudflare:&lt;/strong&gt; Cloudflare operates as a reverse proxy and provides extensive gateway offloading features. It caches static content globally, handles DDoS protection, offers web application firewall (WAF) capabilities, and can route traffic based on various criteria, all relieving the origin server&amp;rsquo;s load. Their &amp;ldquo;Workers&amp;rdquo; feature allows running code at the edge.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Amazon API Gateway with Lambda Integrations:&lt;/strong&gt; Amazon API Gateway can offload functionalities like authentication, authorization, request validation, and rate limiting. Additionally, it can integrate with AWS Lambda functions to perform serverless processing, distributing the computational burden away from the core API backend.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Netflix:&lt;/strong&gt; Netflix uses various CDNs (like Akamai and Open Connect) to deliver streaming content to users worldwide. This offloads the significant bandwidth requirements from their origin servers and improves the viewing experience. Their Zuul gateway offloads authentication and routing.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kong Gateway:&lt;/strong&gt; Kong Gateway is an open-source API gateway that provides plugins for offloading functionalities such as authentication, authorization, rate limiting, and request transformation. It can integrate with various upstream services and backends.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Write-Behind Cache</title><link>http://www.swpatterns.com/pattern/write-behind_cache/</link><pubDate>Fri, 27 Oct 2023 10:00:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/write-behind_cache/</guid><description>
+&lt;p&gt;The Write-Behind Cache pattern improves performance by allowing operations that modify data to complete quickly, without the latency associated with directly updating persistent storage. Instead of synchronously writing to the database or file system, modifications are first applied to the cache, and a background process handles the eventual persistence of these changes. This decoupling significantly reduces response times for write-heavy operations.&lt;/p&gt;
+&lt;p&gt;This pattern is especially useful in scenarios where the cost of writing data is high – for example, communicating with a remote database, writing to slow storage, or triggering expensive operations. It depends on the assumption that the cache is sufficiently durable to survive short-term failures, and that eventual consistency is acceptable for the data in question. The cache needs a mechanism to handle potential failures during the background write process, such as retries or logging.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;High-traffic web applications:&lt;/strong&gt; Caching user session data, frequently accessed objects, or API responses to reduce database load and improve responsiveness.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content Management Systems (CMS):&lt;/strong&gt; Buffering content updates to minimize the impact on content delivery during peak hours.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial transactions:&lt;/strong&gt; If immediate consistency isn&amp;rsquo;t crucial, batching and asynchronously persisting transaction details.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event processing systems:&lt;/strong&gt; Accumulating events in a cache before persisting them to an event store.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Redis:&lt;/strong&gt; A popular in-memory data store often used as a cache. Redis supports various eviction policies, but when used as a write-behind cache, it relies on its AOF (Append Only File) or RDB (Redis Database) persistence mechanisms to be asynchronously written to disk, after the client receives acknowledgment.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hibernate (Second Level Cache):&lt;/strong&gt; The Hibernate object-relational mapping (ORM) framework provides a second-level cache that can be configured to use a write-behind strategy. Instead of immediately writing changes to the database, Hibernate stores them in the cache and periodically flushes them to the database, alleviating load during many updates.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Operating System Disk Caching:&lt;/strong&gt; Operating systems extensively use write-behind caching for disk I/O. When an application writes data to a file, the operating system typically caches the changes in memory and writes them to the physical disk in the background. This improves the overall system performance.&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

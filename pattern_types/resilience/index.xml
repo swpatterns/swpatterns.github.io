@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Resilience Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/resilience/</link><description>Recent content in Resilience Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:54:32 -0800</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/resilience/index.xml" rel="self" type="application/rss+xml"/><item><title>Retry with Backoff</title><link>http://www.swpatterns.com/pattern/retry_with_backoff/</link><pubDate>Thu, 29 Feb 2024 16:54:32 -0800</pubDate><guid>http://www.swpatterns.com/pattern/retry_with_backoff/</guid><description>
+&lt;p&gt;The Retry with Backoff pattern is a resilience strategy that automatically retries a failed operation after waiting for an increasing amount of time. This is particularly useful when dealing with transient failures, such as network glitches, temporary service unavailability, or resource contention. The &amp;ldquo;backoff&amp;rdquo; component prevents overwhelming the failing service with repeated requests in rapid succession, giving it time to recover.&lt;/p&gt;
+&lt;p&gt;This pattern enhances the robustness of applications by gracefully handling temporary issues without requiring immediate intervention. It improves user experience by minimizing disruptions and increasing the likelihood of successful operation completion. The backoff strategy can be linear, exponential, or based on a jitter function to avoid synchronized retries from multiple clients.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Network Requests:&lt;/strong&gt; Handling unreliable network connections by retrying HTTP requests with increasing delays. This is crucial for building distributed systems or applications interacting with external APIs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Operations:&lt;/strong&gt; Retrying database transactions that might fail due to deadlocks, temporary locking, or connection issues.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Message Queues:&lt;/strong&gt; Retrying sending messages to or consuming messages from message queues that might experience temporary outages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cloud Service Interactions:&lt;/strong&gt; Interacting with cloud services (e.g., storage, compute) that may have rate limits or occasional availability problems.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python &lt;code&gt;requests&lt;/code&gt; library:&lt;/strong&gt; The &lt;code&gt;requests&lt;/code&gt; library includes built-in retry mechanisms (often used with the &lt;code&gt;retry&lt;/code&gt; package) that can be configured with exponential backoff. This helps ensure that HTTP requests succeed even in the face of temporary network issues or server overloads.&lt;/p&gt;
+&lt;p&gt;python
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry&lt;/p&gt;
+&lt;p&gt;retry_strategy = Retry(
+total=3,
+backoff_factor=0.5,
+status_forcelist=[429, 500, 502, 503, 504],
+method_whitelist=[&amp;ldquo;HEAD&amp;rdquo;, &amp;ldquo;GET&amp;rdquo;, &amp;ldquo;PUT&amp;rdquo;, &amp;ldquo;DELETE&amp;rdquo;, &amp;ldquo;OPTIONS&amp;rdquo;, &amp;ldquo;TRACE&amp;rdquo;, &amp;ldquo;POST&amp;rdquo;]
+)&lt;/p&gt;
+&lt;p&gt;adapter = HTTPAdapter(max_retries=retry_strategy)
+http = requests.Session()
+http.mount(&amp;ldquo;https://&amp;rdquo;, adapter)
+http.mount(&amp;ldquo;http://&amp;rdquo;, adapter)&lt;/p&gt;
+&lt;p&gt;response = http.get(&amp;ldquo;&lt;a href="https://example.com/api/data%22"&gt;https://example.com/api/data&amp;quot;&lt;/a&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AWS SDKs (e.g., boto3 for Python):&lt;/strong&gt; AWS SDKs automatically implement retry logic with exponential backoff for many API calls. The SDKs are configured to retry failed requests a certain number of times, increasing the delay between each attempt. This simplifies error handling for developers working with AWS services.&lt;/p&gt;
+&lt;p&gt;python
+import boto3&lt;/p&gt;
+&lt;p&gt;s3 = boto3.client(&amp;lsquo;s3&amp;rsquo;)&lt;/p&gt;
+&lt;p&gt;try:
+response = s3.get_object(Bucket=&amp;lsquo;my-bucket&amp;rsquo;, Key=&amp;lsquo;my-key&amp;rsquo;)
+except s3.exceptions.NoSuchKey:
+print(&amp;ldquo;Key not found&amp;rdquo;)
+except Exception as e:
+print(f&amp;quot;An error occurred: {e}&amp;rdquo;) #The SDK handles the retries internally.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Load Shedding</title><link>http://www.swpatterns.com/pattern/load_shedding/</link><pubDate>Thu, 29 Feb 2024 18:35:12 +0000</pubDate><guid>http://www.swpatterns.com/pattern/load_shedding/</guid><description>
+&lt;p&gt;Load shedding is a mechanism for gracefully handling overload situations in a system. When demand exceeds available resources (CPU, memory, network, database connections, etc.), a load shedding strategy is employed to selectively reject or delay requests, preventing the system from complete failure. It prioritizes critical functionality over non-essential features, ensuring core services remain operational even under stress. Rather than crashing or becoming unresponsive, the system actively manages the load by temporarily sacrificing less important operations.&lt;/p&gt;
+&lt;p&gt;This pattern is crucial for building resilient systems that can withstand unexpected traffic spikes or resource constraints. Effective load shedding involves identifying critical and non-critical services, implementing thresholds for resource usage, and defining a clear policy for dropping or delaying requests. The goal is to maintain a reasonable level of service for the most important functions, even if it means temporarily degrading or denying access to others.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Load shedding is used in a variety of scenarios, including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sudden Traffic Spikes:&lt;/strong&gt; E-commerce websites during flash sales, online gaming platforms during popular events, or news sites during breaking news.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Downstream Service Outages:&lt;/strong&gt; When a dependency becomes unavailable, preventing a cascading failure.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Exhaustion:&lt;/strong&gt; When CPU, memory, or database connections are at their limit.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Preventing Denial-of-Service (DoS) Attacks:&lt;/strong&gt; Briefly rejecting requests to mitigate the impact of malicious traffic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Maintaining User Experience:&lt;/strong&gt; Prioritizing requests that impact user-facing responsiveness.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Netflix:&lt;/strong&gt; Netflix employs sophisticated load shedding techniques to handle massive user traffic. When their systems are under heavy load, they might temporarily reduce the quality of video streams for some users, delay non-critical updates to their recommendation engine, or return a &amp;ldquo;try again later&amp;rdquo; message for less important features. This ensures that the core streaming functionality remains available to the majority of users.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AWS Auto Scaling Groups with Termination Policies:&lt;/strong&gt; AWS Auto Scaling Groups allow you to automatically adjust the number of EC2 instances based on demand. However, when scaling down (reducing instances) due to cost or reduced load, a &lt;em&gt;termination policy&lt;/em&gt; determines which instances are removed. Common policies include &lt;code&gt;OldestLaunchTemplate&lt;/code&gt;, &lt;code&gt;OldestInstance&lt;/code&gt;, or &lt;code&gt;Default&lt;/code&gt;. These policies act as a form of load shedding; the service sheds load by removing less &amp;ldquo;important&amp;rdquo; (e.g., older) instances to maintain capacity for the most critical requests. The selection of which instance to terminate directly affects which load gets shed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redis Maxmemory Policy&lt;/strong&gt;: Redis allows you to configure a maximum memory usage (&lt;code&gt;maxmemory&lt;/code&gt;). When Redis reaches this limit, it applies a configured &lt;em&gt;eviction policy&lt;/em&gt; (e.g., &lt;code&gt;volatile-lru&lt;/code&gt;, &lt;code&gt;allkeys-lru&lt;/code&gt;, &lt;code&gt;random-approx-srcmapcount&lt;/code&gt;). These policies determine which keys are removed to free up memory and prevent Redis from crashing. Removing keys is a form of load shedding, forfeiting access to invalidated data to maintain server availability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Idempotent Receiver</title><link>http://www.swpatterns.com/pattern/idempotent_receiver/</link><pubDate>Thu, 29 Feb 2024 16:52:30 +0000</pubDate><guid>http://www.swpatterns.com/pattern/idempotent_receiver/</guid><description>
+&lt;p&gt;The Idempotent Receiver is a pattern used in distributed systems to ensure that a receiver can safely reprocess the same message multiple times without causing unintended side effects. This is crucial in scenarios where message delivery is not guaranteed – a message might be retried due to network issues or receiver failures. The core idea is that the receiver must track which messages it has already processed and ignore duplicates.&lt;/p&gt;
+&lt;p&gt;This pattern heavily relies on a unique identifier associated with each message. The receiver uses this identifier to determine if the message has already been applied. If it has, the receiver simply acknowledges receipt without reprocessing. If it&amp;rsquo;s a new message, the receiver applies the changes and then records the identifier as being processed, guaranteeing future idempotency. This often assumes the operation indicated by the message &lt;em&gt;is&lt;/em&gt; idempotent.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Idempotent Receiver pattern is commonly used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Event-Driven Architectures:&lt;/strong&gt; When building systems based on events, ensuring that event handlers can handle duplicate events is essential for data consistency.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices Communication:&lt;/strong&gt; In a microservices environment, messages are frequently exchanged between services. Network issues can lead to message duplication, so each service should be an idempotent receiver.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Transactions:&lt;/strong&gt; Processing financial transactions requires absolute accuracy. Idempotency ensures that a duplicate transaction request doesn&amp;rsquo;t result in double charging or incorrect account balances.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Asynchronous Task Processing:&lt;/strong&gt; When tasks are submitted asynchronously (e.g., to a queue), idempotency guarantees that a task is executed only once, even if the submission message is retried.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apache Kafka with Exactly-Once Semantics:&lt;/strong&gt; Kafka, a distributed streaming platform, offers exactly-once semantics for processing records. This is largely achieved through idempotent producer and consumer configurations. The consumer tracks offsets and can ensure each message isn&amp;rsquo;t processed more than once within a partition, effectively acting as an idempotent receiver.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AWS SQS with Deduplication:&lt;/strong&gt; Amazon Simple Queue Service (SQS) provides a message deduplication feature. When enabled, SQS will identify and remove duplicate messages from the queue based on a message grouping ID and a deduplication ID. The consuming application then benefits from receiving each logical message only once.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Stripe API:&lt;/strong&gt; The Stripe API is designed to be idempotent. When making a request (e.g., creating a charge), you can supply an &lt;code&gt;idempotencyKey&lt;/code&gt;. Stripe will guarantee that even if the same request with the same key is sent multiple times, it will only be processed once, preventing accidental double charges.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Rate Limiting</title><link>http://www.swpatterns.com/pattern/rate_limiting/</link><pubDate>Thu, 29 Feb 2024 16:34:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/rate_limiting/</guid><description>
+&lt;p&gt;Rate limiting is a technique used to control the rate at which users or systems can access a resource. This is crucial for preventing abuse, ensuring service availability, and protecting backend systems from overload. By limiting the number of requests within a specific timeframe, rate limiting helps to maintain a stable and reliable system, especially under high load.&lt;/p&gt;
+&lt;p&gt;The pattern typically involves tracking requests from a specific source (e.g., IP address, user ID, API key) and enforcing a defined limit. When the limit is exceeded, the system responds with an error, such as a 429 &amp;ldquo;Too Many Requests&amp;rdquo; HTTP status code, or may temporarily block the offending source. Effective rate limiting requires careful consideration of the appropriate limits, tracking mechanisms, and error handling strategies based on the specific needs of the application and anticipated usage patterns.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Rate limiting is commonly used in a variety of scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Public APIs:&lt;/strong&gt; Protecting APIs from excessive calls by malicious actors or poorly written clients.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web Scraping Prevention:&lt;/strong&gt; Discouraging automated scraping of websites by limiting the number of requests from a single IP address.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Brute-Force Attack Mitigation:&lt;/strong&gt; Preventing attackers from repeatedly trying to guess passwords by limiting login attempts.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Protection:&lt;/strong&gt; Safeguarding expensive or limited resources, such as database queries or third-party service calls.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices Architecture:&lt;/strong&gt; Controlling the flow of requests between microservices to prevent cascading failures.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Account Protection:&lt;/strong&gt; Limiting actions like password resets or email sending to prevent abuse of user accounts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Twitter API:&lt;/strong&gt; Twitter employs rate limiting extensively for its API. Different API endpoints have different rate limits, which are documented for developers. These limits are based on factors like authentication type (application-only vs. user-context) and endpoint usage. The API returns specific rate limit headers with each response, informing developers how many requests they have remaining and when the limits will reset.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;GitHub API:&lt;/strong&gt; Similar to Twitter, GitHub also uses rate limiting to protect its API. GitHub&amp;rsquo;s rate limits are based on authenticated vs. unauthenticated requests, with authenticated requests receiving significantly higher limits. They provide detailed documentation on their rate limits and how to handle 403 errors (which indicate rate limiting) using the &lt;code&gt;X-RateLimit-Remaining&lt;/code&gt; and &lt;code&gt;X-RateLimit-Reset&lt;/code&gt; headers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redis RateLimiter:&lt;/strong&gt; The Redis RateLimiter library (available in multiple languages) provides a flexible and scalable way to implement rate limiting using Redis as a storage backend. It allows defining rate limits based on various keys (e.g., user ID, IP address) and uses Redis&amp;rsquo;s atomic operations to ensure accurate request counting and limit enforcement. This is often used in microservices architectures where a centralized rate limiting service is needed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Sacrificial Architecture</title><link>http://www.swpatterns.com/pattern/sacrificial_architecture/</link><pubDate>Thu, 29 Feb 2024 14:37:52 +0000</pubDate><guid>http://www.swpatterns.com/pattern/sacrificial_architecture/</guid><description>
+&lt;p&gt;Sacrificial Architecture is a resilience pattern where non-critical components are intentionally designed as single points of failure, allowing them to be quickly replaced or rebuilt in the event of an outage. The goal isn&amp;rsquo;t to make these components &lt;em&gt;reliable&lt;/em&gt;, but to make their &lt;em&gt;failure&lt;/em&gt; cheap and fast, protecting the critical core systems. This approach prioritizes the availability of essential services by absorbing potentially damaging traffic or operations into expendable parts of the system.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful in scenarios involving unpredictable or malicious traffic, such as denial-of-service (DoS) attacks or rapid feature deployments with uncertain load characteristics. By designating certain components as sacrificial, the system can isolate impact, shed load, and ensure the continued operation of other vital functions. Instead of scaling everything, scale the sacrificial components &lt;em&gt;just enough&lt;/em&gt; to buy time and gather learning.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DoS/DDoS Mitigation:&lt;/strong&gt; Sacrificial layers can absorb large volumes of malicious traffic, preventing it from reaching core services. These layers are designed to be easily scaled up (and down) or replaced as needed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Initial Feature Rollouts:&lt;/strong&gt; When launching a new feature, a sacrificial component can handle the initial surge of traffic, allowing observation and automated scaling/rollback of the feature&amp;rsquo;s underlying services without impacting existing users.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Import/Processing:&lt;/strong&gt; A sacrificial worker process can be used to handle potentially problematic data imports. If the process fails due to the data, it&amp;rsquo;s quickly restarted, ideally with data validation improvements, without bringing down the main application.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spike Arrest:&lt;/strong&gt; A deliberately thin sacrificial service can be placed in front of resources to throttle sudden spikes in requests, giving backend systems time to respond.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cloudflare&amp;rsquo;s DDoS Protection:&lt;/strong&gt; Cloudflare utilizes a tiered, sacrificial architecture for DDoS mitigation. Initial attack traffic is absorbed by their highly scalable edge network (the &amp;ldquo;sacrificial layer&amp;rdquo;). This network isn&amp;rsquo;t designed to be inherently &lt;em&gt;resistant&lt;/em&gt; to massive attacks, but is designed to be cheaply and rapidly scaled to absorb them, giving Cloudflare time to analyze the attack and implement more sophisticated mitigation strategies for their customers&amp;rsquo; core infrastructure.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AWS Shield Standard &amp;amp; Advanced:&lt;/strong&gt; AWS Shield provides DDoS protection. Standard is a &amp;ldquo;best effort&amp;rdquo; defense. Advanced, which blends traffic scrubbing and sacrificial capacity, is designed to absorb and mitigate even large-scale attacks. The sacrificial component here is AWS’s capacity to redirect and handle the attack traffic away from the origin server.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kafka Connect with Fault Tolerance:&lt;/strong&gt; Kafka Connect workers can be seen as sacrificial in a highly available architecture. If a worker fails while processing data, the connector task is automatically reassigned to another worker. The first worker is &amp;ldquo;sacrificed&amp;rdquo; to maintain the data pipeline&amp;rsquo;s overall continuity, whilst offering an opportunity to diagnose the root cause of the failure.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Bulkhead</title><link>http://www.swpatterns.com/pattern/bulkhead/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/bulkhead/</guid><description>
+&lt;p&gt;The Bulkhead pattern isolates parts of an application from each other, preventing failures in one part from cascading and bringing down the entire system. It&amp;rsquo;s inspired by the compartmentalization of a ship&amp;rsquo;s hull – if one section is breached, the bulkheads prevent the flooding from spreading to the rest of the vessel. In software, this is achieved by limiting the resources (e.g., threads, connections) that a particular operation can consume.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Bulkheads are commonly used in microservice architectures to protect against cascading failures. If one microservice becomes slow or unavailable, a bulkhead prevents that issue from exhausting resources in other services that depend on it. They are also useful in applications that interact with external systems, such as databases or third-party APIs, where unpredictable behavior can occur. Specifically, bulkheads are applied to:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Protecting critical functionality:&lt;/strong&gt; Isolating core features from less important ones.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Managing dependencies:&lt;/strong&gt; Limiting the impact of failures in dependent services.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Controlling resource usage:&lt;/strong&gt; Preventing a single operation from monopolizing resources.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Improving responsiveness:&lt;/strong&gt; Maintaining performance for other operations even when one is experiencing issues.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hystrix (Netflix):&lt;/strong&gt; Hystrix is a widely known resilience library that implements the Bulkhead pattern (along with others like Circuit Breaker). It allows developers to define thread pools or semaphore-based limits for calls to remote services. If a service call exceeds the configured limit, Hystrix will reject further requests, preventing resource exhaustion. Netflix used Hystrix extensively to manage the complexity of their microservice-based streaming platform.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Resilience4j (Java):&lt;/strong&gt; Resilience4j is a lightweight, fault-tolerance library that provides implementations of various resilience patterns, including Bulkhead. It offers both thread pool and semaphore-based bulkheads, allowing developers to choose the most appropriate approach for their needs. It&amp;rsquo;s used in many Java-based applications to improve stability and responsiveness.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Istio (Service Mesh):&lt;/strong&gt; Istio, a popular service mesh, can implement bulkhead patterns through features like connection pooling and request rate limiting. By configuring these features, operators can limit the number of concurrent connections or requests to a specific service, effectively creating a bulkhead to protect other services from overload.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Bulkhead Cache</title><link>http://www.swpatterns.com/pattern/bulkhead_cache/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/bulkhead_cache/</guid><description>
+&lt;p&gt;The Bulkhead Cache pattern enhances system resilience by isolating a shared, potentially unreliable resource – a cache – from the rest of the application. It achieves this by limiting the number of concurrent requests that can access the cache. If the cache is slow or fails, the bulkhead prevents cascading failures by allowing a managed fallback, typically to a slower, more reliable data source.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;This pattern is particularly useful in microservice architectures where multiple services rely on a common caching layer. It protects downstream services from being overwhelmed by cache issues. It’s also applicable in monolithic applications facing high load or dealing with third-party cache providers that have performance SLAs. Specifically helpful when caching dependencies have unpredictable latency or availability.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Netflix Hystrix:&lt;/strong&gt; Netflix&amp;rsquo;s Hystrix library pioneered the bulkhead pattern, and included specific support for caching. Hystrix would wrap cache access with a thread pool or semaphore to limit concurrency, and provided mechanisms to fall back to data sources when the cache was unavailable or response times exceeded a threshold. It is a common implementation in Java microservices for rate limiting and failure isolation of cache access.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redis with Lettuce/Jedis:&lt;/strong&gt; When using Redis as a cache in Java applications, libraries like Lettuce or Jedis can be configured with connection pools. While primarily for connection management, limiting the pool size effectively creates a bulkhead. If Redis becomes unresponsive, it prevents the application from exhausting all connections, allowing a controlled fallback and preventing total application outage. Specifically, you can configure maximum pooled connections to bound resource usage.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Fallback</title><link>http://www.swpatterns.com/pattern/fallback/</link><pubDate>Mon, 29 Jan 2024 16:52:13 +0000</pubDate><guid>http://www.swpatterns.com/pattern/fallback/</guid><description>
+&lt;p&gt;The Fallback pattern provides a secondary mechanism to fulfill a request when the primary attempt fails. It&amp;rsquo;s a key component in building resilient systems, ensuring continued operation even in the face of partial failures. This pattern doesn&amp;rsquo;t actively &lt;em&gt;prevent&lt;/em&gt; failure, but gracefully handles it by switching to an alternative, potentially less feature-rich, but still functional solution.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Fallback pattern is frequently used in microservice architectures to handle service outages. If one service is unavailable, a fallback mechanism can route requests to a different service capable of providing a similar, albeit potentially limited, response. It also appears in network programming, where alternate routes or data sources are used when a connection fails, and in user interface development, to show default content when dynamic content fails to load. Caching strategies often employ fallbacks to provide stale but accessible data during cache misses or failures.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hystrix (Netflix):&lt;/strong&gt; Netflix&amp;rsquo;s Hystrix library heavily utilizes the Fallback pattern (via Command pattern integration). When a service call wrapped in a Hystrix command times out or throws an exception, Hystrix automatically invokes a pre-defined fallback method. This method could return cached data, a default response, or simply log the error while preventing cascading failures.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;GraphQL with DataLoader:&lt;/strong&gt; DataLoader (used with GraphQL) fetches potentially resource-intensive data. If a cache lookup fails, DataLoader can have a fallback strategy, such as querying a database directly. If the database is also unavailable, DataLoader can be configured to return default values or throw a more graceful error than an unhandled database exception.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Circuit Breaker</title><link>http://www.swpatterns.com/pattern/circuit_breaker/</link><pubDate>Fri, 27 Oct 2023 10:00:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/circuit_breaker/</guid><description>
+&lt;p&gt;The Circuit Breaker pattern protects a system from repeated failures of a dependent service. It monitors calls to the dependency and, upon observing a certain failure rate, &amp;ldquo;opens the circuit&amp;rdquo; to prevent further requests from being sent. This allows the dependent service to recover without being overwhelmed, while also providing a fallback mechanism for the client. After a timeout period, the circuit transitions to a &amp;ldquo;half-open&amp;rdquo; state, allowing a limited number of test requests to pass through. If those requests succeed, the circuit is &amp;ldquo;closed&amp;rdquo; again; otherwise, it remains open.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Circuit Breaker pattern is commonly used in microservices architectures to handle failures between services. It&amp;rsquo;s also valuable when integrating with third-party APIs that may be unreliable or have limited availability. Another core usage is in distributed systems where network latency or partitions increase the chance of cascading failures. Modern implementations are also commonly found in cloud-native applications, where services scale dynamically and the risk of transient errors is higher.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hystrix (Netflix):&lt;/strong&gt; Netflix&amp;rsquo;s Hystrix library was a popular implementation of the Circuit Breaker pattern for isolating dependencies in distributed systems. Though no longer actively maintained, it heavily influenced other implementations. Hystrix allowed developers to define thread pools, failure thresholds, and fallback commands to handle service outages gracefully.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Resilience4j (Java):&lt;/strong&gt; Resilience4j is a lightweight, fault-tolerance library designed for building resilient microservices. It provides a Circuit Breaker module along with other resilience patterns like Retry, RateLimiter, Bulkhead, and TimeLimiter, all configurable via code or configuration files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Polly (.NET):&lt;/strong&gt; Polly is a .NET resilience and transient-fault-handling library. It offers a fluent API to easily define and apply various policies, including a Circuit Breaker policy, to protect against failures in remote calls.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

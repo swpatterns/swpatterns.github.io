@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Object Structural Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/object-structural/</link><description>Recent content in Object Structural Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:10:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/object-structural/index.xml" rel="self" type="application/rss+xml"/><item><title>Proxy</title><link>http://www.swpatterns.com/pattern/proxy/</link><pubDate>Thu, 29 Feb 2024 16:10:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/proxy/</guid><description>
+&lt;p&gt;The Proxy pattern provides a surrogate or placeholder for another object to control access to it. This can be used to add functionality before or after the original object&amp;rsquo;s method is executed, or to simply delay the creation or access of the expensive object until it&amp;rsquo;s actually needed. It essentially manages access to an object, allowing for features like security checks, lazy loading, or remote access.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Proxy pattern is commonly used in scenarios such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Remote Proxies:&lt;/strong&gt; When accessing objects across a network, a proxy can handle the communication and complexities of the remote connection.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Virtual Proxies:&lt;/strong&gt; For objects that are expensive to create (e.g., large images or complex data structures), a proxy can load them on demand.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Protection Proxies:&lt;/strong&gt; Controlling access to an object based on permissions or security constraints. A proxy can decide whether or not a client is allowed to use the original object.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smart References:&lt;/strong&gt; Adding logging, caching, or other side-effects to object access.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caching:&lt;/strong&gt; Acting as a cache for an expensive operation, returning cached results if available and only invoking the real object when necessary.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript Proxies (ES6):&lt;/strong&gt; JavaScript&amp;rsquo;s &lt;code&gt;Proxy&lt;/code&gt; object provides a meta-programming functionality that allows intercepting fundamental operations on objects, such as getting or setting properties. This is effectively a proxy pattern for controlling object access.&lt;/p&gt;
+&lt;p&gt;javascript
+const target = { message: &amp;ldquo;Hello&amp;rdquo; };
+const handler = {
+get: function(target, prop, receiver) {
+console.log(&lt;code&gt;Property ${prop} accessed&lt;/code&gt;);
+return Reflect.get(target, prop, receiver);
+},
+};&lt;/p&gt;
+&lt;p&gt;const proxy = new Proxy(target, handler);
+console.log(proxy.message); // Logs &amp;ldquo;Property message accessed&amp;rdquo; and then &amp;ldquo;Hello&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hibernate Lazy Loading (Java):&lt;/strong&gt; In the Hibernate Java ORM framework, relationships between entities are often loaded lazily using proxies. When a related entity is accessed for the first time, Hibernate intercepts the access through a proxy and loads the entity from the database only then. This improves performance by avoiding unnecessary data loading.&lt;/p&gt;
+&lt;p&gt;java
+// Assume &amp;lsquo;Customer&amp;rsquo; has a &amp;lsquo;address&amp;rsquo; field that is lazily loaded
+Customer customer = session.get(Customer.class, 1);
+String street = customer.getAddress().getStreet(); // Address is only loaded when accessed&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

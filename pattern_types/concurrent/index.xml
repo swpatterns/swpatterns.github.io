@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Concurrent Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/concurrent/</link><description>Recent content in Concurrent Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/concurrent/index.xml" rel="self" type="application/rss+xml"/><item><title>Fire-and-Forget</title><link>http://www.swpatterns.com/pattern/fire-and-forget/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/fire-and-forget/</guid><description>
+&lt;p&gt;The Fire-and-Forget pattern is a style of concurrency where a task is submitted to an executor and the calling code does not wait for the task to complete. It’s often used when invoking an asynchronous operation and the result of that operation isn’t immediately needed or is handled elsewhere. Essentially, you &amp;ldquo;fire&amp;rdquo; the task and &amp;ldquo;forget&amp;rdquo; about it, relying on the executor to manage its execution. This is intended primarily for situations where side effects are the primary goal, and not a return value.&lt;/p&gt;
+&lt;p&gt;This pattern promotes loose coupling, as the caller doesn&amp;rsquo;t need to know the details of the task&amp;rsquo;s execution. However, it can make error handling more challenging, since the caller isn’t directly aware of failures. Robust implementations often employ mechanisms like logging, callbacks, or separate monitoring systems to track potentially failed tasks. It’s generally suited for non-critical operations where occasional failures are acceptable or easily recoverable.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Fire-and-Forget pattern is commonly used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Event Handling:&lt;/strong&gt; Triggering events without waiting for subscribers to process them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logging:&lt;/strong&gt; Writing log messages without blocking the main application flow.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Background Processing:&lt;/strong&gt; Offloading tasks like sending emails, generating reports, or performing data analytics to be handled without user intervention.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UI Updates:&lt;/strong&gt; Initiating asynchronous updates to the user interface to maintain responsiveness.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Telemetry and Analytics:&lt;/strong&gt; Sending usage data to a server without blocking the user&amp;rsquo;s experience.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Android &lt;code&gt;AsyncTask&lt;/code&gt; (deprecated):&lt;/strong&gt; In older versions of Android, &lt;code&gt;AsyncTask&lt;/code&gt; provided a way to perform background operations without blocking the UI thread. While deprecated, it illustrated the pattern: you’d &amp;rsquo;execute&amp;rsquo; a task and not directly wait for its result. The result was typically delivered to UI elements via a callback mechanism (e.g., &lt;code&gt;onPostExecute&lt;/code&gt;). The fact that &lt;code&gt;AsyncTask&lt;/code&gt; allowed cancelling the task, but didn&amp;rsquo;t &lt;em&gt;require&lt;/em&gt; the caller to check the cancellation status demonstrates the &amp;ldquo;forget&amp;rdquo; aspect.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Node.js Event Emitter:&lt;/strong&gt; Node.js’s &lt;code&gt;EventEmitter&lt;/code&gt; class embodies the Fire-and-Forget pattern. When an event is emitted (e.g., &lt;code&gt;emitter.emit('data', data)&lt;/code&gt;), any registered listeners are called asynchronously. The code emitting the event doesn&amp;rsquo;t wait for the listeners to finish processing the data; it simply fires the event and continues execution. This is fundamental to Node.js&amp;rsquo;s non-blocking I/O model.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java’s &lt;code&gt;CompletableFuture.runAsync()&lt;/code&gt;:&lt;/strong&gt; Java’s &lt;code&gt;CompletableFuture&lt;/code&gt; class offers a flexible way to handle asynchronous operations. The &lt;code&gt;runAsync()&lt;/code&gt; method submits a &lt;code&gt;Runnable&lt;/code&gt; to an executor service. The caller doesn&amp;rsquo;t block while the &lt;code&gt;Runnable&lt;/code&gt; executes and there&amp;rsquo;s no direct return value &amp;ndash; a true fire-and-forget scenario. You can optionally provide a &lt;code&gt;Consumer&lt;/code&gt; to handle completion or errors if needed but those are handeled after the fact.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

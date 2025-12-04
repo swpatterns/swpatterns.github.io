@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Idiomatic Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/idiomatic/</link><description>Recent content in Idiomatic Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/idiomatic/index.xml" rel="self" type="application/rss+xml"/><item><title>Convention over Configuration</title><link>http://www.swpatterns.com/pattern/convention_over_configuration/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/convention_over_configuration/</guid><description>
+&lt;p&gt;Convention over Configuration (CoC) is an architectural and programming philosophy that aims to reduce the number of decisions that developers need to make, gaining simplicity. Instead of developers specifying every configuration detail, the software framework or library provides sensible defaults and requires developers to explicitly deviate from those defaults only when necessary. This minimizes boilerplate code, speeds up development, and improves consistency.&lt;/p&gt;
+&lt;p&gt;CoC promotes a clear and predictable structure, making code easier to understand and maintain. By reducing the need for extensive configuration, it lowers the cognitive load on developers, allowing them to focus on the unique aspects of their application rather than wrestling with framework intricacies. It also fosters better collaboration as developers have a shared understanding of how the system is supposed to operate.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Convention over Configuration is widely used in modern frameworks and libraries to streamline development workflows. Common scenarios include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Web Application Frameworks:&lt;/strong&gt; Defining default routes based on controller and action names, naming conventions for models and views, and automatic data binding.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ORM (Object-Relational Mapping) Tools:&lt;/strong&gt; Mapping class names to database table names, property names to column names, and using primary keys based on naming patterns.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Build Tools:&lt;/strong&gt; Applying default build processes, directory structures, and dependency resolution strategies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing Frameworks:&lt;/strong&gt; Expecting test methods to follow specific naming patterns, and automatically discovering tests.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logging Frameworks:&lt;/strong&gt; Adopting a predetermined log format and output destinations by default.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ruby on Rails:&lt;/strong&gt; Rails heavily utilizes CoC. For example, it assumes your database tables are named after your models (e.g., a &lt;code&gt;User&lt;/code&gt; model corresponds to a &lt;code&gt;users&lt;/code&gt; table) and uses a standard directory structure for controllers, models, views, and helpers. Developers only need to explicitly configure deviations from these conventions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Django (Python Web Framework):&lt;/strong&gt; Django follows a similar approach. It encourages developers to organize their projects according to a specific structure and relies on defaults for settings, URLs, and template paths. This reduces the amount of configuration needed to get a basic web application up and running.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spring Boot (Java Framework)&lt;/strong&gt;: Spring Boot simplifies application development by embracing CoC. It automatically configures Spring based on the dependencies present in the project&amp;rsquo;s classpath and provides sensible defaults for common tasks like database connection settings and web server configuration. Developers can override these defaults when required using application properties or YAML files.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Laravel (PHP Framework):&lt;/strong&gt; Laravel uses conventions throughout its architecture. Database migrations, Eloquent ORM relationships, and routing are all based on predefined patterns. This leads to consistent and predictable code, making it easier for developers to work on large projects.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Fluent Interface</title><link>http://www.swpatterns.com/pattern/fluent_interface/</link><pubDate>Sat, 27 Jan 2024 13:32:15 +0000</pubDate><guid>http://www.swpatterns.com/pattern/fluent_interface/</guid><description>
+&lt;p&gt;The Fluent Interface pattern enables the creation of readable and maintainable code by allowing method calls to be chained together. It achieves this by making methods return the object itself (or another builder object) instead of void. This results in a more natural and expressive syntax for configuring or building complex objects, resembling a domain-specific language.&lt;/p&gt;
+&lt;p&gt;This pattern is commonly used for configuring objects with many optional parameters, building objects step-by-step, and creating a more user-friendly API where a sequence of operations can be expressed in a clear and concise manner. It enhances code readability by removing boilerplate and improving the flow of configuration.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Fluent Interface pattern is frequently used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Builder patterns:&lt;/strong&gt; Simplifying the construction of complex objects with numerous parameters.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration APIs:&lt;/strong&gt; Providing a smooth and readable way to configure an object or system. E.g., database connection settings, UI element properties.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Domain-Specific Languages (DSLs):&lt;/strong&gt; Creating a more intuitive and expressive interface for interacting with a specific domain.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing frameworks:&lt;/strong&gt; Enabling a more natural and readable syntax for defining test assertions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Query Builders:&lt;/strong&gt; Constructing database queries using a chainable method approach.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Guava’s &lt;code&gt;FluentTime&lt;/code&gt; (Java):&lt;/strong&gt; Guava’s &lt;code&gt;FluentTime&lt;/code&gt; class offers a fluent interface for manipulating time units. You can chain method calls like &lt;code&gt;plusHours().plusMinutes().toString()&lt;/code&gt; to elegantly express time adjustments. This hides the complexity of &lt;code&gt;DateTime&lt;/code&gt; manipulations behind a readable API.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;jQuery (JavaScript):&lt;/strong&gt; jQuery is a classic example of a fluent interface. You can chain method calls like &lt;code&gt;$(&amp;quot;#myElement&amp;quot;).hide().fadeIn().addClass(&amp;quot;highlight&amp;quot;)&lt;/code&gt; to perform a series of operations on a DOM element in a single, readable statement. Each method returns the jQuery object, allowing for the chainability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Laravel Query Builder (PHP):&lt;/strong&gt; Laravel’s Eloquent ORM provides a fluent query builder. You can chain methods like &lt;code&gt;where()&lt;/code&gt;, &lt;code&gt;orderBy()&lt;/code&gt;, &lt;code&gt;limit()&lt;/code&gt;, and &lt;code&gt;get()&lt;/code&gt; to construct complex database queries in a human-readable way. For example: &lt;code&gt;$users = DB::table('users')-&amp;gt;where('status', 1)-&amp;gt;orderBy('created_at', 'desc')-&amp;gt;get();&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

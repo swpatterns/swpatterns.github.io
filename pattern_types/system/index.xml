@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>System Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/system/</link><description>Recent content in System Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:12:53 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/system/index.xml" rel="self" type="application/rss+xml"/><item><title>Message Bus</title><link>http://www.swpatterns.com/pattern/message_bus/</link><pubDate>Thu, 29 Feb 2024 16:12:53 +0000</pubDate><guid>http://www.swpatterns.com/pattern/message_bus/</guid><description>
+&lt;p&gt;The Message Bus pattern provides a loosely coupled architecture that facilitates communication between different components (services, modules, applications) within a system. It acts as a central intermediary, allowing publishers to send messages without knowing specifically who the subscribers are, and allowing subscribers to receive messages they are interested in without needing to know who publishes them. This decoupling promotes scalability, maintainability, and flexibility.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Message Bus pattern is widely used in modern software architectures, especially in microservices environments and event-driven systems. Common scenarios include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Decoupling Microservices:&lt;/strong&gt; Enabling independent deployment and scaling of services by communicating through asynchronous messages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event Notification:&lt;/strong&gt; Alerting multiple interested components when a specific event occurs (e.g., user registration, order placement).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Data Streaming:&lt;/strong&gt; Distributing data updates to subscribers as they happen (e.g., stock prices, sensor readings).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration of Heterogeneous Systems:&lt;/strong&gt; Connecting applications written in different languages or using different technologies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Orchestration:&lt;/strong&gt; Coordinating complex business processes by passing messages between different steps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RabbitMQ:&lt;/strong&gt; A popular open-source message broker that implements the Advanced Message Queuing Protocol (AMQP). It’s used extensively for decoupling services and handling asynchronous tasks in applications like e-commerce platforms, financial systems, and social networks. Publishers send messages to &lt;em&gt;exchanges&lt;/em&gt;, which route them to queues based on defined &lt;em&gt;bindings&lt;/em&gt;. Subscribers then consume messages from these queues.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Kafka:&lt;/strong&gt; A distributed streaming platform designed for high-throughput, fault-tolerant real-time data feeds. Often employed for collecting and processing large volumes of event data, such as website activity, logs, and sensor data. Kafka uses the concept of &lt;em&gt;topics&lt;/em&gt; (message categories) and &lt;em&gt;partitions&lt;/em&gt; (dividing topics for parallelism). Producers write to topics, and consumers read from them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AWS SQS/SNS:&lt;/strong&gt; Amazon&amp;rsquo;s Simple Queue Service (SQS) and Simple Notification Service (SNS) provide managed message queue and publish/subscribe capabilities, respectively. These services are frequently used in serverless architectures for decoupling Lambda functions and other AWS services. SNS allows for fan-out messaging to multiple SQS queues or other endpoints.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Sidecar</title><link>http://www.swpatterns.com/pattern/sidecar/</link><pubDate>Tue, 21 Nov 2023 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/sidecar/</guid><description>
+&lt;p&gt;The Sidecar pattern involves deploying a secondary process (the “sidecar”) alongside a primary application in a supporting role. This sidecar is typically in a separate container but shares the same lifecycle as the main application, and it enhances the main application with functionality like logging, monitoring, security, or service discovery. Crucially, the sidecar&amp;rsquo;s concerns are distinct from the core business logic of the application, enabling loose coupling and independent scaling.&lt;/p&gt;
+&lt;p&gt;This pattern improves modularity and maintainability by isolating support functions. It&amp;rsquo;s especially beneficial in microservice architectures where consistent implementation of these supporting functions across multiple services can be challenging. The sidecar approach allows teams to focus on developing core application features without being burdened by infrastructure concerns.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Sidecar pattern is commonly used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Microservice Architectures:&lt;/strong&gt; Providing observability features (logging, tracing, metrics) to multiple microservices without requiring each service to implement them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cloud-Native Applications:&lt;/strong&gt; Managing service mesh concerns like traffic routing, load balancing, and security policies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Containerized Environments (Kubernetes):&lt;/strong&gt; Deploying auxiliary services alongside application containers, simplifying configuration and lifecycle management.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Legacy Application Modernization:&lt;/strong&gt; Adding new features or capabilities to older applications without altering their core codebase.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Istio Service Mesh:&lt;/strong&gt; Istio utilizes a sidecar proxy (Envoy) injected alongside each application container. This proxy handles all network communication, providing features like traffic management (routing, retries), security (authentication, authorization), and observability (metrics, tracing) without any code changes to the applications themselves.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Fluentd/Fluent Bit with Kubernetes:&lt;/strong&gt; When deploying applications to Kubernetes, Fluentd or Fluent Bit are often deployed as sidecar containers to collect logs from the application container and forward them to a centralized logging system like Elasticsearch or Splunk. This decouples logging from the application, simplifying operations and allowing for flexible log processing. The applications don’t need specific logging libraries or configurations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ambassador API Gateway:&lt;/strong&gt; Ambassador, similar to Istio, leverages sidecar proxies based on Envoy. Deploying Ambassador as a sidecar allows for API management, authentication, and other gateway functions to be applied to services without service code changes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

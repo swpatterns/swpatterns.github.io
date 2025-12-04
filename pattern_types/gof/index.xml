@@ -1,35 +1,253 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gang of Four on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/gof/</link><description>Recent content in Gang of Four on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 24 Mar 2021 10:30:57 +0100</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/gof/index.xml" rel="self" type="application/rss+xml"/><item><title>Decorator</title><link>http://www.swpatterns.com/pattern/decorator/</link><pubDate>Wed, 24 Mar 2021 10:30:57 +0100</pubDate><guid>http://www.swpatterns.com/pattern/decorator/</guid><description>
-&lt;p>The Decorator pattern enables us to change the behavior of an object by hiding the contained functions and adding new functionalities around it. It is also a common way to avoid the limits of single inheritance by multiple interface implementations (composition over inheritance).&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>This pattern finds its typical use in framework development because it enables the layering of functionalities around a core service.&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;ul>
-&lt;li>Caching in HTTP services can be implemented as a decorator pattern by wrapping the http client within a client that analyzes the requested url and prepares a response&lt;/li>
-&lt;li>Logging and instrumenting methods can be implmented as a decorator that covers the interactions once for all the possible activities.&lt;/li>
-&lt;/ul></description></item><item><title>Composite</title><link>http://www.swpatterns.com/pattern/composite/</link><pubDate>Tue, 23 Mar 2021 11:29:42 +0100</pubDate><guid>http://www.swpatterns.com/pattern/composite/</guid><description>
-&lt;p>The Composite Pattern enables us to collect objects into trees that can be easily explored.
-The Parent represents the access point to the tree, where it in fact will be a Container, usually. The container will be able to contain other Container objects or Leaf objects.&lt;/p>
-&lt;p>Often the sublcasses or the leaves can be instantiated thorugh the various factory patterns.&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>Typical example is the file system. every folder and every single file are files. Folders contain also other files.&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;ul>
-&lt;li>File system&lt;/li>
-&lt;/ul></description></item><item><title>Observer</title><link>http://www.swpatterns.com/pattern/observer/</link><pubDate>Fri, 19 Mar 2021 10:45:34 +0100</pubDate><guid>http://www.swpatterns.com/pattern/observer/</guid><description>
-&lt;p>Oberver Pattern enables the broadcast communication between an event subject, that emits changes to its state to all of its observers.&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>Modern day usage is biased by the existence of rx and the reactive libraries across most important languages. Most modern libraries rely on observables and observers to get the most out of streams.&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;p>The best example both usage and implementation is &lt;a href="http://reactivex.io/">http://reactivex.io/&lt;/a>. In Angular it is very common for data binding matters.&lt;/p></description></item><item><title>Adapter</title><link>http://www.swpatterns.com/pattern/adapter/</link><pubDate>Mon, 15 Mar 2021 13:24:44 +0100</pubDate><guid>http://www.swpatterns.com/pattern/adapter/</guid><description>
-&lt;p>The adapter aims to be a converter between two specific interfaces: one belonging to &amp;ldquo;our&amp;rdquo; side of the application, the other to the library or other tool we need to interact with. This is very important, because it enables us to delay decisions, as the choice of a spcific implementation of the adapter becomes less important due to the fact that we are at that point using the adapter itself as our communication contract.&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>Often used in combo with other patterns, such as [Inversion of Control] and several &lt;a href="http://www.swpatterns.com/pattern_types/factory/">Factories&lt;/a>&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;p>Typical example of this pattern in a &amp;ldquo;pure&amp;rdquo; form is the Driver. Whether it is for printing or for database access, the API exposed by the common development systems just require the connection to the adapter and, with some kind of &lt;a href="http://www.swpatterns.com/pattern_types/factory/">Factory&lt;/a> or repository we get the specific implementation of what we need at the moment, based on the configuration of the system we have.&lt;/p></description></item><item><title>Singleton</title><link>http://www.swpatterns.com/pattern/singleton/</link><pubDate>Mon, 15 Mar 2021 13:24:44 +0100</pubDate><guid>http://www.swpatterns.com/pattern/singleton/</guid><description>
-&lt;p>Singleton design pattern enables us to guarantee unicity and a single entry point for services and accesses. Tipically it requires the standard contructor to be hidden in order to avoid direct instantiation, but modern frameworks use this pattern in conjunction with other &lt;a href="http://www.swpatterns.com/pattern_types/creational/">creational&lt;/a> patterns in order to ease the development of services.&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>Typical usage for the Singleton pattern is the management of a single centralized state with the warranty that nothing that is not part of the singleton interface will touch it.&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;ul>
-&lt;li>Angular services are (per default) singletons. These services are instantiated by the framework and can be used directly through Dependency Injection.&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Gang of Four on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/gof/</link><description>Recent content in Gang of Four on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:23:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/gof/index.xml" rel="self" type="application/rss+xml"/><item><title>Command</title><link>http://www.swpatterns.com/pattern/command/</link><pubDate>Thu, 29 Feb 2024 16:23:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/command/</guid><description>
+&lt;p&gt;The Command pattern encapsulates a request as an object, thereby letting you parameterize clients with different requests, queue or log requests, and support undoable operations. Essentially, it decouples the object that originates the request from the object that knows how to perform it.&lt;/p&gt;
+&lt;p&gt;This pattern promotes loose coupling and makes the system more flexible. It’s particularly useful when you need to manage a history of actions for undo/redo functionality, delay or queue the execution of a request, or when you want to combine basic operations into more complex ones.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Command pattern is widely used in scenarios requiring transaction management, logging, and undo/redo capabilities. It’s core to many editor implementations, allowing for actions like copy, paste, and delete to be tracked and reversed. Modern frameworks often leverage the command pattern, either explicitly or implicitly, for event handling and asynchronous task processing. It&amp;rsquo;s also common in game development for handling player actions.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;GUI Frameworks (e.g., Qt, Swing):&lt;/strong&gt; Most GUI frameworks utilize the Command pattern for handling user interactions. When a user clicks a button, the framework creates a command object representing that action (e.g., &lt;code&gt;FileOpenCommand&lt;/code&gt;, &lt;code&gt;ButtonClickHandler&lt;/code&gt;). This command is then executed by a receiver (e.g., a file system or a widget). This allows for easy undo/redo functionality and event logging.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Database Transactions:&lt;/strong&gt; Database systems internally use a command pattern to manage transactions. Each SQL statement is treated as a command. These commands are bundled into a transaction, and the database engine can then commit or rollback the entire set of commands, ensuring data consistency. An example might be &lt;code&gt;UpdateAccountCommand&lt;/code&gt;, &lt;code&gt;DeleteRecordCommand&lt;/code&gt;, associated with a &lt;code&gt;TransactionManager&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Undo/Redo Systems in Text Editors:&lt;/strong&gt; Text editors like Notepad++ or VS Code use the command pattern so that actions like typing, deleting, or formatting text are all commands. These commands can be stored in a stack for undo/redo functionality. Each command holds enough information (e.g., the deleted text, the old formatting) to reverse its effect.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Interpreter</title><link>http://www.swpatterns.com/pattern/interpreter/</link><pubDate>Thu, 29 Feb 2024 16:23:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/interpreter/</guid><description>
+&lt;p&gt;The Interpreter pattern defines a grammatical representation for a language along with an interpreter that uses this representation to interpret sentences in the language. Essentially, it allows you to build an interpreter for a simple language without resorting to parsing. It promotes handling requests that are structured as language elements.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when you have a language with a simple grammar, and you need to execute statements within that language. Common scenarios include evaluating expressions (e.g., mathematical formulas, logical conditions), processing simple command languages (like a text-based game’s commands), or building rule engines. It shines when the grammar&amp;rsquo;s complexity doesn’t warrant the use of full-fledged parsers and lexers.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Interpreter pattern is used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;SQL Parsers:&lt;/strong&gt; Although full SQL parsers exist, simplified versions can use the Interpreter pattern for basic clause evaluations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Expression Evaluation:&lt;/strong&gt; Evaluating complex mathematical or logical expressions without using &lt;code&gt;eval()&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Files:&lt;/strong&gt; Interpreting configuration files with a defined syntax.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rule Engines:&lt;/strong&gt; Applying a set of rules based on a defined language to a data set.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simple Scripting Languages:&lt;/strong&gt; Implementation of straightforward scripting used in specific domain contexts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python’s &lt;code&gt;ast&lt;/code&gt; module:&lt;/strong&gt; Python&amp;rsquo;s Abstract Syntax Trees (AST) are a lightweight form of interpretation. While not strictly adhering to the traditional Interpreter pattern in a direct, implementation-focused way, it provides a way to represent code as a tree structure that can then be &amp;ldquo;interpreted&amp;rdquo; (executed or analyzed) by other code. The &lt;code&gt;ast&lt;/code&gt; module parses Python source code into an AST, which you can then traverse and evaluate.&lt;/p&gt;
+&lt;p&gt;python
+import ast&lt;/p&gt;
+&lt;p&gt;expression = ast.parse(&amp;ldquo;2 + 3 * 4&amp;rdquo;)&lt;/p&gt;
+&lt;p&gt;def evaluate(node):
+if isinstance(node, ast.Num):
+return node.n
+elif isinstance(node, ast.BinOp):
+left = evaluate(node.left)
+right = evaluate(node.right)
+if isinstance(node.op, ast.Add):
+return left + right
+elif isinstance(node.op, ast.Mult):
+return left * right
+else:
+raise ValueError(&amp;ldquo;Unsupported node type&amp;rdquo;)&lt;/p&gt;
+&lt;p&gt;result = evaluate(expression.body[0].value)
+print(result) # Output: 14&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JSONPath:&lt;/strong&gt; JSONPath is a query language for JSON. It&amp;rsquo;s implemented using an interpreter that traverses the JSON structure based on the path expression. Libraries like &lt;code&gt;jsonpath-ng&lt;/code&gt; in Python use the Interpreter pattern to parse and evaluate JSONPath expressions.&lt;/p&gt;
+&lt;p&gt;python
+from jsonpath_ng.ext import parse&lt;/p&gt;
+&lt;p&gt;json_data = {
+&amp;ldquo;store&amp;rdquo;: {
+&amp;ldquo;book&amp;rdquo;: [
+{&amp;ldquo;category&amp;rdquo;: &amp;ldquo;reference&amp;rdquo;, &amp;ldquo;author&amp;rdquo;: &amp;ldquo;Nigel Rees&amp;rdquo;, &amp;ldquo;title&amp;rdquo;: &amp;ldquo;Sayings of the Century&amp;rdquo;, &amp;ldquo;price&amp;rdquo;: 8.95},
+{&amp;ldquo;category&amp;rdquo;: &amp;ldquo;fiction&amp;rdquo;, &amp;ldquo;author&amp;rdquo;: &amp;ldquo;Evelyn Waugh&amp;rdquo;, &amp;ldquo;title&amp;rdquo;: &amp;ldquo;Sword of Honour&amp;rdquo;, &amp;ldquo;price&amp;rdquo;: 12.99}
+]
+}
+}&lt;/p&gt;
+&lt;p&gt;jsonpath_expression = parse(&amp;rsquo;$.store.book[?category==&amp;ldquo;fiction&amp;rdquo;]..title&amp;rsquo;)
+matches = jsonpath_expression.find(json_data)&lt;/p&gt;
+&lt;p&gt;for match in matches:
+print(match.value) # Output: Sword of Honour&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Template Method</title><link>http://www.swpatterns.com/pattern/template_method/</link><pubDate>Thu, 29 Feb 2024 16:23:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/template_method/</guid><description>
+&lt;p&gt;The Template Method pattern defines the skeleton of an algorithm in a method, deferring some steps to subclasses. It allows one of the algorithm&amp;rsquo;s steps to be overridden by a subclass without changing the algorithm&amp;rsquo;s structure. This promotes code reuse and reduces redundancy by centralizing common logic while providing flexibility for specific variations.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when you have a process with several steps that are largely the same across different scenarios, but certain steps need to be customized. It’s also valuable when you want to enforce a specific order of operations, ensuring consistency while enabling extension. The abstract class implements the overall algorithm, while concrete classes provide implementations for the abstract steps.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Template Method pattern is frequently used in scenarios like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Framework Development:&lt;/strong&gt; Creating the basic structure of a framework where the core logic is defined, and clients fill in the specific details.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Generation:&lt;/strong&gt; Generating reports with a common format, but different sections depending on the type of report.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Processing Pipelines:&lt;/strong&gt; Implementing a pipeline with stages that are consistent but have varying data transformation logic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game Development:&lt;/strong&gt; Defining the basic flow of a game level, but allowing different levels to have their specific events or behaviors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java I/O Streams:&lt;/strong&gt; The &lt;code&gt;InputStream&lt;/code&gt; class in Java employs the Template Method pattern. The &lt;code&gt;read()&lt;/code&gt; method is the template method, defining the overall process of reading data. Subclasses like &lt;code&gt;FileInputStream&lt;/code&gt; and &lt;code&gt;ByteArrayInputStream&lt;/code&gt; override the &lt;code&gt;read()&lt;/code&gt; method to provide the specific implementation for reading from a file or a byte array, respectively. The core logic of handling buffering and error checking remains in the &lt;code&gt;InputStream&lt;/code&gt; class.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django’s Class-Based Views (CBVs):&lt;/strong&gt; Django’s CBVs use this pattern extensively. A base class like &lt;code&gt;View&lt;/code&gt; defines the &lt;code&gt;as_get_view()&lt;/code&gt;, &lt;code&gt;as_post_view()&lt;/code&gt; methods (the template method) outlining the request handling process. Then, different types of views (e.g., &lt;code&gt;DetailView&lt;/code&gt;, &lt;code&gt;ListView&lt;/code&gt;) inherit from &lt;code&gt;View&lt;/code&gt; and override specific methods like &lt;code&gt;get()&lt;/code&gt; or &lt;code&gt;post()&lt;/code&gt; to perform tailored actions. The overall request-response cycle is managed in the base &lt;code&gt;View&lt;/code&gt; class, ensuring consistency across all views.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Scikit-learn Estimators:&lt;/strong&gt; In the Python machine learning library scikit-learn, estimators (like &lt;code&gt;LogisticRegression&lt;/code&gt; or &lt;code&gt;DecisionTreeClassifier&lt;/code&gt;) often follow the Template Method pattern. The &lt;code&gt;fit()&lt;/code&gt; method is a template method that defines the learning process. Subclasses implement more specific fitting algorithms while relying on the common infrastructure and validation mechanisms defined in the base estimator class.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Bridge</title><link>http://www.swpatterns.com/pattern/bridge/</link><pubDate>Thu, 29 Feb 2024 14:56:12 +0000</pubDate><guid>http://www.swpatterns.com/pattern/bridge/</guid><description>
+&lt;p&gt;The Bridge pattern is a structural design pattern that lets you split an interface into separate interfaces. This pattern is useful when you want to avoid a tight coupling between an abstraction and its implementation, allowing you to vary them independently. It’s particularly effective when you anticipate that both the abstraction and implementation will change in different ways.&lt;/p&gt;
+&lt;p&gt;In essence, the Bridge introduces an &lt;code&gt;Implementor&lt;/code&gt; interface which provides the core functionality, and an &lt;code&gt;Abstractor&lt;/code&gt; interface which uses the &lt;code&gt;Implementor&lt;/code&gt; to deliver a higher-level abstraction. This decoupling allows for flexibility and extensibility. Different implementations can be swapped without affecting the abstraction, and vice versa.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Bridge pattern is commonly used in the following scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Database Abstraction:&lt;/strong&gt; When your application needs to work with different database systems (e.g., MySQL, PostgreSQL, Oracle), you can use the Bridge pattern to isolate the database-specific implementation details from the application&amp;rsquo;s core logic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Graphics Rendering:&lt;/strong&gt; When you have different rendering engines (e.g., OpenGL, DirectX, SVG), a Bridge pattern allows you to switch between them easily without altering the code that uses them.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Platform Independence:&lt;/strong&gt; When application logic must be independent of the underlying operating system (Windows, macOS, Linux), the Bridge can separate platform-specific calls.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Message Queues:&lt;/strong&gt; Using different message queue systems (RabbitMQ, Kafka, Redis Pub/Sub) requires the abstraction of the messaging implementation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1. Java Virtual Machine (JVM)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The JVM internally uses a Bridge pattern. The Java language specification defines the &lt;code&gt;Abstractor&lt;/code&gt; – the bytecode instructions and the Java API. The actual &lt;code&gt;Implementor&lt;/code&gt; is the underlying native code execution environment, which differs for each operating system (Windows, macOS, Linux). The JVM bridges the gap between the platform-independent Java bytecode and the platform-dependent hardware instructions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Remote Control with Different Protocols&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Consider a remote control that can control different devices. The remote control&amp;rsquo;s button presses (&lt;code&gt;Abstractor&lt;/code&gt;) need to be translated into specific commands for the device. The communication protocol (&lt;code&gt;Implementor&lt;/code&gt;) – such as infrared, Bluetooth, or Wi-Fi – can be changed without needing to modify the remote control’s core logic. You could have a &lt;code&gt;RemoteControl&lt;/code&gt; class paired with interfaces like &lt;code&gt;InfraredCommandExecutor&lt;/code&gt;, &lt;code&gt;BluetoothCommandExecutor&lt;/code&gt;, and &lt;code&gt;WiFiCommandExecutor&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;java
+// Implementor
+interface CommandExecutor {
+void execute(String command);
+}&lt;/p&gt;
+&lt;p&gt;class InfraredCommandExecutor implements CommandExecutor {
+@Override
+public void execute(String command) {
+System.out.println(&amp;ldquo;Sending infrared command: &amp;quot; + command);
+}
+}&lt;/p&gt;
+&lt;p&gt;class BluetoothCommandExecutor implements CommandExecutor {
+@Override
+public void execute(String command) {
+System.out.println(&amp;ldquo;Sending bluetooth command: &amp;quot; + command);
+}
+}&lt;/p&gt;
+&lt;p&gt;// Abstractor
+class RemoteControl {
+private CommandExecutor executor;&lt;/p&gt;
+&lt;p&gt;public RemoteControl(CommandExecutor executor) {
+this.executor = executor;
+}&lt;/p&gt;
+&lt;p&gt;public void pressButton(String command) {
+executor.execute(command);
+}
+}&lt;/p&gt;
+&lt;p&gt;// Example Usage
+public class BridgeExample {
+public static void main(String[] args) {
+RemoteControl irRemote = new RemoteControl(new InfraredCommandExecutor());
+irRemote.pressButton(&amp;ldquo;channelUp&amp;rdquo;);&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RemoteControl btRemote = new RemoteControl(new BluetoothCommandExecutor());
+btRemote.pressButton(&amp;quot;volumeDown&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}
+}&lt;/p&gt;</description></item><item><title>Factory Method</title><link>http://www.swpatterns.com/pattern/factory_method/</link><pubDate>Thu, 29 Feb 2024 14:35:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/factory_method/</guid><description>
+&lt;p&gt;The Factory Method pattern is a creational design pattern that provides an interface for creating objects, but lets subclasses decide which class to instantiate. It defines a factory method, an operation that returns an object of a product class. Rather than directly instantiating concrete products, the client code calls this factory method within a creator class, and the creator&amp;rsquo;s subclasses override the factory method to return different types of products. This promotes loose coupling between the creator and the concrete products.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Factory Method pattern is commonly used when:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A class can&amp;rsquo;t anticipate the class of objects it must create.&lt;/li&gt;
+&lt;li&gt;A class wants its subclasses to specify the objects it creates.&lt;/li&gt;
+&lt;li&gt;The creation of objects requires complex logic or relies on configuration data that is only available at runtime.&lt;/li&gt;
+&lt;li&gt;You want to centralize object creation logic to ensure consistency and maintainability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java’s JDBC Framework:&lt;/strong&gt; The &lt;code&gt;java.sql.Connection&lt;/code&gt; interface&amp;rsquo;s &lt;code&gt;newConnection()&lt;/code&gt; method (within its subclasses like &lt;code&gt;DriverManager&lt;/code&gt;) serves as a factory method. It allows different database drivers (MySQL, PostgreSQL, Oracle) to provide their own specific connection implementations without the client code needing to know the concrete class.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django’s Model Managers:&lt;/strong&gt; In Django, model managers provide a way to encapsulate database query logic. The &lt;code&gt;create()&lt;/code&gt; method on a manager acts as a factory method. Different managers can be defined for a model, each creating instances with different default values or applying different validation rules, but clients always call &lt;code&gt;create()&lt;/code&gt; on the manager without knowing the specifics of how the object is constructed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Configuration Parsing Libraries:&lt;/strong&gt; Many configuration parsing libraries (e.g., for XML, YAML, JSON) use a factory method approach. A generic parser might have a method to create configuration objects, while specific parsers for different configuration formats implement that method to create the appropriate object type.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Abstract Factory</title><link>http://www.swpatterns.com/pattern/abstract_factory/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/abstract_factory/</guid><description>
+&lt;p&gt;The Abstract Factory pattern is a creational design pattern that provides an interface for creating families of related or dependent objects without specifying their concrete classes. It allows a system to be independent of how its products are created, composed, and represented. Effectively, it&amp;rsquo;s a &amp;ldquo;factory of factories&amp;rdquo;—a way to delegate the responsibility of object creation to other objects.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when you need to create different combinations of related objects that depend on a configuration or platform. It promotes loose coupling between classes and makes it easy to switch between different &amp;ldquo;looks and feels&amp;rdquo; or object implementations without modifying the client code. It addresses the issue of creating multiple coupled object families when a simple factory isn&amp;rsquo;t flexible enough.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Abstract Factory pattern is commonly used in these scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GUI Frameworks:&lt;/strong&gt; Creating widgets (buttons, text fields, etc.) that are specific to a particular operating system (Windows, macOS, Linux). Each OS needs a distinct set of widgets.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Abstraction:&lt;/strong&gt; Providing an abstraction layer for different database systems (MySQL, PostgreSQL, Oracle). An abstract factory can create database connections, queries, and commands.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Management:&lt;/strong&gt; Dynamically loading and configuring different sets of components based on a configuration file or environment variable.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-Platform Development:&lt;/strong&gt; Where the same high-level code needs to interact with platform-specific implementations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java Swing/JFace:&lt;/strong&gt; Java&amp;rsquo;s Swing and Eclipse&amp;rsquo;s JFace frameworks utilize abstract factories extensively. They provide different &amp;ldquo;look and feel&amp;rdquo; factories that allow applications to easily adapt to different operating systems and user preferences. Each factory creates a complete set of UI components—buttons, text fields, scrollbars, etc.—that share a consistent style.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spring Framework (Bean Definition Factories):&lt;/strong&gt; Spring’s configuration mechanism uses an abstract factory approach. While not directly named as such, the &lt;code&gt;BeanFactory&lt;/code&gt; (and its implementations like &lt;code&gt;XmlBeanFactory&lt;/code&gt; or &lt;code&gt;AnnotationConfigBeanFactory&lt;/code&gt;) effectively act as abstract factories for creating and managing beans within the application context. Different &lt;code&gt;BeanFactory&lt;/code&gt; implementations use differing sources for bean definitions (XML, annotations, Java config) but provide a consistent interface for retrieving beans.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Unity Game Engine:&lt;/strong&gt; Unity&amp;rsquo;s Asset Serialization system can leverage Abstract Factories. Different asset formats (e.g., FBX, OBJ, custom formats) can have different serialization/deserialization methods. An abstract factory could be used to provide a common interface for creating asset importers and exporters tailored to specific asset types without the core engine needing to know the details of each format.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Visitor</title><link>http://www.swpatterns.com/pattern/visitor/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/visitor/</guid><description>
+&lt;p&gt;The Visitor pattern allows you to add new operations to a hierarchy of objects without modifying the objects themselves. This is achieved by encapsulating the operations in separate &amp;ldquo;visitor&amp;rdquo; classes, which can then traverse the object hierarchy and apply their specific logic to each element. It promotes the Open/Closed Principle by allowing extension without modification of the core data structures.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Visitor pattern is frequently used when:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You need to perform many different, unrelated operations on a complex object structure.&lt;/li&gt;
+&lt;li&gt;The object structure is relatively stable, but the operations you need to perform are likely to change.&lt;/li&gt;
+&lt;li&gt;You want to avoid &amp;ldquo;bloating&amp;rdquo; the element classes with numerous operation methods.&lt;/li&gt;
+&lt;li&gt;You need to group related operations together.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Compilers:&lt;/strong&gt; In a compiler, a visitor can be used to perform different passes over the abstract syntax tree (AST). For example, one visitor might check for type errors, another might generate intermediate code, and a third might optimize the code. The AST nodes themselves (e.g., &lt;code&gt;Expression&lt;/code&gt;, &lt;code&gt;Statement&lt;/code&gt;, &lt;code&gt;Identifier&lt;/code&gt;) remain unchanged when new analysis or code generation phases are added.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;XML Processing:&lt;/strong&gt; Libraries that process XML or similar document structures often use the Visitor pattern. A visitor can represent an action to be performed on each node type in the document (e.g., printing the node&amp;rsquo;s value, validating its attributes, transforming it to a different format). The XML node classes (e.g., &lt;code&gt;Element&lt;/code&gt;, &lt;code&gt;Attribute&lt;/code&gt;, &lt;code&gt;Text&lt;/code&gt;) aren&amp;rsquo;t modified when a new processing rule is introduced. The visitor&amp;rsquo;s &lt;code&gt;visit()&lt;/code&gt; methods handle the specifics of each node type.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Chain of Responsibility</title><link>http://www.swpatterns.com/pattern/chain_of_responsibility/</link><pubDate>Fri, 27 Oct 2023 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/chain_of_responsibility/</guid><description>
+&lt;p&gt;The Chain of Responsibility is a behavioral design pattern that allows you to pass a request along a chain of handlers. Each handler decides either to process the request or to pass it to the next handler in the chain. This pattern decouples the sender of a request from its receivers, giving multiple objects the opportunity to handle the request without the sender explicitly knowing which object will handle it.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when you have multiple objects that can handle a request, but you don&amp;rsquo;t know beforehand which object is the appropriate one. It promotes loose coupling and allows you to add or remove handlers dynamically without affecting the client. It is often used in scenarios like request processing pipelines, error handling, and document workflow systems.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Request Processing Pipelines:&lt;/strong&gt; Used extensively in web frameworks and server-side applications to process HTTP requests through a series of middleware or filters. Each middleware component can perform a specific task (e.g., authentication, logging, compression) before passing the request to the next.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error Handling:&lt;/strong&gt; A chain of error handlers can be created to progressively attempt to resolve an error. First handlers might attempt simple fixes, while later handlers might escalate the error or log detailed information.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Systems:&lt;/strong&gt; Implementing business workflows where a request needs to be approved or processed by multiple departments or individuals in a specific order.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GUI Event Handling:&lt;/strong&gt; In graphical user interfaces, event handling can be structured as a chain of responsibility where each handler checks if it&amp;rsquo;s responsible for a specific event and handles it accordingly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Node.js Express Middleware:&lt;/strong&gt; Express.js utilizes the Chain of Responsibility pattern through its middleware stack. Each middleware function receives the request, response, and next function. It can perform operations on the request/response and then call &lt;code&gt;next()&lt;/code&gt; to pass control to the next middleware in the chain. If a middleware doesn&amp;rsquo;t call &lt;code&gt;next()&lt;/code&gt;, the chain is terminated.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Java Servlet Filters:&lt;/strong&gt; Java Servlets employ filters that act as interceptors in a chain. A request passes through a series of filters before reaching the servlet. Each filter can modify the request, response, or terminate the chain. This is analogous to Express middleware.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PHP Symfony Event Dispatcher:&lt;/strong&gt; Symfony&amp;rsquo;s event dispatcher component allows you to register listeners to specific events. When an event is dispatched, the dispatcher iterates through the registered listeners, calling each one in turn until a listener stops the propagation of the event.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Python&amp;rsquo;s &lt;code&gt;logging&lt;/code&gt; module:&lt;/strong&gt; The Python &lt;code&gt;logging&lt;/code&gt; module uses a chain of handlers to process log records. Each handler is responsible for a specific action, such as writing to a file or sending an email. If a handler cannot process a log record, it can pass it to the next handler in the chain.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Decorator</title><link>http://www.swpatterns.com/pattern/decorator/</link><pubDate>Wed, 24 Mar 2021 10:30:57 +0100</pubDate><guid>http://www.swpatterns.com/pattern/decorator/</guid><description>
+&lt;p&gt;The Decorator pattern enables us to change the behavior of an object by hiding the contained functions and adding new functionalities around it. It is also a common way to avoid the limits of single inheritance by multiple interface implementations (composition over inheritance).&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;This pattern finds its typical use in framework development because it enables the layering of functionalities around a core service.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Caching in HTTP services can be implemented as a decorator pattern by wrapping the http client within a client that analyzes the requested url and prepares a response&lt;/li&gt;
+&lt;li&gt;Logging and instrumenting methods can be implmented as a decorator that covers the interactions once for all the possible activities.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Composite</title><link>http://www.swpatterns.com/pattern/composite/</link><pubDate>Tue, 23 Mar 2021 11:29:42 +0100</pubDate><guid>http://www.swpatterns.com/pattern/composite/</guid><description>
+&lt;p&gt;The Composite Pattern enables us to collect objects into trees that can be easily explored.
+The Parent represents the access point to the tree, where it in fact will be a Container, usually. The container will be able to contain other Container objects or Leaf objects.&lt;/p&gt;
+&lt;p&gt;Often the sublcasses or the leaves can be instantiated thorugh the various factory patterns.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Typical example is the file system. every folder and every single file are files. Folders contain also other files.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;File system&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Observer</title><link>http://www.swpatterns.com/pattern/observer/</link><pubDate>Fri, 19 Mar 2021 10:45:34 +0100</pubDate><guid>http://www.swpatterns.com/pattern/observer/</guid><description>
+&lt;p&gt;Oberver Pattern enables the broadcast communication between an event subject, that emits changes to its state to all of its observers.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Modern day usage is biased by the existence of rx and the reactive libraries across most important languages. Most modern libraries rely on observables and observers to get the most out of streams.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;p&gt;The best example both usage and implementation is &lt;a href="http://reactivex.io/"&gt;http://reactivex.io/&lt;/a&gt;. In Angular it is very common for data binding matters.&lt;/p&gt;</description></item><item><title>Adapter</title><link>http://www.swpatterns.com/pattern/adapter/</link><pubDate>Mon, 15 Mar 2021 13:24:44 +0100</pubDate><guid>http://www.swpatterns.com/pattern/adapter/</guid><description>
+&lt;p&gt;The adapter aims to be a converter between two specific interfaces: one belonging to &amp;ldquo;our&amp;rdquo; side of the application, the other to the library or other tool we need to interact with. This is very important, because it enables us to delay decisions, as the choice of a spcific implementation of the adapter becomes less important due to the fact that we are at that point using the adapter itself as our communication contract.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Often used in combo with other patterns, such as [Inversion of Control] and several &lt;a href="http://www.swpatterns.com/pattern_types/factory/"&gt;Factories&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;p&gt;Typical example of this pattern in a &amp;ldquo;pure&amp;rdquo; form is the Driver. Whether it is for printing or for database access, the API exposed by the common development systems just require the connection to the adapter and, with some kind of &lt;a href="http://www.swpatterns.com/pattern_types/factory/"&gt;Factory&lt;/a&gt; or repository we get the specific implementation of what we need at the moment, based on the configuration of the system we have.&lt;/p&gt;</description></item><item><title>Singleton</title><link>http://www.swpatterns.com/pattern/singleton/</link><pubDate>Mon, 15 Mar 2021 13:24:44 +0100</pubDate><guid>http://www.swpatterns.com/pattern/singleton/</guid><description>
+&lt;p&gt;Singleton design pattern enables us to guarantee unicity and a single entry point for services and accesses. Tipically it requires the standard contructor to be hidden in order to avoid direct instantiation, but modern frameworks use this pattern in conjunction with other &lt;a href="http://www.swpatterns.com/pattern_types/creational/"&gt;creational&lt;/a&gt; patterns in order to ease the development of services.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Typical usage for the Singleton pattern is the management of a single centralized state with the warranty that nothing that is not part of the singleton interface will touch it.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Angular services are (per default) singletons. These services are instantiated by the framework and can be used directly through Dependency Injection.&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

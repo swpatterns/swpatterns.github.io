@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/monitoring/</link><description>Recent content in Monitoring Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 11:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Metrics &amp; Alerts</title><link>http://www.swpatterns.com/pattern/metrics__alerts/</link><pubDate>Thu, 29 Feb 2024 11:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/metrics__alerts/</guid><description>
+&lt;p&gt;The Metrics &amp;amp; Alerts pattern is a fundamental aspect of operational monitoring and observability. It involves collecting data points (metrics) from a system over time, aggregating or processing them, and then triggering notifications (alerts) when those metrics cross predefined thresholds. This allows operators to proactively identify and address issues, ensuring system reliability and performance.&lt;/p&gt;
+&lt;p&gt;This pattern isn’t about &lt;em&gt;solving&lt;/em&gt; a problem in the application itself, but about &lt;em&gt;knowing&lt;/em&gt; when a problem exists that &lt;em&gt;requires&lt;/em&gt; attention. The collected metrics can range from simple resource usage statistics (CPU, memory) to application-specific key performance indicators (KPIs) like error rates, request latencies, or queue lengths. Effective alerting minimizes false positives while maximizing detection of genuine issues needing intervention.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Metrics &amp;amp; Alerts pattern is widely used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cloud Infrastructure Monitoring:&lt;/strong&gt; Tracking resource utilization, network performance, and service health within cloud environments (AWS, Azure, GCP).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Application Performance Monitoring (APM):&lt;/strong&gt; Identifying bottlenecks and potential errors within application code and dependencies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Monitoring:&lt;/strong&gt; Monitoring query performance, connection pools, and storage capacity in databases.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Incident Detection:&lt;/strong&gt; Identifying unusual activity patterns indicative of potential security breaches.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Activity Monitoring:&lt;/strong&gt; Tracking key business metrics to identify anomalies and opportunities.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Prometheus and Alertmanager:&lt;/strong&gt; Prometheus is a popular open-source monitoring and alerting toolkit. It scrapes metrics from configured targets, stores them as time-series data, and provides a powerful query language (PromQL). Alertmanager handles alerts defined in Prometheus based on PromQL expressions, deduplicating, grouping, and routing them to various receivers like email, Slack, or PagerDuty.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Datadog:&lt;/strong&gt; A commercial monitoring and analytics platform. Datadog provides automated metric collection, log management, and alerting capabilities. Users can define custom monitors based on various metrics with flexible thresholds and notification channels. It provides pre-built integrations with a vast array of services and technologies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;New Relic:&lt;/strong&gt; Similar to Datadog, New Relic offers a comprehensive suite of observability tools including metrics, tracing, and logging. Alerting in New Relic (called “Conditions”) can be configured based on NRQL (New Relic Query Language) and automatically notifies designated users or integrations when set criteria are met.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Loosely-Coupled Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/loosely-coupled/</link><description>Recent content in Loosely-Coupled Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:23:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/loosely-coupled/index.xml" rel="self" type="application/rss+xml"/><item><title>Service Locator</title><link>http://www.swpatterns.com/pattern/service_locator/</link><pubDate>Thu, 29 Feb 2024 16:23:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/service_locator/</guid><description>
+&lt;p&gt;The Service Locator pattern provides a centralized registry for obtaining services. Instead of a component directly creating or finding its dependencies, it asks the Service Locator for them. This enhances decoupling by hiding the implementation details of the services from the clients that use them. The Locator is responsible for knowing where and how to get or create the services.&lt;/p&gt;
+&lt;p&gt;This pattern is useful in scenarios where you need to abstract the dependency resolution process, facilitate testing with mock services, or dynamically configure which services are available. It’s often employed in applications with a complex dependency graph and allows for easier maintenance and extension. However, overuse can lead to hidden dependencies and make understanding the flow of control more challenging.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Service Locator pattern is frequently used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Large applications with many dependencies:&lt;/strong&gt; Simplifying module interactions and maintaining a clean architecture.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing environments:&lt;/strong&gt; Replacing real services with mock implementations to isolate units of code.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plug-in architectures:&lt;/strong&gt; Dynamically registering and retrieving service providers at runtime.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Frameworks:&lt;/strong&gt; Providing a standardized way to access shared resources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spring Framework (Java):&lt;/strong&gt; Spring’s &lt;code&gt;ApplicationContext&lt;/code&gt; acts as a Service Locator. Components declare their dependencies as constructor parameters or setter methods, and Spring automatically resolves and injects those dependencies from its registry. Developers can configure this registry via XML, annotations or Java code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Angular Dependency Injection (TypeScript):&lt;/strong&gt; While Angular&amp;rsquo;s DI is more sophisticated than a simple Service Locator, it shares core concepts. Components register their dependencies with the &lt;code&gt;Injector&lt;/code&gt;, and Angular resolves and provides instances of those dependencies when the component needs them. &lt;code&gt;@Injectable()&lt;/code&gt; decorator marks a class as a provider and makes it available to the Injector.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Unity (C#):&lt;/strong&gt; A dependency injection container for .NET that can function as a Service Locator. You register types and their implementations with the Unity container, and then resolve instances using the &lt;code&gt;Resolve()&lt;/code&gt; method. This allows components to request dependencies without knowing their concrete types or how they are created.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Strategic Design Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/strategic-design/</link><description>Recent content in Strategic Design Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/strategic-design/index.xml" rel="self" type="application/rss+xml"/><item><title>Context Map</title><link>http://www.swpatterns.com/pattern/context_map/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/context_map/</guid><description>
+&lt;p&gt;The Context Map pattern is a strategic design technique for managing the complexity of a large domain by explicitly defining the boundaries between different areas of responsibility – Bounded Contexts. It visually represents the relationships and dependencies between these contexts, focusing on how they interact and influence each other. By clarifying these connections, it helps avoid integration issues, promotes autonomous teams, and aligns software development with business goals.&lt;/p&gt;
+&lt;p&gt;This pattern doesn&amp;rsquo;t prescribe &lt;em&gt;how&lt;/em&gt; contexts are integrated (e.g., APIs, events), but rather &lt;em&gt;that&lt;/em&gt; their relationships are understood and documented. A context map helps organizations prioritize integration efforts, identify potential bottlenecks, and make informed decisions about system ownership, data consistency, and overall architecture. It’s a communication tool as much as a technical one.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Context Map is used in large organizations or projects with complex domains. Common scenarios include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Microservice architecture:&lt;/strong&gt; Defining clear boundaries services and the nature of their communication.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multiple teams working on a single product:&lt;/strong&gt; Giving each team autonomy over its own domain model and integration points.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mergers and acquisitions:&lt;/strong&gt; Integrating disparate systems and understanding the overlap or gaps in their functionality.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Legacy system modernization:&lt;/strong&gt; Breaking down monolithic applications into manageable, contextually aligned components.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Large-scale distributed systems:&lt;/strong&gt; Understanding the relationship between different systems and managing data flow.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Amazon:&lt;/strong&gt; Amazon&amp;rsquo;s domain is vast. A context map would identify Bounded Contexts like &amp;ldquo;Order Management,&amp;rdquo; &amp;ldquo;Inventory,&amp;rdquo; &amp;ldquo;Payment Processing,&amp;rdquo; &amp;ldquo;Shipping,&amp;rdquo; and &amp;ldquo;Customer Profiles.&amp;rdquo; The relationships would demonstrate how these contexts interact – for example, &amp;ldquo;Order Management&amp;rdquo; uses the &amp;ldquo;Inventory&amp;rdquo; context to check product availability and the &amp;ldquo;Payment Processing&amp;rdquo; context for payment authorization. Each context is likely managed by a separate team, with specific data ownership and models.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spotify:&lt;/strong&gt; Spotify can be broken down into Bounded Contexts such as “User Accounts,” “Music Catalog,” “Playlist Management,” “Recommendation Engine,” and &amp;ldquo;Payment/Subscription&amp;rdquo;. The “Recommendation Engine” relies heavily on data from “Playlist Management” and “User Accounts,” illustrating a strong dependency. Each context has a dedicated team and specific domain experts shaping its evolution, while the Context Map details how these parts fit together into a cohesive music streaming platform.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Functional Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/functional/</link><description>Recent content in Functional Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:32:53 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/functional/index.xml" rel="self" type="application/rss+xml"/><item><title>Redux</title><link>http://www.swpatterns.com/pattern/redux/</link><pubDate>Thu, 29 Feb 2024 16:32:53 +0000</pubDate><guid>http://www.swpatterns.com/pattern/redux/</guid><description>
+&lt;p&gt;Redux is a predictable state container for JavaScript apps. It helps you manage your application’s state in a centralized and organized manner, making it easier to debug, test, and reason about your application&amp;rsquo;s behavior. The core idea is to keep the application’s state in a single, immutable store, and only update it through pure functions called reducers. All components access the state from this single store, ensuring consistency and predictability.&lt;/p&gt;
+&lt;p&gt;Redux follows the unidirectional data flow principle: state changes are initiated by actions, which are then processed by reducers to produce a new state. This new state is then used to update the view. This predictable flow simplifies debugging and makes it easier to understand how the application state evolves over time. It&amp;rsquo;s often used with libraries like React, but is adaptable to other frameworks.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Redux is commonly used in complex web applications where state management becomes challenging. Specifically:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Large-scale applications:&lt;/strong&gt; When an application grows in size and complexity, managing state across multiple components can become difficult. Redux provides a centralized solution.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Applications with shared state:&lt;/strong&gt; If multiple components need access to the same data, Redux makes it easy to share and update that data in a consistent way.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Applications requiring predictable state changes:&lt;/strong&gt; Redux&amp;rsquo;s unidirectional data flow and pure reducers make state changes predictable and easier to debug.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Applications utilizing time-travel debugging:&lt;/strong&gt; Redux&amp;rsquo;s immutable state makes implementing features like time-travel debugging (stepping through state changes) much simpler.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Client-Side Routing:&lt;/strong&gt; Managing application state across different routes/views.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;React applications (e.g., Facebook, Instagram):&lt;/strong&gt; Redux is frequently used with React to manage complex application state, especially in scenarios involving user authentication, data fetching, and UI interactions. These platforms rely on maintaining a consistent and predictable state across their extensive user interfaces. Libraries like &lt;code&gt;react-redux&lt;/code&gt; simplify integration.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Electron applications (e.g., VS Code, Slack):&lt;/strong&gt; In Electron apps, where both client-side (renderer process) and server-side (main process) code interact with application state, Redux can provide a robust and predictable way to manage that state. The central store helps synchronize data between processes and simplifies debugging.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vanilla JavaScript Applications:&lt;/strong&gt; Though most commonly associated with frameworks like React, Redux is a state management &lt;em&gt;concept&lt;/em&gt; and can be used effectively in applications built with only vanilla JavaScript, offering similar benefits of predictability and maintainability.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Pipeline</title><link>http://www.swpatterns.com/pattern/pipeline/</link><pubDate>Thu, 29 Feb 2024 11:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/pipeline/</guid><description>
+&lt;p&gt;The Pipeline pattern is a processing pattern that breaks down a complex task into a series of independent processing stages connected in a sequence. Each stage takes the output of the previous stage as its input, performing a specific transformation or action. This promotes separation of concerns, making the system easier to understand, maintain, and extend.&lt;/p&gt;
+&lt;p&gt;The core idea is to avoid monolithic code that handles all aspects of a process. Instead, data &amp;ldquo;flows through the pipeline&amp;rdquo; enabling parallel processing (where stages aren&amp;rsquo;t dependent on each other) and easier error handling as issues can be isolated to specific stages.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Pipeline pattern is frequently used in several scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data Processing:&lt;/strong&gt; Extract, Transform, Load (ETL) processes in data warehousing heavily rely on pipelines to clean, validate, and reformat data before storing it.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image/Video Processing:&lt;/strong&gt; Applying a series of filters, adjustments, and encoding steps to multimedia assets.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compiler Design:&lt;/strong&gt; Representing the phases of compilation (lexical analysis, parsing, semantic analysis, code generation).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Automation:&lt;/strong&gt; Orchestrating a series of actions, such as sending notifications, updating databases, and triggering other services.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Machine Learning:&lt;/strong&gt; Building a sequence of feature extraction, model training, and prediction steps.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Unix Pipelines:&lt;/strong&gt; The command-line interface in Unix-like operating systems is a classic example. Commands can be chained together using the pipe symbol (&lt;code&gt;|&lt;/code&gt;), where the standard output of one command becomes the standard input of the next. For example, &lt;code&gt;cat myfile.txt | grep &amp;quot;error&amp;quot; | wc -l&lt;/code&gt; pipes the content of &lt;code&gt;myfile.txt&lt;/code&gt; to &lt;code&gt;grep&lt;/code&gt; to filter lines containing &amp;ldquo;error&amp;rdquo;, and then to &lt;code&gt;wc&lt;/code&gt; to count the number of those lines.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Promise Chaining (JavaScript):&lt;/strong&gt; JavaScript Promises let you chain asynchronous operations using &lt;code&gt;.then()&lt;/code&gt;. Each &lt;code&gt;.then()&lt;/code&gt; represents a stage in a pipeline, receiving the result of the previous Promise and returning a new Promise. This allows code to be written in a more synchronous style while still handling asynchronous operations.
+javascript
+fetch(&amp;lsquo;&lt;a href="https://api.example.com/data'"&gt;https://api.example.com/data'&lt;/a&gt;)
+.then(response =&amp;gt; response.json()) // Stage 1: Parse JSON
+.then(data =&amp;gt; data.map(item =&amp;gt; item.name)) // Stage 2: Extract names
+.then(names =&amp;gt; console.log(names)); // Stage 3: Log names&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Airflow (Python):&lt;/strong&gt; Apache Airflow is a platform to programmatically author, schedule, and monitor workflows. These workflows are defined as Directed Acyclic Graphs (DAGs) of tasks, effectively implementing a pipeline. Each task represents a stage that processes data generated by preceding tasks.
+python
+from airflow import DAG
+from airflow.operators.python_operator import PythonOperator
+from datetime import datetime&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;def task_1():
+return &amp;ldquo;Hello&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;def task_2(input_string):
+return input_string + &amp;quot; World&amp;quot;&lt;/p&gt;
+&lt;p&gt;def task_3(input_string):
+return input_string + &amp;ldquo;!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;with DAG(
+dag_id=&amp;lsquo;pipeline_example&amp;rsquo;,
+start_date=datetime(2023, 1, 1),
+schedule_interval=None,
+catchup=False
+) as dag:
+task1 = PythonOperator(task_id=&amp;lsquo;task_1&amp;rsquo;, python_callable=task_1)
+task2 = PythonOperator(task_id=&amp;lsquo;task_2&amp;rsquo;, python_callable=task_2, op_kwargs={&amp;lsquo;input_string&amp;rsquo;: task1.output})
+task3 = PythonOperator(task_id=&amp;lsquo;task_3&amp;rsquo;, python_callable=task_3, op_kwargs={&amp;lsquo;input_string&amp;rsquo;: task2.output})&lt;/p&gt;</description></item></channel></rss>

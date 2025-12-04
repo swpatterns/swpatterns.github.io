@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Memory Management Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/memory-management/</link><description>Recent content in Memory Management Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/memory-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Snapshot</title><link>http://www.swpatterns.com/pattern/snapshot/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/snapshot/</guid><description>
+&lt;p&gt;The Snapshot pattern captures the internal state of an object at a particular point in time, allowing it to be restored to that state later. This is achieved by creating a &amp;ldquo;snapshot&amp;rdquo; or &amp;ldquo;memento&amp;rdquo; of the object&amp;rsquo;s state, which is then stored by a separate &amp;ldquo;caretaker&amp;rdquo; object. The originator can then recreate itself from the snapshot if required.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when implementing features like undo/redo functionality, transaction management, or version control. It allows for state recovery without violating encapsulation, as the snapshot holds the internal state without exposing it directly to the caretaker. This isolation preserves the originator&amp;rsquo;s control over its data.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Snapshot pattern is widely used in scenarios requiring state persistence and recovery:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Undo/Redo functionality:&lt;/strong&gt; Text editors, image manipulation software, and game engines use this pattern to enable users to undo or redo actions. Each action creates a snapshot of the application&amp;rsquo;s state before the action is applied.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transaction Management:&lt;/strong&gt; Databases and financial systems utilize snapshots to ensure that transactions can be rolled back to a consistent state in case of failure.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Version Control Systems:&lt;/strong&gt; The core concept behind version control systems like Git is to maintain snapshots of files and directories over time, allowing users to revert to previous versions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game Saving:&lt;/strong&gt; Games often use snapshots to store the player&amp;rsquo;s progress, including the game world state, player statistics, and inventory.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Git:&lt;/strong&gt; Git fundamentally relies on the Snapshot pattern. Every commit represents a snapshot of the entire project&amp;rsquo;s state at that moment. Git efficiently stores these snapshots by only saving the differences between versions. The &lt;code&gt;.git&lt;/code&gt; directory acts as the caretaker, holding the history of snapshots.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redux (JavaScript Library):&lt;/strong&gt; Redux uses a single immutable state tree. Actions trigger state changes, and a reducer function calculates the new state. Before each action, the current state is effectively a snapshot. The store maintains the history of these snapshots, allowing for time-travel debugging and implementing undo/redo features. The &lt;code&gt;combineReducers&lt;/code&gt; function and middleware like Redux Thunk leverage this snapshotting capability.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Word/Google Docs:&lt;/strong&gt; These applications use snapshots to automatically save documents at intervals, and to facilitate the undo/redo functionality. The application (Originator) creates a snapshot of the document&amp;rsquo;s state, and a background service (Caretaker) stores these snapshots.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

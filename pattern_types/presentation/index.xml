@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Presentation Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/presentation/</link><description>Recent content in Presentation Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:32:53 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/presentation/index.xml" rel="self" type="application/rss+xml"/><item><title>Template View</title><link>http://www.swpatterns.com/pattern/template_view/</link><pubDate>Thu, 29 Feb 2024 16:32:53 +0000</pubDate><guid>http://www.swpatterns.com/pattern/template_view/</guid><description>
+&lt;p&gt;The Template View pattern separates the data from how it is presented to the user. It defines a template that outlines the structure of the view, and then concrete view classes fill in the data into the template. This allows for consistent presentation across different data sources or view variations, while still providing flexibility in the specific content displayed.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful in scenarios where you have a consistent layout for displaying data that changes frequently, or when you need to support multiple output formats (e.g., HTML, PDF, XML) from the same data. It promotes code reuse and maintainability by centralizing the presentation logic in the template.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Template View pattern is widely used in modern web development, particularly in server-side rendering frameworks. It&amp;rsquo;s also common in report generation systems, data visualization tools, and any application where the presentation of data needs to be decoupled from the data itself. It&amp;rsquo;s a core concept in Model-View-Controller (MVC) and similar architectural patterns.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django Templates (Python Web Framework):&lt;/strong&gt; Django uses a template engine to separate presentation from Python code. Template files contain placeholders for variables and control structures, and Django renders these templates with data passed from the view. The template defines the overall structure (HTML), while the view provides the specific data to populate it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Handlebars.js (JavaScript Templating Engine):&lt;/strong&gt; Handlebars allows developers to define reusable HTML templates with dynamic content. You create a base template with placeholders (using double curly braces &lt;code&gt;{{ }}&lt;/code&gt;) and then provide a data object to the template engine, which replaces the placeholders with the corresponding values. This is a direct implementation of the Template View pattern in a client-side JavaScript context.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Thymeleaf (Java Templating Engine):&lt;/strong&gt; Thymeleaf is a server-side Java templating engine that allows embedding natural markup (HTML, XML, etc.) directly into the template files. Like Django and Handlebars, it separates the presentation logic from the application logic, enabling clean and maintainable codebases.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Supervising Presenter</title><link>http://www.swpatterns.com/pattern/supervising_presenter/</link><pubDate>Thu, 29 Feb 2024 16:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/supervising_presenter/</guid><description>
+&lt;p&gt;The Supervising Presenter pattern addresses the challenge of separating application logic from the user interface in a way that allows for testability and maintainability. It achieves this by introducing a Presenter that mediates between the Application (containing business logic) and the View (UI). The Presenter receives user input from the View, instructs the Model to perform actions, and then formats the Model&amp;rsquo;s output for display in the View. Crucially, the Presenter doesn&amp;rsquo;t &lt;em&gt;directly&lt;/em&gt; manipulate the View; it provides data and instructions, and the View is responsible for rendering them.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful in applications with complex UI logic or where the UI might be swapped out (e.g., web, mobile, desktop). It promotes a clear separation of concerns, making it easier to test the application logic independently of the UI and to evolve the UI without impacting the core behavior. This is a variation of the traditional MVP (Model-View-Presenter) pattern, emphasizing the Presenter&amp;rsquo;s role in coordinating and supervising the view&amp;rsquo;s updates.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Supervising Presenter pattern is commonly used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Web Applications (especially Single Page Applications - SPAs):&lt;/strong&gt; Frameworks like React, Angular, and Vue.js often utilize variations of this pattern. The &amp;ldquo;controller&amp;rdquo; or component receives user events (input), interacts with services (the Model), and then provides data for the view to render.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Desktop Applications:&lt;/strong&gt; When building desktop applications with UI frameworks like Qt or WPF, this pattern helps isolate the UI from the application&amp;rsquo;s core logic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Applications:&lt;/strong&gt; Similar to web applications, mobile apps benefit from the separation of concerns, especially when dealing with asynchronous data loading and complex UI interactions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test-Driven Development (TDD):&lt;/strong&gt; The clear separation of concerns makes it easier to write unit tests for the application logic without needing to mock or interact with the UI.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;AngularJS/Angular:&lt;/strong&gt; In Angular, components often act as Presenters. They receive user input through event bindings, call services (representing the Model), and then update the view by assigning data to component properties. The view is defined in the component&amp;rsquo;s template and automatically reflects these changes. Angular’s data binding effectively represents the supervised updates by the presenter.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;ASP.NET MVC/Razor Pages:&lt;/strong&gt; While ASP.NET MVC doesn&amp;rsquo;t strictly enforce an MVP pattern, the Controller often functions as the Presenter. It handles user requests, interacts with data models (the Model), and then passes data to the View (Razor Page) for rendering. ViewModels are frequently used to format the data specifically for the View, further embodying the Presenter&amp;rsquo;s role.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>View Helper</title><link>http://www.swpatterns.com/pattern/view_helper/</link><pubDate>Thu, 29 Feb 2024 16:23:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/view_helper/</guid><description>
+&lt;p&gt;The View Helper pattern encapsulates complex presentation logic within reusable components, keeping the core View layer clean and focused on markup. It addresses the issue of &amp;ldquo;fat&amp;rdquo; views that contain significant procedural code for formatting and displaying data. By delegating these tasks to View Helpers, you improve code organization, maintainability, and testability.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful in web development frameworks where views are responsible for rendering dynamic content. It&amp;rsquo;s commonly employed for tasks like date formatting, currency conversion, generating HTML tags, or creating custom UI elements. View Helpers promote the separation of concerns, making it easier to modify the presentation layer without affecting the underlying business logic.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Web Application Development:&lt;/strong&gt; Formatting dates, numbers, and currencies for display in web pages. Generating HTML for common UI components like dropdowns, tables, or pagination controls.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Templating Engines:&lt;/strong&gt; Providing custom tags or filters that encapsulate complex logic for transforming data within templates.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Generation:&lt;/strong&gt; Creating formatted reports with specific layouts, calculations, and data visualizations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile App UI:&lt;/strong&gt; Generating complex UI elements or handling platform-specific formatting requirements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Twig (PHP Templating Engine):&lt;/strong&gt; Twig allows developers to create custom &amp;ldquo;extensions&amp;rdquo; which act as View Helpers. These extensions can define functions or filters that are available within Twig templates. For example, a &lt;code&gt;date_format&lt;/code&gt; extension could take a date object and a format string and return a formatted date string. This keeps date formatting logic out of the main template.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django Template Tags (Python Web Framework):&lt;/strong&gt; Django provides a mechanism for creating custom template tags and filters. These tags can encapsulate reusable logic for manipulating data or generating HTML. A common example is a tag to display a user&amp;rsquo;s avatar, handling different avatar sizes and default images. This keeps avatar display logic separate from the core template.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ruby on Rails Helpers (Ruby Web Framework):&lt;/strong&gt; Rails heavily utilizes helpers, both built-in and custom. The &lt;code&gt;number_to_currency&lt;/code&gt; helper, for instance, formats a number as a currency string based on locale settings. Custom helpers can be created to handle application-specific presentation logic, keeping views concise and readable.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

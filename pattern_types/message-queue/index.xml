@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Message Queue Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/message-queue/</link><description>Recent content in Message Queue Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 14:32:17 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/message-queue/index.xml" rel="self" type="application/rss+xml"/><item><title>Durable Subscriber</title><link>http://www.swpatterns.com/pattern/durable_subscriber/</link><pubDate>Thu, 29 Feb 2024 14:32:17 +0000</pubDate><guid>http://www.swpatterns.com/pattern/durable_subscriber/</guid><description>
+&lt;p&gt;The Durable Subscriber pattern addresses the reliability of message consumption in messaging systems. It ensures that a subscriber receives all messages published to a topic, even if the subscriber is temporarily offline or disconnects. This is achieved by persistently storing messages intended for the subscriber until they are successfully processed and acknowledged.&lt;/p&gt;
+&lt;p&gt;This pattern is critical in scenarios where message loss is unacceptable, such as financial transactions, critical system updates, or commands to remote devices. Traditional message queues often employ a &amp;ldquo;queue-based&amp;rdquo; approach where messages are removed from the queue upon delivery, potentially losing them if the subscriber fails to process them. Durable Subscribers avoid this by maintaining a copy of the messages, guaranteeing eventual delivery.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Financial Systems:&lt;/strong&gt; Guaranteeing every transaction event is processed, even with intermittent connectivity issues.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IoT Device Management:&lt;/strong&gt; Ensuring commands sent to offline devices are reliably delivered and executed when they come back online.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Order Processing:&lt;/strong&gt; Making sure every order placed is ultimately handled, avoiding lost sales due to temporary system failures.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event Sourcing:&lt;/strong&gt; Reliably delivering events to subscribers building read models, even if the read model components are unavailable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apache Kafka:&lt;/strong&gt; Kafka&amp;rsquo;s consumer groups utilize a concept similar to durable subscribers. Each partition of a topic is assigned to a consumer within the group. Kafka retains messages for a configurable period (or until disk space is exhausted), allowing consumers to rejoin the group and resume consumption from their last committed offset, effectively making them durable.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RabbitMQ with Persistence:&lt;/strong&gt; RabbitMQ, when configured with durable queues and persistent messages, can achieve durable subscription. Messages are written to disk, surviving broker restarts. Subscribers can acknowledge messages after processing; if a subscriber fails before acknowledgement, the message remains in the queue to be delivered to another subscriber (or the same one when it reconnects).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Amazon SQS with Dead-Letter Queues:&lt;/strong&gt; While not a direct durable subscriber implementation, Amazon SQS uses Dead-Letter Queues in conjunction with visibility timeouts to achieve similar outcomes. If a message isn&amp;rsquo;t processed within the timeout, it becomes visible again, allowing re-delivery. Unprocessed messages after a set number of attempts are moved to a Dead-Letter Queue for further investigation, thereby ensuring eventual handling or explicit failure management.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

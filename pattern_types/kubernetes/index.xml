@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubernetes Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/kubernetes/</link><description>Recent content in Kubernetes Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 15:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/kubernetes/index.xml" rel="self" type="application/rss+xml"/><item><title>Init Container</title><link>http://www.swpatterns.com/pattern/init_container/</link><pubDate>Thu, 29 Feb 2024 15:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/init_container/</guid><description>
+&lt;p&gt;The Init Container pattern addresses the challenge of application dependencies and setup requirements in container orchestration systems like Kubernetes. It defines a specialized container that runs &lt;em&gt;before&lt;/em&gt; the application containers within a Pod. Init Containers are crucial for ensuring that shared resources are available, configurations are applied, and necessary pre-conditions are met before the main application containers start, preventing application failures due to uninitialized dependencies.&lt;/p&gt;
+&lt;p&gt;This pattern enhances Pod robustness and simplifies deployment. By offloading initialization tasks to a dedicated container, the application containers remain focused on their core function. Init Containers can handle tasks with different requirements (e.g., different base images, network access) than the primary application containers, providing flexibility and isolation. Furthermore, Init Containers ensure a predictable startup order within a Pod, critical for maintaining system consistency.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Database Migrations:&lt;/strong&gt; Ensuring database schemas are up to date before an application connects.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration File Generation:&lt;/strong&gt; Dynamically generating configuration files based on environment variables or secrets.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Network Readiness:&lt;/strong&gt; Waiting for network services to become available before starting dependent applications.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Downloading Dependencies:&lt;/strong&gt; Fetching necessary binaries, libraries or data before application startup.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Setting Permissions:&lt;/strong&gt; Adjusting file or directory permissions required by the application.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Installing Certificates:&lt;/strong&gt; Installing required SSL/TLS certificates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Kubernetes Deployments:&lt;/strong&gt; Kubernetes natively supports Init Containers. A common use case is to use an Init Container to fetch secrets from a vault (like HashiCorp Vault) and write them to a shared volume that the application containers can access. This ensures secure access to credentials without hardcoding them in the application image.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Helm Charts:&lt;/strong&gt; Helm charts often incorporate Init Containers to handle application-specific setup tasks. For example, a chart deploying a Redis cluster might use an Init Container to bootstrap the cluster with initial configuration, establishing a consistent state before the main Redis containers join.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

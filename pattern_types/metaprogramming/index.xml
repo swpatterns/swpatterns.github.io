@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Metaprogramming Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/metaprogramming/</link><description>Recent content in Metaprogramming Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 16:28:45 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/metaprogramming/index.xml" rel="self" type="application/rss+xml"/><item><title>DSL</title><link>http://www.swpatterns.com/pattern/dsl/</link><pubDate>Thu, 29 Feb 2024 16:28:45 +0000</pubDate><guid>http://www.swpatterns.com/pattern/dsl/</guid><description>
+&lt;p&gt;A Domain-Specific Language (DSL) is a computer language specialized to a particular application domain. Unlike General-Purpose Languages (GPLs) like Java or Python, DSLs focus on solving problems in a specific area, offering a more concise and expressive way to represent solutions. By using terminology and constructs directly related to the domain, DSLs can significantly improve readability and maintainability for domain experts who may not be proficient programmers.&lt;/p&gt;
+&lt;p&gt;DSLs can be either external (standalone languages with their own syntax, requiring a parser and interpreter) or internal (expressed as code within a host general-purpose language, leveraging its syntax and features). The primary goal is to allow users, particularly those without extensive programming backgrounds, to easily define and manipulate elements within the specified domain, often automating complex tasks or configurations.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;DSLs are commonly used in scenarios where a specific domain requires frequent, complex configurations or manipulations. Some typical applications include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Management:&lt;/strong&gt; Tools like Ansible and Terraform utilize DSLs to define infrastructure as code, allowing for repeatable and version-controlled deployments.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Build Automation:&lt;/strong&gt; Build tools like Gradle and Make often employ DSLs to define build processes, dependencies, and tasks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing:&lt;/strong&gt; Frameworks like Cucumber implement DSLs written in natural language (Gherkin) to define test scenarios, making them accessible to business analysts and testers.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Transformation:&lt;/strong&gt; Languages like XSLT are DSLs designed for transforming XML documents.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game Scripting:&lt;/strong&gt; Games frequently use internal DSLs to define character behaviors, level events, and game logic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Modeling:&lt;/strong&gt; Designing languages to express financial calculations and strategies.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Gradle (Build Automation):&lt;/strong&gt; Gradle uses a Groovy or Kotlin-based DSL to define build configurations. Instead of writing verbose XML or imperative code, developers define dependencies, tasks, and build settings in a more readable and concise manner.&lt;/p&gt;
+&lt;p&gt;groovy
+plugins {
+id &amp;lsquo;java&amp;rsquo;
+}&lt;/p&gt;
+&lt;p&gt;repositories {
+mavenCentral()
+}&lt;/p&gt;
+&lt;p&gt;dependencies {
+testImplementation &amp;lsquo;org.junit.jupiter:junit-jupiter-api:5.8.1&amp;rsquo;
+testRuntimeOnly &amp;lsquo;org.junit.jupiter:junit-jupiter-engine:5.8.1&amp;rsquo;
+}&lt;/p&gt;
+&lt;p&gt;test {
+useJUnitPlatform()
+}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cucumber (Behavior-Driven Development):&lt;/strong&gt; Cucumber uses Gherkin, a plain-text DSL, to define test scenarios in a human-readable format. This enables collaboration between developers, testers, and business stakeholders.&lt;/p&gt;
+&lt;p&gt;gherkin
+Feature: Shopping Cart
+As a user
+I want to be able to add items to my shopping cart
+So that I can purchase them&lt;/p&gt;
+&lt;p&gt;Scenario: Adding a single item to the cart
+Given I am on the shopping cart page
+When I add a &amp;ldquo;Book&amp;rdquo; to the cart
+Then I should see &amp;ldquo;Book&amp;rdquo; in the cart&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Middleware Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/middleware/</link><description>Recent content in Middleware Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/middleware/index.xml" rel="self" type="application/rss+xml"/><item><title>Message Filter</title><link>http://www.swpatterns.com/pattern/message_filter/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/message_filter/</guid><description>
+&lt;p&gt;The Message Filter pattern involves defining multiple handlers, each responsible for processing a specific type of message. A filter component receives a message and iterates through the handlers, forwarding it to the first handler that accepts it. If no handler accepts the message, it&amp;rsquo;s passed to a default handler. This decoupling of message processing logic enhances maintainability and extensibility.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;This pattern is frequently applied in event-driven systems, message queues, and middleware pipelines. It allows for a flexible and scalable way to handle various message types without tightly coupling the message source to message consumers. Common use cases include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Web application request processing:&lt;/strong&gt; Filtering incoming HTTP requests based on URL patterns, headers, or content types and routing them to the appropriate controller.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Email processing:&lt;/strong&gt; Filtering incoming emails based on sender, subject, or content and performing different actions, such as spam filtering, routing to folders, or triggering automated responses.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Logging frameworks:&lt;/strong&gt; Filtering log messages based on severity level or source and directing them to different output destinations (e.g., console, file, database).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chatbots:&lt;/strong&gt; Classifying user messages by intent, and routing them to the appropriate function or logic block for processing.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spring Web MVC Filters (Java):&lt;/strong&gt; Spring MVC utilizes filters to intercept HTTP requests before they reach controllers. These filters can perform tasks like authentication, authorization, logging, or modifying the request/response. Each filter checks if it should process the request and, if so, executes its logic or passes it to the next filter in the chain. The &lt;code&gt;FilterChain&lt;/code&gt; provides the mechanism for cascading filters.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Node.js Express Middleware (JavaScript):&lt;/strong&gt; Express middleware functions operate on the request and response objects, and can modify them or terminate the request-response cycle. They are organized in a pipeline, where each middleware function has the opportunity to process the request. Similar to Spring filters, Express middleware checks if a request matches its criteria and either proceeds to handle it, or passes it on using &lt;code&gt;next()&lt;/code&gt;. Common examples include authentication (&lt;code&gt;express-jwt&lt;/code&gt;), logging (&lt;code&gt;morgan&lt;/code&gt;), and CORS (&lt;code&gt;cors&lt;/code&gt;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;RabbitMQ Exchanges and Queues (Message Broker):&lt;/strong&gt; RabbitMQ utilizes exchanges to route messages to queues based on binding rules. An exchange acts as a filter – it receives a message and routes it to one or more queues depending on the routing key and binding configuration. Different exchange types (direct, topic, fanout, headers) provide distinct filtering capabilities. This allows for message consumers to only receive relevant messages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

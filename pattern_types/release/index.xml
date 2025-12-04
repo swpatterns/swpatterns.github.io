@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Release Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/release/</link><description>Recent content in Release Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/release/index.xml" rel="self" type="application/rss+xml"/><item><title>Feature Toggle</title><link>http://www.swpatterns.com/pattern/feature_toggle/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/feature_toggle/</guid><description>
+&lt;p&gt;The Feature Toggle (also known as Feature Flag) pattern allows the modification of application behavior without requiring a deployment. It essentially involves wrapping a section of code within a conditional statement controlled by a toggle. This toggle can be dynamically switched at runtime, enabling or disabling a particular feature. This is useful for controlled rollouts, A/B testing, and emergency feature disabling.&lt;/p&gt;
+&lt;p&gt;Feature toggles are a powerful tool for continuous delivery, reducing the risk associated with new releases. By decoupling code deployment from feature release, teams can merge code more frequently and deploy it to production without immediately exposing new functionality to all users. This provides greater control over the user experience and allows for quicker iteration based on real-world feedback.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Feature toggles are widely used in the following scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dark Launches:&lt;/strong&gt; Deploying new features to production but keeping them hidden from users until they are fully tested and ready for release.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Canary Releases:&lt;/strong&gt; Releasing a feature to a small subset of users before rolling it out to the entire user base.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A/B Testing:&lt;/strong&gt; Showing different versions of a feature to different user groups to determine which version performs better.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Emergency Kill Switch:&lt;/strong&gt; Quickly disabling a problematic feature in production without requiring a rollback.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subscription-Based Features:&lt;/strong&gt; Enabling or disabling features based on a user&amp;rsquo;s subscription level.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Operational Toggles:&lt;/strong&gt; Controlling aspects of the application based on server load, time of day, or other operational factors.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Netflix:&lt;/strong&gt; Netflix uses feature toggles extensively to experiment with new UI features, algorithms, and pricing models. They can release changes to a small percentage of users, gather data, and then roll out the feature more broadly if it proves successful. If issues arise, they can instantly disable the toggle, reverting to the previous functionality without impacting all users.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Firebase:&lt;/strong&gt; Firebase utilizes feature toggles for releasing new functionality within its suite of developer tools. This allows them to iterate quickly on new features, collect feedback from early adopters, and ensure a stable experience for all developers. Specifically, they use them to manage access to beta features and control the rollout of major updates.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;LaunchDarkly (Platform):&lt;/strong&gt; LaunchDarkly is a feature management platform dedicated to providing robust feature toggling capabilities. It offers a centralized system for managing toggles, targeting users based on various criteria, and monitoring the impact of feature changes, demonstrating the pattern implemented as a service.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

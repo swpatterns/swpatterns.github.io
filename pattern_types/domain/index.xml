@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Domain Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/domain/</link><description>Recent content in Domain Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 14:56:32 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/domain/index.xml" rel="self" type="application/rss+xml"/><item><title>Factory (Domain)</title><link>http://www.swpatterns.com/pattern/factory_domain/</link><pubDate>Thu, 29 Feb 2024 14:56:32 +0000</pubDate><guid>http://www.swpatterns.com/pattern/factory_domain/</guid><description>
+&lt;p&gt;The Factory pattern is a creational pattern that provides an interface for creating objects but lets subclasses decide which class to instantiate. This promotes loose coupling between the client code and the concrete classes of the objects that need to be created, adhering to the &amp;ldquo;Don&amp;rsquo;t repeat yourself&amp;rdquo; (DRY) principle. Instead of directly instantiating concrete types, the client requests an object from a factory without specifying the exact class.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Factory pattern is widely used in scenarios where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A class cannot anticipate the type of objects it must create.&lt;/li&gt;
+&lt;li&gt;A system needs to encapsulate the object creation logic.&lt;/li&gt;
+&lt;li&gt;You want to avoid tight coupling between classes and their dependencies.&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s a need to centralize object creation and maintain consistency.&lt;/li&gt;
+&lt;li&gt;Implementing a domain-driven design where complex object creation is common within an aggregate.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django&amp;rsquo;s Model Managers:&lt;/strong&gt; Django&amp;rsquo;s ORM utilizes factory patterns extensively through Model Managers. Instead of directly constructing database objects, you use a &lt;code&gt;manager&lt;/code&gt; (the factory) to provide methods like &lt;code&gt;create()&lt;/code&gt;, &lt;code&gt;get_or_create()&lt;/code&gt;, etc. The manager handles the specific creation logic for the associated model (concrete product), abstracting away the intricacies of database interactions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java Persistence API (JPA) &lt;code&gt;EntityManagerFactory&lt;/code&gt;:&lt;/strong&gt; In JPA, the &lt;code&gt;EntityManagerFactory&lt;/code&gt; is a factory responsible for creating &lt;code&gt;EntityManager&lt;/code&gt; instances (concrete products). The factory encapsulates the details of connecting to the database, configuring the persistence unit, and building the entity managers. Clients request an &lt;code&gt;EntityManager&lt;/code&gt; from the factory without needing to know the underlying database implementation or configuration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Logback&amp;rsquo;s &lt;code&gt;LoggerFactory&lt;/code&gt;:&lt;/strong&gt; Logback, a popular Java logging framework, uses a factory pattern via its &lt;code&gt;LoggerFactory&lt;/code&gt; class. Clients request a logger instance using &lt;code&gt;LoggerFactory.getLogger(name)&lt;/code&gt;, and the factory handles the potentially complex logic of finding or creating the appropriate logger, including configuring appenders, filters, and layout.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

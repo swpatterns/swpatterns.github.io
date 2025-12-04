@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/web/</link><description>Recent content in Web Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 17:38:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/web/index.xml" rel="self" type="application/rss+xml"/><item><title>Application Controller</title><link>http://www.swpatterns.com/pattern/application_controller/</link><pubDate>Thu, 29 Feb 2024 17:38:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/application_controller/</guid><description>
+&lt;p&gt;The Application Controller pattern centralizes request handling logic within a dedicated controller class. It receives all incoming requests, coordinates the necessary actions to fulfill those requests (potentially involving multiple other objects or components), updates the application model, selects the appropriate view for the response, and ultimately returns that response to the client. This pattern aims to decouple the presentation layer from the business logic and improve maintainability by consolidating request processing.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;This pattern is commonly used in web applications, particularly in Model-View-Controller (MVC) architectures, to manage user interactions and orchestrate the application&amp;rsquo;s response. It&amp;rsquo;s suitable where a single entry point for requests simplifies routing and control flow. It aids in managing complex workflows, handling authentication/authorization centrally, and providing a clear separation of concerns. It can also be used in desktop applications with a GUI, though its application is strongest in web contexts.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ruby on Rails:&lt;/strong&gt; Rails is a classic example of the Application Controller pattern. Every request in a Rails application is routed to a controller action. The controller then interacts with models to retrieve or update data, and finally renders a view. The &lt;code&gt;ApplicationController&lt;/code&gt; class serves as the base for all other controllers, encapsulating common application-level logic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spring MVC (Java):&lt;/strong&gt; In Spring MVC, the &lt;code&gt;DispatcherServlet&lt;/code&gt; acts as the Application Controller. It receives all incoming requests, maps them to the appropriate controller based on configuration, and then orchestrates the execution of the controller method. The controller handles the business logic and returns a model and view, which the &lt;code&gt;DispatcherServlet&lt;/code&gt; uses to render the final response.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>HMVC</title><link>http://www.swpatterns.com/pattern/hmvc/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/hmvc/</guid><description>
+&lt;p&gt;HMVC (Hierarchical Model-View-Controller) is a web application design pattern that structures a web application into three interconnected parts: the Model (data), the View (user interface), and the Controller (application logic). It expands on the traditional MVC pattern by allowing views to &lt;em&gt;be&lt;/em&gt; controllers, and controllers to contain other controllers and views, creating a hierarchical structure. This allows for modularity and reusability of UI components and their associated logic.&lt;/p&gt;
+&lt;p&gt;HMVC is particularly useful for building complex web applications with many interconnected views and controllers. It promotes code organization, simplifies maintenance, and enables the creation of reusable UI widgets or &amp;ldquo;portlets&amp;rdquo; that can be easily integrated into different parts of the application. The hierarchical nature allows for a more natural representation of complex page layouts and interactions.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Web Portals/Dashboards:&lt;/strong&gt; HMVC is often used in web portals and dashboards where multiple independent widgets (each with their own Model, View, and Controller) are combined to create a single page.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Large-Scale Web Applications:&lt;/strong&gt; When dealing with applications that have a significant number of pages and intricate user interfaces, organizing the codebase using HMVC can dramatically improve maintainability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content Management Systems (CMS):&lt;/strong&gt; CMS platforms can leverage HMVC to allow developers to create and manage reusable content blocks and page templates.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dynamic Sections within a Page:&lt;/strong&gt; When a page is comprised of dynamically loaded or interactive sections, each section can be developed as a self-contained HMVC component.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CodeIgniter:&lt;/strong&gt; The CodeIgniter PHP framework natively supports HMVC through its &amp;ldquo;Widgets&amp;rdquo; or &amp;ldquo;Modules&amp;rdquo; feature. Developers can create self-contained modules representing a specific set of functionality, with their own models, views, and controllers. These modules can be easily integrated into different areas of the application.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Symfony&amp;rsquo;s Form Component:&lt;/strong&gt; While not a strict HMVC implementation, Symfony’s form component exhibits HMVC principles. The form itself can be considered a mini-controller managing input and validation (Controller). The form&amp;rsquo;s template (&lt;code&gt;.html.twig&lt;/code&gt;) is the view (View), and the underlying Form object and associated data are the model. These components are seamlessly integrated into larger controllers to build complex forms.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Laravel&amp;rsquo;s Livewire:&lt;/strong&gt; Livewire pieces together components using a MVC-inspired structure. A Livewire component has a model (component data), a view (Blade templates), and a controller (the component class with its methods). These components can then be nested within other components, creating an HMVC-like hierarchy.&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Page Controller</title><link>http://www.swpatterns.com/pattern/page_controller/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/page_controller/</guid><description>
+&lt;p&gt;The Page Controller pattern is a simple and straightforward approach to handling user requests in web applications. It centralizes request handling logic within a controller, which is responsible for determining which data needs to be fetched, preparing the data, selecting the appropriate view, and rendering the final response. This promotes separation of concerns by isolating presentation logic from business logic and data access.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful for applications with a relatively simple structure or when rapid development is prioritized. It&amp;rsquo;s often a starting point for more complex architectures like MVC. The controller acts as a mediator, preventing direct coupling between the user interface and underlying data sources.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Page Controller pattern is commonly used:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Simple Web Applications:&lt;/strong&gt; Where the complexity of the application doesn&amp;rsquo;t warrant a full-blown MVC framework.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rapid Prototyping:&lt;/strong&gt; Quickly building and testing web interfaces with minimal overhead.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Initial Stages of Development:&lt;/strong&gt; As a foundation that can be refactored into a more structured architecture later.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Small Websites:&lt;/strong&gt; Static or dynamically generated sites with relatively few pages and data interactions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;PHP (Early Web Development):&lt;/strong&gt; Classic PHP websites often used a Page Controller pattern where each requested page (e.g., &lt;code&gt;about.php&lt;/code&gt;, &lt;code&gt;contact.php&lt;/code&gt;) corresponds to a controller script that fetches data (potentially from a database) and includes a view template to render the HTML. This was a common practice before the widespread adoption of more elaborate frameworks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ruby on Rails (Initial Setup):&lt;/strong&gt; While Rails is an MVC framework, the initial setup often resembles a Page Controller approach when creating basic routes and controller actions. Each action directly handles data retrieval and view rendering without significant model interaction Initially, a controller action might fetch all data needed for a view and pass it directly, eventually refactor to utilize models. This allows rapid development before introducing more abstraction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Twelve-Factor App</title><link>http://www.swpatterns.com/pattern/twelve-factor_app/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/twelve-factor_app/</guid><description>
+&lt;p&gt;The Twelve-Factor App is a methodology for building software-as-a-service apps. It&amp;rsquo;s a set of twelve guiding principles that help developers create portable, scalable, and maintainable applications, especially suited for modern cloud environments. These factors cover aspects like codebase, dependencies, configuration, backing services, build/release/run stages, and processes.&lt;/p&gt;
+&lt;p&gt;This pattern is crucial for DevOps practices, microservices architecture, and any application intended for cloud deployment (e.g., AWS, Azure, Google Cloud). By adhering to these guidelines, teams can significantly reduce deployment friction, improve application resilience, and better utilize the benefits of cloud platforms while decreasing vendor lock-in and improving overall development speed.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Twelve-Factor App pattern is commonly applied in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Microservices development:&lt;/strong&gt; Each microservice is treated as a separate &amp;ldquo;app&amp;rdquo; and benefits from independent deployability and scalability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cloud-native applications:&lt;/strong&gt; Designed from the start for platforms like Heroku, Cloud Foundry, and Kubernetes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Continuous Integration/Continuous Deployment (CI/CD) pipelines:&lt;/strong&gt; Facilitates automated building, testing, and deployment processes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SaaS applications:&lt;/strong&gt; The original target use case, ensuring portability and scalability for multi-tenant environments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Heroku:&lt;/strong&gt; Heroku is a Platform-as-a-Service (PaaS) explicitly designed around the Twelve-Factor App methodology. It enforces configuration through environment variables, treats logs as event streams, and provides a buildpack system that aligns with the dependency management and build stages. Dependencies are declared, and the platform handles their installation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Docker and Kubernetes:&lt;/strong&gt; Docker containers encapsulate the application and its dependencies, directly addressing the &amp;ldquo;Dependencies&amp;rdquo; factor. Kubernetes builds on this by providing a platform for automated deployment, scaling, and management of these containers, supporting the &amp;ldquo;Build, Release, Run&amp;rdquo; and &amp;ldquo;Processes&amp;rdquo; factors. Configuration is commonly supplied via Kubernetes ConfigMaps and Secrets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Netlify:&lt;/strong&gt; A platform focusing on static site and frontend web application deployment. Promotes environment variables for configuration (Factor 6), and provides built-in support for logging and dependency management (npm, yarn, etc.). Its serverless functions also align well with the &amp;ldquo;Stateless processes&amp;rdquo; factor (Factor 8).&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

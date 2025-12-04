@@ -1,8 +1,360 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Creational Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/creational/</link><description>Recent content in Creational Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 15 Mar 2021 13:24:44 +0100</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/creational/index.xml" rel="self" type="application/rss+xml"/><item><title>Singleton</title><link>http://www.swpatterns.com/pattern/singleton/</link><pubDate>Mon, 15 Mar 2021 13:24:44 +0100</pubDate><guid>http://www.swpatterns.com/pattern/singleton/</guid><description>
-&lt;p>Singleton design pattern enables us to guarantee unicity and a single entry point for services and accesses. Tipically it requires the standard contructor to be hidden in order to avoid direct instantiation, but modern frameworks use this pattern in conjunction with other &lt;a href="http://www.swpatterns.com/pattern_types/creational/">creational&lt;/a> patterns in order to ease the development of services.&lt;/p>
-&lt;h2 id="usage">Usage&lt;/h2>
-&lt;p>Typical usage for the Singleton pattern is the management of a single centralized state with the warranty that nothing that is not part of the singleton interface will touch it.&lt;/p>
-&lt;h2 id="examples">Examples&lt;/h2>
-&lt;ul>
-&lt;li>Angular services are (per default) singletons. These services are instantiated by the framework and can be used directly through Dependency Injection.&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Creational Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/creational/</link><description>Recent content in Creational Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 17:32:55 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/creational/index.xml" rel="self" type="application/rss+xml"/><item><title>Lazy Initialization</title><link>http://www.swpatterns.com/pattern/lazy_initialization/</link><pubDate>Thu, 29 Feb 2024 17:32:55 +0000</pubDate><guid>http://www.swpatterns.com/pattern/lazy_initialization/</guid><description>
+&lt;p&gt;Lazy Initialization is a technique that delays the creation of an object or the execution of a process until it is actually needed. Instead of initializing the object during the class or module loading phase, initialization is postponed to the first time the object’s methods are invoked or its properties are accessed. This can significantly improve application startup time and reduce resource consumption, especially when dealing with resource-intensive operations.&lt;/p&gt;
+&lt;p&gt;The pattern is particularly useful when you have objects that require significant resources to create, but aren’t always used by the application. Avoid unnecessary initialization costs by waiting until the object is explicitly requested. It&amp;rsquo;s also helpful when initialization depends on runtime information that isn’t available at startup.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Improving Startup Time:&lt;/strong&gt; When an application has many dependencies, some of which are expensive to initialize, lazy initialization can drastically reduce the time it takes for the application to become responsive.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Management:&lt;/strong&gt; It&amp;rsquo;s beneficial when dealing with limited resources like database connections or file handles. Initializing them only when needed prevents resource exhaustion.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conditional Initialization:&lt;/strong&gt; If an object is only required under certain conditions, lazy initialization avoids initializing it if those conditions are never met.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Singleton Pattern Implementation:&lt;/strong&gt; Lazy initialization is often used to create singletons to ensure the instance is created only when first accessed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java’s &lt;code&gt;java.lang.ClassLoader&lt;/code&gt;:&lt;/strong&gt; The Java class loader doesn&amp;rsquo;t load and initialize classes immediately when the program starts. Instead, it loads classes &amp;ldquo;on demand&amp;rdquo;, only when they are first referenced during program execution. This is a form of lazy initialization that improves startup time, as only the required classes are loaded.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python’s &lt;code&gt;property&lt;/code&gt; decorator:&lt;/strong&gt; Python’s &lt;code&gt;@property&lt;/code&gt; decorator allows you to define methods that behave like attributes. These methods can use lazy initialization to compute a value only when it is first requested. For example, calculating a complex statistical value only when the property is accessed for the first time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;python
+class DataProcessor:
+def &lt;strong&gt;init&lt;/strong&gt;(self, data):
+self.data = data
+self._processed_data = None&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; @property
+def processed_data(self):
+if self._processed_data is None:
+print(&amp;quot;Processing data...&amp;quot;) #Simulating an expensive operation
+self._processed_data = self._process()
+return self._processed_data
+def _process(self):
+# Actual data processing logic
+return [x * 2 for x in self.data]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;processor = DataProcessor([1, 2, 3])&lt;/p&gt;
+&lt;h1 id="processed_data-is-not-calculated-yet"&gt;processed_data is not calculated yet&lt;/h1&gt;
+&lt;p&gt;print(&amp;ldquo;Main program continues&amp;hellip;&amp;rdquo;)&lt;/p&gt;
+&lt;h1 id="the-processing-happens-only-when-processed_data-is-accessed"&gt;The processing happens only when processed_data is accessed&lt;/h1&gt;
+&lt;p&gt;print(processor.processed_data)&lt;/p&gt;</description></item><item><title>Object Pool</title><link>http://www.swpatterns.com/pattern/object_pool/</link><pubDate>Thu, 29 Feb 2024 17:23:45 +0000</pubDate><guid>http://www.swpatterns.com/pattern/object_pool/</guid><description>
+&lt;p&gt;The Object Pool pattern is a creational design pattern that aims to improve performance by reusing objects that are expensive to create. Instead of creating a new object each time one is needed, the pool maintains a collection of pre-initialized objects. When an object is required, it&amp;rsquo;s borrowed from the pool; when it&amp;rsquo;s no longer needed, it&amp;rsquo;s returned to the pool for later use, rather than being destroyed. This reduces the overhead of frequent object creation and destruction, especially valuable when dealing with resource-intensive objects.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when object instantiation is slow or limited by external resources (e.g., database connections, network sockets, threads). It can significantly reduce latency and improve system throughput in scenarios involving high object churn, and helps manage resource constraints effectively. By limiting the overall number of objects created, it also contributes to better resource utilization and stability.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Object Pool pattern is widely used in systems requiring efficient management of costly resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Database Connection Pooling:&lt;/strong&gt; Most database libraries and application servers utilize object pools to manage database connections. Establishing a database connection is a slow operation, so pooling these connections significantly improves performance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Thread Pooling:&lt;/strong&gt; Similar to database connections, creating and destroying threads is expensive. Thread pools are essential components of concurrent programming, reusing threads to handle multiple tasks efficiently.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Graphics and Game Development:&lt;/strong&gt; Creating and disposing of graphical objects (textures, models, etc.) can be time-consuming. Object pools are used to reuse these objects, reducing lag and improving frame rates.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Network Socket Management:&lt;/strong&gt; Managing a large number of network sockets can be resource-intensive. Pooling sockets allows for efficient reuse and reduces the overhead of connection establishment and teardown.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apache Commons Pool (Java):&lt;/strong&gt; This library provides a generic object pooling framework for Java applications. It allows developers to easily create pools for various types of objects, including database connections, threads, and custom objects. Configuration options allow for controlling pool size, eviction policies, and validation logic. &lt;a href="https://commons.apache.org/proper/commons-pool/"&gt;https://commons.apache.org/proper/commons-pool/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;HikariCP (Java):&lt;/strong&gt; Specifically designed for database connection pooling, HikariCP is a high-performance JDBC connection pool. It emphasizes speed and minimizes overhead, making it a popular choice for modern Java applications. It offers advanced features like connection validation, timeout handling, and monitoring. &lt;a href="https://github.com/brettwooldridge/HikariCP"&gt;https://github.com/brettwooldridge/HikariCP&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Unity Engine (C#):&lt;/strong&gt; Unity uses object pooling extensively in game development for reusable game objects like bullets, enemies, and particle effects. The &lt;code&gt;Object.Instantiate()&lt;/code&gt; and &lt;code&gt;Object.Destroy()&lt;/code&gt; methods can be slow within a game loop; using a pool avoids this performance bottleneck. Unity provides built-in tools and community-created asset store packages to facilitate object pooling. &lt;a href="https://docs.unity3d.com/Manual/ObjectPooling.html"&gt;https://docs.unity3d.com/Manual/ObjectPooling.html&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Table Data Gateway</title><link>http://www.swpatterns.com/pattern/table_data_gateway/</link><pubDate>Thu, 29 Feb 2024 16:17:33 +0000</pubDate><guid>http://www.swpatterns.com/pattern/table_data_gateway/</guid><description>
+&lt;p&gt;The Table Data Gateway pattern provides an interface to a database table that encapsulates the table’s structure and ensures data consistency. It isolates the database-specific access logic from the rest of the application, making it easier to switch databases or modify the data access layer without impacting the core business logic. Essentially, it’s a class that represents the table, providing methods for all standard CRUD (Create, Read, Update, Delete) operations.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when you want to abstract away the details of database interactions, providing a higher-level, object-oriented interface. It’s beneficial in scenarios where you need to support multiple databases or when your data model evolves frequently, as it centralizes the mapping between the object model and the relational database schema. This makes refactoring the data access logic significantly easier.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Legacy Systems:&lt;/strong&gt; Often used to modernize older applications with tight database coupling.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Portability:&lt;/strong&gt; Facilitates easier migration to different database systems by isolating database-specific code.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Complex Data Access:&lt;/strong&gt; Simplifies data access when dealing with intricate relationships and transformations within a single table.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting and Data Analysis:&lt;/strong&gt; Provides a clean interface for generating reports and performing data analysis operations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ruby on Rails ActiveRecord:&lt;/strong&gt; ActiveRecord in Ruby on Rails is a prime example. Each model class represents a database table, and methods like &lt;code&gt;find&lt;/code&gt;, &lt;code&gt;create&lt;/code&gt;, &lt;code&gt;update&lt;/code&gt;, and &lt;code&gt;destroy&lt;/code&gt; are implemented by the ActiveRecord layer, acting as a Table Data Gateway. The developer interacts with the model objects, and ActiveRecord handles the translation to SQL and database interaction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django ORM:&lt;/strong&gt; In Python’s Django web framework, the Object-Relational Mapper (ORM) provides a similar functionality. Each model corresponds to a database table, and the ORM’s methods (e.g., &lt;code&gt;get()&lt;/code&gt;, &lt;code&gt;create()&lt;/code&gt;, &lt;code&gt;save()&lt;/code&gt;, &lt;code&gt;delete()&lt;/code&gt;) encapsulate the database access logic, allowing developers to work with Python objects instead of raw SQL queries. This simplifies data interaction and ensures database consistency.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Factory (Domain)</title><link>http://www.swpatterns.com/pattern/factory_domain/</link><pubDate>Thu, 29 Feb 2024 14:56:32 +0000</pubDate><guid>http://www.swpatterns.com/pattern/factory_domain/</guid><description>
+&lt;p&gt;The Factory pattern is a creational pattern that provides an interface for creating objects but lets subclasses decide which class to instantiate. This promotes loose coupling between the client code and the concrete classes of the objects that need to be created, adhering to the &amp;ldquo;Don&amp;rsquo;t repeat yourself&amp;rdquo; (DRY) principle. Instead of directly instantiating concrete types, the client requests an object from a factory without specifying the exact class.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Factory pattern is widely used in scenarios where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A class cannot anticipate the type of objects it must create.&lt;/li&gt;
+&lt;li&gt;A system needs to encapsulate the object creation logic.&lt;/li&gt;
+&lt;li&gt;You want to avoid tight coupling between classes and their dependencies.&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s a need to centralize object creation and maintain consistency.&lt;/li&gt;
+&lt;li&gt;Implementing a domain-driven design where complex object creation is common within an aggregate.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django&amp;rsquo;s Model Managers:&lt;/strong&gt; Django&amp;rsquo;s ORM utilizes factory patterns extensively through Model Managers. Instead of directly constructing database objects, you use a &lt;code&gt;manager&lt;/code&gt; (the factory) to provide methods like &lt;code&gt;create()&lt;/code&gt;, &lt;code&gt;get_or_create()&lt;/code&gt;, etc. The manager handles the specific creation logic for the associated model (concrete product), abstracting away the intricacies of database interactions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java Persistence API (JPA) &lt;code&gt;EntityManagerFactory&lt;/code&gt;:&lt;/strong&gt; In JPA, the &lt;code&gt;EntityManagerFactory&lt;/code&gt; is a factory responsible for creating &lt;code&gt;EntityManager&lt;/code&gt; instances (concrete products). The factory encapsulates the details of connecting to the database, configuring the persistence unit, and building the entity managers. Clients request an &lt;code&gt;EntityManager&lt;/code&gt; from the factory without needing to know the underlying database implementation or configuration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Logback&amp;rsquo;s &lt;code&gt;LoggerFactory&lt;/code&gt;:&lt;/strong&gt; Logback, a popular Java logging framework, uses a factory pattern via its &lt;code&gt;LoggerFactory&lt;/code&gt; class. Clients request a logger instance using &lt;code&gt;LoggerFactory.getLogger(name)&lt;/code&gt;, and the factory handles the potentially complex logic of finding or creating the appropriate logger, including configuring appenders, filters, and layout.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Factory Method</title><link>http://www.swpatterns.com/pattern/factory_method/</link><pubDate>Thu, 29 Feb 2024 14:35:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/factory_method/</guid><description>
+&lt;p&gt;The Factory Method pattern is a creational design pattern that provides an interface for creating objects, but lets subclasses decide which class to instantiate. It defines a factory method, an operation that returns an object of a product class. Rather than directly instantiating concrete products, the client code calls this factory method within a creator class, and the creator&amp;rsquo;s subclasses override the factory method to return different types of products. This promotes loose coupling between the creator and the concrete products.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Factory Method pattern is commonly used when:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A class can&amp;rsquo;t anticipate the class of objects it must create.&lt;/li&gt;
+&lt;li&gt;A class wants its subclasses to specify the objects it creates.&lt;/li&gt;
+&lt;li&gt;The creation of objects requires complex logic or relies on configuration data that is only available at runtime.&lt;/li&gt;
+&lt;li&gt;You want to centralize object creation logic to ensure consistency and maintainability.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java’s JDBC Framework:&lt;/strong&gt; The &lt;code&gt;java.sql.Connection&lt;/code&gt; interface&amp;rsquo;s &lt;code&gt;newConnection()&lt;/code&gt; method (within its subclasses like &lt;code&gt;DriverManager&lt;/code&gt;) serves as a factory method. It allows different database drivers (MySQL, PostgreSQL, Oracle) to provide their own specific connection implementations without the client code needing to know the concrete class.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django’s Model Managers:&lt;/strong&gt; In Django, model managers provide a way to encapsulate database query logic. The &lt;code&gt;create()&lt;/code&gt; method on a manager acts as a factory method. Different managers can be defined for a model, each creating instances with different default values or applying different validation rules, but clients always call &lt;code&gt;create()&lt;/code&gt; on the manager without knowing the specifics of how the object is constructed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Configuration Parsing Libraries:&lt;/strong&gt; Many configuration parsing libraries (e.g., for XML, YAML, JSON) use a factory method approach. A generic parser might have a method to create configuration objects, while specific parsers for different configuration formats implement that method to create the appropriate object type.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Abstract Factory</title><link>http://www.swpatterns.com/pattern/abstract_factory/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/abstract_factory/</guid><description>
+&lt;p&gt;The Abstract Factory pattern is a creational design pattern that provides an interface for creating families of related or dependent objects without specifying their concrete classes. It allows a system to be independent of how its products are created, composed, and represented. Effectively, it&amp;rsquo;s a &amp;ldquo;factory of factories&amp;rdquo;—a way to delegate the responsibility of object creation to other objects.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when you need to create different combinations of related objects that depend on a configuration or platform. It promotes loose coupling between classes and makes it easy to switch between different &amp;ldquo;looks and feels&amp;rdquo; or object implementations without modifying the client code. It addresses the issue of creating multiple coupled object families when a simple factory isn&amp;rsquo;t flexible enough.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Abstract Factory pattern is commonly used in these scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GUI Frameworks:&lt;/strong&gt; Creating widgets (buttons, text fields, etc.) that are specific to a particular operating system (Windows, macOS, Linux). Each OS needs a distinct set of widgets.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Abstraction:&lt;/strong&gt; Providing an abstraction layer for different database systems (MySQL, PostgreSQL, Oracle). An abstract factory can create database connections, queries, and commands.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Management:&lt;/strong&gt; Dynamically loading and configuring different sets of components based on a configuration file or environment variable.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-Platform Development:&lt;/strong&gt; Where the same high-level code needs to interact with platform-specific implementations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java Swing/JFace:&lt;/strong&gt; Java&amp;rsquo;s Swing and Eclipse&amp;rsquo;s JFace frameworks utilize abstract factories extensively. They provide different &amp;ldquo;look and feel&amp;rdquo; factories that allow applications to easily adapt to different operating systems and user preferences. Each factory creates a complete set of UI components—buttons, text fields, scrollbars, etc.—that share a consistent style.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spring Framework (Bean Definition Factories):&lt;/strong&gt; Spring’s configuration mechanism uses an abstract factory approach. While not directly named as such, the &lt;code&gt;BeanFactory&lt;/code&gt; (and its implementations like &lt;code&gt;XmlBeanFactory&lt;/code&gt; or &lt;code&gt;AnnotationConfigBeanFactory&lt;/code&gt;) effectively act as abstract factories for creating and managing beans within the application context. Different &lt;code&gt;BeanFactory&lt;/code&gt; implementations use differing sources for bean definitions (XML, annotations, Java config) but provide a consistent interface for retrieving beans.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Unity Game Engine:&lt;/strong&gt; Unity&amp;rsquo;s Asset Serialization system can leverage Abstract Factories. Different asset formats (e.g., FBX, OBJ, custom formats) can have different serialization/deserialization methods. An abstract factory could be used to provide a common interface for creating asset importers and exporters tailored to specific asset types without the core engine needing to know the details of each format.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Active Record</title><link>http://www.swpatterns.com/pattern/active_record/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/active_record/</guid><description>
+&lt;p&gt;The Active Record pattern is a design pattern where objects representing data, typically database records, carry both data and the logic to interact with the database. Instead of having a separate object to manage database access (like a Data Access Object), the Active Record object itself is responsible for reading and writing its own data.&lt;/p&gt;
+&lt;p&gt;This pattern effectively encapsulates database interactions within the domain model, making the code more object-oriented and potentially reducing boilerplate. It simplifies data access by providing methods directly on the object to perform database operations like saving, updating, deleting, and querying.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Active Record pattern is commonly used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Object-Relational Mapping (ORM) frameworks:&lt;/strong&gt; It’s the foundation of many ORMs like Ruby on Rails’ ActiveRecord, Django’s models, and SQLAlchemy.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data-driven applications:&lt;/strong&gt; Any application where the primary focus is managing data stored in a relational database benefits from this pattern.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simplifying database interactions:&lt;/strong&gt; When you want to minimize the complexity of database access and prefer a more object-centric approach to data management.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rapid development:&lt;/strong&gt; The built-in database functionality accelerates development by reducing the custom code needed for simple CRUD operations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ruby on Rails ActiveRecord:&lt;/strong&gt; In Rails, every model class inherits from &lt;code&gt;ActiveRecord::Base&lt;/code&gt;. You define database tables with migrations, and then create Ruby classes that correspond to those tables. Instances of these classes represent rows in the table and have methods like &lt;code&gt;save&lt;/code&gt;, &lt;code&gt;update&lt;/code&gt;, &lt;code&gt;destroy&lt;/code&gt;, and &lt;code&gt;find&lt;/code&gt; to interact with the database. For example, a &lt;code&gt;User&lt;/code&gt; class would automatically have methods to fetch, create, update, and delete user records.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Django ORM:&lt;/strong&gt; Django&amp;rsquo;s ORM utilizes the Active Record pattern through its &lt;code&gt;models.py&lt;/code&gt; files. Each Python class defining a model (representing a database table) automatically gains database interaction abilities. You define fields that map to database columns, and Django provides methods to query and manipulate the data, such as &lt;code&gt;save()&lt;/code&gt;, &lt;code&gt;objects.get()&lt;/code&gt;, and &lt;code&gt;objects.filter()&lt;/code&gt;. A &lt;code&gt;Product&lt;/code&gt; model inherits these capabilities.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SQLAlchemy (Python):&lt;/strong&gt; While more flexible than rigid Active Record implementations, SQLAlchemy can be used in a way that approximates Active Record. By defining classes that map to database tables and using &lt;code&gt;Session&lt;/code&gt; objects to manage those classes, you can treat instances of these classes as directly responsible for their own persistence, akin to the Active Record approach.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Dependency Injection</title><link>http://www.swpatterns.com/pattern/dependency_injection/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/dependency_injection/</guid><description>
+&lt;p&gt;Dependency Injection (DI) is a software design pattern that implements the Inversion of Control (IoC) principle for resolving dependencies. Instead of a component creating its dependencies, or directly looking them up, those dependencies are &lt;em&gt;injected&lt;/em&gt; into the component. This promotes loose coupling, making the code more modular, reusable, and testable. DI leads to more maintainable and flexible applications, as changes to one part of the system are less likely to cascade through other parts.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Dependency Injection is a widely used pattern in modern software development. It&amp;rsquo;s commonly employed in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Frameworks:&lt;/strong&gt; Many frameworks (like Spring, Angular, and .NET) have built-in DI containers to manage object dependencies.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing:&lt;/strong&gt; DI makes unit testing easier by allowing you to inject mock dependencies, isolating the component under test.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Large Applications:&lt;/strong&gt; For complex projects, DI helps manage the relationships between numerous components, improving overall structure and maintainability.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Microservices:&lt;/strong&gt; Loosely coupled microservice architectures inherently benefit from dependency injection.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spring Framework (Java):&lt;/strong&gt; Spring’s core feature is its DI container. Developers define beans (objects) and their dependencies declaratively (through XML configuration or annotations like &lt;code&gt;@Autowired&lt;/code&gt;). Spring then automatically resolves and injects these dependencies when it creates the beans. This makes application components highly configurable and testable.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Angular (TypeScript):&lt;/strong&gt; Angular uses a hierarchical dependency injection system. Components declare their dependencies in their constructors, and the Angular injector provides those dependencies. Angular’s dependency injection simplifies development and promotes modularity, enhancing code reusability and maintainability. For example, an &lt;code&gt;HttpClient&lt;/code&gt; service can be injected into any component that needs to make HTTP requests.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Facade</title><link>http://www.swpatterns.com/pattern/facade/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/facade/</guid><description>
+&lt;p&gt;The Facade pattern provides a simplified interface to a complex system of classes, objects, and subsystems. It abstracts away the intricacies of the underlying components, offering clients a higher-level, easier-to-use entry point. Essentially, it’s an &amp;ldquo;entry point&amp;rdquo; object that encapsulates the interaction with multiple system parts.&lt;/p&gt;
+&lt;p&gt;This pattern is useful when you want to reduce complexity for clients, promote loose coupling, and offer a more intuitive way to interact with a system. It&amp;rsquo;s commonly used in scenarios where a system has multiple dependencies or where the client only needs a limited set of features from a larger system. It’s also valuable when migrating to a new subsystem, as the facade can provide compatibility with legacy code while the internal workings change.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Facade pattern is commonly found in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Complex Libraries/Frameworks:&lt;/strong&gt; Providing a simple API to interact with a large and intricate codebase.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;System Integration:&lt;/strong&gt; Abstracting the interaction with different, potentially incompatible systems.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Layered Architectures:&lt;/strong&gt; Acting as a gateway to a lower layer from a higher layer, shielding the higher layer from implementation details.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Build Systems:&lt;/strong&gt; Managing complex compilation and linking processes with a simplified command.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apache Camel:&lt;/strong&gt; Camel uses facades extensively to provide simplified integration patterns for connecting different systems (e.g., databases, message queues, web services). Instead of directly interacting with the underlying transport mechanisms, you define routes using Camel’s DSL, and the facade handles the complexities of the underlying integrations. The &lt;code&gt;ProducerTemplate&lt;/code&gt; and &lt;code&gt;ConsumerTemplate&lt;/code&gt; classes provide facades for sending and receiving messages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java Database Connectivity (JDBC):&lt;/strong&gt; JDBC provides a facade over various database APIs. Developers interact with the database through the &lt;code&gt;Connection&lt;/code&gt;, &lt;code&gt;Statement&lt;/code&gt;, and &lt;code&gt;ResultSet&lt;/code&gt; interfaces, without needing to know the specific details of how each database vendor implements these functionalities internally. The &lt;code&gt;DriverManager&lt;/code&gt; class serves as a facade, simplifying the process of obtaining a database connection.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Docker SDKs:&lt;/strong&gt; Docker SDKs for languages like Python and Java offer a facade over the Docker Engine API. You don&amp;rsquo;t need to learn the intricacies of the Docker Engine&amp;rsquo;s CLI or REST API; instead, you use high-level functions provided by the SDK to manage containers, images, and networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Immutable Object</title><link>http://www.swpatterns.com/pattern/immutable_object/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/immutable_object/</guid><description>
+&lt;p&gt;An Immutable Object is an object whose state cannot be modified after it is created. Any operation that appears to modify the object actually returns a new object with the desired changes, leaving the original object untouched. This is achieved by making all of the object&amp;rsquo;s fields final (or equivalent) and avoiding methods that can alter its internal state.&lt;/p&gt;
+&lt;p&gt;Immutability offers several benefits, including thread safety, simplified reasoning about code, and easier caching. Because the object&amp;rsquo;s state is constant, it eliminates the need for synchronization mechanisms in concurrent environments. It also makes debugging easier, as you can be confident that an object&amp;rsquo;s value will not change unexpectedly.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Immutable Object pattern is widely used in scenarios where data integrity and thread safety are paramount. Common use cases include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Value Objects:&lt;/strong&gt; Representing concepts like currency, dates, or coordinates where the value itself is the primary concern and modification is not allowed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concurrency:&lt;/strong&gt; In multi-threaded applications, immutable objects can be safely shared between threads without the need for locks or other synchronization primitives.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caching:&lt;/strong&gt; Immutable objects are ideal for caching, as their values will never change, eliminating cache invalidation concerns.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event Handling:&lt;/strong&gt; Events can be represented as immutable objects, ensuring that event data remains consistent throughout the system.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Functional Programming:&lt;/strong&gt; Immutability is a core principle of functional programming, promoting pure functions and predictable behavior.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java &lt;code&gt;String&lt;/code&gt;:&lt;/strong&gt; The Java &lt;code&gt;String&lt;/code&gt; class is a classic example of an immutable object. Any string manipulation operation (e.g., concatenation, substring) creates a &lt;em&gt;new&lt;/em&gt; &lt;code&gt;String&lt;/code&gt; object instead of modifying the original. This ensures that strings are thread-safe and predictable.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;React Props:&lt;/strong&gt; In React, &lt;code&gt;props&lt;/code&gt; are used to pass data to components. React strongly encourages treating props as immutable. Components should never modify their props directly. Instead, if a component needs to change the data, it should request a new set of props from its parent component. This immutability is crucial for React&amp;rsquo;s efficient rendering and state management.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Kotlin Data Classes with &lt;code&gt;val&lt;/code&gt;:&lt;/strong&gt; Kotlin data classes, when declared with &lt;code&gt;val&lt;/code&gt; properties (read-only), automatically become immutable. This provides a concise way to create immutable data structures with built-in methods for equality, copying, and string representation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript &lt;code&gt;Object.freeze()&lt;/code&gt;:&lt;/strong&gt; While JavaScript objects are mutable by default, &lt;code&gt;Object.freeze()&lt;/code&gt; can be used to make an object immutable. This prevents new properties from being added, existing properties from being removed, and the values of existing properties from being changed. It&amp;rsquo;s a shallow freeze, meaning nested objects are still mutable unless frozen individually.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Multiton</title><link>http://www.swpatterns.com/pattern/multiton/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/multiton/</guid><description>
+&lt;p&gt;The Multiton pattern is a variation of the Singleton pattern. While a Singleton restricts the instantiation of a class to only one instance, a Multiton allows a limited number of instances. This is useful when multiple instances are needed to represent different, but related, states or configurations without allowing unlimited creation. The Multiton controls the number of instances created and manages access to them.&lt;/p&gt;
+&lt;p&gt;It differs from a simple factory in that the Multiton remembers the created instances and provides access to them, whereas a factory simply creates and returns new instances each time. This pattern ensures that only a predefined number of instances of a class exist throughout the application lifecycle, improving resource management and potentially simplifying coordination between these instances.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Multiton pattern is useful in scenarios where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Limited Resources:&lt;/strong&gt; You need to control the number of instances of a resource-intensive class to prevent performance issues or resource exhaustion. For example, database connection pools.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Management:&lt;/strong&gt; You need to manage a small set of configuration objects, each representing a different environment or setting.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load Balancing:&lt;/strong&gt; You want to distribute work across a fixed number of worker instances.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regional Servers:&lt;/strong&gt; Managing a limited number of server instances in different geographical regions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Database Connection Pool:&lt;/strong&gt; Many database libraries utilize a Multiton-like approach to manage a pool of database connections. Instead of creating a new connection for every request, the pool maintains a limited number of connections, reusing them to improve performance and reduce overhead. Libraries like HikariCP or Apache DBCP implement this concept.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Log Managers with Multiple Log Files:&lt;/strong&gt; A logging framework might use a Multiton to manage a fixed number of log files. Each instance of the Multiton represents a different log file (e.g., one for errors, one for warnings, one for information). This allows for organized logging without the overhead of creating a new file handler for every log message. Log4j2 and similar frameworks can be configured to behave in this manner.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Prototype</title><link>http://www.swpatterns.com/pattern/prototype/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/prototype/</guid><description>
+&lt;p&gt;The Prototype pattern is a creational design pattern that empowers you to create new objects by cloning existing ones, offering a flexible alternative to traditional instantiation methods. Instead of specifying new object creation through classes, it delegates the creation responsibility to a prototype instance. This proves particularly useful when the creation process is expensive or complex, or when the exact type of objects to be created isn&amp;rsquo;t known in advance.&lt;/p&gt;
+&lt;p&gt;This pattern avoids the limitations of class hierarchies for object creation, enabling the creation of a hierarchical structure of objects by using existing instances as prototypes. It relies on the abstract &lt;code&gt;Prototype&lt;/code&gt; interface, defining the &lt;code&gt;clone()&lt;/code&gt; method, which is implemented by concrete prototype classes. Clients request new objects by calling &lt;code&gt;clone()&lt;/code&gt; on a prototype, resulting in identical copies with potentially modified state.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Prototype pattern is frequently used in scenarios like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Object Creation is Expensive:&lt;/strong&gt; When creating an object involves significant computational cost, cloning an existing instance can be much faster.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reducing Class Instantiation:&lt;/strong&gt; Avoid creating multiple classes that differ only in a small number of initialization parameters.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dynamic Object Creation:&lt;/strong&gt; When the specific types of objects to be created are determined at runtime, prototypes allow for flexible instantiation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configuration Management:&lt;/strong&gt; Creating default configurations or templates by cloning a base object.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game Development:&lt;/strong&gt; Cloning game objects (e.g., enemies, power-ups) efficiently is a common use case.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JavaScript Object.create():&lt;/strong&gt; JavaScript&amp;rsquo;s &lt;code&gt;Object.create()&lt;/code&gt; method internally utilizes the Prototype pattern. It allows you to create new objects with specified prototype objects, inheriting properties and methods from the prototype.
+javascript
+const animal = {
+type: &amp;lsquo;animal&amp;rsquo;,
+makeSound: function() { console.log(&amp;lsquo;Generic animal sound&amp;rsquo;); }
+};&lt;/p&gt;
+&lt;p&gt;const dog = Object.create(animal);
+dog.type = &amp;lsquo;dog&amp;rsquo;;
+dog.makeSound = function() { console.log(&amp;lsquo;Woof!&amp;rsquo;); };&lt;/p&gt;
+&lt;p&gt;console.log(dog.type); // Output: dog
+dog.makeSound(); // Output: Woof!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Git:&lt;/strong&gt; The version control system Git essentially uses a prototype pattern when branching. A new branch is created as a shallow copy (prototype) of the existing branch, after which changes are applied to the new branch without modifying the original. This allows for experimentation and parallel development. Technically, Git uses content-addressable storage and only stores unique content, but from a conceptual point of view, the branching logic resembles the Prototype pattern.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Builder</title><link>http://www.swpatterns.com/pattern/builder/</link><pubDate>Fri, 27 Oct 2023 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/builder/</guid><description>
+&lt;p&gt;The Builder pattern is a creational design pattern that lets you construct complex objects step-by-step. It allows customization of the object being built without making the construction process itself complex and unmanageable. The pattern separates the construction of a complex object from its representation, so the same construction process can create different representations.&lt;/p&gt;
+&lt;p&gt;This pattern is useful when an object has multiple optional attributes, or when the construction process is complex and involves many steps. It addresses the problems that can arise when using traditional constructors to create complex objects, particularly telescoping constructors and the need for a separate object for configuration. It promotes code reusability and maintainability by encapsulating the construction logic.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Builder pattern is commonly used where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Complex Object Creation:&lt;/strong&gt; When constructing an object requires a sequence of steps and depends on various configuration options.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Varied Representations:&lt;/strong&gt; When you need to create different versions or types of an object using the same construction process.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Avoiding Constructor Complexity:&lt;/strong&gt; To avoid long and complicated constructors with numerous parameters.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Immutable Objects:&lt;/strong&gt; When you want to construct immutable objects, as the builder can assemble the object&amp;rsquo;s parts before final creation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java&amp;rsquo;s StringBuilder:&lt;/strong&gt; The &lt;code&gt;StringBuilder&lt;/code&gt; class in Java effectively implements the Builder pattern. You don&amp;rsquo;t construct a final string directly; instead, you use methods like &lt;code&gt;append()&lt;/code&gt;, &lt;code&gt;insert()&lt;/code&gt;, and &lt;code&gt;delete()&lt;/code&gt; to build up the string incrementally. Finally, &lt;code&gt;toString()&lt;/code&gt; creates the immutable &lt;code&gt;String&lt;/code&gt; object. This avoids the inefficiencies of repeatedly creating new &lt;code&gt;String&lt;/code&gt; objects during modification.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python&amp;rsquo;s &lt;code&gt;datetime&lt;/code&gt; module:&lt;/strong&gt; Constructing a &lt;code&gt;datetime&lt;/code&gt; object in Python can be done directly with &lt;code&gt;datetime(year, month, day, hour, minute, second)&lt;/code&gt;. However, the &lt;code&gt;datetime.datetime&lt;/code&gt; class also provides a builder-like interface through its various class methods (e.g., &lt;code&gt;datetime.now()&lt;/code&gt;, &lt;code&gt;datetime.fromtimestamp()&lt;/code&gt;). These methods allow you to create &lt;code&gt;datetime&lt;/code&gt; objects with specific levels of detail, customizing the initialization process.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Lombok &lt;code&gt;@Builder&lt;/code&gt; Annotation (Java):&lt;/strong&gt; The Lombok library provides the &lt;code&gt;@Builder&lt;/code&gt; annotation which generates a builder class for you automatically. This simplifies the use of the Builder pattern substantially and is seen in many Spring Boot projects where complex DTOs are used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Flyweight</title><link>http://www.swpatterns.com/pattern/flyweight/</link><pubDate>Fri, 27 Oct 2023 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/flyweight/</guid><description>
+&lt;p&gt;The Flyweight pattern is a structural design pattern that aims to minimize memory usage or computational costs by sharing as much data as possible between similar objects. It achieves this by separating the object state into intrinsic and extrinsic parts. Intrinsic state is shared and immutable, held within the flyweight object itself, while extrinsic state is unique to each object and passed to the flyweight when needed.&lt;/p&gt;
+&lt;p&gt;This pattern is particularly useful when dealing with a large number of objects that contain redundant information. By sharing the common, intrinsic state, you significantly reduce the memory footprint. It&amp;rsquo;s often employed in applications like text editors, graphics editors, or game development, where numerous similar objects (characters, graphical elements, etc.) need to be managed efficiently.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Text Editors/Word Processors:&lt;/strong&gt; Representing characters in a document. Each character might have a different font, size, and color (extrinsic state), while the glyph data for the character itself is shared (intrinsic state).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Game Development:&lt;/strong&gt; Managing game entities like trees, bushes, or rocks. Many instances of these entities might share the same visual model and properties (intrinsic state), while their position, rotation, and state (alive/destroyed) are specific to each instance (extrinsic state).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Connection Pooling:&lt;/strong&gt; Sharing database connections across multiple requests. The connection details are intrinsic, while the specific query and result set are extrinsic.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Sprites:&lt;/strong&gt; In web development, combining many small images into a single larger image (sprite) and using CSS to display only the required portion. The sprite image is intrinsic, and its position and size within the page is extrinsic.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java&amp;rsquo;s &lt;code&gt;String&lt;/code&gt; Pool:&lt;/strong&gt; Java internally uses a flyweight-like mechanism with the &lt;code&gt;String&lt;/code&gt; pool. When you create a string literal, the JVM first checks if a string with the same value already exists in the pool. If it does, it returns a reference to the existing string; otherwise, it creates a new one and adds it to the pool. This avoids creating duplicate string objects with identical content, saving memory.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;React&amp;rsquo;s &lt;code&gt;useMemo&lt;/code&gt; hook:&lt;/strong&gt; While not a direct implementation of the Flyweight pattern, &lt;code&gt;useMemo&lt;/code&gt; serves a similar purpose by memoizing the result of a function. If the dependencies of the function remain unchanged between renders, &lt;code&gt;useMemo&lt;/code&gt; returns the cached result instead of re-executing the function. This shares computational effort and the resulting object between render cycles, effectively making it a lightweight, shared resource.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Row Data Gateway</title><link>http://www.swpatterns.com/pattern/row_data_gateway/</link><pubDate>Fri, 27 Oct 2023 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/row_data_gateway/</guid><description>
+&lt;p&gt;The Row Data Gateway pattern provides an interface to a database table. It encapsulates all the direct database access logic and exposes methods to perform operations on the table rows as objects. The gateway maps rows from one or more tables to objects, effectively presenting a higher-level, object-oriented view of the data.&lt;/p&gt;
+&lt;p&gt;This pattern is beneficial when working with legacy databases or when a simple, direct mapping between database rows and objects is sufficient. It minimizes the amount of code needed to interact with the database and simplifies access for the client, though it can lead to tight coupling between the application and the database schema.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Row Data Gateway is commonly used in:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Legacy Systems:&lt;/strong&gt; Integrating with existing databases with limited or no ORM capabilities.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simple Data Models:&lt;/strong&gt; Applications with straightforward data relationships where the complexity of a full ORM is unnecessary.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance-Critical Applications:&lt;/strong&gt; Provides fine-grained control over SQL queries, enabling optimization for specific database systems.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data migration and ETL processes:&lt;/strong&gt; When reading and writing data efficiently to and from various sources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ruby on Rails (ActiveRecord without Associations):&lt;/strong&gt; Before the widespread adoption of complex ActiveRecord associations, simple ActiveRecord models acted as Row Data Gateways for single tables. Each record instance directly represented a row in the database, and methods like &lt;code&gt;.find()&lt;/code&gt;, &lt;code&gt;.create()&lt;/code&gt;, &lt;code&gt;.update()&lt;/code&gt;, and &lt;code&gt;.destroy()&lt;/code&gt; translated to specific SQL queries on the corresponding table.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;JDBC in Java:&lt;/strong&gt; Using JDBC directly to interact with a database, you essentially implement a Row Data Gateway manually. Code directly executes SQL queries and maps the &lt;code&gt;ResultSet&lt;/code&gt; rows to Java objects. Libraries like Spring JDBC provide a layer of abstraction but still rely on the core principles of this pattern by handling database connections and result set mapping.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;java
+public class CustomerGateway {
+private JdbcTemplate jdbcTemplate;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;public CustomerGateway(JdbcTemplate jdbcTemplate) {
+this.jdbcTemplate = jdbcTemplate;
+}
+public Customer getCustomer(int id) {
+String sql = &amp;quot;SELECT * FROM Customers WHERE CustomerID = ?&amp;quot;;
+return jdbcTemplate.queryForObject(sql, new Object[]{id}, new CustomerRowMapper());
+}
+// other methods to insert/update/delete customers
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;</description></item><item><title>Singleton</title><link>http://www.swpatterns.com/pattern/singleton/</link><pubDate>Mon, 15 Mar 2021 13:24:44 +0100</pubDate><guid>http://www.swpatterns.com/pattern/singleton/</guid><description>
+&lt;p&gt;Singleton design pattern enables us to guarantee unicity and a single entry point for services and accesses. Tipically it requires the standard contructor to be hidden in order to avoid direct instantiation, but modern frameworks use this pattern in conjunction with other &lt;a href="http://www.swpatterns.com/pattern_types/creational/"&gt;creational&lt;/a&gt; patterns in order to ease the development of services.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;Typical usage for the Singleton pattern is the management of a single centralized state with the warranty that nothing that is not part of the singleton interface will touch it.&lt;/p&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Angular services are (per default) singletons. These services are instantiated by the framework and can be used directly through Dependency Injection.&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

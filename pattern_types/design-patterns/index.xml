@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Design Patterns on SWPatterns.com</title><link>http://www.swpatterns.com/pattern_types/design-patterns/</link><description>Recent content in Design Patterns on SWPatterns.com</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 29 Feb 2024 10:30:00 +0000</lastBuildDate><atom:link href="http://www.swpatterns.com/pattern_types/design-patterns/index.xml" rel="self" type="application/rss+xml"/><item><title>Iterator</title><link>http://www.swpatterns.com/pattern/iterator/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/iterator/</guid><description>
+&lt;p&gt;The Iterator pattern is a behavioral design pattern that provides a way to access the elements of an aggregate object (like a list, set, or tree) sequentially without exposing its underlying representation. It defines a standard interface for creating iterators, allowing clients to traverse and manipulate elements without knowing how the aggregate is organized.&lt;/p&gt;
+&lt;p&gt;This pattern decouples the algorithms for traversing a collection from the collection itself. It promotes loose coupling between the collection and the code that uses it, making the collection more flexible and easier to maintain. Iterators also allow for multiple traversals of the same collection concurrently.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Iterator pattern is commonly used in scenarios where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;You need to provide a way to access the elements of a collection without exposing its internal structure.&lt;/li&gt;
+&lt;li&gt;You want to support multiple traversal modes for a collection (e.g., forward, backward, skipping elements).&lt;/li&gt;
+&lt;li&gt;You need to iterate over complex data structures like trees or graphs.&lt;/li&gt;
+&lt;li&gt;You want to allow clients to iterate over a collection while it is being modified (with appropriate synchronization).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java Collections Framework:&lt;/strong&gt; The &lt;code&gt;java.util.Iterator&lt;/code&gt; interface and its implementations (e.g., &lt;code&gt;ListIterator&lt;/code&gt;, &lt;code&gt;Iterator&amp;lt;E&amp;gt;&lt;/code&gt; for various collection types like &lt;code&gt;ArrayList&lt;/code&gt;, &lt;code&gt;LinkedList&lt;/code&gt;, &lt;code&gt;HashSet&lt;/code&gt;) are a prime example. You can iterate over these collections using a &lt;code&gt;for-each&lt;/code&gt; loop, which internally utilizes the iterator pattern.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Python Generators:&lt;/strong&gt; Python&amp;rsquo;s generators, created using the &lt;code&gt;yield&lt;/code&gt; keyword, effectively implement the iterator pattern. A generator function returns an iterator object that produces values on demand, rather than storing the entire sequence in memory. This is particularly useful for large datasets.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;C++ Standard Template Library (STL):&lt;/strong&gt; C++ provides iterators as a core part of its STL. Different container types (e.g., &lt;code&gt;vector&lt;/code&gt;, &lt;code&gt;list&lt;/code&gt;, &lt;code&gt;map&lt;/code&gt;) have their own iterator classes, allowing you to traverse their elements in a generic way. Iterators in C++ are more powerful than in Java, supporting various operations like increment, decrement, dereferencing, and comparison.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Strategy</title><link>http://www.swpatterns.com/pattern/strategy/</link><pubDate>Thu, 29 Feb 2024 10:30:00 +0000</pubDate><guid>http://www.swpatterns.com/pattern/strategy/</guid><description>
+&lt;p&gt;The Strategy pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. It allows the algorithm to vary independently from the clients that use it. This pattern avoids conditional complexity and promotes code reusability by defining a consistent interface for various algorithms.&lt;/p&gt;
+&lt;p&gt;This is particularly useful when you have multiple ways to accomplish a task, and you want to be able to select the appropriate algorithm at runtime, or when you need to be able to switch between algorithms easily. It promotes loose coupling between the client and the algorithm’s implementation.&lt;/p&gt;
+&lt;h2 id="usage"&gt;Usage&lt;/h2&gt;
+&lt;p&gt;The Strategy pattern is common in scenarios where you need flexible algorithms. Some examples include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Payment Processing:&lt;/strong&gt; Different payment methods (credit card, PayPal, bank transfer) can be implemented as separate strategies, allowing a shopping cart to support multiple payment options.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sorting Algorithms:&lt;/strong&gt; A sorting class can accept different sorting strategies (bubble sort, quicksort, merge sort) to sort data in various ways.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compression Algorithms:&lt;/strong&gt; A file archiver can use different compression algorithms (ZIP, GZIP, BZIP2) based on user preference or file type.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Validation Rules:&lt;/strong&gt; Applying different validation rules to input data, such as email format, password strength, or data type.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="examples"&gt;Examples&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Java 8 Streams API:&lt;/strong&gt; The &lt;code&gt;Comparator&lt;/code&gt; interface in Java 8&amp;rsquo;s Streams API exemplifies the Strategy pattern. You can define different comparison strategies (e.g., comparing by name, by age, by date) and pass them to the &lt;code&gt;sorted()&lt;/code&gt; method of a stream. The stream processing logic remains the same, but the sorting behavior changes based on the chosen comparator.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Spring Data JPA:&lt;/strong&gt; Spring Data JPA allows customizing query derivation by providing different &lt;code&gt;JpaEntityMappings&lt;/code&gt; or implementing your own &lt;code&gt;QuerydslPredicateExecutor&lt;/code&gt;. Each strategy determines how Spring Data JPA translates method names into database queries. This allows developers to tailor query creation without affecting core Spring Data functionalities.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Log4j 2:&lt;/strong&gt; Log4j 2 uses strategies for different aspects of logging. For example, the &lt;code&gt;Layout&lt;/code&gt; interface defines a strategy for formatting log messages, allowing you to choose between plain text, JSON, XML, or other formats. Similarly, different &lt;code&gt;Filter&lt;/code&gt; implementations act as strategies to determine which log messages are processed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>
