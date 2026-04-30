@@ -65,11 +65,11 @@ pre {
   margin: 0;
   padding: var(--space-md);
   overflow-x: auto;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
+  font-family: var(--font-code);
+  font-size: var(--fs-code);
   line-height: 1.55;
-  letter-spacing: var(--track-mono);
-  font-feature-settings: var(--feat-mono);
+  letter-spacing: 0;
+  font-feature-settings: "kern" 1, "calt" 0;
   color: var(--text);
   background: transparent;
   scrollbar-width: thin;

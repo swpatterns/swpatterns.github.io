@@ -44,10 +44,12 @@
   // ─── typography ──────────────────────────────────────────────────────
   --font-display: 'Bodoni Moda', 'Bodoni 72', 'Didot', 'Bodoni MT', ui-serif, serif;
   --font-body:    'Spectral', 'Source Serif 4', 'Source Serif Pro', 'Charter', Georgia, ui-serif, serif;
-  // Cutive Mono — typewriter face, evokes typed card-catalog labels.
-  // (Substituted from Departure Mono per impeccable's "fall back to something
-  // NOT in the reflex-reject list" rule; Cutive Mono fits the archival brief.)
+  // Cutive Mono — typewriter face, decorative role only: small-cap LABELS,
+  // catalog NUMERALS, archival metadata. Never used for actual code.
   --font-mono:    'Cutive Mono', 'Courier Prime', ui-monospace, 'SF Mono', 'Menlo', monospace;
+  // Anonymous Pro — Mark Simonson's developer mono (OFL). Used for code only:
+  // slashed zero, distinct I/l/1, properly drawn for scanning long blocks.
+  --font-code:    'Anonymous Pro', 'Cousine', ui-monospace, 'SF Mono', 'Menlo', monospace;
 
   // Modular scale: ~1.333 (perfect fourth) on display, fluid clamp() on
   // marketing-style pages; fixed rem on reading body. We split: --display/--h1
@@ -57,10 +59,11 @@
   --fs-h2:      1.5rem;
   --fs-h3:      1.1875rem;
   --fs-h4:      1.0625rem;
-  --fs-body:    1.0625rem;
-  --fs-small:   0.9375rem;
-  --fs-caption: 0.8125rem;
-  --fs-label:   0.6875rem;   // small-cap mono labels
+  --fs-body:    1.0625rem;       // 17px running prose
+  --fs-small:   0.9375rem;       // 15px aside copy
+  --fs-caption: 0.875rem;        // 14px captions
+  --fs-label:   0.78125rem;      // 12.5px — small-cap mono labels (was 11px, too small)
+  --fs-code:    0.96875rem;      // 15.5px — code blocks (proper code-mono size)
 
   --lh-display: 1.04;
   --lh-h1:      1.08;
