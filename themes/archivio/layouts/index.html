@@ -112,8 +112,14 @@
 
   <ul class="languages__list">
     {{- range $lang, $items := $languages }}
+      {{- $href := printf "/language/%s" (urlize $lang) | relURL }}
+      {{- $page := $.Site.GetPage (printf "/language/%s" (urlize $lang)) }}
       <li class="languages__item">
-        <a href="{{ printf "/language/%s" (urlize $lang) | relURL }}">{{ humanize $lang }}</a>
+        <a href="{{ $href }}">
+          {{- if and $page $page.Params.name }}{{ $page.Params.name }}
+          {{- else if $page }}{{ $page.Title | default (humanize $lang) }}
+          {{- else }}{{ humanize $lang }}{{- end -}}
+        </a>
         <span class="count"><span class="numeral">{{ len $items }}</span></span>
       </li>
     {{- end }}

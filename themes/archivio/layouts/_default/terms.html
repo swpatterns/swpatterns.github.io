@@ -1,0 +1,38 @@
+{{/* Taxonomy LIST page — e.g. /language/, /pattern_types/, /pattern_usage/.
+     Lists every term in the taxonomy with a count of pages. */}}
+{{ define "main" }}
+{{- $kind := humanize .Data.Plural }}
+{{- $terms := .Data.Terms.Alphabetical }}
+{{- $count := len $terms }}
+
+<section class="tax-cover">
+  <span class="tax-cover__kind">Index</span>
+  <h1 class="tax-cover__name">{{ $kind }}</h1>
+  {{- with .Content }}<div class="tax-cover__lede">{{ . }}</div>{{ end }}
+  <span class="tax-cover__count">
+    <span class="numeral">{{ printf "%02d" $count }}</span>
+    {{- if eq $count 1 }} entry{{ else }} entries{{ end }}
+  </span>
+</section>
+
+{{- if gt $count 0 }}
+  <ul class="languages__list">
+    {{- range $terms }}
+      {{- $href := printf "/%s/%s" $.Data.Plural (urlize .Name) | relURL }}
+      {{- $p := .Page }}
+      <li class="languages__item">
+        <a href="{{ $href }}">
+          {{/* Prefer explicit `name` or `title` from the term's _index.md so
+               acronyms and special characters survive (PHP, C++, C#, JavaScript). */}}
+          {{- if and $p $p.Params.name }}{{ $p.Params.name }}
+          {{- else if and $p $p.Title }}{{ $p.Title }}
+          {{- else }}{{ humanize .Name }}{{- end -}}
+        </a>
+        <span class="count"><span class="numeral">{{ .Count }}</span></span>
+      </li>
+    {{- end }}
+  </ul>
+{{- else }}
+  <p style="font-style:italic;color:var(--text-soft);">No entries.</p>
+{{- end }}
+{{ end }}

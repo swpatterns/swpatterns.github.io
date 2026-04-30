@@ -4,7 +4,7 @@
 
 <section class="tax-cover">
   <span class="tax-cover__kind">Language</span>
-  <h1 class="tax-cover__name">{{ .Title }}</h1>
+  <h1 class="tax-cover__name">{{ .Params.name | default .Title }}</h1>
   {{- with .Content }}<div class="tax-cover__lede">{{ . }}</div>{{ end }}
   <span class="tax-cover__count">
     <span class="numeral">{{ printf "%02d" $count }}</span>
