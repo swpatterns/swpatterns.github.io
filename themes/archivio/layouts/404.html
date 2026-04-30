@@ -1,0 +1,19 @@
+{{ define "main" }}
+<article class="reading">
+  <div class="prose">
+    <header class="entry">
+      <div class="entry__head">
+        <span class="entry__numeral" style="color:var(--text-mute);">404</span>
+        <div class="entry__class">
+          <span>Stack overflow</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span>page not in catalogue</span>
+        </div>
+      </div>
+      <h1 class="entry__title">Out of print.</h1>
+    </header>
+    <p>The entry you're looking for isn't in this volume. It may have been renamed or never existed.</p>
+    <p>Try the <a href="{{ "/" | relURL }}">contents</a>, or browse <a href="{{ "/pattern_types/" | relURL }}">by classification</a> or <a href="{{ "/language/" | relURL }}">by language</a>.</p>
+  </div>
+</article>
+{{ end }}

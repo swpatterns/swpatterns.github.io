@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode | default "en" }}" data-section="{{ .Section }}">
+<head>
+{{- partial "head.html" . }}
+
+{{/* SCSS pipeline */}}
+{{- $scss := dict "targetPath" "css/archivio.css" "outputStyle" "compressed" "enableSourceMap" hugo.IsServer }}
+{{- $css := resources.Get "sass/main.scss" | toCSS $scss | fingerprint "sha256" }}
+<link rel="preload" as="style" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">
+
+{{/* Theme bootstrap — runs before paint to avoid FOUC of the chosen mode. */}}
+<script>
+(function () {
+  try {
+    var saved = localStorage.getItem('archivio-theme');
+    if (saved === 'light' || saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+{{- partial "masthead.html" . }}
+
+<main id="main" class="stage">
+  {{- block "main" . }}{{- end }}
+</main>
+
+{{- partial "colophon.html" . }}
+
+{{/* Site JS — copy buttons + theme toggle. Loaded deferred. */}}
+{{- $js := resources.Get "js/archivio.js" | minify | fingerprint "sha256" }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+</body>
+</html>

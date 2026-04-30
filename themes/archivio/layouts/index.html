@@ -1,0 +1,123 @@
+{{ define "main" }}
+{{- $patterns := sort (where .Site.RegularPages "Section" "pattern") "Title" }}
+{{- $totalPatterns := len $patterns }}
+{{- $languages := .Site.Taxonomies.language }}
+{{- $codesamples := where .Site.RegularPages "Section" "codesample" }}
+
+<section class="cover">
+  <div class="cover__mark">
+    <span>SWP <span class="dot">·</span> Archivio</span>
+    <span>Vol. <span class="numeral">XXVI</span></span>
+  </div>
+
+  <h1 class="cover__title">A catalogue of <em>software patterns</em>, by language.</h1>
+
+  <p class="cover__lede">
+    Definitions and per-language specimens for the recurring shapes of working software — design patterns, anti-patterns, and architectural conventions, drawn from canonical sources and from practice.
+    Pull requests welcome on
+    <a href="https://github.com/swpatterns/swpatterns.com" rel="noopener" target="_blank">Github</a>.
+  </p>
+
+  <div class="cover__meta">
+    <span><strong>{{ $totalPatterns }}</strong> entries</span>
+    <span><strong>{{ len $languages }}</strong> languages</span>
+    <span><strong>{{ len $codesamples }}</strong> specimens</span>
+  </div>
+
+  <div class="cover__cta">
+    <a href="#contents">Browse contents</a>
+    <a href="{{ "/language/" | relURL }}">By language</a>
+    <a href="{{ "/pattern_types/" | relURL }}">By classification</a>
+  </div>
+</section>
+
+{{/* Group patterns by their *first* pattern_type, so each entry appears once.
+     Patterns with no pattern_types fall into "Uncategorised". */}}
+{{- $groups := dict }}
+{{- range $patterns }}
+  {{- $key := "Uncategorised" }}
+  {{- with .Params.pattern_types }}{{ $key = index . 0 }}{{ end }}
+  {{- $existing := index $groups $key | default slice }}
+  {{- $groups = merge $groups (dict $key (append .  $existing)) }}
+{{- end }}
+
+{{/* Determine the index of each pattern in the global alphabetical list,
+     so the catalog number rendered next to it stays consistent with single pages. */}}
+{{- $indexMap := dict }}
+{{- range $i, $p := $patterns }}
+  {{- $indexMap = merge $indexMap (dict $p.RelPermalink (add $i 1)) }}
+{{- end }}
+
+<section id="contents" class="toc" aria-label="Pattern catalogue, grouped by classification">
+  {{- $sortedKeys := slice }}
+  {{- range $k, $_ := $groups }}{{ $sortedKeys = $sortedKeys | append $k }}{{ end }}
+  {{- $sortedKeys = sort $sortedKeys }}
+
+  {{- range $key := $sortedKeys }}
+    {{- $items := index $groups $key }}
+    {{- $items = sort $items "Title" }}
+    {{- $count := len $items }}
+    {{- $slug := urlize $key }}
+    {{- $termPage := $.Site.GetPage (printf "/pattern_types/%s" $slug) }}
+
+    <section class="toc__section">
+      <header class="toc__sechead">
+        <span class="toc__seclabel">Section</span>
+        <h2 class="toc__sectitle">
+          {{- if $termPage }}
+            <a href="{{ $termPage.RelPermalink }}">{{ $key }}</a>
+          {{- else }}
+            {{ $key }}
+          {{- end }}
+        </h2>
+        <span class="toc__seccount">
+          <span class="numeral">{{ printf "%02d" $count }}</span>
+          {{- if eq $count 1 }} entry{{ else }} entries{{ end }}
+        </span>
+      </header>
+
+      <ol class="toc__list" reversed="false">
+        {{- range $items }}
+          {{- $idx := index $indexMap .RelPermalink }}
+          {{- $padded := printf "%03d" $idx }}
+          {{- $sampleCount := 0 }}
+          {{- with $.Site.GetPage (printf "/pattern_usage/%s" (lower .Title)) }}
+            {{- $sampleCount = len .Pages }}
+          {{- end }}
+          <li>
+            <a class="toc__entry" href="{{ .RelPermalink }}">
+              <span class="toc__entry-num">{{ $padded }}</span>
+              <span class="toc__entry-title">{{ .Title }}</span>
+              <span class="toc__entry-meta">
+                {{- if gt $sampleCount 0 }}
+                  <span class="numeral">{{ $sampleCount }}</span> langs
+                {{- else }}
+                  —
+                {{- end }}
+              </span>
+            </a>
+          </li>
+        {{- end }}
+      </ol>
+    </section>
+  {{- end }}
+</section>
+
+{{- if gt (len $languages) 0 }}
+<section class="languages" aria-label="Languages covered">
+  <header class="languages__head">
+    <span class="label">Index</span>
+    <h2 class="languages__title">By language</h2>
+  </header>
+
+  <ul class="languages__list">
+    {{- range $lang, $items := $languages }}
+      <li class="languages__item">
+        <a href="{{ printf "/language/%s" (urlize $lang) | relURL }}">{{ humanize $lang }}</a>
+        <span class="count"><span class="numeral">{{ len $items }}</span></span>
+      </li>
+    {{- end }}
+  </ul>
+</section>
+{{- end }}
+{{ end }}

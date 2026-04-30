@@ -1,10 +1,13 @@
 baseURL = "https://swpatterns.com/"
 languageCode = "en-us"
-title = "SWPatterns.com"
-theme = "hugo-clarity-new"
+title = "SWPatterns"
+theme = "archivio"
 
-showShare = true
-
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNumbers = false
+    guessSyntax = true
 
 [taxonomies]
 pattern_types = "pattern_types"
@@ -12,7 +15,8 @@ language = "language"
 pattern_usage = "pattern_usage"
 
 [params]
-mainSections = ["pattern", "language"]
+mainSections = ["pattern"]
+description = "A catalogue of software design patterns and per-language code specimens."
 
 [menu]
 

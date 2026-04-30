@@ -1,0 +1,12 @@
+{{- $title := .Title }}
+{{- if not $title }}{{ $title = .Site.Title }}{{ end }}
+{{- $desc := .Description }}
+{{- if not $desc }}{{ $desc = .Params.description | default .Summary | default .Site.Params.description }}{{ end }}
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+{{- with $desc }}<meta property="og:description" content="{{ . | plainify | truncate 200 }}">{{ end }}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ $title }}">
+{{- with $desc }}<meta name="twitter:description" content="{{ . | plainify | truncate 200 }}">{{ end }}

@@ -1,0 +1,244 @@
+// Pattern entry — the hero artifact. Catalog-card composition.
+
+// ─── pattern letterhead ────────────────────────────────────────────────
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--rule);
+}
+
+.entry__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-md);
+  align-items: baseline;
+
+  @media (max-width: 540px) {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xs);
+  }
+}
+
+.entry__numeral {
+  font-family: var(--font-display);
+  font-feature-settings: "lnum" 1, "tnum" 1;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 400;
+  font-size: clamp(2.25rem, calc(3.5vw + 0.5rem), 3.5rem);
+  line-height: 1;
+  color: var(--rosso);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  align-self: start;
+
+  // Catalog mark prefix
+  &::before {
+    content: "Nº";
+    font-style: italic;
+    font-size: 0.55em;
+    margin-right: 0.18em;
+    vertical-align: 0.55em;
+    color: var(--text-mute);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+}
+
+.entry__class {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-sm);
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+
+  & a {
+    color: var(--text-mute);
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px dashed var(--rule);
+
+    &:hover, &:focus-visible {
+      color: var(--text);
+      border-bottom-color: var(--rosso);
+    }
+  }
+
+  & .sep { color: var(--rule-strong); user-select: none; }
+}
+
+.entry__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  font-feature-settings: var(--feat-display);
+  margin-block: var(--space-md) 0;
+  text-wrap: balance;
+  // Slight optical compensation on Bodoni: pull the cap-height down a touch
+  // so the rosso numeral aligns with the title's cap line.
+  margin-block-start: var(--space-xs);
+}
+
+// Wikipedia / source line under title
+.entry__sources {
+  margin-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-mute);
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+
+  a {
+    color: var(--text-soft);
+    text-decoration-color: var(--rule);
+    &:hover, &:focus-visible {
+      color: var(--text);
+      text-decoration-color: var(--rosso);
+    }
+  }
+}
+
+// Diagram (yuml.me) — framed plate, captioned.
+.plate {
+  margin-block: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+
+  & img {
+    border: 1px solid var(--rule-strong);
+    background: var(--paper-dim);
+    padding: var(--space-md);
+    width: 100%;
+    object-fit: contain;
+  }
+
+  & figcaption {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-mute);
+
+    & em {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--text-soft);
+      letter-spacing: 0;
+      text-transform: none;
+      font-size: var(--fs-caption);
+      margin-left: var(--space-2xs);
+    }
+  }
+}
+
+// ─── language switcher (Specimens) ─────────────────────────────────────
+.specimens {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--rule-strong);
+}
+
+.specimens__heading {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.specimens__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.5rem;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+.specimens__count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+// Tabs row — typeset as small-caps mono separated by thin rules.
+.specimens__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-block: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--rule);
+
+  & a {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-soft);
+    text-decoration: none;
+    padding: var(--space-2xs) var(--space-sm);
+    margin-bottom: -1px;
+    border-bottom: 2px solid transparent;
+    transition: color var(--dur-fast) var(--ease-out),
+                border-color var(--dur-fast) var(--ease-out);
+
+    &:hover, &:focus-visible {
+      color: var(--text);
+      border-bottom-color: var(--rule-strong);
+    }
+
+    &[aria-current="true"] {
+      color: var(--text);
+      border-bottom-color: var(--rosso);
+    }
+  }
+}
+
+// Specimens with no codesamples yet — wayback notice
+.specimens__empty {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--text-soft);
+  padding: var(--space-md) 0;
+  font-size: var(--fs-small);
+}
+
+// Specimen panel (the active one)
+.specimen-panel {
+  display: grid;
+  gap: var(--space-md);
+
+  & > .specimen-panel__copy {
+    max-width: var(--col-reading);
+    color: var(--text);
+  }
+}
+
+.specimen-panel__lang {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-mute);
+
+  & strong {
+    font-weight: 400;
+    color: var(--rosso);
+  }
+}

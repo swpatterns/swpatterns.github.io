@@ -1,0 +1,50 @@
+{{ define "main" }}
+{{- $samples := .Pages }}
+{{- $count := len $samples }}
+
+<section class="tax-cover">
+  <span class="tax-cover__kind">Language</span>
+  <h1 class="tax-cover__name">{{ .Title }}</h1>
+  {{- with .Content }}<div class="tax-cover__lede">{{ . }}</div>{{ end }}
+  <span class="tax-cover__count">
+    <span class="numeral">{{ printf "%02d" $count }}</span>
+    {{- if eq $count 1 }} specimen{{ else }} specimens{{ end }}
+  </span>
+</section>
+
+{{- if or .Params.website .Params.tools .Params.icon }}
+  <div class="lang-meta">
+    {{- with .Params.icon }}<img src="{{ . }}" alt="{{ $.Title }} icon" loading="lazy">{{ end }}
+    <div class="lang-meta__body">
+      {{- with .Params.website }}
+        <p style="margin:0;"><a href="{{ . }}" target="_blank" rel="noopener">{{ . | replaceRE "^https?://(www\\.)?" "" | replaceRE "/$" "" }} ↗</a></p>
+      {{- end }}
+      {{- with .Params.tools }}
+        <div class="lang-meta__tools">
+          <span class="label">Toolchain</span>
+          {{- range . }}
+            <a href="{{ .website }}" target="_blank" rel="noopener">{{ .name }}</a>
+          {{- end }}
+        </div>
+      {{- end }}
+    </div>
+  </div>
+{{- end }}
+
+{{- if gt $count 0 }}
+  <ol class="toc__list">
+    {{- range sort $samples "Params.pattern_usage" }}
+      {{- $patternName := index (.Params.pattern_usage | default (slice "")) 0 }}
+      <li>
+        <a class="toc__entry" href="{{ .RelPermalink }}">
+          <span class="toc__entry-num">·</span>
+          <span class="toc__entry-title">{{ default .Title $patternName }}</span>
+          <span class="toc__entry-meta">View specimen</span>
+        </a>
+      </li>
+    {{- end }}
+  </ol>
+{{- else }}
+  <p style="font-style:italic;color:var(--text-soft);">No specimens yet for this language.</p>
+{{- end }}
+{{ end }}

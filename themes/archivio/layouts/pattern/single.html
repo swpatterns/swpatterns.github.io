@@ -1,0 +1,147 @@
+{{ define "main" }}
+{{- $title := .Title }}
+{{- $titleLower := lower $title }}
+
+{{/* Catalog number — alphabetical index over the full pattern set, 3-digit padded.
+     Stable as long as patterns are added in a consistent order. */}}
+{{- $patterns := sort (where .Site.RegularPages "Section" "pattern") "Title" }}
+{{- $num := 0 }}
+{{- range $i, $p := $patterns }}
+  {{- if eq $p.RelPermalink $.RelPermalink }}{{ $num = add $i 1 }}{{ end }}
+{{- end }}
+{{- $padded := printf "%03d" $num }}
+
+{{/* Find this pattern's per-language samples via the pattern_usage taxonomy.
+     The pattern_usage term page slug must match this pattern's title (lowercased). */}}
+{{- $samples := slice }}
+{{- with .Site.GetPage (printf "/pattern_usage/%s" $titleLower) }}
+  {{- $samples = sort .Pages "Params.language" }}
+{{- end }}
+
+<article class="reading">
+  <div class="prose">
+    <header class="entry">
+      <div class="entry__head">
+        <span class="entry__numeral" aria-label="Entry number {{ $num }}">{{ $padded }}</span>
+        <div class="entry__class">
+          {{- $types := .Params.pattern_types }}
+          {{- range $i, $t := $types }}
+            {{- if gt $i 0 }}<span class="sep" aria-hidden="true">·</span>{{ end }}
+            <a href="{{ printf "/pattern_types/%s" (urlize $t) | relURL }}">{{ $t }}</a>
+          {{- end }}
+        </div>
+      </div>
+
+      <h1 class="entry__title">{{ $title }}</h1>
+
+      {{- with .Params.wikipedia }}
+        <div class="entry__sources">
+          <span>Reference</span>
+          <a href="{{ . }}" target="_blank" rel="noopener">Wikipedia ↗</a>
+        </div>
+      {{- end }}
+    </header>
+
+    {{- if and .Params.diagram (ne .Params.diagram "") }}
+      <figure class="plate">
+        <img src="https://yuml.me/diagram/{{ .Params.diagramtype | default "class" }}/{{ .Params.diagram }}" alt="{{ $title }} — {{ .Params.diagramtype | default "class" }} diagram">
+        <figcaption>
+          Plate {{ $padded }} <em>{{ .Params.diagramtype | default "class" }} diagram</em>
+        </figcaption>
+      </figure>
+    {{- end }}
+
+    {{ .Content }}
+
+    {{- if or .Params.code (gt (len $samples) 0) }}
+      <section class="specimens" aria-labelledby="specimens-h">
+        <header class="specimens__heading">
+          <h2 id="specimens-h" class="specimens__title">Specimens</h2>
+          <span class="specimens__count">
+            {{ if gt (len $samples) 0 }}
+              {{ len $samples }} {{ if eq (len $samples) 1 }}implementation{{ else }}implementations{{ end }}
+            {{ else }}
+              awaiting submission
+            {{ end }}
+          </span>
+        </header>
+
+        {{- if gt (len $samples) 0 }}
+          <nav class="specimens__tabs" role="tablist" aria-label="Implementation languages">
+            {{- range $i, $s := $samples }}
+              {{- $lang := index .Params.language 0 }}
+              <a
+                role="tab"
+                href="{{ .RelPermalink }}"
+                data-specimen-tab="{{ $i }}"
+                {{- if eq $i 0 }} aria-current="true" aria-selected="true"{{ else }} aria-selected="false"{{ end -}}
+              >{{ $lang }}</a>
+            {{- end }}
+          </nav>
+
+          <div class="specimens__panels">
+            {{- range $i, $s := $samples }}
+              {{- $lang := index .Params.language 0 }}
+              <article
+                class="specimen-panel"
+                data-specimen-panel="{{ $i }}"
+                {{- if ne $i 0 }} hidden{{ end -}}
+              >
+                <div class="specimen-panel__lang">
+                  Specimen <span class="numeral">{{ $padded }}.{{ printf "%02d" (add $i 1) }}</span>
+                  <span aria-hidden="true">·</span>
+                  <strong>{{ $lang }}</strong>
+                  <span aria-hidden="true">·</span>
+                  <a href="{{ .RelPermalink }}">View specimen ↗</a>
+                </div>
+                <div class="specimen-panel__copy">
+                  {{ .Content }}
+                </div>
+              </article>
+            {{- end }}
+          </div>
+        {{- else }}
+          <p class="specimens__empty">
+            No language specimens have been submitted for this pattern yet.
+            <a href="https://github.com/swpatterns/swpatterns.com" target="_blank" rel="noopener">Contribute one</a>.
+          </p>
+        {{- end }}
+      </section>
+    {{- end }}
+  </div>
+
+  <aside class="aside" aria-label="Catalog metadata">
+    <div class="aside__group">
+      <span class="label">Classification</span>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.25rem;">
+        {{- range .Params.pattern_types }}
+          <li><a href="{{ printf "/pattern_types/%s" (urlize .) | relURL }}">{{ . }}</a></li>
+        {{- end }}
+      </ul>
+    </div>
+
+    {{- with .Params.wikipedia }}
+      <div class="aside__group">
+        <span class="label">External</span>
+        <a href="{{ . }}" target="_blank" rel="noopener">Wikipedia entry ↗</a>
+      </div>
+    {{- end }}
+
+    {{- if gt (len $samples) 0 }}
+      <div class="aside__group">
+        <span class="label">Languages</span>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:.4rem;">
+          {{- range $samples }}
+            <li><a href="{{ .RelPermalink }}">{{ index .Params.language 0 }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+    {{- end }}
+
+    <div class="aside__group">
+      <span class="label">Catalog №</span>
+      <span class="numeral" style="font-size:1.5rem;color:var(--rosso);">{{ $padded }}</span>
+    </div>
+  </aside>
+</article>
+{{ end }}

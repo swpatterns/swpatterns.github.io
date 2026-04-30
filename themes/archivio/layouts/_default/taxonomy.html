@@ -1,0 +1,46 @@
+{{/* Default taxonomy term page (used for pattern_types and pattern_usage).
+     Languages have their own template at taxonomy/language.html. */}}
+{{ define "main" }}
+{{- $kind := .Data.Singular | humanize }}
+{{- $term := .Title }}
+{{- $patterns := sort .Pages "Title" }}
+{{- $count := len $patterns }}
+
+<section class="tax-cover">
+  <span class="tax-cover__kind">{{ $kind }}</span>
+  <h1 class="tax-cover__name">{{ $term }}</h1>
+  {{- with .Params.description }}<p class="tax-cover__lede">{{ . }}</p>{{ end }}
+  <span class="tax-cover__count">
+    <span class="numeral">{{ printf "%02d" $count }}</span>
+    {{- if eq $count 1 }} entry{{ else }} entries{{ end }}
+  </span>
+</section>
+
+{{/* Reuse homepage list styling. Use global pattern numbering for consistency. */}}
+{{- $allPatterns := sort (where .Site.RegularPages "Section" "pattern") "Title" }}
+{{- $indexMap := dict }}
+{{- range $i, $p := $allPatterns }}
+  {{- $indexMap = merge $indexMap (dict $p.RelPermalink (add $i 1)) }}
+{{- end }}
+
+<ol class="toc__list">
+  {{- range $patterns }}
+    {{- $idx := index $indexMap .RelPermalink | default 0 }}
+    {{- $padded := printf "%03d" $idx }}
+    <li>
+      <a class="toc__entry" href="{{ .RelPermalink }}">
+        <span class="toc__entry-num">{{ if gt $idx 0 }}{{ $padded }}{{ else }}—{{ end }}</span>
+        <span class="toc__entry-title">{{ .Title }}</span>
+        <span class="toc__entry-meta">
+          {{- with .Params.pattern_types }}
+            {{- range $i, $t := . }}{{ if gt $i 0 }} · {{ end }}{{ $t }}{{ end }}
+          {{- end }}
+          {{- with .Params.language }}
+            {{- range $i, $l := . }}{{ if gt $i 0 }} · {{ end }}{{ $l }}{{ end }}
+          {{- end }}
+        </span>
+      </a>
+    </li>
+  {{- end }}
+</ol>
+{{ end }}

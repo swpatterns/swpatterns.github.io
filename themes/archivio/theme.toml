@@ -1,0 +1,11 @@
+name = "Archivio"
+license = "MIT"
+description = "Italian editorial / archival theme for swpatterns.com — Bodoni Moda, Spectral, Departure Mono. Lookup-first pattern catalog."
+homepage = "https://swpatterns.com/"
+tags = ["editorial", "archive", "catalog", "typography", "documentation"]
+features = ["responsive", "dark-mode", "syntax-highlighting"]
+min_version = "0.110.0"
+
+[author]
+  name = "Marco Montanari"
+  homepage = "https://github.com/sirmmo"

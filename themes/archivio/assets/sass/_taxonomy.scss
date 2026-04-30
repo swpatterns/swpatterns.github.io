@@ -1,0 +1,96 @@
+// Taxonomy term + list pages.
+
+.tax-cover {
+  padding-block: var(--space-xl) var(--space-lg);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: var(--space-2xl);
+  display: grid;
+  gap: var(--space-md);
+}
+
+.tax-cover__kind {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.tax-cover__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  font-feature-settings: var(--feat-display);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.tax-cover__lede {
+  max-width: 60ch;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.tax-cover__count {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-mute);
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+// Language meta block (icon, website, tools)
+.lang-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: var(--space-2xl);
+
+  @media (min-width: 720px) {
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: var(--space-2xl);
+  }
+
+  & img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    background: var(--paper-dim);
+    padding: var(--space-sm);
+    border: 1px solid var(--rule);
+  }
+}
+
+.lang-meta__body {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.lang-meta__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+
+  & a {
+    color: var(--text-soft);
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px dashed var(--rule);
+    &:hover, &:focus-visible {
+      color: var(--text);
+      border-bottom-color: var(--rosso);
+    }
+  }
+}
+
+// Reuses .toc__list / .toc__entry from _index.scss for the entry table.

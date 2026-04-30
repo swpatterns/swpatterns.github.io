@@ -1,0 +1,20 @@
+{{ define "main" }}
+<article class="reading">
+  <div class="prose">
+    <header class="entry">
+      <div class="entry__head">
+        <span class="entry__numeral" aria-hidden="true">·</span>
+        <div class="entry__class">
+          <span>{{ humanize .Section }}</span>
+          {{- range .Params.pattern_types }}
+            <span class="sep" aria-hidden="true">·</span>
+            <a href="{{ printf "/pattern_types/%s" (urlize .) | relURL }}">{{ . }}</a>
+          {{- end }}
+        </div>
+      </div>
+      <h1 class="entry__title">{{ .Title }}</h1>
+    </header>
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,8 @@
+{{/* Three-state toggle: auto (system) | light | dark.
+     The bootstrap script in baseof.html applies the saved choice before paint.
+     Buttons are wired up by archivio.js. */}}
+<div class="theme-toggle" role="group" aria-label="Color theme">
+  <button type="button" data-theme-set="auto"  aria-pressed="true">Auto</button>
+  <button type="button" data-theme-set="light" aria-pressed="false">Day</button>
+  <button type="button" data-theme-set="dark"  aria-pressed="false">Night</button>
+</div>

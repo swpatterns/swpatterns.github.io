@@ -1,0 +1,4 @@
+// Web fonts are loaded via <link> in partials/head.html for performance
+// (preconnect + display=swap on the Google Fonts stylesheet). Fallback chains
+// live in _tokens.scss. This file is reserved for any future self-hosted
+// @font-face rules; intentionally empty.

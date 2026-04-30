@@ -1,0 +1,78 @@
+{{ define "main" }}
+{{- $patternName := index (.Params.pattern_usage | default (slice "")) 0 }}
+{{- $lang := index (.Params.language | default (slice "")) 0 }}
+
+{{/* Look up the parent pattern by title (case-insensitive) so we can link back. */}}
+{{- $parent := "" }}
+{{- range where .Site.RegularPages "Section" "pattern" }}
+  {{- if eq (lower .Title) (lower $patternName) }}{{ $parent = . }}{{ end }}
+{{- end }}
+
+<article class="reading">
+  <div class="prose">
+    <header class="entry">
+      <div class="entry__head">
+        <span class="entry__numeral" aria-label="Specimen">⁂</span>
+        <div class="entry__class">
+          <a href="{{ "/codesample/" | relURL }}">Specimen</a>
+          {{- with $lang }}
+            <span class="sep" aria-hidden="true">·</span>
+            <a href="{{ printf "/language/%s" (urlize .) | relURL }}">{{ . }}</a>
+          {{- end }}
+          {{- with $patternName }}
+            <span class="sep" aria-hidden="true">·</span>
+            {{- if $parent }}
+              <a href="{{ $parent.RelPermalink }}">{{ . }}</a>
+            {{- else }}
+              <span>{{ . }}</span>
+            {{- end }}
+          {{- end }}
+        </div>
+      </div>
+
+      <h1 class="entry__title">{{ .Title }}</h1>
+    </header>
+
+    {{ .Content }}
+
+    {{- with .Params.gist }}
+      <section style="margin-block: var(--space-lg);">
+        <h2 style="margin-bottom: var(--space-sm);">Gist</h2>
+        <script src="https://cdn.jsdelivr.net/npm/gist-embed@1.0.4/dist/gist-embed.min.js"></script>
+        {{- range . }}
+          <code class="gist-frame" data-gist-id="{{ . }}"></code>
+        {{- end }}
+      </section>
+    {{- end }}
+  </div>
+
+  <aside class="aside" aria-label="Specimen metadata">
+    {{- if $parent }}
+      <div class="aside__group">
+        <span class="label">Pattern</span>
+        <a href="{{ $parent.RelPermalink }}" style="font-family:var(--font-display);font-style:italic;font-size:1.25rem;">{{ $parent.Title }}</a>
+      </div>
+    {{- end }}
+
+    {{- with $lang }}
+      <div class="aside__group">
+        <span class="label">Language</span>
+        <a href="{{ printf "/language/%s" (urlize .) | relURL }}" style="font-family:var(--font-display);font-style:italic;font-size:1.25rem;">{{ . }}</a>
+      </div>
+    {{- end }}
+
+    {{- if $parent }}
+      {{- with $parent.Params.pattern_types }}
+        <div class="aside__group">
+          <span class="label">Classification</span>
+          <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.25rem;">
+            {{- range . }}
+              <li><a href="{{ printf "/pattern_types/%s" (urlize .) | relURL }}">{{ . }}</a></li>
+            {{- end }}
+          </ul>
+        </div>
+      {{- end }}
+    {{- end }}
+  </aside>
+</article>
+{{ end }}

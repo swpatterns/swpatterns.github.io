@@ -1,0 +1,196 @@
+// Code blocks — the product. Built around Hugo's Chroma highlighter.
+// AA contrast verified for both modes (text on background ≥ 4.5:1).
+
+.code-block {
+  position: relative;
+  margin-block: var(--space-md);
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  overflow: hidden;
+}
+
+.code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-2xs) var(--space-sm);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-dim);
+
+  & .code-block__lang {
+    font-family: var(--font-mono);
+    font-size: var(--fs-label);
+    letter-spacing: var(--track-label);
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+}
+
+.code-block__copy {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--text-soft);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out);
+
+  &:hover, &:focus-visible {
+    color: var(--text);
+    border-color: var(--rule-strong);
+    background: var(--paper);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--rosso);
+    outline-offset: 2px;
+  }
+
+  &[data-state="copied"] {
+    color: var(--rosso);
+    border-color: var(--rosso);
+  }
+}
+
+// pre/code itself — inside the bordered shell or standalone.
+pre {
+  margin: 0;
+  padding: var(--space-md);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  letter-spacing: var(--track-mono);
+  font-feature-settings: var(--feat-mono);
+  color: var(--text);
+  background: transparent;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule-strong) transparent;
+  tab-size: 2;
+
+  & code {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0;
+    white-space: pre;
+    color: inherit;
+    font-size: inherit;
+  }
+}
+
+// Standalone <pre> blocks (markdown-rendered without our wrapper) get the
+// same shell treatment.
+.prose pre,
+.specimen-panel pre {
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+}
+
+// ─── Chroma syntax highlighting ──────────────────────────────────────
+// Two palettes — light + dark — each tuned for AA against --paper-deep.
+// Hue strategy: rosso for keywords (the brand accent doing meaningful work,
+// not decoration), warm blue for strings, deep umber for comments,
+// graphite for everything else. Avoids the cyan-on-dark AI palette.
+
+@mixin chroma-light {
+  --chroma-comment:  oklch(48% 0.05  60);   // umber, italic
+  --chroma-keyword:  oklch(46% 0.20  25);   // rosso-deep
+  --chroma-name:     oklch(28% 0.04 280);   // ink
+  --chroma-string:   oklch(42% 0.10 240);   // ink-blue
+  --chroma-number:   oklch(48% 0.10 165);   // muted teal
+  --chroma-symbol:   oklch(40% 0.12 290);   // plum
+  --chroma-fn:       oklch(34% 0.10 280);   // dark slate
+  --chroma-type:     oklch(38% 0.12 220);   // steel blue
+  --chroma-punct:    oklch(50% 0.014 280);
+  --chroma-error:    oklch(50% 0.20  25);
+  --chroma-line:     oklch(60% 0.014 280 / 0.6);
+  --chroma-hl-bg:    oklch(94% 0.015  60);  // line highlight wash
+}
+
+@mixin chroma-dark {
+  --chroma-comment:  oklch(60% 0.05  60);
+  --chroma-keyword:  oklch(68% 0.18  25);
+  --chroma-name:     oklch(92% 0.008 75);
+  --chroma-string:   oklch(72% 0.12 220);
+  --chroma-number:   oklch(70% 0.12 165);
+  --chroma-symbol:   oklch(70% 0.14 290);
+  --chroma-fn:       oklch(82% 0.06 280);
+  --chroma-type:     oklch(75% 0.12 200);
+  --chroma-punct:    oklch(70% 0.014 280);
+  --chroma-error:    oklch(72% 0.18  25);
+  --chroma-line:     oklch(60% 0.014 280 / 0.6);
+  --chroma-hl-bg:    oklch(20% 0.015  60);
+}
+
+:root { @include chroma-light; }
+@media (prefers-color-scheme: dark) { :root { @include chroma-dark; } }
+html[data-theme="dark"]  { @include chroma-dark; }
+html[data-theme="light"] { @include chroma-light; }
+
+// Chroma class names (Hugo defaults)
+.chroma {
+  background: transparent;
+  color: var(--text);
+
+  // line highlight
+  & .hl, & .line.hl { background: var(--chroma-hl-bg); }
+  & .lnt, & .ln { color: var(--chroma-line); margin-right: 0.6em; user-select: none; }
+
+  // comments
+  & .c, & .cm, & .cp, & .c1, & .cs, & .ch, & .cpf {
+    color: var(--chroma-comment);
+    font-style: italic;
+  }
+
+  // keywords / declarations
+  & .k, & .kc, & .kd, & .kn, & .kp, & .kr, & .kt {
+    color: var(--chroma-keyword);
+    font-weight: 500;
+  }
+
+  // names
+  & .n, & .na, & .nb, & .bp, & .nc, & .no, & .nd, & .ni, & .ne,
+  & .nl, & .nn, & .nx, & .py, & .nv, & .vc, & .vg, & .vi {
+    color: var(--chroma-name);
+  }
+
+  // function & class names — slightly distinct
+  & .nf, & .fm { color: var(--chroma-fn); font-weight: 500; }
+  & .nc, & .nt { color: var(--chroma-type); }
+
+  // strings
+  & .s, & .sa, & .sb, & .sc, & .dl, & .sd, & .s2, & .se, & .sh,
+  & .si, & .sx, & .sr, & .s1, & .ss { color: var(--chroma-string); }
+
+  // numbers
+  & .m, & .mb, & .mf, & .mh, & .mi, & .il, & .mo { color: var(--chroma-number); }
+
+  // operators / punctuation
+  & .o, & .ow { color: var(--chroma-symbol); }
+  & .p { color: var(--chroma-punct); }
+
+  // errors
+  & .err { color: var(--chroma-error); text-decoration: underline wavy; }
+
+  // generic — output, prompt, headings inside markdown samples
+  & .gh, & .gu { color: var(--chroma-keyword); font-weight: 600; }
+  & .gd { color: var(--chroma-error); }
+  & .gi { color: var(--chroma-number); }
+  & .gp { color: var(--chroma-comment); }
+  & .gs { font-weight: 600; }
+  & .ge { font-style: italic; }
+}
+
+// Gist embed (used on codesample pages) — strip the iframe-ish styling.
+.gist-frame {
+  margin-block: var(--space-md);
+  font-size: var(--fs-small);
+}

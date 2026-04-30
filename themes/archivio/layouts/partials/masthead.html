@@ -1,0 +1,17 @@
+<header class="masthead" role="banner">
+  <a class="masthead__title" href="{{ "/" | relURL }}" rel="home" aria-label="{{ .Site.Title }} — home">
+    SW<em>Patterns</em>
+  </a>
+
+  <nav class="masthead__nav" aria-label="Primary">
+    {{- $here := .RelPermalink }}
+    {{- range .Site.Menus.main }}
+      {{- $url := absLangURL .URL }}
+      {{- $rel := .URL }}
+      {{- $active := or (eq $here $rel) (and (ne $rel "/") (hasPrefix $here $rel)) }}
+      <a href="{{ $url }}"{{ if $active }} aria-current="page"{{ end }}{{ if hasPrefix .URL "http" }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+    {{- end }}
+  </nav>
+
+  {{- partial "theme-toggle.html" . }}
+</header>

@@ -1,0 +1,133 @@
+// Archivio — design tokens
+// Italian editorial / Bauhaus archival. Tokens are the only place colors,
+// type, and spacing are defined. Components consume these vars; never hardcode.
+
+:root {
+  color-scheme: light dark;
+
+  // ─── neutrals (warm-tinted toward Bodoni-paper hue ~75°) ─────────────
+  // Light surfaces use ink-100/200; dark surfaces use ink-900/850.
+  --ink-100: oklch(98.2% 0.006 75);
+  --ink-150: oklch(96.0% 0.008 75);
+  --ink-200: oklch(93.0% 0.010 75);
+  --ink-300: oklch(82.0% 0.012 75);
+  --ink-400: oklch(64.0% 0.014 60);
+  --ink-500: oklch(48.0% 0.014 280);
+  --ink-600: oklch(36.0% 0.014 280);
+  --ink-700: oklch(28.0% 0.012 280);
+  --ink-800: oklch(22.0% 0.012 280);
+  --ink-850: oklch(17.5% 0.012 280);
+  --ink-900: oklch(13.5% 0.012 280);
+
+  // ─── single accent: Italian editorial vermillion (Domus/Casabella) ───
+  --rosso-500: oklch(54% 0.20 25);
+  --rosso-600: oklch(46% 0.20 25);
+  --rosso-400: oklch(62% 0.20 25);
+
+  // ─── semantic tokens (light/dark via light-dark()) ────────────────────
+  --paper:        light-dark(var(--ink-100), var(--ink-900));
+  --paper-dim:    light-dark(var(--ink-150), var(--ink-850));
+  --paper-deep:   light-dark(var(--ink-200), var(--ink-800));
+  --text:         light-dark(var(--ink-800), var(--ink-150));
+  --text-soft:    light-dark(var(--ink-600), var(--ink-300));
+  --text-mute:    light-dark(var(--ink-500), var(--ink-400));
+  --rule:         light-dark(oklch(22% 0.012 280 / 0.16), oklch(98% 0.006 75 / 0.14));
+  --rule-strong:  light-dark(oklch(22% 0.012 280 / 0.32), oklch(98% 0.006 75 / 0.28));
+  --rule-faint:   light-dark(oklch(22% 0.012 280 / 0.08), oklch(98% 0.006 75 / 0.07));
+  --rosso:        light-dark(var(--rosso-500), var(--rosso-400));
+  --rosso-deep:   light-dark(var(--rosso-600), var(--rosso-500));
+
+  // selection highlight: rosso wash, never the OS default blue.
+  --selection-bg: light-dark(oklch(54% 0.20 25 / 0.18), oklch(62% 0.20 25 / 0.30));
+  --selection-fg: var(--text);
+
+  // ─── typography ──────────────────────────────────────────────────────
+  --font-display: 'Bodoni Moda', 'Bodoni 72', 'Didot', 'Bodoni MT', ui-serif, serif;
+  --font-body:    'Spectral', 'Source Serif 4', 'Source Serif Pro', 'Charter', Georgia, ui-serif, serif;
+  // Cutive Mono — typewriter face, evokes typed card-catalog labels.
+  // (Substituted from Departure Mono per impeccable's "fall back to something
+  // NOT in the reflex-reject list" rule; Cutive Mono fits the archival brief.)
+  --font-mono:    'Cutive Mono', 'Courier Prime', ui-monospace, 'SF Mono', 'Menlo', monospace;
+
+  // Modular scale: ~1.333 (perfect fourth) on display, fluid clamp() on
+  // marketing-style pages; fixed rem on reading body. We split: --display/--h1
+  // are fluid (used on hero + pattern title); body/h2/h3 fixed for stability.
+  --fs-display: clamp(2.75rem, 4.2vw + 1rem, 5.0rem);
+  --fs-h1:      clamp(2.0rem, 2.5vw + 1rem, 3.25rem);
+  --fs-h2:      1.5rem;
+  --fs-h3:      1.1875rem;
+  --fs-h4:      1.0625rem;
+  --fs-body:    1.0625rem;
+  --fs-small:   0.9375rem;
+  --fs-caption: 0.8125rem;
+  --fs-label:   0.6875rem;   // small-cap mono labels
+
+  --lh-display: 1.04;
+  --lh-h1:      1.08;
+  --lh-h2:      1.20;
+  --lh-body:    1.62;
+  --lh-tight:   1.30;
+
+  // OpenType
+  --feat-display: "lnum" 1, "kern" 1, "ss01" 1;
+  --feat-body:    "kern" 1, "liga" 1, "onum" 1;  // old-style figures in body
+  --feat-mono:    "kern" 1, "calt" 0;             // disable mono ligatures
+
+  // Tracking
+  --track-display: -0.012em;
+  --track-h1:      -0.012em;
+  --track-h2:      -0.006em;
+  --track-body:     0;
+  --track-mono:    -0.005em;
+  --track-label:    0.10em;   // small-caps labels
+
+  // ─── spacing (4pt scale, semantic names) ─────────────────────────────
+  --space-3xs: 0.25rem;   //  4
+  --space-2xs: 0.5rem;    //  8
+  --space-xs:  0.75rem;   // 12
+  --space-sm:  1rem;      // 16
+  --space-md:  1.5rem;    // 24
+  --space-lg:  2rem;      // 32
+  --space-xl:  3rem;      // 48
+  --space-2xl: 4rem;      // 64
+  --space-3xl: 6rem;      // 96
+  --space-4xl: 9rem;      // 144
+
+  // Page margins (fluid)
+  --page-pad-x: clamp(1.25rem, 4vw, 3rem);
+  --page-pad-y: clamp(1.5rem, 3vw, 2.5rem);
+
+  // Reading column
+  --col-reading: 64ch;        // ~640–680px depending on font
+  --col-page:    minmax(0, 80rem);
+  --col-meta:    18rem;
+
+  // ─── form ─────────────────────────────────────────────────────────────
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+
+  // Motion
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);   // ease-out-quart
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 120ms;
+  --dur-base: 220ms;
+  --dur-slow: 380ms;
+
+  // Z-stack
+  --z-header: 10;
+  --z-toggle: 20;
+  --z-skiplink: 100;
+}
+
+// Manual override hooks (set by theme toggle JS on <html data-theme="...">)
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"]  { color-scheme: dark; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 1ms;
+    --dur-base: 1ms;
+    --dur-slow: 1ms;
+  }
+}

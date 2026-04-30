@@ -1,0 +1,46 @@
+{{ define "main" }}
+{{- $kind := .Title }}
+{{- $isTaxList := eq .Kind "taxonomy" }}
+
+<section class="tax-cover">
+  <span class="tax-cover__kind">{{ if $isTaxList }}Index{{ else }}Section{{ end }}</span>
+  <h1 class="tax-cover__name">{{ default .Section $kind | humanize }}</h1>
+  {{- with .Content }}<div class="tax-cover__lede">{{ . }}</div>{{ end }}
+</section>
+
+{{- if $isTaxList }}
+  {{/* List of all terms within a taxonomy (e.g. /language/, /pattern_types/). */}}
+  {{- $terms := .Data.Terms.Alphabetical }}
+  <ul class="languages__list">
+    {{- range $terms }}
+      <li class="languages__item">
+        <a href="{{ .Page.RelPermalink }}">{{ humanize .Name }}</a>
+        <span class="count"><span class="numeral">{{ .Count }}</span></span>
+      </li>
+    {{- end }}
+  </ul>
+{{- else }}
+  {{/* Generic section list (e.g. /pattern/, /codesample/) — typographic. */}}
+  {{- $allPatterns := sort (where .Site.RegularPages "Section" "pattern") "Title" }}
+  {{- $indexMap := dict }}
+  {{- range $i, $p := $allPatterns }}
+    {{- $indexMap = merge $indexMap (dict $p.RelPermalink (add $i 1)) }}
+  {{- end }}
+  <ol class="toc__list">
+    {{- range sort .Pages "Title" }}
+      {{- $idx := index $indexMap .RelPermalink | default 0 }}
+      {{- $padded := printf "%03d" $idx }}
+      <li>
+        <a class="toc__entry" href="{{ .RelPermalink }}">
+          <span class="toc__entry-num">{{ if gt $idx 0 }}{{ $padded }}{{ else }}—{{ end }}</span>
+          <span class="toc__entry-title">{{ .Title }}</span>
+          <span class="toc__entry-meta">
+            {{- with .Params.pattern_types }}{{ range $i, $t := . }}{{ if gt $i 0 }} · {{ end }}{{ $t }}{{ end }}{{ end }}
+            {{- with .Params.language }}{{ range $i, $l := . }}{{ if gt $i 0 }} · {{ end }}{{ $l }}{{ end }}{{ end }}
+          </span>
+        </a>
+      </li>
+    {{- end }}
+  </ol>
+{{- end }}
+{{ end }}
