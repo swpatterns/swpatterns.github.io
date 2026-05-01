@@ -9,7 +9,8 @@
 }
 
 .tax-cover__kind {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -18,7 +19,7 @@
 
 .tax-cover__name {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: var(--fs-display);
   line-height: var(--lh-display);
   letter-spacing: var(--track-display);
@@ -34,7 +35,8 @@
 }
 
 .tax-cover__count {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -76,7 +78,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2xs) var(--space-md);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -85,10 +88,16 @@
     color: var(--text-soft);
     text-decoration: none;
     padding-bottom: 1px;
-    border-bottom: 1px dashed var(--rule);
-    &:hover, &:focus-visible {
+    border-bottom: 1px solid var(--rule);
+    transition: color var(--dur-fast) var(--ease-out),
+                border-color var(--dur-fast) var(--ease-out);
+    &:hover {
       color: var(--text);
-      border-bottom-color: var(--rosso);
+      border-bottom-color: var(--text);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
     }
   }
 }

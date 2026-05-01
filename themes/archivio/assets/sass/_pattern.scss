@@ -26,10 +26,10 @@
   font-family: var(--font-display);
   font-feature-settings: "lnum" 1, "tnum" 1;
   font-variant-numeric: lining-nums tabular-nums;
-  font-weight: 400;
+  font-weight: 700;
   font-size: clamp(2.25rem, calc(3.5vw + 0.5rem), 3.5rem);
   line-height: 1;
-  color: var(--rosso);
+  color: var(--text);
   letter-spacing: -0.02em;
   white-space: nowrap;
   align-self: start;
@@ -38,11 +38,11 @@
   &::before {
     content: "Nº";
     font-style: italic;
-    font-size: 0.55em;
+    font-size: 0.5em;
     margin-right: 0.18em;
-    vertical-align: 0.55em;
+    vertical-align: 0.62em;
     color: var(--text-mute);
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0;
   }
 }
@@ -52,7 +52,8 @@
   flex-wrap: wrap;
   gap: var(--space-2xs) var(--space-sm);
   align-items: baseline;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -61,11 +62,18 @@
     color: var(--text-mute);
     text-decoration: none;
     padding-bottom: 1px;
-    border-bottom: 1px dashed var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: color var(--dur-fast) var(--ease-out),
+                border-color var(--dur-fast) var(--ease-out);
 
-    &:hover, &:focus-visible {
+    &:hover {
       color: var(--text);
-      border-bottom-color: var(--rosso);
+      border-bottom-color: var(--text);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
     }
   }
 
@@ -74,22 +82,20 @@
 
 .entry__title {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: var(--fs-display);
   line-height: var(--lh-display);
   letter-spacing: var(--track-display);
   font-feature-settings: var(--feat-display);
-  margin-block: var(--space-md) 0;
+  margin-block: var(--space-xs) 0;
   text-wrap: balance;
-  // Slight optical compensation on Bodoni: pull the cap-height down a touch
-  // so the rosso numeral aligns with the title's cap line.
-  margin-block-start: var(--space-xs);
 }
 
 // Wikipedia / source line under title
 .entry__sources {
   margin-top: var(--space-sm);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -101,9 +107,9 @@
   a {
     color: var(--text-soft);
     text-decoration-color: var(--rule);
-    &:hover, &:focus-visible {
+    &:hover {
       color: var(--text);
-      text-decoration-color: var(--rosso);
+      text-decoration-color: var(--text);
     }
   }
 }
@@ -124,7 +130,8 @@
   }
 
   & figcaption {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
+    font-weight: 600;
     font-size: var(--fs-label);
     letter-spacing: var(--track-label);
     text-transform: uppercase;
@@ -133,6 +140,7 @@
     & em {
       font-family: var(--font-body);
       font-style: italic;
+      font-weight: 400;
       color: var(--text-soft);
       letter-spacing: 0;
       text-transform: none;
@@ -159,22 +167,23 @@
 
 .specimens__title {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
   font-style: italic;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   letter-spacing: -0.005em;
   margin: 0;
 }
 
 .specimens__count {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--text-mute);
 }
 
-// Tabs row — typeset as small-caps mono separated by thin rules.
+// Tabs row — typeset as small-caps Hanken separated by a baseline rule.
 .specimens__tabs {
   display: flex;
   flex-wrap: wrap;
@@ -183,7 +192,8 @@
   border-bottom: 1px solid var(--rule);
 
   & a {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
+    font-weight: 600;
     font-size: var(--fs-label);
     letter-spacing: var(--track-label);
     text-transform: uppercase;
@@ -191,18 +201,25 @@
     text-decoration: none;
     padding: var(--space-2xs) var(--space-sm);
     margin-bottom: -1px;
-    border-bottom: 2px solid transparent;
+    border-bottom: 3px solid transparent;
     transition: color var(--dur-fast) var(--ease-out),
                 border-color var(--dur-fast) var(--ease-out);
 
-    &:hover, &:focus-visible {
+    &:hover {
       color: var(--text);
       border-bottom-color: var(--rule-strong);
     }
 
+    // Active tab — heaviest treatment in the system: solid ink underline.
+    // No colour, just weight.
     &[aria-current="true"] {
       color: var(--text);
-      border-bottom-color: var(--rosso);
+      border-bottom-color: var(--text);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
     }
   }
 }
@@ -231,14 +248,15 @@
   display: flex;
   align-items: baseline;
   gap: var(--space-sm);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--text-mute);
 
   & strong {
-    font-weight: 400;
-    color: var(--rosso);
+    font-weight: 700;
+    color: var(--text);
   }
 }

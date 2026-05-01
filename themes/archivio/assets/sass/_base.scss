@@ -29,16 +29,15 @@ body {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   font-feature-settings: var(--feat-body);
-  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-variant-numeric: lining-nums proportional-nums;
   letter-spacing: var(--track-body);
   min-height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr auto;
 
-  // Light mode reads as warmer with a touch more leading for serif body
-  // on dark, the face renders lighter — bump leading there per tokens guidance.
+  // Hanken on dark backgrounds reads marginally lighter; nudge leading.
   @media (prefers-color-scheme: dark) {
-    line-height: calc(var(--lh-body) + 0.06);
+    line-height: calc(var(--lh-body) + 0.04);
   }
 }
 
@@ -91,23 +90,24 @@ p {
   hyphenate-limit-chars: 8 4 4;
 }
 
-// Links — body links use a baseline underline (Italian editorial standard);
-// hover swaps the underline color to rosso. No color-shifts on the body
-// text — we don't want a sea of red links.
+// Links — baseline underline (technical-manual standard); hover thickens it
+// to ink, no colour shift. Focus ring is the system's only chromatic note.
 a {
   color: inherit;
   text-decoration-line: underline;
   text-decoration-color: var(--rule-strong);
   text-decoration-thickness: from-font;
   text-underline-offset: 0.18em;
-  transition: text-decoration-color var(--dur-base) var(--ease-out);
+  transition: text-decoration-color var(--dur-base) var(--ease-out),
+              text-decoration-thickness var(--dur-base) var(--ease-out);
 
-  &:hover, &:focus-visible {
-    text-decoration-color: var(--rosso);
+  &:hover {
+    text-decoration-color: var(--text);
+    text-decoration-thickness: 2px;
   }
 
   &:focus-visible {
-    outline: 2px solid var(--rosso);
+    outline: 2px solid var(--focus);
     outline-offset: 3px;
     border-radius: 1px;
   }
@@ -188,9 +188,9 @@ th, td {
   vertical-align: baseline;
 }
 thead th {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--fs-label);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--text-mute);
@@ -213,7 +213,8 @@ img, svg, picture, video {
   padding: var(--space-2xs) var(--space-sm);
   background: var(--text);
   color: var(--paper);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -223,7 +224,7 @@ img, svg, picture, video {
 
   &:focus-visible {
     transform: translateY(0);
-    outline: 2px solid var(--rosso);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
 }
@@ -241,21 +242,21 @@ img, svg, picture, video {
   border: 0;
 }
 
-// ── editorial labels (small-caps mono) ───────────────────────────────────
+// ── editorial labels (Hanken uppercase + tracking) ──────────────────────
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--text-mute);
-  font-weight: 400;
+  font-weight: 600;
 }
 
-// ── catalog numerals (Bodoni Moda, lining figures) ────────────────────────
+// ── catalog numerals (Archivo lining figures) ────────────────────────────
 .numeral {
   font-family: var(--font-display);
   font-feature-settings: "lnum" 1, "tnum" 1;
   font-variant-numeric: lining-nums tabular-nums;
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  letter-spacing: -0.005em;
 }

@@ -9,9 +9,10 @@
 }
 
 .cover__mark {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
-  letter-spacing: 0.18em;
+  letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--text-mute);
   display: flex;
@@ -19,7 +20,7 @@
   gap: var(--space-md);
 
   & .dot {
-    color: var(--rosso);
+    color: var(--text);
     font-size: 1.25em;
     line-height: 0;
     transform: translateY(0.06em);
@@ -28,26 +29,27 @@
 
 .cover__title {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   font-size: var(--fs-display);
   line-height: var(--lh-display);
   letter-spacing: var(--track-display);
   font-feature-settings: var(--feat-display);
   margin: 0;
-  max-width: 14ch;
+  max-width: 16ch;
   text-wrap: balance;
 
+  // Italic accent — no colour shift; italic alone differentiates.
   & em {
     font-style: italic;
-    font-weight: 500;
-    color: var(--rosso);
+    font-weight: 600;
+    color: inherit;
   }
 }
 
 .cover__lede {
-  max-width: 56ch;
+  max-width: 60ch;
   font-size: 1.1875rem;
-  line-height: 1.55;
+  line-height: 1.5;
   color: var(--text);
 
   & a { color: var(--text); }
@@ -58,7 +60,8 @@
   display: flex;
   gap: var(--space-lg);
   flex-wrap: wrap;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -66,7 +69,7 @@
 
   & strong {
     color: var(--text);
-    font-weight: 400;
+    font-weight: 700;
     font-feature-settings: "lnum" 1, "tnum" 1;
   }
 }
@@ -96,7 +99,8 @@
 }
 
 .toc__seclabel {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -105,26 +109,32 @@
 
 .toc__sectitle {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
   font-style: italic;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   letter-spacing: -0.005em;
   margin: 0;
 
   & a {
     color: var(--text);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
+    border-bottom: 2px solid transparent;
     transition: border-color var(--dur-base) var(--ease-out);
 
-    &:hover, &:focus-visible {
-      border-bottom-color: var(--rosso);
+    &:hover {
+      border-bottom-color: var(--text);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
     }
   }
 }
 
 .toc__seccount {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -153,24 +163,25 @@
   color: var(--text);
   transition: background var(--dur-fast) var(--ease-out);
 
-  &:hover, &:focus-visible {
+  &:hover {
     background: var(--paper-dim);
     outline: none;
 
-    & .toc__entry-num { color: var(--rosso); }
-    & .toc__entry-title { text-decoration-color: var(--rosso); }
+    & .toc__entry-num   { color: var(--text); }
+    & .toc__entry-title { text-decoration-color: var(--text); text-decoration-thickness: 2px; }
   }
 
   &:focus-visible {
-    outline: 2px solid var(--rosso);
+    outline: 2px solid var(--focus);
     outline-offset: -2px;
   }
 }
 
 .toc__entry-num {
-  font-family: var(--font-mono);
-  font-size: var(--fs-caption);
+  font-family: var(--font-display);
   font-feature-settings: "lnum" 1, "tnum" 1;
+  font-weight: 500;
+  font-size: var(--fs-caption);
   color: var(--text-mute);
   letter-spacing: 0;
   transition: color var(--dur-fast) var(--ease-out);
@@ -184,12 +195,14 @@
   text-decoration-color: transparent;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
-  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+  transition: text-decoration-color var(--dur-fast) var(--ease-out),
+              text-decoration-thickness var(--dur-fast) var(--ease-out);
   text-wrap: balance;
 }
 
 .toc__entry-meta {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -215,9 +228,9 @@
 
 .languages__title {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
   font-style: italic;
-  font-size: 1.5rem;
+  font-size: 1.625rem;
   margin: 0;
 }
 
@@ -242,16 +255,23 @@
   & a {
     font-family: var(--font-body);
     font-size: var(--fs-body);
+    font-weight: 500;
     color: var(--text);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
+    border-bottom: 2px solid transparent;
     transition: border-color var(--dur-fast) var(--ease-out);
 
-    &:hover, &:focus-visible { border-bottom-color: var(--rosso); }
+    &:hover { border-bottom-color: var(--text); }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
   }
 
   & .count {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
+    font-weight: 600;
     font-size: var(--fs-label);
     letter-spacing: var(--track-label);
     color: var(--text-mute);
@@ -267,20 +287,24 @@
   margin-top: var(--space-md);
 
   & a {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
+    font-weight: 600;
     font-size: var(--fs-label);
     letter-spacing: var(--track-label);
     text-transform: uppercase;
     color: var(--text);
     text-decoration: none;
     padding: var(--space-2xs) var(--space-sm) var(--space-2xs) 0;
-    border-bottom: 1px solid var(--rule-strong);
-    transition: border-color var(--dur-base) var(--ease-out),
-                color var(--dur-base) var(--ease-out);
+    border-bottom: 2px solid var(--rule-strong);
+    transition: border-color var(--dur-base) var(--ease-out);
 
-    &:hover, &:focus-visible {
-      border-bottom-color: var(--rosso);
-      color: var(--rosso);
+    &:hover {
+      border-bottom-color: var(--text);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
     }
   }
 }

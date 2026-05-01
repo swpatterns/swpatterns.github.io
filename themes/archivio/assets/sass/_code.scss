@@ -1,5 +1,6 @@
 // Code blocks — the product. Built around Hugo's Chroma highlighter.
 // AA contrast verified for both modes (text on background ≥ 4.5:1).
+// Palette: deep umber + ink-blue + olive on warm paper. No red.
 
 .code-block {
   position: relative;
@@ -19,7 +20,8 @@
   background: var(--paper-dim);
 
   & .code-block__lang {
-    font-family: var(--font-mono);
+    font-family: var(--font-body);
+    font-weight: 600;
     font-size: var(--fs-label);
     letter-spacing: var(--track-label);
     text-transform: uppercase;
@@ -32,7 +34,8 @@
   background: transparent;
   border: 1px solid var(--rule);
   color: var(--text-soft);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -43,24 +46,25 @@
               border-color var(--dur-fast) var(--ease-out),
               background var(--dur-fast) var(--ease-out);
 
-  &:hover, &:focus-visible {
+  &:hover {
     color: var(--text);
     border-color: var(--rule-strong);
     background: var(--paper);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--rosso);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
 
   &[data-state="copied"] {
-    color: var(--rosso);
-    border-color: var(--rosso);
+    color: var(--text);
+    border-color: var(--text);
+    background: var(--paper-dim);
   }
 }
 
-// pre/code itself — inside the bordered shell or standalone.
+// pre/code — the typed specimen. Anonymous Pro at 15.5px.
 pre {
   margin: 0;
   padding: var(--space-md);
@@ -69,7 +73,7 @@ pre {
   font-size: var(--fs-code);
   line-height: 1.55;
   letter-spacing: 0;
-  font-feature-settings: "kern" 1, "calt" 0;
+  font-feature-settings: var(--feat-code);
   color: var(--text);
   background: transparent;
   scrollbar-width: thin;
@@ -86,8 +90,6 @@ pre {
   }
 }
 
-// Standalone <pre> blocks (markdown-rendered without our wrapper) get the
-// same shell treatment.
 .prose pre,
 .specimen-panel pre {
   border: 1px solid var(--rule);
@@ -95,39 +97,39 @@ pre {
 }
 
 // ─── Chroma syntax highlighting ──────────────────────────────────────
-// Two palettes — light + dark — each tuned for AA against --paper-deep.
-// Hue strategy: rosso for keywords (the brand accent doing meaningful work,
-// not decoration), warm blue for strings, deep umber for comments,
-// graphite for everything else. Avoids the cyan-on-dark AI palette.
+// Two palettes — light + dark — each AA against --paper-deep.
+// Hue strategy: deep umber (keywords) + ink-blue (strings/types) + olive
+// (numbers) + neutral text (names/functions) + muted gray-umber (comments).
+// No red on keywords. Errors are the ONLY place a rusted note appears.
 
 @mixin chroma-light {
-  --chroma-comment:  oklch(48% 0.05  60);   // umber, italic
-  --chroma-keyword:  oklch(46% 0.20  25);   // rosso-deep
-  --chroma-name:     oklch(28% 0.04 280);   // ink
-  --chroma-string:   oklch(42% 0.10 240);   // ink-blue
-  --chroma-number:   oklch(48% 0.10 165);   // muted teal
-  --chroma-symbol:   oklch(40% 0.12 290);   // plum
-  --chroma-fn:       oklch(34% 0.10 280);   // dark slate
-  --chroma-type:     oklch(38% 0.12 220);   // steel blue
-  --chroma-punct:    oklch(50% 0.014 280);
-  --chroma-error:    oklch(50% 0.20  25);
-  --chroma-line:     oklch(60% 0.014 280 / 0.6);
-  --chroma-hl-bg:    oklch(94% 0.015  60);  // line highlight wash
+  --chroma-comment:  oklch(50% 0.04 60);    // sepia, italic
+  --chroma-keyword:  oklch(34% 0.08 60);    // deep umber, bold
+  --chroma-name:     oklch(26% 0.012 280);  // ink (the body colour)
+  --chroma-string:   oklch(40% 0.10 240);   // deep ink-blue
+  --chroma-number:   oklch(44% 0.08 110);   // olive
+  --chroma-symbol:   oklch(36% 0.06 280);   // slate
+  --chroma-fn:       oklch(28% 0.04 280);   // dark slate, weight 600
+  --chroma-type:     oklch(36% 0.10 200);   // steel blue
+  --chroma-punct:    oklch(50% 0.012 280);
+  --chroma-error:    oklch(40% 0.10 30);    // muted rust — errors only
+  --chroma-line:     oklch(60% 0.012 280 / 0.6);
+  --chroma-hl-bg:    oklch(94% 0.012 60);
 }
 
 @mixin chroma-dark {
-  --chroma-comment:  oklch(60% 0.05  60);
-  --chroma-keyword:  oklch(68% 0.18  25);
-  --chroma-name:     oklch(92% 0.008 75);
-  --chroma-string:   oklch(72% 0.12 220);
-  --chroma-number:   oklch(70% 0.12 165);
-  --chroma-symbol:   oklch(70% 0.14 290);
-  --chroma-fn:       oklch(82% 0.06 280);
-  --chroma-type:     oklch(75% 0.12 200);
-  --chroma-punct:    oklch(70% 0.014 280);
-  --chroma-error:    oklch(72% 0.18  25);
-  --chroma-line:     oklch(60% 0.014 280 / 0.6);
-  --chroma-hl-bg:    oklch(20% 0.015  60);
+  --chroma-comment:  oklch(62% 0.04 60);
+  --chroma-keyword:  oklch(74% 0.10 60);    // lifted umber
+  --chroma-name:     oklch(94% 0.008 75);
+  --chroma-string:   oklch(72% 0.13 240);   // lifted ink-blue
+  --chroma-number:   oklch(74% 0.10 110);   // lifted olive
+  --chroma-symbol:   oklch(72% 0.05 280);
+  --chroma-fn:       oklch(86% 0.04 280);
+  --chroma-type:     oklch(76% 0.12 200);
+  --chroma-punct:    oklch(70% 0.012 280);
+  --chroma-error:    oklch(72% 0.13 30);
+  --chroma-line:     oklch(60% 0.012 280 / 0.6);
+  --chroma-hl-bg:    oklch(20% 0.012 60);
 }
 
 :root { @include chroma-light; }
@@ -135,61 +137,59 @@ pre {
 html[data-theme="dark"]  { @include chroma-dark; }
 html[data-theme="light"] { @include chroma-light; }
 
-// Chroma class names (Hugo defaults)
 .chroma {
   background: transparent;
   color: var(--text);
 
-  // line highlight
   & .hl, & .line.hl { background: var(--chroma-hl-bg); }
   & .lnt, & .ln { color: var(--chroma-line); margin-right: 0.6em; user-select: none; }
 
-  // comments
+  // comments — italic, the convention from print
   & .c, & .cm, & .cp, & .c1, & .cs, & .ch, & .cpf {
     color: var(--chroma-comment);
     font-style: italic;
   }
 
-  // keywords / declarations
+  // keywords / declarations — deep umber, weight 700
   & .k, & .kc, & .kd, & .kn, & .kp, & .kr, & .kt {
     color: var(--chroma-keyword);
-    font-weight: 500;
+    font-weight: 700;
   }
 
   // names
-  & .n, & .na, & .nb, & .bp, & .nc, & .no, & .nd, & .ni, & .ne,
+  & .n, & .na, & .nb, & .bp, & .no, & .nd, & .ni, & .ne,
   & .nl, & .nn, & .nx, & .py, & .nv, & .vc, & .vg, & .vi {
     color: var(--chroma-name);
   }
 
-  // function & class names — slightly distinct
-  & .nf, & .fm { color: var(--chroma-fn); font-weight: 500; }
+  // function & type names
+  & .nf, & .fm { color: var(--chroma-fn); font-weight: 600; }
   & .nc, & .nt { color: var(--chroma-type); }
 
-  // strings
+  // strings — ink-blue
   & .s, & .sa, & .sb, & .sc, & .dl, & .sd, & .s2, & .se, & .sh,
   & .si, & .sx, & .sr, & .s1, & .ss { color: var(--chroma-string); }
 
-  // numbers
+  // numbers — olive
   & .m, & .mb, & .mf, & .mh, & .mi, & .il, & .mo { color: var(--chroma-number); }
 
   // operators / punctuation
   & .o, & .ow { color: var(--chroma-symbol); }
   & .p { color: var(--chroma-punct); }
 
-  // errors
+  // errors — only place rust appears
   & .err { color: var(--chroma-error); text-decoration: underline wavy; }
 
-  // generic — output, prompt, headings inside markdown samples
-  & .gh, & .gu { color: var(--chroma-keyword); font-weight: 600; }
+  // generic — markdown headings/output inside samples
+  & .gh, & .gu { color: var(--chroma-keyword); font-weight: 700; }
   & .gd { color: var(--chroma-error); }
   & .gi { color: var(--chroma-number); }
   & .gp { color: var(--chroma-comment); }
-  & .gs { font-weight: 600; }
+  & .gs { font-weight: 700; }
   & .ge { font-style: italic; }
 }
 
-// Gist embed (used on codesample pages) — strip the iframe-ish styling.
+// Gist embed (used on codesample pages) — strip iframe-ish styling.
 .gist-frame {
   margin-block: var(--space-md);
   font-size: var(--fs-small);

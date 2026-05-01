@@ -1,7 +1,6 @@
 // Page architecture — header / main / footer skeleton + reading column.
 
 main {
-  // sticky-footer body is grid; main fills the middle row.
   padding-block: var(--space-xl) var(--space-3xl);
   padding-inline: var(--page-pad-x);
 }
@@ -18,34 +17,34 @@ main {
   grid-template-columns: auto 1fr auto;
   align-items: baseline;
   gap: var(--space-md);
-  // Slight backdrop tint when scrolled; no glassy blur.
   transition: background var(--dur-base) var(--ease-out);
 }
 
 .masthead__title {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.1875rem;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--text);
   font-feature-settings: "lnum" 1;
 
-  // The point — Bodoni in titlecase smallcap-style for the masthead.
-  // Italic accent on the .it for Italian editorial wink.
+  // Italic accent for the editorial wink. No colour shift — italic alone
+  // does the work in a near-monochrome system.
   & em {
     font-style: italic;
-    color: var(--rosso);
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0;
+    color: inherit;
   }
 }
 
 .masthead__nav {
   display: flex;
   gap: var(--space-md);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-label);
   letter-spacing: var(--track-label);
   text-transform: uppercase;
@@ -55,18 +54,24 @@ main {
     color: var(--text-soft);
     text-decoration: none;
     padding: var(--space-3xs) 0;
-    border-bottom: 1px solid transparent;
+    border-bottom: 2px solid transparent;
     transition: color var(--dur-fast) var(--ease-out),
                 border-color var(--dur-fast) var(--ease-out);
 
-    &:hover, &:focus-visible {
+    &:hover {
       color: var(--text);
-      border-bottom-color: var(--rosso);
+      border-bottom-color: var(--rule-strong);
     }
 
     &[aria-current="page"] {
       color: var(--text);
-      border-bottom-color: var(--rosso);
+      border-bottom-color: var(--text);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+      border-radius: 1px;
     }
   }
 }
@@ -85,7 +90,7 @@ main {
 .colophon {
   border-top: 1px solid var(--rule);
   padding: var(--space-lg) var(--page-pad-x) var(--space-xl);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--fs-caption);
   color: var(--text-soft);
   display: grid;
@@ -154,7 +159,7 @@ main {
     padding-inline-start: 1.5em;
 
     & li::marker {
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       color: var(--text-mute);
     }
   }
@@ -194,7 +199,7 @@ main {
   border-radius: 999px;
   padding: 2px;
   background: var(--paper-dim);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: var(--fs-label);
 
   & button {
@@ -208,6 +213,7 @@ main {
     letter-spacing: var(--track-label);
     text-transform: uppercase;
     font: inherit;
+    font-weight: 600;
     transition: color var(--dur-fast) var(--ease-out),
                 background var(--dur-fast) var(--ease-out);
 
@@ -220,7 +226,7 @@ main {
     }
 
     &:focus-visible {
-      outline: 2px solid var(--rosso);
+      outline: 2px solid var(--focus);
       outline-offset: 2px;
     }
   }

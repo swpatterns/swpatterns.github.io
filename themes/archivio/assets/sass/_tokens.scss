@@ -1,28 +1,23 @@
 // Archivio — design tokens
-// Italian editorial / Bauhaus archival. Tokens are the only place colors,
-// type, and spacing are defined. Components consume these vars; never hardcode.
+// Italian editorial / Olivetti-Vignelli technical-manual lineage.
+// Near-monochrome ink-on-paper; emphasis from WEIGHT, RULE-LINES, and ITALIC.
+// No chromatic accent except the focus ring (quiet ink-blue), used rarely.
 
 :root {
   color-scheme: light dark;
 
-  // ─── neutrals (warm-tinted toward Bodoni-paper hue ~75°) ─────────────
-  // Light surfaces use ink-100/200; dark surfaces use ink-900/850.
-  --ink-100: oklch(98.2% 0.006 75);
-  --ink-150: oklch(96.0% 0.008 75);
-  --ink-200: oklch(93.0% 0.010 75);
-  --ink-300: oklch(82.0% 0.012 75);
-  --ink-400: oklch(64.0% 0.014 60);
-  --ink-500: oklch(48.0% 0.014 280);
-  --ink-600: oklch(36.0% 0.014 280);
-  --ink-700: oklch(28.0% 0.012 280);
-  --ink-800: oklch(22.0% 0.012 280);
-  --ink-850: oklch(17.5% 0.012 280);
-  --ink-900: oklch(13.5% 0.012 280);
-
-  // ─── single accent: Italian editorial vermillion (Domus/Casabella) ───
-  --rosso-500: oklch(54% 0.20 25);
-  --rosso-600: oklch(46% 0.20 25);
-  --rosso-400: oklch(62% 0.20 25);
+  // ─── neutrals (warm-tinted toward paper hue ~75°) ────────────────────
+  --ink-100: oklch(98.0% 0.005 75);
+  --ink-150: oklch(95.5% 0.007 75);
+  --ink-200: oklch(92.5% 0.009 75);
+  --ink-300: oklch(82.0% 0.011 75);
+  --ink-400: oklch(64.0% 0.012 60);
+  --ink-500: oklch(48.0% 0.012 280);
+  --ink-600: oklch(36.0% 0.012 280);
+  --ink-700: oklch(28.0% 0.011 280);
+  --ink-800: oklch(20.0% 0.011 280);
+  --ink-850: oklch(16.0% 0.011 280);
+  --ink-900: oklch(12.5% 0.011 280);
 
   // ─── semantic tokens (light/dark via light-dark()) ────────────────────
   --paper:        light-dark(var(--ink-100), var(--ink-900));
@@ -31,58 +26,57 @@
   --text:         light-dark(var(--ink-800), var(--ink-150));
   --text-soft:    light-dark(var(--ink-600), var(--ink-300));
   --text-mute:    light-dark(var(--ink-500), var(--ink-400));
-  --rule:         light-dark(oklch(22% 0.012 280 / 0.16), oklch(98% 0.006 75 / 0.14));
-  --rule-strong:  light-dark(oklch(22% 0.012 280 / 0.32), oklch(98% 0.006 75 / 0.28));
-  --rule-faint:   light-dark(oklch(22% 0.012 280 / 0.08), oklch(98% 0.006 75 / 0.07));
-  --rosso:        light-dark(var(--rosso-500), var(--rosso-400));
-  --rosso-deep:   light-dark(var(--rosso-600), var(--rosso-500));
+  --rule:         light-dark(oklch(20% 0.011 280 / 0.18), oklch(98% 0.005 75 / 0.16));
+  --rule-strong:  light-dark(oklch(20% 0.011 280 / 0.40), oklch(98% 0.005 75 / 0.32));
+  --rule-faint:   light-dark(oklch(20% 0.011 280 / 0.08), oklch(98% 0.005 75 / 0.07));
 
-  // selection highlight: rosso wash, never the OS default blue.
-  --selection-bg: light-dark(oklch(54% 0.20 25 / 0.18), oklch(62% 0.20 25 / 0.30));
+  // The single chromatic note in the system: focus ring only. Quiet
+  // ink-blue (the colour of an annotation pen on a technical drawing).
+  --focus:        light-dark(oklch(42% 0.13 240), oklch(72% 0.13 240));
+
+  // Selection wash — uses the focus blue at very low opacity. Never red.
+  --selection-bg: light-dark(oklch(42% 0.13 240 / 0.18), oklch(72% 0.13 240 / 0.30));
   --selection-fg: var(--text);
 
   // ─── typography ──────────────────────────────────────────────────────
-  --font-display: 'Bodoni Moda', 'Bodoni 72', 'Didot', 'Bodoni MT', ui-serif, serif;
-  --font-body:    'Spectral', 'Source Serif 4', 'Source Serif Pro', 'Charter', Georgia, ui-serif, serif;
-  // Cutive Mono — typewriter face, decorative role only: small-cap LABELS,
-  // catalog NUMERALS, archival metadata. Never used for actual code.
-  --font-mono:    'Cutive Mono', 'Courier Prime', ui-monospace, 'SF Mono', 'Menlo', monospace;
-  // Anonymous Pro — Mark Simonson's developer mono (OFL). Used for code only:
-  // slashed zero, distinct I/l/1, properly drawn for scanning long blocks.
+  // Archivo — variable geometric grotesque, named (happily) for our theme.
+  --font-display: 'Archivo', 'Helvetica Neue', 'Helvetica', 'Arial', system-ui, sans-serif;
+  // Hanken Grotesk — substantial workhorse grotesque; reads well at small sizes.
+  --font-body:    'Hanken Grotesk', 'Helvetica Neue', 'Helvetica', 'Arial', system-ui, sans-serif;
+  // Anonymous Pro — Mark Simonson developer mono with slashed zero, distinct I/l/1.
   --font-code:    'Anonymous Pro', 'Cousine', ui-monospace, 'SF Mono', 'Menlo', monospace;
 
-  // Modular scale: ~1.333 (perfect fourth) on display, fluid clamp() on
-  // marketing-style pages; fixed rem on reading body. We split: --display/--h1
-  // are fluid (used on hero + pattern title); body/h2/h3 fixed for stability.
-  --fs-display: clamp(2.75rem, 4.2vw + 1rem, 5.0rem);
-  --fs-h1:      clamp(2.0rem, 2.5vw + 1rem, 3.25rem);
-  --fs-h2:      1.5rem;
+  // Type scale — mostly fixed rem (this is a reading product, not marketing),
+  // with --fs-display + --fs-h1 fluid only for the cover & pattern title.
+  --fs-display: clamp(2.75rem, 4.0vw + 1rem, 4.75rem);
+  --fs-h1:      clamp(2.0rem, 2.4vw + 1rem, 3.0rem);
+  --fs-h2:      1.625rem;
   --fs-h3:      1.1875rem;
   --fs-h4:      1.0625rem;
   --fs-body:    1.0625rem;       // 17px running prose
   --fs-small:   0.9375rem;       // 15px aside copy
   --fs-caption: 0.875rem;        // 14px captions
-  --fs-label:   0.78125rem;      // 12.5px — small-cap mono labels (was 11px, too small)
-  --fs-code:    0.96875rem;      // 15.5px — code blocks (proper code-mono size)
+  --fs-label:   0.78125rem;      // 12.5px small-cap labels (Hanken uppercase + tracking)
+  --fs-code:    0.96875rem;      // 15.5px code blocks
 
-  --lh-display: 1.04;
+  --lh-display: 1.02;
   --lh-h1:      1.08;
-  --lh-h2:      1.20;
-  --lh-body:    1.62;
+  --lh-h2:      1.18;
+  --lh-body:    1.55;
   --lh-tight:   1.30;
 
   // OpenType
   --feat-display: "lnum" 1, "kern" 1, "ss01" 1;
-  --feat-body:    "kern" 1, "liga" 1, "onum" 1;  // old-style figures in body
-  --feat-mono:    "kern" 1, "calt" 0;             // disable mono ligatures
+  --feat-body:    "kern" 1, "liga" 1, "tnum" 0;
+  --feat-code:    "kern" 1, "calt" 0;     // disable mono ligatures
 
   // Tracking
-  --track-display: -0.012em;
+  --track-display: -0.012em;       // Archivo at large sizes
   --track-h1:      -0.012em;
-  --track-h2:      -0.006em;
-  --track-body:     0;
-  --track-mono:    -0.005em;
-  --track-label:    0.10em;   // small-caps labels
+  --track-h2:      -0.008em;
+  --track-body:     0;             // Hanken at 17px wants neutral tracking
+  --track-code:     0;
+  --track-label:    0.10em;        // small-caps labels (Hanken uppercase)
 
   // ─── spacing (4pt scale, semantic names) ─────────────────────────────
   --space-3xs: 0.25rem;   //  4
@@ -96,22 +90,20 @@
   --space-3xl: 6rem;      // 96
   --space-4xl: 9rem;      // 144
 
-  // Page margins (fluid)
   --page-pad-x: clamp(1.25rem, 4vw, 3rem);
   --page-pad-y: clamp(1.5rem, 3vw, 2.5rem);
 
-  // Reading column
-  --col-reading: 64ch;        // ~640–680px depending on font
+  --col-reading: 64ch;
   --col-page:    minmax(0, 80rem);
   --col-meta:    18rem;
 
-  // ─── form ─────────────────────────────────────────────────────────────
+  // Form
   --radius-sm: 2px;
-  --radius-md: 4px;
-  --radius-lg: 6px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
 
   // Motion
-  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);   // ease-out-quart
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
   --dur-fast: 120ms;
   --dur-base: 220ms;
@@ -123,7 +115,6 @@
   --z-skiplink: 100;
 }
 
-// Manual override hooks (set by theme toggle JS on <html data-theme="...">)
 html[data-theme="light"] { color-scheme: light; }
 html[data-theme="dark"]  { color-scheme: dark; }
 

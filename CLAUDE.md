@@ -69,11 +69,13 @@ The reader is a **working software engineer in lookup mode**: arrived from searc
 
 ### Brand personality
 
-**Archival, disciplined, Italian-editorial.** Voice of a printed reference catalog — pages typeset with the care of a book, not the chrome of a SaaS dashboard. The "Made with ❤️ in Bologna" footer line is real heritage; the design earns it through Bodoni-school typography and grid discipline, not flags or emojis.
+**Archival, disciplined, technical-editorial.** Voice of a printed reference manual — closer to an Olivetti technical catalogue or Vignelli wayfinding manual than a magazine cover. The "Made with ❤️ in Bologna" footer line is real heritage; the design earns it through type weight and grid discipline, not flags or emojis.
 
 ### Aesthetic direction
 
-Reference: **Italian editorial / Bauhaus archival** — Domus, Casabella, Lars Müller monographs, Olivetti/Vignelli catalog design. Pattern entries are typeset like museum/library catalog cards: numbered (`Nº 042`), classified, deliberately set.
+Reference: **Italian editorial archival, technical-manual lineage** — Olivetti product documentation, Vignelli's NYC subway system, Lars Müller monographs, Bauhaus diagrams. Pattern entries are typeset like entries in a printed engineering reference: numbered (`Nº 042`), classified, deliberately set, in a workhorse type that holds at 14pt.
+
+A previous iteration of this brief leaned on **Bodoni-school editorial display** (Domus/Casabella magazine covers) with a saturated vermillion accent. That pivot away is intentional: hairline serifs render thin on screen and a chromatic accent felt too vibrant for what should be a quiet reference. We trade magazine-cover for technical-manual.
 
 **Hard anti-references** (do not drift toward any of these):
 
@@ -81,34 +83,37 @@ Reference: **Italian editorial / Bauhaus archival** — Domus, Casabella, Lars M
 - Generic Hugo / dev-blog template — no centered hero with stock sans, no identical card grids.
 - AI-startup landing page — no dark + cyan/purple + glassmorphism + gradient text + glowing borders.
 - Corporate enterprise docs — no IBM/SAP navy-and-gray chrome.
+- **Magazine-cover energy** — no high-contrast Didone display set huge in a saturated accent. That's the language of Domus, not of a reference catalogue.
 
 **Theme**: follow `prefers-color-scheme` with manual override toggle. Light = warm off-white book paper. Dark = deep ink (not pure black). Both designed to the same standard — no "built for light, inverted for dark."
 
-**Color**: drop the stock `#0077b8` navy. New palette is warm-tinted neutrals + a single rare **Italian editorial vermillion** accent (`oklch(54% 0.20 25)`). Accent appears on catalog numbers, active language tab marks, link underlines on hover — never as a card stripe or default button fill. See `.impeccable.md` for full OKLCH tokens.
+**Color**: **near-monochrome ink on paper. No chromatic accent.** Emphasis comes from weight, size, and rule-lines — never from hue. The Italian editorial vermillion the previous draft used is gone — even one saturated highlight read as too vibrant. Catalog numerals, classification chips, language tabs, and link underlines are all monochrome. The only place a chromatic note may appear is on a focused interactive element (focus ring) — and even there, prefer a quiet ink-blue over any red. **Do not reintroduce the vermillion.** See `.impeccable.md` for full OKLCH tokens.
 
-**Typography**: every reflex font (Inter, Plex, Space Grotesk, Fraunces, etc.) is banned. The pairing is:
+**Typography**: substantial, technical, not thin. Every reflex font (Inter, Plex, Space Grotesk, Fraunces, etc.) is banned. The pairing is:
 
-- **Bodoni Moda** (variable, Google Fonts) — display, pattern titles, catalog numerals (`Nº`). Italian heritage by design.
-- **Spectral** (Production Type, Google Fonts) — body and `h2`–`h4`. Transitional serif with editorial italics.
-- **Cutive Mono** — code, metadata labels, small-cap section markers. Mid-20th-century typewriter face that evokes the typed card-catalog labels the rest of the system is modeled on. (Substituted from the originally-spec'd Departure Mono because Cutive ships reliably via Google Fonts and is a stronger fit for the archival brief.) JetBrains/Plex Mono are explicitly off-limits.
+- **Archivo** (Omnibus-Type, OFL, Google Fonts) — display, pattern titles, catalog numerals (`Nº 042`). Variable geometric grotesque, named — happily — for our theme. Holds at heavy weights without feeling shouty. Use 700–800 for `h1`, 600 for `h2`, never below 500 for headings.
+- **Hanken Grotesk** (Hanken Co, OFL, Google Fonts) — body, `h2`–`h4`, all running text. Workhorse neutral grotesque designed for reading at small sizes. Use 400 body, 500 emphasis, 600 `h3`/`h4`. **No serif body face** — that was the previous draft's mistake.
+- **Anonymous Pro** (Mark Simonson, OFL, Google Fonts) — code only. Slashed zero, distinct `I/l/1`.
+- **Labels / small-caps** — Hanken Grotesk in uppercase with `~0.10em` tracking. **No separate label face.** The previous typewriter-mono labels (Cutive Mono) conflicted with the technical-manual direction.
 
 If a font proves impractical, substitute with something **not** in the reflex-reject list — never fall back to Inter or its cousins.
 
-**Layout**: asymmetric grid, left-aligned body, generous outer margins, distinct content-vs-metadata columns. Pattern pages read as numbered catalog entries: number top-left in Bodoni small caps, classification (`Creational · GoF`) in Departure Mono small caps, title in Bodoni display, body in Spectral. The **language switcher must be the most prominent interactive element** on a pattern page — that's why most readers came. Homepage pattern index is a typographic contents page, not a card grid.
+**Layout**: asymmetric grid, left-aligned body, generous outer margins, distinct content-vs-metadata columns. Pattern pages read as numbered catalog entries: number top-left in Archivo lining figures, classification (`Creational · GoF`) in Hanken small caps, title in Archivo heavy, body in Hanken at 17px. The **language switcher must be the most prominent interactive element** on a pattern page — that's why most readers came. Homepage pattern index is a typographic contents page, not a card grid.
 
 ### Design principles (apply to every visual decision)
 
 1. **Catalog, not blog.** Metadata is composed into the design; pattern types behave like a classification system, not tags.
 2. **Lookup over discovery.** Title, classification, and language switcher visible above the fold on a 13" laptop. Related-pattern links live below.
-3. **Italian editorial restraint.** Type and grid carry the brand. One rare accent. No decorative shapes, no glassmorphism, no card-grid filler.
+3. **Restraint, not ornament.** Type weight, rule lines, and grid discipline carry the brand. **No chromatic accent.** No decorative shapes, no glassmorphism, no card-grid filler.
 4. **Code samples are the product.** Syntax highlighting hits WCAG AA on **both** themes (verify, don't assume). Copy buttons keyboard-reachable. `<pre><code>` semantic with language declared.
-5. **Dual-mode parity.** Light and dark are co-equal — accent contrast, syntax contrast, and rule-line visibility tuned independently. Test both before shipping.
+5. **Dual-mode parity.** Light and dark are co-equal — type weight, syntax contrast, and rule-line visibility tuned independently. Test both before shipping.
 
 ### Constraints
 
-- Hugo only — no JS framework, no extra build pipeline. Style work lands in `themes/hugo-clarity-new/assets/sass/` or `layouts/` overrides.
+- Hugo + LibSass (no Dart Sass on CI; SCSS uses `@import` not `@use`; wrap `clamp()` arithmetic outside CSS-vars in `calc()`). No JS frameworks. Style work lives in `themes/archivio/assets/sass/`.
 - WCAG **AA** baseline; AA syntax-highlight contrast on both themes; respect `prefers-reduced-motion`.
 - Variable web fonts with `font-display: swap`. No icon fonts.
 - Keep the "Made with ❤️ in Bologna" footer — it's part of the brand.
+- CI uses `latest` Hugo (≥ 0.158); avoid removed APIs (`.Site.GoogleAnalytics`, `.Site.LanguageCode`).
 
 When in doubt, open `.impeccable.md` for the full rationale, OKLCH tokens, and font fallback rules.
